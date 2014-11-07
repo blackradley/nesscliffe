@@ -183,11 +183,3 @@ UpgradeLog*.htm
 # Microsoft Fakes
 FakesAssemblies/
 
-# =========================
-# LaTeX Chaff
-# =========================
-*.png
-*.toc
-*.pdf
-*.gz
-*.aux
