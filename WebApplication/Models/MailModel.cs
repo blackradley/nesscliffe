@@ -12,8 +12,9 @@ namespace WebApplication.Models
         [Required(ErrorMessage = "The email address is required")]
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string From { get; set; }
-        public string To { get; set; }
+        public string Destination { get; set; }
         public string Subject { get; set; }
         public string Body { get; set; }
+        public string Template { get; set; }
     }
 }

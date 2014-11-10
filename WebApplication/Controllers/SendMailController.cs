@@ -25,18 +25,20 @@ namespace WebApplication.Controllers
             if (ModelState.IsValid)
             {
                 // Create the email object first, then add the properties.
-                var myMessage = new SendGridMessage();
-                myMessage.AddTo(modelMail.From);
-                myMessage.From = new MailAddress(Email.AdministratorAddress, "Insight Website");
-                myMessage.Subject = "Invitation Request";
-                myMessage.Html = modelMail.From;
-                myMessage.EnableTemplateEngine("5ad29324-e439-46ff-b3c6-64d214462920");
+                var sendGridMessage = new SendGridMessage();
+                sendGridMessage.AddTo(modelMail.From); // send to them.
+                sendGridMessage.AddTo(Email.AdministratorAddress); // send to us.
+                sendGridMessage.From = new MailAddress(Email.AdministratorAddress, Email.AdministratorName);
+                sendGridMessage.Subject = "Invitation Request";
+                sendGridMessage.Text = modelMail.From;
+                sendGridMessage.Html = modelMail.From;
+                sendGridMessage.EnableTemplateEngine(Email.ConfirmInvitationTemplate);
 
                 // Create network credentials to access your SendGrid account
                 var credentials = new NetworkCredential(Email.Username, Email.Password);
                 // Create an Web transport for sending email.
                 var transportWeb = new Web(credentials); 
-                transportWeb.Deliver(myMessage);
+                transportWeb.Deliver(sendGridMessage);
                 return View("RequestThanks", modelMail);
             }
             else

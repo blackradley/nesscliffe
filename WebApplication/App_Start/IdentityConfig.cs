@@ -26,19 +26,16 @@ namespace WebApplication
 
         private Task configSendGridasync(IdentityMessage message)
         {
-            var myMessage = new SendGridMessage();
-            myMessage.AddTo(message.Destination);
-            myMessage.From = new System.Net.Mail.MailAddress(
-                                "Joe@contoso.com", "Joe S.");
-            myMessage.Subject = message.Subject;
-            myMessage.Text = message.Body;
-            myMessage.Html = message.Body;
+            var sendGridMessage = new SendGridMessage();
+            sendGridMessage.AddTo(message.Destination);
+            sendGridMessage.From = new System.Net.Mail.MailAddress(Email.AdministratorAddress, Email.AdministratorName);
+            sendGridMessage.Subject = message.Subject;
+            sendGridMessage.Text = message.Body;
+            sendGridMessage.Html = message.Body;
+            sendGridMessage.EnableTemplateEngine(Email.IdentityMessageTemplate);
 
             // Create network credentials to access your SendGrid account
-            String username = System.Environment.GetEnvironmentVariable("SENDGRID_USER");
-            String password = System.Environment.GetEnvironmentVariable("SENDGRID_PASS");
-            // Create credentials, specifying your user name and password.
-            var credentials = new NetworkCredential(username, password);
+            var credentials = new NetworkCredential(Email.Username, Email.Password);
 
             // Create a Web transport for sending email.
             var transportWeb = new Web(credentials);
@@ -46,7 +43,7 @@ namespace WebApplication
             // Send the email.
             if (transportWeb != null)
             {
-                return transportWeb.DeliverAsync(myMessage);
+                return transportWeb.DeliverAsync(sendGridMessage);
             }
             else
             {
