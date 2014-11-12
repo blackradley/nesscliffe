@@ -6,6 +6,7 @@
         this.checkPage();
         this.fillForm(emailAddress);
         this.submitForm();
+        this.checkResponsePage(emailAddress);
     };
 
     this.startOnJoinPage = function () {
@@ -33,6 +34,13 @@
     this.submitForm = function () {
         casper.then(function () {
             casper.click('form input[type="submit"]', 'Login submit button clicked.');
+        });
+    };
+
+    this.checkResponsePage = function (emailAddress) {
+        casper.waitForSelector("H2", function () {
+            casper.test.assertTextExists('Request Thanks', 'Correct title on response page.');
+            casper.capture(emailAddress + '.jpg');
         });
     };
 

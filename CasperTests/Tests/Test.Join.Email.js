@@ -29,9 +29,12 @@ casper.test.begin('Joining email check ' + mailBoxes, function (test) {
         });
     });
 
+    casper.then(function warningMessage(){
+        casper.echo('Be advised, 2 minute wait for mail delivery.', 'COMMENT');
+    });
+
     var success = 0;
-    casper.wait(60000, function checkMailHasArrived(){
-        casper.echo('Be advised, 60 second wait for mail delivery.')
+    casper.wait(120000, function checkMailHasArrived(){
         mailBoxes.forEach(function checkMailBox(mailBox) {
             casper.thenOpen('http://mailinator.com/inbox.jsp?to=' + mailBox, function () {
                 var subject = this.fetchText('div .subject');
