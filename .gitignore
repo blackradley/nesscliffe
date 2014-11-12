@@ -1,8 +1,9 @@
 #################
-## Appication
+## Application
 #################
 _*.cmd
 _*.ps1
+*.sublime-project
 
 #################
 ## User-specific files

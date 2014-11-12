@@ -1,16 +1,15 @@
 ﻿function JoinPage() {
 
-    this.startOnJoinPage = function () {
-        //casper.echo("base url is : " + casper.cli.options.baseUrl);
-        casper.thenOpen(casper.cli.options.baseUrl + '/SendMail/RequestInvite');
-    };
-
     // Send Pete an email
     this.join = function (emailAddress) {
         this.startOnJoinPage();
         this.checkPage();
         this.fillForm(emailAddress);
         this.submitForm();
+    };
+
+    this.startOnJoinPage = function () {
+        casper.thenOpen(casper.cli.options.baseUrl + '/SendMail/RequestInvite');
     };
 
     // Are you on the right page?
