@@ -1,0 +1,284 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"p",
+				"pre	Tag"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "Pages/Page.Join.js",
+			"settings":
+			{
+				"buffer_size": 1471,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 58.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 416.0
+	},
+	"console":
+	{
+		"height": 146.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/User/Documents/Projects/br_insight_nesscliffe/CasperTests/Pages/Page.Join.js",
+		"/C/Users/User/Documents/Projects/br_insight_nesscliffe/CasperTests/Tests/Test.Join.Email.js",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/views/layout.html",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/static/css/customization.css",
+		"/C/Users/User/Documents/Joe-Home/Organize/Addresses.xml",
+		"/C/Users/User/AppData/Local/Temp/Temp2_shit.zip/XMLData/bin/Debug/XML/Category.xml",
+		"/C/Users/User/AppData/Local/Temp/7zOA9AC.tmp/document.xml",
+		"/C/Users/User/AppData/Local/Temp/7zOC23B.tmp/content.xml",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/views/pages/exhibitionsHelp.html",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/views/pages/enterpriseHelp.html",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/static/js/application.js",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/static/js/philanthropy.js",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/views/pages/philanthropyHelp.html",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/views/pages/assetsHelp.html",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/views/pages/assetsPrint.html",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/views/pages/enterprisePrint.html",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/views/pages/philanthropyPrint.html",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/static/js/assets.js",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/views/pages/exhibitionsPrint.html",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/static/js/exhibitions.js",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/views/pages/enterprise.html",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/static/js/enterprise.js",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/views/pages/philanthropy.html",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/views/pages/exhibitions.html",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/views/pages/assets.html",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/static/js/home.js",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/views/pages/shit.html",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/static/js/shit.js",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/controllers/pages.py",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/app.yaml",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/views/pages/home.html",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/config.py",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/main.py",
+		"/C/Users/User/Documents/Projects/br_toolkits_moelydd/web_app/routes.py",
+		"/C/Users/User/Documents/Projects/lcc_bosworth_titterstoneclee/titterstoneclee.sublime-project",
+		"/C/Users/User/Documents/Projects/lcc_bosworth_titterstoneclee/web_app/public_html/application/libraries/Fb_events.php",
+		"/C/Users/User/Documents/Projects/lcc_bosworth_titterstoneclee/web_app/public_html/index.php",
+		"/C/Users/User/Documents/Projects/lcc_bosworth_titterstoneclee/web_app/public_html/application/views/pages/home.php",
+		"/C/Users/User/Documents/Projects/lcc_bosworth_titterstoneclee/web_app/public_html/application/controllers/welcome.php",
+		"/C/Users/User/Documents/Projects/lcc_bosworth_titterstoneclee/web_app/public_html/application/libraries/Fb_graph.php",
+		"/C/Users/User/Dropbox/Sales BRI/Museum Commercial Performance - Oct 2013/NESTA/Provisos 2/Research Proposition and Methodology.tex"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"heather",
+			"king",
+			"content",
+			"delmar",
+			"zem",
+			"jill",
+			"el.",
+			");",
+			"export",
+			"‘",
+			"’",
+			"”",
+			"“",
+			"iscollections",
+			"collections",
+			"’",
+			"‘",
+			"“",
+			"”",
+			"“",
+			"”",
+			"“",
+			"’",
+			"‘",
+			"”",
+			"“",
+			"”",
+			"“",
+			"”",
+			"“",
+			"collections",
+			"”",
+			"“",
+			"”",
+			"“",
+			"mcall",
+			"mc all",
+			"mcall",
+			"king",
+			"’",
+			"‘",
+			"”",
+			"“",
+			"”",
+			"“",
+			"lake"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"link.",
+			"'",
+			"\"",
+			"exhibitions",
+			"'",
+			"\"",
+			"'",
+			"\"",
+			"resources",
+			"\"",
+			"'",
+			"\""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Pages/Page.Join.js",
+					"settings":
+					{
+						"buffer_size": 1471,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/C/Users/User/Documents/Projects/jjc_kindle_mail/lieutenant-green.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 254.0,
+	"status_bar_visible": true
+}
