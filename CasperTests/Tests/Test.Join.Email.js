@@ -6,7 +6,7 @@ phantom.page.injectJs('./Pages/Page.Mailinator.js');
 var dateTimeNow = new Date();
 var secondsFromMidnight = dateTimeNow.getSeconds() + (60 * dateTimeNow.getMinutes()) + (60 * 60 * dateTimeNow.getHours());
 
-// Make three mail box names
+// Make mail box names
 var names = ["Alice", "Bob", "Carol", "Dave", "Eve"];
 var mailBoxes = [];
 names.forEach(function makeMailBox(name) {
@@ -21,10 +21,10 @@ casper.test.begin('Joining email check ' + mailBoxes, function (test) {
     casper.echo("Base url is " + casper.cli.options.baseUrl);
     casper.start(casper.cli.options.baseUrl);
 
-    // Send emails.
+    // Send emails to Alice, Bob and Carol etc...
     casper.then(function sendEmails() {
         mailBoxes.forEach(function sendAnEmail(mailBox) {
-            var emailAddress = mailBox + '@mailinator.com'
+            var emailAddress = mailBox + '@mailinator.com';
             joinPage.join(emailAddress);
         });
     });

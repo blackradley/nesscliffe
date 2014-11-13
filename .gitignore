@@ -4,6 +4,8 @@
 _*.cmd
 _*.ps1
 *.sublime-project
+*.exe
+*.sublime-workspace
 
 #################
 ## User-specific files
