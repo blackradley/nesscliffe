@@ -423,11 +423,23 @@ namespace WebApplication.Controllers
             }
         }
 
+        /// <summary>
+        /// Bit of a kluge to change the error message if you try and re-register an email.
+        /// </summary>
+        /// <param name="result"></param>
         private void AddErrors(IdentityResult result)
         {
             foreach (var error in result.Errors)
             {
-                ModelState.AddModelError("", error);
+                if (error.EndsWith("is already taken."))
+                {
+                    ModelState.Clear(); // because there are two errors, one for the email and one for the name.
+                    ModelState.AddModelError("", "Sorry that email address is already registered.");
+                }
+                else
+                {
+                    ModelState.AddModelError("", error);
+                }
             }
         }
 
