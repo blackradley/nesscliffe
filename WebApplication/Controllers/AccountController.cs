@@ -84,7 +84,7 @@ namespace WebApplication.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Sorry, I don't recognise that email and password combination.");
                     return View(model);
             }
         }
