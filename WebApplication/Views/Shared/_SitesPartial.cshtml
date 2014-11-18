@@ -1,0 +1,8 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    @Html.AntiForgeryToken()
+    <li>
+        @Html.ActionLink("My Sites", "Index", "Sites", routeValues: null, htmlAttributes: new { title = "Sites" })
+    </li>
+}

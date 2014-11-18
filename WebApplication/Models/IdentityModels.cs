@@ -29,5 +29,7 @@ namespace WebApplication.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<ClassLibrary.Site> Sites { get; set; }
     }
 }
