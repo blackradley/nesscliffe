@@ -46,11 +46,13 @@ namespace WebApplication.Controllers
                 : message == ManageMessageId.Error ? "An error has occurred."
                 : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                : message == ManageMessageId.ConfirmationEmailSuccess ? "Confirmation email has been sent."
                 : "";
 
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
+                IsEmailConfirmed = await UserManager.IsEmailConfirmedAsync(User.Identity.GetUserId()),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(User.Identity.GetUserId()),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(User.Identity.GetUserId()),
                 Logins = await UserManager.GetLoginsAsync(User.Identity.GetUserId()),
@@ -266,6 +268,22 @@ namespace WebApplication.Controllers
         }
 
         //
+        // GET: /Manage/EmailConfirm
+        public async Task<ActionResult> EmailConfirm()
+        {
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+            var callbackUrl = Url.Action(
+                "ConfirmEmail", "Account",
+                new {userId = user.Id, code = code},
+                protocol: Request.Url.Scheme);
+            await UserManager.SendEmailAsync(user.Id,
+                "Confirm Your Insight Account",
+                "Please confirm your Insight account by clicking <a href=\"" + callbackUrl + "\">here</a>.");
+            return RedirectToAction("Index", new { Message = ManageMessageId.ConfirmationEmailSuccess });
+        }
+
+        //
         // GET: /Manage/ManageLogins
         public async Task<ActionResult> ManageLogins(ManageMessageId? message)
         {
@@ -365,6 +383,7 @@ namespace WebApplication.Controllers
             SetPasswordSuccess,
             RemoveLoginSuccess,
             RemovePhoneSuccess,
+            ConfirmationEmailSuccess,
             Error
         }
 

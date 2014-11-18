@@ -23,6 +23,16 @@
             }
             ]
         </dd>
+        
+        <dt>Email:</dt>
+        <dd>
+            [
+            @(Model.IsEmailConfirmed?"Confirmed":"Not Confirmed")
+            @if (!Model.IsEmailConfirmed) { 
+                @Html.ActionLink("request another confirmation email", "EmailConfirm")
+            }
+            ]
+        </dd>
         @*
             <dt>External Logins:</dt>
             <dd>

@@ -168,23 +168,15 @@ namespace WebApplication.Controllers
                         new { userId = user.Id, code = code }, 
                         protocol: Request.Url.Scheme);
                     await UserManager.SendEmailAsync(user.Id, 
-                        "Confirm Your Account", 
-                        "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-                    return View("Thanks");
+                        "Confirm Your Insight Account",
+                        "Please confirm your Insight account by clicking <a href=\"" + callbackUrl + "\">here</a>.");
+                    return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }
 
             // If we got this far, something failed, redisplay form
             return View(model);
-        }
-
-
-        [AllowAnonymous]
-        public ActionResult Thanks()
-        {
-            return View();
         }
 
         //

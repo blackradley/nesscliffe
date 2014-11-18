@@ -260,7 +260,6 @@
     <Content Include="Views\SendMail\RequestInvite.cshtml" />
     <Content Include="Views\SendMail\RequestThanks.cshtml" />
     <Content Include="Views\Home\Funding.cshtml" />
-    <Content Include="Views\Account\Thanks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
