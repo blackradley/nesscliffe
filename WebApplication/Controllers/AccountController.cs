@@ -171,13 +171,20 @@ namespace WebApplication.Controllers
                         "Confirm Your Account", 
                         "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return View("Thanks");
                 }
                 AddErrors(result);
             }
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+
+        [AllowAnonymous]
+        public ActionResult Thanks()
+        {
+            return View();
         }
 
         //
