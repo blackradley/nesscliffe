@@ -6,9 +6,10 @@ Development Pipeline
 Localhost > Development Server > Staging Server > Live Server
 
 * Development Server http://blackradley-insight-develop.azurewebsites.net and
-  automatically updated from https://github.com/blackradley/nesscliffe/tree/develop
-* Staging Server http://blackradley-insight-staging.azurewebsites.net and
-  automatically updated from https://github.com/blackradley/nesscliffe/tree/master
+  automatically updated from https://github.com/blackradley/nesscliffe/tree/develop 
+* Staging Server http://blackradley-insight-staging.azurewebsites.net 
+  Changes on the develop branch are merged wit the master branch and published from
+  Visual Studio using a selected version from https://github.com/blackradley/nesscliffe/tree/master
 * Live Server http://insight.blackradley.com/
   updated by manually swapping with Staging.
 
