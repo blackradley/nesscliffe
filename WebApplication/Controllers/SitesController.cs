@@ -13,7 +13,7 @@ namespace WebApplication.Controllers
 {
     public class SitesController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private DataContext db = new DataContext();
 
         // GET: Sites
         public ActionResult Index()

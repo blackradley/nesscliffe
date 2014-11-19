@@ -5,10 +5,14 @@ using System.Linq;
 using System.Web;
 using ClassLibrary;
 
-namespace WebApplication.Infrastructure
+namespace WebApplication.Models
 {
-    public class SiteDb : DbContext, ISitesDataSource
+    public class DataContext : DbContext, ISitesDataSource
     {
+        public DataContext() : base("DefaultConnection")
+        {
+        }
+
         public DbSet<Site> Sites { get; set; }
         public DbSet<Month> Months { get; set; }
 
