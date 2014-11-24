@@ -23,5 +23,13 @@ namespace ClassLibrary
         public virtual String YoutubeUrl { get; set; }
         public virtual String VimeoUrl { get; set; }
         public virtual String PinterestUrl { get; set; }
+
+        public virtual int HoursMonday { get; set; }
+        public virtual int HoursTuesday { get; set; }
+        public virtual int HoursWednesday { get; set; }
+        public virtual int HoursThursday { get; set; }
+        public virtual int HoursFriday { get; set; }
+        public virtual int HoursSaturday { get; set; }
+        public virtual int HoursSunday { get; set; }
     }
 }

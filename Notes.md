@@ -20,6 +20,7 @@ Migrations
 Migrations are enabled for the datacontext.
 
 Enable-Migrations -Force –EnableAutomaticMigrations -ContextTypeName WebApplication.Models.DataContext -MigrationsDirectory:Migrations
+Add-Migration -configuration WebApplication.Migrations.Configuration <Initial>
 
 Error Messages
 -----------

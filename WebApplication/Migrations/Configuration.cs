@@ -5,7 +5,7 @@ namespace WebApplication.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<WebApplication.Models.DataContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<WebApplication.Infrastructure.DataDb>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace WebApplication.Migrations
             MigrationsDirectory = @"Migrations";
         }
 
-        protected override void Seed(WebApplication.Models.DataContext context)
+        protected override void Seed(WebApplication.Infrastructure.DataDb context)
         {
             //  This method will be called after migrating to the latest version.
 

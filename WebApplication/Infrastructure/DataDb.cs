@@ -5,11 +5,11 @@ using System.Linq;
 using System.Web;
 using ClassLibrary;
 
-namespace WebApplication.Models
+namespace WebApplication.Infrastructure
 {
-    public class DataContext : DbContext, ISitesDataSource
+    public class DataDb : DbContext, ISitesDataSource
     {
-        public DataContext() : base("DefaultConnection")
+        public DataDb() : base("DefaultConnection")
         {
         }
 

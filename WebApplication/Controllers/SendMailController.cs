@@ -6,6 +6,7 @@ using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using SendGrid;
+using WebApplication.Infrastructure;
 using WebApplication.Models;
 
 namespace WebApplication.Controllers

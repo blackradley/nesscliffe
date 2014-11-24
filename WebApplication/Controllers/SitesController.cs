@@ -7,13 +7,13 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ClassLibrary;
-using WebApplication.Models;
+using WebApplication.Infrastructure;
 
 namespace WebApplication.Controllers
 {
     public class SitesController : Controller
     {
-        private DataContext db = new DataContext();
+        private DataDb db = new DataDb();
 
         // GET: Sites
         public ActionResult Index()
