@@ -7,6 +7,10 @@ covering all the activities of the museums.
 Using statistics and smart computer technology it will look to predict the performance of individual museums using the data from all the museums as a resource. 
 A sustainable on-line service will be created giving museum managers reliable predictions about the effects of changes to their museum based on evidence rather than conjecture.
 
+Authentication
+---
+Individual user accounts (previously forms based authentication).
+
 
 
 

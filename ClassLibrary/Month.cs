@@ -31,5 +31,7 @@ namespace ClassLibrary
         public virtual int HoursFriday { get; set; }
         public virtual int HoursSaturday { get; set; }
         public virtual int HoursSunday { get; set; }
+
+        public virtual int Visitors { get; set; }
     }
 }

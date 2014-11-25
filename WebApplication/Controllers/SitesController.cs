@@ -11,6 +11,7 @@ using WebApplication.Infrastructure;
 
 namespace WebApplication.Controllers
 {
+    [Authorize]
     public class SitesController : Controller
     {
         private DataDb db = new DataDb();

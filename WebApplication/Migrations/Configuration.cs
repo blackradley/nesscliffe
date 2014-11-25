@@ -9,7 +9,7 @@ namespace WebApplication.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
             MigrationsDirectory = @"Migrations";
         }
 
@@ -27,6 +27,7 @@ namespace WebApplication.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
         }
     }
 }

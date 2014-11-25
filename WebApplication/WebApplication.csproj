@@ -175,6 +175,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411241508436_InitialCreate.cs" />
+    <Compile Include="Migrations\201411241508436_InitialCreate.Designer.cs">
+      <DependentUpon>201411241508436_InitialCreate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Infrastructure\DataDb.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -290,6 +294,11 @@
       <Project>{605f9e1e-7882-414b-9f1b-575d4219c6b0}</Project>
       <Name>ClassLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201411241508436_InitialCreate.resx">
+      <DependentUpon>201411241508436_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
