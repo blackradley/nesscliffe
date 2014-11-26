@@ -12,6 +12,7 @@ namespace ClassLibrary
     public class Site
     {
         public virtual Guid Id { get; set; }
+        public virtual Guid AspNetUserId { get; set; }
         public virtual String Owner { get; set; }
         public virtual String Name { get; set; }
         public virtual String Postcode { get; set; }
