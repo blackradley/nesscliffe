@@ -33,5 +33,9 @@ namespace ClassLibrary
         public virtual int HoursSunday { get; set; }
 
         public virtual int Visitors { get; set; }
+        public virtual int IncomeAdmissions { get; set; }
+        public virtual int IncomeAdditional { get; set; }
+        public virtual int VisitorsAdditional { get; set; }
+
     }
 }

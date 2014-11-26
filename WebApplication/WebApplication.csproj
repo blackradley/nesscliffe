@@ -183,6 +183,10 @@
     <Compile Include="Migrations\201411261257311_UserLink.Designer.cs">
       <DependentUpon>201411261257311_UserLink.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411261310579_Admissions.cs" />
+    <Compile Include="Migrations\201411261310579_Admissions.Designer.cs">
+      <DependentUpon>201411261310579_Admissions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Infrastructure\DataDb.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -305,6 +309,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411261257311_UserLink.resx">
       <DependentUpon>201411261257311_UserLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411261310579_Admissions.resx">
+      <DependentUpon>201411261310579_Admissions.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
