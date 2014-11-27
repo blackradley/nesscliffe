@@ -170,22 +170,15 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MonthsController.cs" />
     <Compile Include="Controllers\SendMailController.cs" />
     <Compile Include="Controllers\SitesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201411251551346_InitialCreate.cs" />
-    <Compile Include="Migrations\201411251551346_InitialCreate.Designer.cs">
-      <DependentUpon>201411251551346_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411261257311_UserLink.cs" />
-    <Compile Include="Migrations\201411261257311_UserLink.Designer.cs">
-      <DependentUpon>201411261257311_UserLink.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411261310579_Admissions.cs" />
-    <Compile Include="Migrations\201411261310579_Admissions.Designer.cs">
-      <DependentUpon>201411261310579_Admissions.cs</DependentUpon>
+    <Compile Include="Migrations\201411262206024_InitialCreate.cs" />
+    <Compile Include="Migrations\201411262206024_InitialCreate.Designer.cs">
+      <DependentUpon>201411262206024_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Infrastructure\DataDb.cs" />
@@ -218,6 +211,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.init.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\bootstrap-theme.css.map" />
@@ -286,6 +280,11 @@
     <Content Include="Views\Sites\Delete.cshtml" />
     <Content Include="Views\Sites\Details.cshtml" />
     <Content Include="Views\Sites\Edit.cshtml" />
+    <Content Include="Views\Months\Create.cshtml" />
+    <Content Include="Views\Months\Delete.cshtml" />
+    <Content Include="Views\Months\Details.cshtml" />
+    <Content Include="Views\Months\Edit.cshtml" />
+    <Content Include="Views\Months\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -304,14 +303,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201411251551346_InitialCreate.resx">
-      <DependentUpon>201411251551346_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411261257311_UserLink.resx">
-      <DependentUpon>201411261257311_UserLink.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411261310579_Admissions.resx">
-      <DependentUpon>201411261310579_Admissions.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201411262206024_InitialCreate.resx">
+      <DependentUpon>201411262206024_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -34,6 +34,9 @@ namespace WebApplication.Migrations
                         HoursSaturday = c.Int(nullable: false),
                         HoursSunday = c.Int(nullable: false),
                         Visitors = c.Int(nullable: false),
+                        IncomeAdmissions = c.Int(nullable: false),
+                        IncomeAdditional = c.Int(nullable: false),
+                        VisitorsAdditional = c.Int(nullable: false),
                         Site_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
@@ -45,7 +48,7 @@ namespace WebApplication.Migrations
                 c => new
                     {
                         Id = c.Guid(nullable: false),
-                        Owner = c.String(),
+                        UserId = c.Guid(nullable: false),
                         Name = c.String(),
                         Postcode = c.String(),
                         Museum = c.Boolean(nullable: false),

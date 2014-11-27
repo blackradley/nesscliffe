@@ -6,113 +6,140 @@
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-3">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-            @Html.LabelFor(model => model.Postcode, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-3">
-                @Html.EditorFor(model => model.Postcode, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Postcode, "", new { @class = "text-danger" })
-            </div>
+
+    <div class="row">
+        <div class="form-group col-md-8">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label", @for = "name" })
+            <a href="#" data-toggle="tooltip" data-title="The name of the site so you can identify it while you work.">
+                <span class="glyphicon glyphicon-info-sign"></span>
+            </a>
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @name = "name", @style = "max-width: 500px;" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
         </div>
-        
-        <div class="form-group">
-            @Html.LabelFor(model => model.Museum, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-3">
-                <div class="checkbox">
+        <div class="form-group col-md-4">
+            @Html.LabelFor(model => model.Postcode, htmlAttributes: new { @class = "control-label" })
+            <a href="#" data-toggle="tooltip" data-title="Postcode of the site so we can find it on a map.">
+                <span class="glyphicon glyphicon-info-sign"></span>
+            </a>
+            @Html.EditorFor(model => model.Postcode, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Postcode, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="checkbox col-md-3">
+            <div class="form-inline">
+                <label>
                     @Html.EditorFor(model => model.Museum)
-                    @Html.ValidationMessageFor(model => model.Museum, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            @Html.LabelFor(model => model.Castle, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-3">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Castle)
-                    @Html.ValidationMessageFor(model => model.Castle, "", new { @class = "text-danger" })
-                </div>
+                    @Html.LabelFor(model => model.Museum, htmlAttributes: new { @class = "control-label" })
+                    <a href="#" data-toggle="tooltip" data-title="Does your site include a musuem?">
+                        <span class="glyphicon glyphicon-info-sign"></span>
+                    </a>
+                </label>
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Gallery, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-3">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Gallery)
-                    @Html.ValidationMessageFor(model => model.Gallery, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            @Html.LabelFor(model => model.WorldHeritageSite, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-3">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.WorldHeritageSite)
-                    @Html.ValidationMessageFor(model => model.WorldHeritageSite, "", new { @class = "text-danger" })
+
+
+    </div>
+
+    <!--
+        
+                <div class="form-group col-md-3">
+            <div class="checkbox">
+                <div class="form-inline">
+                    @Html.EditorFor(model => model.Museum)
+                    @Html.LabelFor(model => model.Museum, htmlAttributes: new { @class = "control-label" })
+                    <a href="#" data-toggle="tooltip" data-title="Does your site include a musuem?">
+                        <span class="glyphicon glyphicon-info-sign"></span>
+                    </a>
                 </div>
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.HistoricHouse, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-3">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.HistoricHouse)
-                    @Html.ValidationMessageFor(model => model.HistoricHouse, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            @Html.LabelFor(model => model.HistoricSite, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-3">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.HistoricSite)
-                    @Html.ValidationMessageFor(model => model.HistoricSite, "", new { @class = "text-danger" })
-                </div>
-            </div>
+    
+        <div class="col-md-3 checkbox">
+            @Html.EditorFor(model => model.Castle)
+            @Html.LabelFor(model => model.Castle, htmlAttributes: new { @class = "control-label" })
+            <a href="#" data-toggle="tooltip" data-title="Is there a castle or fortified house at your site?">
+                <span class="glyphicon glyphicon-info-sign"></span>
+            </a>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.OpenAir, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-3">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.OpenAir)
-                    @Html.ValidationMessageFor(model => model.OpenAir, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            @Html.LabelFor(model => model.Accreditation, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-3">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Accreditation)
-                    @Html.ValidationMessageFor(model => model.Accreditation, "", new { @class = "text-danger" })
-                </div>
-            </div>
+        <div class="col-md-3 checkbox">
+            @Html.EditorFor(model => model.Gallery)
+            @Html.LabelFor(model => model.Gallery, htmlAttributes: new { @class = "control-label" })
+            <a href="#" data-toggle="tooltip" data-title="Is there a gallery at your site?">
+                <span class="glyphicon glyphicon-info-sign"></span>
+            </a>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.AreaIndoor, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-3">
-                @Html.EditorFor(model => model.AreaIndoor, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AreaIndoor, "", new { @class = "text-danger" })
-            </div>
-            @Html.LabelFor(model => model.AreaOutdoor, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-3">
-                @Html.EditorFor(model => model.AreaOutdoor, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AreaOutdoor, "", new { @class = "text-danger" })
-            </div>
+        <div class="col-md-3 checkbox">
+            @Html.EditorFor(model => model.WorldHeritageSite)
+            @Html.LabelFor(model => model.WorldHeritageSite, htmlAttributes: new { @class = "control-label" })
+            <a href="#" data-toggle="tooltip" data-title="Is your site in a World Heritage Site?">
+                <span class="glyphicon glyphicon-info-sign"></span>
+            </a>
         </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save Site Details" class="btn btn-default  pull-right" />
             </div>
         </div>
     </div>
-}
+        
+                <div class="form-group">
+                    @Html.LabelFor(model => model.HistoricHouse, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.HistoricHouse)
+                            @Html.ValidationMessageFor(model => model.HistoricHouse, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    @Html.LabelFor(model => model.HistoricSite, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.HistoricSite)
+                            @Html.ValidationMessageFor(model => model.HistoricSite, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.OpenAir, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.OpenAir)
+                            @Html.ValidationMessageFor(model => model.OpenAir, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    @Html.LabelFor(model => model.Accreditation, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.Accreditation)
+                            @Html.ValidationMessageFor(model => model.Accreditation, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AreaIndoor, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                        @Html.EditorFor(model => model.AreaIndoor, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.AreaIndoor, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.LabelFor(model => model.AreaOutdoor, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                        @Html.EditorFor(model => model.AreaOutdoor, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.AreaOutdoor, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+          -->
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save Site Details" class="btn btn-default  pull-right" />
+                    </div>
+                </div>
+      
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>

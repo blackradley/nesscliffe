@@ -14,8 +14,8 @@
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
+        <th>Location</th>
         <th>Last Changed</th>
-        <th>Completed</th>
         <th></th>
     </tr>
 
@@ -28,7 +28,7 @@
         <td></td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Months", "Index", "Months", new { id=item.Id }, null) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>

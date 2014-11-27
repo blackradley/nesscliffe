@@ -11,109 +11,108 @@ using WebApplication.Infrastructure;
 
 namespace WebApplication.Controllers
 {
-    [Authorize]
-    public class SitesController : Controller
+    public class MonthsController : Controller
     {
         private DataDb db = new DataDb();
 
-        // GET: Sites
+        // GET: Months
         public ActionResult Index()
         {
-            return View(db.Sites.ToList());
+            return View(db.Months.ToList());
         }
 
-        // GET: Sites/Details/5
+        // GET: Months/Details/5
         public ActionResult Details(Guid? id)
-        { 
+        {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Site site = db.Sites.Find(id);
-            if (site == null)
+            Month month = db.Months.Find(id);
+            if (month == null)
             {
                 return HttpNotFound();
             }
-            return View(site);
+            return View(month);
         }
 
-        // GET: Sites/Create
+        // GET: Months/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Sites/Create
+        // POST: Months/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Owner,Name,Postcode,Museum,Castle,Gallery,WorldHeritageSite,HistoricHouse,HistoricSite,OpenAir,Accreditation,AreaIndoor,AreaOutdoor")] Site site)
+        public ActionResult Create([Bind(Include = "Id,MonthTime,MarketingSpend,RegionalTv,NationalTv,OverseasTv,WebsiteUrl,WebsiteVisitors,FacebookUrl,TwitterUrl,FlickrUrl,InstagramUrl,YoutubeUrl,VimeoUrl,PinterestUrl,HoursMonday,HoursTuesday,HoursWednesday,HoursThursday,HoursFriday,HoursSaturday,HoursSunday,Visitors,IncomeAdmissions,IncomeAdditional,VisitorsAdditional")] Month month)
         {
             if (ModelState.IsValid)
             {
-                site.Id = Guid.NewGuid();
-                db.Sites.Add(site);
+                month.Id = Guid.NewGuid();
+                db.Months.Add(month);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(site);
+            return View(month);
         }
 
-        // GET: Sites/Edit/5
+        // GET: Months/Edit/5
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Site site = db.Sites.Find(id);
-            if (site == null)
+            Month month = db.Months.Find(id);
+            if (month == null)
             {
                 return HttpNotFound();
             }
-            return View(site);
+            return View(month);
         }
 
-        // POST: Sites/Edit/5
+        // POST: Months/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Owner,Name,Postcode,Museum,Castle,Gallery,WorldHeritageSite,HistoricHouse,HistoricSite,OpenAir,Accreditation,AreaIndoor,AreaOutdoor")] Site site)
+        public ActionResult Edit([Bind(Include = "Id,MonthTime,MarketingSpend,RegionalTv,NationalTv,OverseasTv,WebsiteUrl,WebsiteVisitors,FacebookUrl,TwitterUrl,FlickrUrl,InstagramUrl,YoutubeUrl,VimeoUrl,PinterestUrl,HoursMonday,HoursTuesday,HoursWednesday,HoursThursday,HoursFriday,HoursSaturday,HoursSunday,Visitors,IncomeAdmissions,IncomeAdditional,VisitorsAdditional")] Month month)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(site).State = EntityState.Modified;
+                db.Entry(month).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(site);
+            return View(month);
         }
 
-        // GET: Sites/Delete/5
+        // GET: Months/Delete/5
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Site site = db.Sites.Find(id);
-            if (site == null)
+            Month month = db.Months.Find(id);
+            if (month == null)
             {
                 return HttpNotFound();
             }
-            return View(site);
+            return View(month);
         }
 
-        // POST: Sites/Delete/5
+        // POST: Months/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            Site site = db.Sites.Find(id);
-            db.Sites.Remove(site);
+            Month month = db.Months.Find(id);
+            db.Months.Remove(month);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

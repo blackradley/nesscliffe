@@ -1,0 +1,177 @@
+﻿@model IEnumerable<ClassLibrary.Month>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MonthTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MarketingSpend)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegionalTv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NationalTv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OverseasTv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WebsiteUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WebsiteVisitors)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FacebookUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TwitterUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FlickrUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstagramUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YoutubeUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VimeoUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PinterestUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HoursMonday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HoursTuesday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HoursWednesday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HoursThursday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HoursFriday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HoursSaturday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HoursSunday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Visitors)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IncomeAdmissions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IncomeAdditional)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VisitorsAdditional)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MonthTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MarketingSpend)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegionalTv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NationalTv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OverseasTv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WebsiteUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WebsiteVisitors)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FacebookUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TwitterUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlickrUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InstagramUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YoutubeUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VimeoUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PinterestUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoursMonday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoursTuesday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoursWednesday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoursThursday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoursFriday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoursSaturday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoursSunday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Visitors)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IncomeAdmissions)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IncomeAdditional)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VisitorsAdditional)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
