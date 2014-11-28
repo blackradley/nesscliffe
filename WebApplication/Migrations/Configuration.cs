@@ -9,7 +9,9 @@ namespace WebApplication.Migrations
     {
         public Configuration()
         {
+            // WARN: Turn these suckers off after the first live deployment.
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
             MigrationsDirectory = @"Migrations";
         }
 

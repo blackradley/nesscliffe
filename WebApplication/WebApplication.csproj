@@ -176,6 +176,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\SiteCheckbox.cs" />
     <Compile Include="Migrations\201411262206024_InitialCreate.cs" />
     <Compile Include="Migrations\201411262206024_InitialCreate.Designer.cs">
       <DependentUpon>201411262206024_InitialCreate.cs</DependentUpon>
@@ -285,6 +286,7 @@
     <Content Include="Views\Months\Details.cshtml" />
     <Content Include="Views\Months\Edit.cshtml" />
     <Content Include="Views\Months\Index.cshtml" />
+    <Content Include="App_Code\SiteHelpers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -38,4 +38,6 @@ namespace ClassLibrary
         public virtual int VisitorsAdditional { get; set; }
 
     }
+
+    
 }

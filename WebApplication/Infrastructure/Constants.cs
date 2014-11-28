@@ -22,4 +22,6 @@ namespace WebApplication.Infrastructure
         public const string ConfirmInvitationTemplate = "5ad29324-e439-46ff-b3c6-64d214462920";
         public const string IdentityMessageTemplate = "12d24d96-7fb3-42b7-9b30-c7faebed3267";
     }
+
+
 }
