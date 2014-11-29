@@ -1,0 +1,64 @@
+﻿@using ClassLibrary
+@using WebApplication.Helpers
+@model ClassLibrary.Site
+           
+<div class="row">
+    <div class="form-group col-md-9">
+        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label", @for = "name" })
+        <a href="#" data-toggle="tooltip" data-title="The name of the site so you can identify it while you work.">
+            <span class="glyphicon glyphicon-info-sign"></span>
+        </a>
+        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @name = "name", @style = "max-width: 500px;" } })
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group col-md-3">
+        @Html.LabelFor(model => model.Postcode, htmlAttributes: new { @class = "control-label", @for = "postcode" })
+        <a href="#" data-toggle="tooltip" data-title="Postcode of the site so we can find it on a map.">
+            <span class="glyphicon glyphicon-info-sign"></span>
+        </a>
+        @Html.EditorFor(model => model.Postcode, new { htmlAttributes = new { @class = "form-control", @name = "postcode", @style = "text-transform:uppercase" } })
+        @Html.ValidationMessageFor(model => model.Postcode, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="form-group">
+    <label>About the Site</label>
+    <div class="row form-inline">
+        @Html.SiteCheckbox(model => model.Museum, "Does your site include a musuem?")
+        @Html.SiteCheckbox(model => model.Accreditation, "Do you have Arts Council of England Accreditation?")
+        @Html.SiteCheckbox(model => model.Castle, "Is there a castle or fortified house at your site?")
+        @Html.SiteCheckbox(model => model.HistoricHouse, "Is there a historic house or stately home at your site?")
+    </div>
+    <div class="row form-inline">
+        @Html.SiteCheckbox(model => model.ArtsCentre, "Is your site an Arts Centre?")
+        @Html.SiteCheckbox(model => model.Gallery, "Is there a gallery at your site?")
+        @Html.SiteCheckbox(model => model.HeritageSite, "Is your site a heritage site? e.g. a battle field.")
+        @Html.SiteCheckbox(model => model.OpenAir, "Does your site have open air displays and areas?")
+    </div>
+    <div class="row form-inline">
+        @Html.SiteCheckbox(model => model.WorldHeritageSite, "Is your site in a UNESCO World Heritage Site?")
+        @Html.SiteCheckbox(model => model.NationalTrust, "Is your site in the National Trust?")
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-6">
+        @Html.LabelFor(model => model.AreaIndoor, htmlAttributes: new { @class = "control-label" })
+        <a href="#" data-toggle="tooltip" data-title="How big is the indoor area which visitors can visit?">
+            <span class="glyphicon glyphicon-info-sign"></span>
+        </a>
+        <div class="form-inline">
+            @Html.EditorFor(model => model.AreaIndoor, new { htmlAttributes = new { @class = "form-control", @Value = "0", @min = "0", @max = "99999" } })
+            @Html.DropDownListFor(model => model.AreaIndoorUnits, new SelectList(Site.AreaIndoorUnitType, "Key", "Value"))
+        </div>
+    </div>
+    <div class="form-group col-md-6">
+        @Html.LabelFor(model => model.AreaOutdoor, htmlAttributes: new { @class = "control-label" })
+        <a href="#" data-toggle="tooltip" data-title="How big is the indoor area which visitors can visit?">
+            <span class="glyphicon glyphicon-info-sign"></span>
+        </a>
+        <div class="form-inline">
+            @Html.EditorFor(model => model.AreaOutdoor, new { htmlAttributes = new { @class = "form-control", @Value = "0", @min = "0", @max = "99999" } })
+            @Html.DropDownListFor(model => model.AreaOutdoorUnits, new SelectList(Site.AreaOutdoorUnitType, "Key", "Value"))
+        </div>
+    </div>
+</div>
+

@@ -286,6 +286,7 @@
     <Content Include="Views\Months\Details.cshtml" />
     <Content Include="Views\Months\Edit.cshtml" />
     <Content Include="Views\Months\Index.cshtml" />
+    <Content Include="Views\Sites\_CreateEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
