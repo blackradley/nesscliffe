@@ -6,7 +6,7 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Update Site Details</h2>
 
 @using (Html.BeginForm())
 {
@@ -15,9 +15,7 @@
     @Html.Partial("~/Views/Sites/_CreateEdit.cshtml");
 
     <div class="row form-group">
-        <div class="col-md-10 col-md-offset-9">
-            <input type="submit" value="Update Site" class="btn btn-default" />
-        </div>
+        <input type="submit" value="Update Site" class="btn btn-default" />
     </div>
 }
 <div>

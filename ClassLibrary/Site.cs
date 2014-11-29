@@ -40,8 +40,8 @@ namespace ClassLibrary
         public virtual int AreaIndoorUnits { get; set; }
         public static readonly Dictionary<int, string> AreaIndoorUnitType = new Dictionary<int, string>
         {
-            { 1, "Square Feet" },
-            { 2, "Square Metres" }
+            { 1, "Square Metres" },
+            { 2, "Square Feet" }
         };
 
         [Display(Name = "World Heritage Site")]
@@ -54,8 +54,9 @@ namespace ClassLibrary
         public virtual int AreaOutdoorUnits { get; set; }
         public static readonly Dictionary<int, string> AreaOutdoorUnitType = new Dictionary<int, string>
         {
-            { 1, "Hectares" },
-            { 2, "Acres" }
+            { 1, "Acres" },
+            { 2, "Hectares" }
+            
         };
 
         [Display(Name = "Heritage Site")]
