@@ -16,9 +16,18 @@ namespace WebApplication.Controllers
         private DataDb db = new DataDb();
 
         // GET: Months
-        public ActionResult Index()
+        public ActionResult Index([Bind(Prefix = "id")]Guid? siteId)
         {
-            return View(db.Months.ToList());
+            if (siteId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Site site = db.Sites.Find(siteId);
+            if (site == null)
+            {
+                return HttpNotFound();
+            }
+            return View(site);
         }
 
         // GET: Months/Details/5

@@ -56,7 +56,6 @@ namespace ClassLibrary
         {
             { 1, "Acres" },
             { 2, "Hectares" }
-            
         };
 
         [Display(Name = "Heritage Site")]
