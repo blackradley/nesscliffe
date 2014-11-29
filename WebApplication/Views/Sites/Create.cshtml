@@ -1,4 +1,5 @@
-﻿@using WebApplication.Helpers
+﻿@using ClassLibrary
+@using WebApplication.Helpers
 @model ClassLibrary.Site
 
 @{
@@ -29,82 +30,47 @@
             @Html.ValidationMessageFor(model => model.Postcode, "", new { @class = "text-danger" })
         </div>
     </div>
-    <label>Type of Site</label>
-    <div class="row form-inline">
-        <div class="checkbox col-md-3 col-sm-6">
-            <label>
-                @Html.EditorFor(model => model.Museum)
-                @Html.LabelFor(model => model.Museum)
-                <a href="#" data-toggle="tooltip" data-title="Does your site include a musuem?">
-                    <span class="glyphicon glyphicon-info-sign"></span>
-                </a>
-            </label>
+    <div class="form-group">
+        <label>About the Site</label>
+        <div class="row form-inline">
+            @Html.SiteCheckbox(model => model.Museum, "Does your site include a musuem?")
+            @Html.SiteCheckbox(model => model.Accreditation, "Do you have Arts Council of England Accreditation?")
+            @Html.SiteCheckbox(model => model.Castle, "Is there a castle or fortified house at your site?")
+            @Html.SiteCheckbox(model => model.HistoricHouse, "Is there a historic house or stately home at your site?")
         </div>
-        <div class="checkbox col-md-3 col-sm-6">
-            <label>
-                @Html.EditorFor(model => model.Accreditation)
-                @Html.LabelFor(model => model.Accreditation)
-                <a href="#" data-toggle="tooltip" data-title="Do you have Arts Council of England Accreditation?">
-                    <span class="glyphicon glyphicon-info-sign"></span>
-                </a>
-            </label>
+        <div class="row form-inline">
+            @Html.SiteCheckbox(model => model.ArtsCentre, "Is your site an Arts Centre?")
+            @Html.SiteCheckbox(model => model.Gallery, "Is there a gallery at your site?")
+            @Html.SiteCheckbox(model => model.HeritageSite, "Is your site a heritage site? e.g. a battle field.")
+            @Html.SiteCheckbox(model => model.OpenAir, "Does your site have open air displays and areas?")
         </div>
-        <div class="checkbox col-md-3 col-sm-6">
-            <label>
-                @Html.EditorFor(model => model.Castle)
-                @Html.LabelFor(model => model.Castle)
-                <a href="#" data-toggle="tooltip" data-title="Is there a castle or fortified house at your site?">
-                    <span class="glyphicon glyphicon-info-sign"></span>
-                </a>
-            </label>
-        </div>
-        <div class="checkbox col-md-3 col-sm-6">
-            <label>
-                @Html.EditorFor(model => model.HistoricHouse)
-                @Html.LabelFor(model => model.HistoricHouse)
-                <a href="#" data-toggle="tooltip" data-title="Is there a historic house at your site?">
-                    <span class="glyphicon glyphicon-info-sign"></span>
-                </a>
-            </label>
+        <div class="row form-inline">
+            @Html.SiteCheckbox(model => model.WorldHeritageSite, "Is your site in a UNESCO World Heritage Site?")
+            @Html.SiteCheckbox(model => model.NationalTrust, "Is your site in the National Trust?")
         </div>
     </div>
-
-    <div class="row form-inline">
-        <div class="checkbox col-md-3 col-sm-6">
-            <label>
-                @Html.EditorFor(model => model.ArtsCentre)
-                @Html.LabelFor(model => model.ArtsCentre)
-                <a href="#" data-toggle="tooltip" data-title="Is your site an Arts Centre?">
-                    <span class="glyphicon glyphicon-info-sign"></span>
-                </a>
-            </label>
+    <div class="row">
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.AreaIndoor, htmlAttributes: new { @class = "control-label"})
+            <a href="#" data-toggle="tooltip" data-title="How big is the indoor area which visitors can visit?">
+                <span class="glyphicon glyphicon-info-sign"></span>
+            </a>
+            <div class="form-inline">
+                @Html.EditorFor(model => model.AreaIndoor, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.AreaIndoorUnits, new SelectList(Site.AreaIndoorUnitType, "Key", "Value"))
+            </div>
         </div>
-        <div class="checkbox col-md-3 col-sm-6">
-            <label>
-                @Html.EditorFor(model => model.Gallery)
-                @Html.LabelFor(model => model.Gallery)
-                <a href="#" data-toggle="tooltip" data-title="Is there a gallery at your site?">
-                    <span class="glyphicon glyphicon-info-sign"></span>
-                </a>
-            </label>
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.AreaOutdoor, htmlAttributes: new { @class = "control-label" })
+            <a href="#" data-toggle="tooltip" data-title="How big is the indoor area which visitors can visit?">
+                <span class="glyphicon glyphicon-info-sign"></span>
+            </a>
+            <div class="form-inline">
+                @Html.EditorFor(model => model.AreaOutdoor, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.AreaOutdoorUnits, new SelectList(Site.AreaOutdoorUnitType, "Key", "Value"))
+            </div>
         </div>
     </div>
-
-    <div class="row form-inline">
-        @SiteHelpers.Checkbox(@Html.EditorFor(model => model.WorldHeritageSite),
-                            @Html.LabelFor(model => model.WorldHeritageSite),
-                            "Is your site in a UNESCO World Heritage Site?")
-        @Html.SiteCheckbox(model => model.WorldHeritageSite, "Is your site in a UNESCO World Heritage Site?")
-
-        @SiteHelpers.Checkbox(@Html.EditorFor(model => model.NationalTrust),
-                            @Html.LabelFor(model => model.NationalTrust),
-                             "Is your site in the National Trust")
-     
-    </div>
-
-
-
-
 
     <div class="row form-group">
         <div class="col-md-10 col-md-offset-9">
