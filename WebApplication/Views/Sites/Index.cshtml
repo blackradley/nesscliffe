@@ -11,11 +11,12 @@
 </div>
 <table class="table">
     <tr>
+        <th></th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>Postcode</th>
-        <th class="hidden-sm hidden-xs">Last Changed</th>
+        <th class="hidden-sm hidden-xs">Summary</th>
         <th></th>
     </tr>
 
@@ -23,14 +24,18 @@
     {
         <tr>
             <td>
+                @Html.ActionLink("Delete Site", "Delete", new { id = item.Id })
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>@Html.DisplayFor(modelItem => item.Postcode)</td>
-            <td class="hidden-sm hidden-xs"></td>
+            <td class="hidden-sm hidden-xs">
+                
+            </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Months", "Index", "Months", new { id = item.Id }, null) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.ActionLink("Edit Site", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Edit Months", "Index", "Months", new { id = item.Id }, null) 
             </td>
         </tr>
     }

@@ -5,7 +5,7 @@ using System.Web.Mvc.Html;
 
 namespace WebApplication.Helpers
 {
-    public static class SiteCheckboxHelper
+    public static class SiteCheckBoxForHelper
     {
         /// <summary>
         /// Extension method to provide consistent check box layouts.
@@ -16,7 +16,8 @@ namespace WebApplication.Helpers
         /// <param name="expression"></param>
         /// <param name="help"></param>
         /// <returns></returns>
-        public static MvcHtmlString SiteCheckbox<TModel, TValue>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TValue>> expression, string help)
+        public static MvcHtmlString SiteCheckBoxFor<TModel, TValue>(this HtmlHelper<TModel> htmlHelper, 
+            Expression<Func<TModel, TValue>> expression, string help)
         {
             //<div class="checkbox col-md-3 col-sm-6">
             //    <label>

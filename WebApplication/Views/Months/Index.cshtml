@@ -1,13 +1,14 @@
 ﻿@model ClassLibrary.Site
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Site Summary and Months";
 }
-<h2>@Html.DisplayFor(model => model.Name)</h2>
+<h2>@ViewBag.Title</h2>
 
+@Html.Partial("../Sites/_Details", @Model)
 @Html.Partial("_Months", @Model.Months)
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add New Month", "Create")
 </p>
 

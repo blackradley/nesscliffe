@@ -4,7 +4,7 @@
         <th>
             @Html.DisplayNameFor(model => model.MonthTime)
         </th>
- 
+
         <th></th>
     </tr>
 
@@ -14,11 +14,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.MonthTime)
             </td>
-              <td>
+            <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id })
             </td>
         </tr>
     }
-
 </table>
