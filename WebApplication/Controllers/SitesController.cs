@@ -19,29 +19,12 @@ namespace WebApplication.Controllers
     public class SitesController : Controller
     {
         private readonly DataDb _dataDb = new DataDb();
-        //private ApplicationUserManager _userManager;
 
-        //public SitesController(ApplicationUserManager userManager)
-        //{
-        //    UserManager = userManager;
-        //}
-
-        //public ApplicationUserManager UserManager
-        //{
-        //    get
-        //    {
-        //        return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-        //    }
-        //    private set
-        //    {
-        //        _userManager = value;
-        //    }
-        //}
-
-        // GET: Sites
+        // GET: Sites for the user
         public ActionResult Index()
         {
-            return View(_dataDb.Sites.ToList());
+            IEnumerable<Site> sitesList = _dataDb.Sites.ToList().Where(site => site.UserId == User.Identity.GetUserId());
+            return View(sitesList);
         }
 
         // GET: Sites/Create
@@ -57,17 +40,14 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,UserId,Name,Postcode,Museum,Castle,Gallery,WorldHeritageSite,HistoricHouse,HistoricSite,OpenAir,Accreditation,AreaIndoor,AreaOutdoor")] Site site)
         {
-            //var currentUser = UserManager.FindByIdAsync(User.Identity.GetUserId()); 
-
             if (ModelState.IsValid)
             {
                 site.Id = Guid.NewGuid();
-
+                site.UserId = User.Identity.GetUserId();
                 _dataDb.Sites.Add(site);
                 _dataDb.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(site);
         }
 
