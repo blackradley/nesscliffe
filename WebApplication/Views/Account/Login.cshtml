@@ -7,7 +7,7 @@
 
 <h2>@ViewBag.Title</h2>
 <div class="row">
-    <div >
+    <div>
         <section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
@@ -27,21 +27,6 @@
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            <label>
-                                @Html.CheckBoxFor(m => m.RememberMe)
-                                @Html.LabelFor(m => m.RememberMe)
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.SiteCheckBoxFor(m => m.RememberMe, "help")
-                </div>
-
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Sign in" class="btn btn-default" />

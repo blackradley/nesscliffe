@@ -45,7 +45,7 @@ namespace WebApplication.Helpers
             spanBuilder.MergeAttribute("data-toggle", "tooltip");
             spanBuilder.MergeAttribute("data-title", help);
 
-            aBuilder.InnerHtml += spanBuilder.ToString(TagRenderMode.SelfClosing);
+            aBuilder.InnerHtml += spanBuilder.ToString();
             labelbuilder.InnerHtml += aBuilder.ToString();
             divBuilder.InnerHtml += labelbuilder.ToString();
 
