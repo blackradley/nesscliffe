@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,13 @@ namespace ClassLibrary
 {
     public class Month
     {
+        [Key]
         public virtual Guid Id { get; set; }
+        // Foreign key
+        public virtual Guid SiteId { get; set; }
+        // Navigation property  
+        public virtual Site Site { get; set; }
+
         public virtual DateTime MonthTime { get; set; }
         public virtual int MarketingSpend { get; set; }
         public virtual bool RegionalTv { get; set; }

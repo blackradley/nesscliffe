@@ -7,11 +7,8 @@ using ClassLibrary;
 
 namespace WebApplication.Infrastructure
 {
-    public class DataDb : DbContext, ISitesDataSource
+    public class DataDb : IdentityDb, ISitesDataSource
     {
-        public DataDb() : base("DefaultConnection")
-        {
-        }
 
         public DbSet<Site> Sites { get; set; }
         public DbSet<Month> Months { get; set; }

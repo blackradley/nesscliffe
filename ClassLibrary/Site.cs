@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Configuration;
 using System.Dynamic;
 using System.Linq;
@@ -12,16 +13,21 @@ namespace ClassLibrary
 {
     public class Site
     {
+        [Key] 
         public virtual Guid Id { get; set; }
-        public virtual Guid UserId { get; set; }
+        // Navigation property
+        public virtual ICollection<Month> Months { get; set; }
+
+        public String UserId { get; set; }
+        [ForeignKey("UserId")]
+        public ApplicationUser User { get; set; }
 
         [Display(Name = "Site Name")]
         [Required(ErrorMessage = "Please enter a name.")]
         public virtual String Name { get; set; }
+
         [Display(Name = "Postcode")]
         [Required(ErrorMessage = "Please enter a postcode.")]
-        [RegularExpression("(GIR 0AA)|((([A-Z-[QVX]][0-9][0-9]?)|(([A-Z-[QVX]][A-Z-[IJZ]][0-9][0-9]?)|(([A-Z-[QVX]][0-9][A-HJKSTUW])|([A-Z-[QVX]][A-Z-[IJZ]][0-9][ABEHMNPRVWXY])))) [0-9][A-Z-[CIKMOV]]{2})", 
-            ErrorMessage = "Please check your postcode.")]
         public virtual String Postcode { get; set; }
 
         public virtual bool Museum { get; set; }
@@ -63,7 +69,7 @@ namespace ClassLibrary
         [Display(Name = "National Trust")]
         public virtual bool NationalTrust { get; set; }
 
-        public virtual ICollection<Month> Months { get; set; }
+        
 
 
     }

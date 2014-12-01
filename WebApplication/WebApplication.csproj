@@ -186,7 +186,6 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Infrastructure\IdentityDb.cs" />
     <Compile Include="Infrastructure\Constants.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MailModel.cs" />
     <Compile Include="Models\DataViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
