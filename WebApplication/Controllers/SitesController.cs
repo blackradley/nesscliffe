@@ -38,7 +38,9 @@ namespace WebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,UserId,Name,Postcode,Museum,Castle,Gallery,WorldHeritageSite,HistoricHouse,HistoricSite,OpenAir,Accreditation,AreaIndoor,AreaOutdoor")] Site site)
+        public ActionResult Create([Bind(Include = "Id,UserId,Name,Postcode,Museum,Castle,Gallery," +
+                                                   "WorldHeritageSite,HistoricHouse,HistoricSite,OpenAir," +
+                                                   "Accreditation,AreaIndoor,AreaOutdoor")] Site site)
         {
             if (ModelState.IsValid)
             {

@@ -13,10 +13,18 @@ namespace ClassLibrary
 {
     public class Site
     {
-        [Key] 
+        [Key]
         public virtual Guid Id { get; set; }
         // Navigation property
         public virtual ICollection<Month> Months { get; set; }
+
+        public Dictionary<string, string> RemainingMonths = new Dictionary<string, string>
+        {
+            {"Jan-2014", "Jan-2014"},
+            {"Feb-2014", "Feb-2014"},
+            {"Mar-2014", "Mar-2014"},
+            {"Apr-2014", "Apr-2014"}
+        };
 
         public String UserId { get; set; }
         [ForeignKey("UserId")]
@@ -69,9 +77,9 @@ namespace ClassLibrary
         [Display(Name = "National Trust")]
         public virtual bool NationalTrust { get; set; }
 
-        
+
 
 
     }
- 
+
 }

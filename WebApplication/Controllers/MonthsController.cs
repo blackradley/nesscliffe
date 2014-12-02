@@ -58,6 +58,7 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,MonthTime,MarketingSpend,RegionalTv,NationalTv,OverseasTv,WebsiteUrl,WebsiteVisitors,FacebookUrl,TwitterUrl,FlickrUrl,InstagramUrl,YoutubeUrl,VimeoUrl,PinterestUrl,HoursMonday,HoursTuesday,HoursWednesday,HoursThursday,HoursFriday,HoursSaturday,HoursSunday,Visitors,IncomeAdmissions,IncomeAdditional,VisitorsAdditional")] Month month)
         {
+
             if (ModelState.IsValid)
             {
                 month.Id = Guid.NewGuid();
