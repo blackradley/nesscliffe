@@ -63,6 +63,10 @@ namespace WebApplication.Controllers
             {
                 return HttpNotFound();
             }
+            if (site.UserId != User.Identity.GetUserId())
+            {
+                return HttpNotFound();
+            }
             return View(site);
         }
 
