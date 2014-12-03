@@ -16,6 +16,7 @@ namespace ClassLibrary
         // Navigation property  
         public virtual Site Site { get; set; }
 
+        [Display(Name = "Month")]
         public virtual DateTime MonthTime { get; set; }
         public virtual int MarketingSpend { get; set; }
         public virtual bool RegionalTv { get; set; }

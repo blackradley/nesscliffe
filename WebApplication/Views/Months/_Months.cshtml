@@ -1,6 +1,18 @@
 ﻿@model IEnumerable<ClassLibrary.Month>
-           
+     
+
+@{
+    DateTime d0 = DateTime.Now;
+    DateTime d1 = d0.AddYears(1);
+    var dates = Enumerable.Range(0, (d1.Year - d0.Year) * 12 + (d1.Month - d0.Month + 1))
+                     .Select(m => new DateTime(d0.Year, d0.Month, 1).AddMonths(m));
+}      
+@Html.DropDownList("MonthTime", new SelectList(dates))
+
 @DateTime.Now.ToString("MMM yyyy")
+
+
+
 
 <table class="table">
     <tr>
@@ -15,7 +27,7 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.MonthTime)
+                @Html.DisplayFor(modelItem => item.MonthTime, "MonthYearDateTime")
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
@@ -24,3 +36,8 @@
         </tr>
     }
 </table>
+<div class="row">
+    <div class="form-group col-md-offset-9 col-md-3">
+        @Html.ActionLink("Back to Sites List", "Index", "Sites")
+    </div>
+</div>
