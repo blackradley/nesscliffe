@@ -1,15 +1,11 @@
 ﻿@using ClassLibrary
 @model ClassLibrary.Site
-
 @{
     ViewBag.Title = "Site Summary and Months";
 }
 <h2>@ViewBag.Title</h2>
-
 @Html.Partial("../Sites/_Details", @Model)
-@Html.Partial("_Months", @Model.Months)
-
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Months", new { Id = @Model.Id }, FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     <div class="row">
@@ -21,6 +17,8 @@
         </div>
     </div>
 }
+@Html.Partial("_Months", @Model.Months)
+
 
 
 

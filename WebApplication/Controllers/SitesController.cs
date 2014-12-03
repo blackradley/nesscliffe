@@ -40,7 +40,7 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,UserId,Name,Postcode,Museum,Castle,Gallery," +
                                                    "WorldHeritageSite,HistoricHouse,HistoricSite,OpenAir," +
-                                                   "Accreditation,AreaIndoor,AreaOutdoor")] Site site)
+                                                   "Accreditation,NationalTrust,AreaIndoor,AreaOutdoor")] Site site)
         {
             if (ModelState.IsValid)
             {
@@ -77,11 +77,13 @@ namespace WebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Owner,Name,Postcode,Museum,Castle,Gallery,WorldHeritageSite,HistoricHouse,HistoricSite,OpenAir,Accreditation,AreaIndoor,AreaOutdoor")] Site site)
+        public ActionResult Edit([Bind(Include = "Id,Name,Postcode,Museum,Castle,Gallery,NationalTrust,WorldHeritageSite,HistoricHouse,HistoricSite,OpenAir,Accreditation,AreaIndoor,AreaOutdoor")] Site site)
         {
             if (ModelState.IsValid)
             {
                 _dataDb.Entry(site).State = EntityState.Modified;
+                // The UserId is unmodified, the rest of the stuff comes from the form.
+                _dataDb.Entry(site).Property(e => e.UserId).IsModified = false;
                 _dataDb.SaveChanges();
                 return RedirectToAction("Index");
             }

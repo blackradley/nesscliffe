@@ -11,6 +11,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ClassLibrary
 {
+    // TO DO: rework to match Dino Esposito's approach
+    // http://devproconnections.com/entity-framework/domain-modeling-and-persistence-entity-framework-6
+
     public class Site
     {
         [Key]
@@ -49,6 +52,16 @@ namespace ClassLibrary
         public virtual bool ArtsCentre { get; set; }
         public virtual bool Gallery { get; set; }
 
+        [Display(Name = "World Heritage Site")]
+        public virtual bool WorldHeritageSite { get; set; }
+        [Display(Name = "Open Air")]
+        public virtual bool OpenAir { get; set; }
+
+        [Display(Name = "Heritage Site")]
+        public virtual bool HeritageSite { get; set; }
+        [Display(Name = "National Trust")]
+        public virtual bool NationalTrust { get; set; }
+
         [Display(Name = "Indoor Area")]
         public virtual int AreaIndoor { get; set; }
         public virtual int AreaIndoorUnits { get; set; }
@@ -57,11 +70,6 @@ namespace ClassLibrary
             { 1, "Square Metres" },
             { 2, "Square Feet" }
         };
-
-        [Display(Name = "World Heritage Site")]
-        public virtual bool WorldHeritageSite { get; set; }
-        [Display(Name = "Open Air")]
-        public virtual bool OpenAir { get; set; }
 
         [Display(Name = "Outdoor Area")]
         public virtual int AreaOutdoor { get; set; }
@@ -72,10 +80,7 @@ namespace ClassLibrary
             { 2, "Hectares" }
         };
 
-        [Display(Name = "Heritage Site")]
-        public virtual bool HeritageSite { get; set; }
-        [Display(Name = "National Trust")]
-        public virtual bool NationalTrust { get; set; }
+
 
 
 

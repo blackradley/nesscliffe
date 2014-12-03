@@ -1,11 +1,11 @@
-﻿@model IEnumerable<ClassLibrary.Site>
-
+﻿@using ClassLibrary
+@using WebApplication.Helpers
+@using WebGrease
+@model IEnumerable<ClassLibrary.Site>
 @{
     ViewBag.Title = "My Sites";
 }
-
 <h2>@ViewBag.Title</h2>
-
 <div>
     @Html.ActionLink("Create a New Site", "Create")
 </div>
@@ -14,6 +14,7 @@
         <th></th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Castle)
         </th>
         <th>Postcode</th>
         <th class="hidden-sm hidden-xs">Summary</th>
@@ -32,6 +33,8 @@
             <td>@Html.DisplayFor(modelItem => item.Postcode)</td>
             <td class="hidden-sm hidden-xs">
                 
+                @Html.SiteSummaryIconsFor(item)
+
             </td>
             <td>
                 @Html.ActionLink("Edit Site", "Edit", new { id = item.Id }) |

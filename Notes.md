@@ -29,3 +29,7 @@ Error Messages
 * Say how to resolve it.
 * Be polite.
 * The message should be worded so that the application accepts responsibility for the problem. 
+
+Icons
+-----------
+From http://www.flaticon.com/

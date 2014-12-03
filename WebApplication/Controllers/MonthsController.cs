@@ -51,20 +51,23 @@ namespace WebApplication.Controllers
             return View();
         }
 
-        // POST: Months/Create
+        // POST: Months/Create/Id
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,MonthTime,MarketingSpend,RegionalTv,NationalTv,OverseasTv,WebsiteUrl,WebsiteVisitors,FacebookUrl,TwitterUrl,FlickrUrl,InstagramUrl,YoutubeUrl,VimeoUrl,PinterestUrl,HoursMonday,HoursTuesday,HoursWednesday,HoursThursday,HoursFriday,HoursSaturday,HoursSunday,Visitors,IncomeAdmissions,IncomeAdditional,VisitorsAdditional")] Month month)
+        public ActionResult Create([Bind(Include = "Id, MonthTime")] Guid id, Month month)
         {
-
+            // TO DO: check that the user is allowed to do this.
             if (ModelState.IsValid)
             {
                 month.Id = Guid.NewGuid();
+                month.SiteId = id;
                 db.Months.Add(month);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit", new { Id = month.Id });
+
+                
             }
 
             return View(month);

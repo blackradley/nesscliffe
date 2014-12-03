@@ -175,8 +175,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\GetAttributeFromHelper.cs" />
     <Compile Include="Helpers\SiteCheckBoxDisplayForHelper.cs" />
     <Compile Include="Helpers\SiteCheckBoxForHelper.cs" />
+    <Compile Include="Helpers\SiteSummaryIconsForHelper.cs" />
     <Compile Include="Migrations\201411262206024_InitialCreate.cs" />
     <Compile Include="Migrations\201411262206024_InitialCreate.Designer.cs">
       <DependentUpon>201411262206024_InitialCreate.cs</DependentUpon>
@@ -200,6 +202,15 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\BackgroundGallery.jpg" />
+    <Content Include="Content\Images\Icons\ArtsCentre.png" />
+    <Content Include="Content\Images\Icons\Castle.png" />
+    <Content Include="Content\Images\Icons\Gallery.png" />
+    <Content Include="Content\Images\Icons\HeritageSite.png" />
+    <Content Include="Content\Images\Icons\HistoricHouse.png" />
+    <Content Include="Content\Images\Icons\Museum.png" />
+    <Content Include="Content\Images\Icons\NationalTrust.png" />
+    <Content Include="Content\Images\Icons\OpenAir.png" />
+    <Content Include="Content\Images\Icons\WorldHeritage.png" />
     <Content Include="Content\Images\Logos\BlackRadley.jpg" />
     <Content Include="Content\Images\Logos\BSU.jpg" />
     <Content Include="Content\Images\Logos\Insight.png" />
