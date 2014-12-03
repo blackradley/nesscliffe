@@ -58,7 +58,7 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id, MonthTime")] Guid id, Month month)
         {
-            // TO DO: check that the user is allowed to do this.
+            // TODO: check that the user is allowed to do this.
             if (ModelState.IsValid)
             {
                 month.Id = Guid.NewGuid();

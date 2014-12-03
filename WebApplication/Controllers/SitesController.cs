@@ -38,9 +38,7 @@ namespace WebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,UserId,Name,Postcode,Museum,Castle,Gallery," +
-                                                   "WorldHeritageSite,HistoricHouse,HistoricSite,OpenAir," +
-                                                   "Accreditation,NationalTrust,AreaIndoor,AreaOutdoor")] Site site)
+        public ActionResult Create(Site site) // TODO: replace the [Bind(Include = "Id,UserId,...
         {
             if (ModelState.IsValid)
             {
@@ -77,7 +75,7 @@ namespace WebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Postcode,Museum,Castle,Gallery,NationalTrust,WorldHeritageSite,HistoricHouse,HistoricSite,OpenAir,Accreditation,AreaIndoor,AreaOutdoor")] Site site)
+        public ActionResult Edit(Site site) // TODO: Replace the [Bind(Include = "Id,Name,....
         {
             if (ModelState.IsValid)
             {
