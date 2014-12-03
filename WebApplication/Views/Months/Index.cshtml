@@ -2,6 +2,16 @@
 @model ClassLibrary.Site
 @{
     ViewBag.Title = "Performance Data";
+
+    var now = DateTime.Now;
+    const int monthsBetween = 12;
+    var then = now.AddMonths(monthsBetween* (-1));
+    var dates = Enumerable.Range(0, monthsBetween)
+        .Select(m => new DateTime(then.Year, then.Month, 1).AddMonths(m).ToString("MMM yyyy")).Reverse();
+      
+    // TODO: remove current dates from possibles list.
+    //http://stackoverflow.com/questions/16885704/what-is-the-best-way-to-remove-items-from-a-ienumerableselectlistitem
+    
 }
 <h2>@ViewBag.Title</h2>
 @Html.Partial("../Sites/_Details", @Model)
@@ -11,8 +21,8 @@
     <div class="row">
         <div class="form-group col-md-6">
             <div class="form-inline">
-                @Html.DropDownList("MonthTime", new SelectList(@Model.RemainingMonths, "Key", "Value"))
-                <input type="submit" value="Create New Month" class="btn btn-link" />
+                @Html.DropDownList("MonthTime", new SelectList(dates))
+                <input type="submit" value="Add Month" class="btn btn-link" />
             </div>
         </div>
     </div>

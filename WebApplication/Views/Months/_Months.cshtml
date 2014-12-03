@@ -1,18 +1,4 @@
 ﻿@model IEnumerable<ClassLibrary.Month>
-     
-
-@{
-    DateTime d0 = DateTime.Now;
-    DateTime d1 = d0.AddYears(1);
-    var dates = Enumerable.Range(0, (d1.Year - d0.Year) * 12 + (d1.Month - d0.Month + 1))
-                     .Select(m => new DateTime(d0.Year, d0.Month, 1).AddMonths(m));
-}      
-@Html.DropDownList("MonthTime", new SelectList(dates))
-
-@DateTime.Now.ToString("MMM yyyy")
-
-
-
 
 <table class="table">
     <tr>
