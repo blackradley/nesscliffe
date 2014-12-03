@@ -3,21 +3,21 @@
 @model ClassLibrary.Site
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Update Site Details";
 }
-
-<h2>Update Site Details</h2>
+<h2>@ViewBag.Title</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     @Html.Partial("~/Views/Sites/_CreateEdit.cshtml");
-
-    <div class="row form-group">
-        <input type="submit" value="Update Site" class="btn btn-default" />
+    <div class="row">
+        <div class="form-group col-md-9">
+            <input type="submit" value="Update Site" class="btn btn-default" />
+        </div>
+        <div class="form-group col-md-3">
+            @Html.ActionLink("Back to Sites List", "Index")
+        </div>
     </div>
 }
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

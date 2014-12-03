@@ -5,31 +5,17 @@
     ViewBag.Title = "Details";
 }
 <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-4">
         @Html.LabelFor(model => model.Name)
         @Html.DisplayFor(model => model.Name)
     </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
         @Html.LabelFor(model => model.Postcode)
         @Html.DisplayFor(model => model.Postcode, new { htmlAttributes = new { @style = "text-transform:uppercase" } })
     </div>
+    <div class="col-md-4">
+        @Html.SiteSummaryIconsFor(ViewData.Model)
+    </div>
 </div>
 
-<div class="form-group">
-    <div class="row form-inline">
-        @Html.SiteCheckBoxDisplayFor(model => model.Museum)
-        @Html.SiteCheckBoxDisplayFor(model => model.Accreditation)
-        @Html.SiteCheckBoxDisplayFor(model => model.Castle)
-        @Html.SiteCheckBoxDisplayFor(model => model.HistoricHouse)
-    </div>
-    <div class="row form-inline">
-        @Html.SiteCheckBoxDisplayFor(model => model.ArtsCentre)
-        @Html.SiteCheckBoxDisplayFor(model => model.Gallery)
-        @Html.SiteCheckBoxDisplayFor(model => model.HeritageSite)
-        @Html.SiteCheckBoxDisplayFor(model => model.OpenAir)
-    </div>
-    <div class="row form-inline">
-        @Html.SiteCheckBoxDisplayFor(model => model.WorldHeritageSite)
-        @Html.SiteCheckBoxDisplayFor(model => model.NationalTrust)
-    </div>
-</div>
+
