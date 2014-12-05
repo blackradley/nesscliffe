@@ -172,7 +172,7 @@ namespace WebApplication.Controllers
                         "Confirm Your Insight Account",
                         "Please confirm your Insight account by clicking <a href=\"" + callbackUrl + "\">here</a>.");
                     MailAdmin.Send("User Sign Up", user.Email + " just signed up.");
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Sites");
                 }
                 AddErrors(result);
             }
