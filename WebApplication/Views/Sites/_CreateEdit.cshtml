@@ -23,20 +23,20 @@
 <div class="form-group">
     <label>About the Site</label>
     <div class="row form-inline">
-        @Html.SiteCheckBoxFor(model => model.Museum, "Does your site include a musuem?")
-        @Html.SiteCheckBoxFor(model => model.Accreditation, "Do you have Arts Council of England Accreditation?")
-        @Html.SiteCheckBoxFor(model => model.Castle, "Is there a castle or fortified house at your site?")
-        @Html.SiteCheckBoxFor(model => model.HistoricHouse, "Is there a historic house or stately home at your site?")
+        @Html.SiteCheckBoxFor(model => model.IsMuseum)
+        @Html.SiteCheckBoxFor(model => model.IsAccredited)
+        @Html.SiteCheckBoxFor(model => model.IsCastle)
+        @Html.SiteCheckBoxFor(model => model.IsHistoricHouse)
     </div>
     <div class="row form-inline">
-        @Html.SiteCheckBoxFor(model => model.ArtsCentre, "Is your site an Arts Centre?")
-        @Html.SiteCheckBoxFor(model => model.Gallery, "Is there a gallery at your site?")
-        @Html.SiteCheckBoxFor(model => model.HeritageSite, "Is your site a heritage site? e.g. a battle field.")
-        @Html.SiteCheckBoxFor(model => model.OpenAir, "Does your site have open air displays and areas?")
+        @Html.SiteCheckBoxFor(model => model.IsArtsCentre)
+        @Html.SiteCheckBoxFor(model => model.IsGallery)
+        @Html.SiteCheckBoxFor(model => model.IsHeritageSite)
+        @Html.SiteCheckBoxFor(model => model.IsOpenAir)
     </div>
     <div class="row form-inline">
-        @Html.SiteCheckBoxFor(model => model.WorldHeritageSite, "Is your site in a UNESCO World Heritage Site?")
-        @Html.SiteCheckBoxFor(model => model.NationalTrust, "Is your site in the National Trust?")
+        @Html.SiteCheckBoxFor(model => model.IsWorldHeritageSite)
+        @Html.SiteCheckBoxFor(model => model.IsNationalTrust)
     </div>
 </div>
 <div class="row">

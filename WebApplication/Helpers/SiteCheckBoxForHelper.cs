@@ -17,7 +17,7 @@ namespace WebApplication.Helpers
         /// <param name="help"></param>
         /// <returns></returns>
         public static MvcHtmlString SiteCheckBoxFor<TModel, TValue>(this HtmlHelper<TModel> htmlHelper, 
-            Expression<Func<TModel, TValue>> expression, string help)
+            Expression<Func<TModel, TValue>> expression)
         {
             //<div class="checkbox col-md-3 col-sm-6">
             //    <label>
@@ -43,7 +43,9 @@ namespace WebApplication.Helpers
             var spanBuilder = new TagBuilder("span");
             spanBuilder.AddCssClass("glyphicon glyphicon-info-sign");
             spanBuilder.MergeAttribute("data-toggle", "tooltip");
-            spanBuilder.MergeAttribute("data-title", help);
+
+            var metaData = ModelMetadata.FromLambdaExpression(expression, htmlHelper.ViewData);
+            if (!string.IsNullOrEmpty(metaData.Description)) spanBuilder.MergeAttribute("data-title", metaData.Description);
 
             aBuilder.InnerHtml += spanBuilder.ToString();
             labelbuilder.InnerHtml += aBuilder.ToString();
