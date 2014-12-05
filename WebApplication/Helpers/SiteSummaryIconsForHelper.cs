@@ -27,7 +27,9 @@ namespace WebApplication.Helpers
                 {"IsWorldHeritageSite", site.IsWorldHeritageSite},
                 {"IsOpenAir", site.IsOpenAir},
                 {"IsHeritageSite", site.IsHeritageSite},
-                {"IsNationalTrust", site.IsNationalTrust}
+                {"IsNationalTrust", site.IsNationalTrust},
+                {"IsPark", site.IsPark},
+                {"IsNatureReserve", site.IsNatureReserve}
             };
             var divBuilder = new TagBuilder("div");
             foreach (KeyValuePair<string, bool>icon in icons)

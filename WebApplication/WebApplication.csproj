@@ -204,6 +204,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\BackgroundGallery.jpg" />
+    <Content Include="Content\Images\Icons\IsPark.png" />
     <Content Include="Content\Images\Icons\IsAccredited.png" />
     <Content Include="Content\Images\Icons\IsArtsCentre.png" />
     <Content Include="Content\Images\Icons\IsCastle.png" />
@@ -214,6 +215,7 @@
     <Content Include="Content\Images\Icons\IsNationalTrust.png" />
     <Content Include="Content\Images\Icons\IsOpenAir.png" />
     <Content Include="Content\Images\Icons\IsWorldHeritage.png" />
+    <Content Include="Content\Images\Icons\IsNatureReserve.png" />
     <Content Include="Content\Images\Logos\BlackRadley.jpg" />
     <Content Include="Content\Images\Logos\BSU.jpg" />
     <Content Include="Content\Images\Logos\Insight.png" />
