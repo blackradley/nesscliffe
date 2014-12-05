@@ -6,13 +6,13 @@
     <div class="form-group col-md-9">
         @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label", @for = "name" })
         @Html.SiteHelpFor(model => model.Name)
-        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @name = "name", @style = "max-width: 500px;" } })
+        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @name = "name", @placeholder="Site Name", @style = "max-width: 500px;" } })
         @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
     </div>
     <div class="form-group col-md-3">
-        @Html.LabelFor(model => model.Postcode, htmlAttributes: new { @class = "control-label", @for = "postcode" })
+        @Html.LabelFor(model => model.Postcode, htmlAttributes: new { @class = "control-label", @for = "Postcode" })
         @Html.SiteHelpFor(model => model.Postcode)
-        @Html.EditorFor(model => model.Postcode, new { htmlAttributes = new { @class = "form-control", @name = "postcode", @style = "text-transform:uppercase" } })
+        @Html.EditorFor(model => model.Postcode, new { htmlAttributes = new { @class = "form-control", @style = "text-transform:uppercase" } })
         @Html.ValidationMessageFor(model => model.Postcode, "", new { @class = "text-danger" })
     </div>
 </div>
@@ -40,20 +40,22 @@
 </div>
 <div class="row">
     <div class="form-group col-md-6">
-        @Html.LabelFor(model => model.AreaIndoor, htmlAttributes: new { @class = "control-label" })
+        @Html.LabelFor(model => model.AreaIndoor, htmlAttributes: new { @class = "control-label", @for = "AreaIndoor" })
         @Html.SiteHelpFor(model => model.AreaIndoor)
         <div class="form-inline">
-            @Html.EditorFor(model => model.AreaIndoor, new { htmlAttributes = new { @class = "form-control", @min = "0", @max = "99999" } })
+            @Html.EditorFor(model => model.AreaIndoor, new { htmlAttributes = new { @class = "form-control" } })
             @Html.DropDownListFor(model => model.AreaIndoorUnits, new SelectList(Site.AreaIndoorUnitType, "Key", "Value"))
         </div>
+        @Html.ValidationMessageFor(model => model.AreaIndoor)
     </div>
     <div class="form-group col-md-6">
-        @Html.LabelFor(model => model.AreaOutdoor, htmlAttributes: new { @class = "control-label" })
+        @Html.LabelFor(model => model.AreaOutdoor, htmlAttributes: new { @class = "control-label", @for = "AreaOutdoor" })
         @Html.SiteHelpFor(model => model.AreaOutdoor)
         <div class="form-inline">
-            @Html.EditorFor(model => model.AreaOutdoor, new { htmlAttributes = new { @class = "form-control", @min = "0", @max = "99999" } })
+            @Html.EditorFor(model => model.AreaOutdoor, new { htmlAttributes = new { @class = "form-control" } })
             @Html.DropDownListFor(model => model.AreaOutdoorUnits, new SelectList(Site.AreaOutdoorUnitType, "Key", "Value"))
         </div>
+        @Html.ValidationMessageFor(model => model.AreaOutdoor)
     </div>
 </div>
 
