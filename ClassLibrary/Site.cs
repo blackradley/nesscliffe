@@ -58,7 +58,7 @@ namespace ClassLibrary
         public virtual bool IsNationalTrust { get; set; }
 
         [Display(Name = "Indoor Area", Description = "How big is the indoor area which visitors can visit?  In square feet or square metres.")]
-        public virtual int AreaIndoor { get; set; }
+        public virtual float AreaIndoor { get; set; }
         public virtual int AreaIndoorUnits { get; set; }
         public static readonly Dictionary<int, string> AreaIndoorUnitType = new Dictionary<int, string>
         {
@@ -67,12 +67,14 @@ namespace ClassLibrary
         };
 
         [Display(Name = "Outdoor Area", Description = "How big is the outdoor area which visitors can visit?  In square feet, square metres, hectares or acres.")]
-        public virtual int AreaOutdoor { get; set; }
+        public virtual float AreaOutdoor { get; set; }
         public virtual int AreaOutdoorUnits { get; set; }
         public static readonly Dictionary<int, string> AreaOutdoorUnitType = new Dictionary<int, string>
         {
-            { 1, "Acres" },
-            { 2, "Hectares" }
+            { 1, "Square Metres" },
+            { 2, "Square Feet" },
+            { 3, "Acres" },
+            { 4, "Hectares" }
         };
 
 

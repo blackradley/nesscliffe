@@ -18,16 +18,16 @@ namespace WebApplication.Helpers
         {
             var icons = new Dictionary<string, Boolean>
             {
-                {"Museum", site.IsMuseum},
-                {"Accreditation", site.IsAccredited},
-                {"Castle", site.IsCastle},
-                {"HistoricHouse", site.IsHistoricHouse},
-                {"ArtsCentre", site.IsArtsCentre},
-                {"Gallery", site.IsGallery},
-                {"WorldHeritageSite", site.IsWorldHeritageSite},
-                {"OpenAir", site.IsOpenAir},
-                {"HeritageSite", site.IsHeritageSite},
-                {"NationalTrust", site.IsNationalTrust}
+                {"IsMuseum", site.IsMuseum},
+                {"IsAccredited", site.IsAccredited},
+                {"IsCastle", site.IsCastle},
+                {"IsHistoricHouse", site.IsHistoricHouse},
+                {"IsArtsCentre", site.IsArtsCentre},
+                {"IsGallery", site.IsGallery},
+                {"IsWorldHeritageSite", site.IsWorldHeritageSite},
+                {"IsOpenAir", site.IsOpenAir},
+                {"IsHeritageSite", site.IsHeritageSite},
+                {"IsNationalTrust", site.IsNationalTrust}
             };
             var divBuilder = new TagBuilder("div");
             foreach (KeyValuePair<string, bool>icon in icons)
