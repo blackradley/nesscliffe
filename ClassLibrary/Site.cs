@@ -47,12 +47,12 @@ namespace ClassLibrary
         [Display(Name = "Gallery", Description = "Is there a gallery at your site?")]
         public virtual bool IsGallery { get; set; }
 
-        [Display(Name = "World Heritage Site", Description = "Is your site a heritage site? e.g. a battle field.")]
+        [Display(Name = "World Heritage Site", Description = "Is your site in a UNESCO World Heritage Site?")]
         public virtual bool IsWorldHeritageSite { get; set; }
         [Display(Name = "Open Air", Description = "Does your site have open air displays and areas?")]
         public virtual bool IsOpenAir { get; set; }
 
-        [Display(Name = "Heritage Site", Description = "Is your site in a UNESCO World Heritage Site?")]
+        [Display(Name = "Heritage Site", Description = "Is your site a heritage site? e.g. a battle field.")]
         public virtual bool IsHeritageSite { get; set; }
         [Display(Name = "National Trust", Description = "Is your site in the National Trust?")]
         public virtual bool IsNationalTrust { get; set; }
