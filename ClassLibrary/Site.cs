@@ -25,11 +25,11 @@ namespace ClassLibrary
         [ForeignKey("UserId")]
         public ApplicationUser User { get; set; }
 
-        [Display(Name = "Site Name")]
+        [Display(Name = "Site Name", Description = "The name of the site so you can identify it while you work.")]
         [Required(ErrorMessage = "Please enter a name.")]
         public virtual String Name { get; set; }
 
-        [Display(Name = "Postcode")]
+        [Display(Name = "Postcode", Description = "Postcode of the site so we can find it on a map.")]
         [Required(ErrorMessage = "Please enter a postcode.")]
         public virtual String Postcode { get; set; }
 
@@ -57,7 +57,7 @@ namespace ClassLibrary
         [Display(Name = "National Trust", Description = "Is your site in the National Trust?")]
         public virtual bool IsNationalTrust { get; set; }
 
-        [Display(Name = "Indoor Area", Description="The name of the product")]
+        [Display(Name = "Indoor Area", Description = "How big is the indoor area which visitors can visit?  In square feet or square metres.")]
         public virtual int AreaIndoor { get; set; }
         public virtual int AreaIndoorUnits { get; set; }
         public static readonly Dictionary<int, string> AreaIndoorUnitType = new Dictionary<int, string>
@@ -66,7 +66,7 @@ namespace ClassLibrary
             { 2, "Square Feet" }
         };
 
-        [Display(Name = "Outdoor Area")]
+        [Display(Name = "Outdoor Area", Description = "How big is the outdoor area which visitors can visit?  In square feet, square metres, hectares or acres.")]
         public virtual int AreaOutdoor { get; set; }
         public virtual int AreaOutdoorUnits { get; set; }
         public static readonly Dictionary<int, string> AreaOutdoorUnitType = new Dictionary<int, string>

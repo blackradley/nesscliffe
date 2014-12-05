@@ -5,17 +5,13 @@
 <div class="row">
     <div class="form-group col-md-9">
         @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label", @for = "name" })
-        <a href="#" data-toggle="tooltip" data-title="The name of the site so you can identify it while you work.">
-            <span class="glyphicon glyphicon-info-sign"></span>
-        </a>
+        @Html.SiteHelpFor(model => model.Name)
         @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @name = "name", @style = "max-width: 500px;" } })
         @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
     </div>
     <div class="form-group col-md-3">
         @Html.LabelFor(model => model.Postcode, htmlAttributes: new { @class = "control-label", @for = "postcode" })
-        <a href="#" data-toggle="tooltip" data-title="Postcode of the site so we can find it on a map.">
-            <span class="glyphicon glyphicon-info-sign"></span>
-        </a>
+        @Html.SiteHelpFor(model => model.Postcode)
         @Html.EditorFor(model => model.Postcode, new { htmlAttributes = new { @class = "form-control", @name = "postcode", @style = "text-transform:uppercase" } })
         @Html.ValidationMessageFor(model => model.Postcode, "", new { @class = "text-danger" })
     </div>
@@ -42,9 +38,7 @@
 <div class="row">
     <div class="form-group col-md-6">
         @Html.LabelFor(model => model.AreaIndoor, htmlAttributes: new { @class = "control-label" })
-        <a href="#" data-toggle="tooltip" data-title="How big is the indoor area which visitors can visit?  In square feet or square metres.">
-            <span class="glyphicon glyphicon-info-sign"></span>
-        </a>
+        @Html.SiteHelpFor(model => model.AreaIndoor)
         <div class="form-inline">
             @Html.EditorFor(model => model.AreaIndoor, new { htmlAttributes = new { @class = "form-control", @Value = "0", @min = "0", @max = "99999" } })
             @Html.DropDownListFor(model => model.AreaIndoorUnits, new SelectList(Site.AreaIndoorUnitType, "Key", "Value"))
@@ -52,9 +46,7 @@
     </div>
     <div class="form-group col-md-6">
         @Html.LabelFor(model => model.AreaOutdoor, htmlAttributes: new { @class = "control-label" })
-        <a href="#" data-toggle="tooltip" data-title="How big is the indoor area which visitors can visit?  In hectares or acres.">
-            <span class="glyphicon glyphicon-info-sign"></span>
-        </a>
+        @Html.SiteHelpFor(model => model.AreaOutdoor)
         <div class="form-inline">
             @Html.EditorFor(model => model.AreaOutdoor, new { htmlAttributes = new { @class = "form-control", @Value = "0", @min = "0", @max = "99999" } })
             @Html.DropDownListFor(model => model.AreaOutdoorUnits, new SelectList(Site.AreaOutdoorUnitType, "Key", "Value"))

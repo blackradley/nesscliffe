@@ -179,6 +179,7 @@
     <Compile Include="Helpers\RemainingMonths.cs" />
     <Compile Include="Helpers\SiteCheckBoxDisplayForHelper.cs" />
     <Compile Include="Helpers\SiteCheckBoxForHelper.cs" />
+    <Compile Include="Helpers\SiteHelpIconForHelper.cs" />
     <Compile Include="Helpers\SiteSummaryIconsForHelper.cs" />
     <Compile Include="Migrations\201411262206024_InitialCreate.cs" />
     <Compile Include="Migrations\201411262206024_InitialCreate.Designer.cs">
