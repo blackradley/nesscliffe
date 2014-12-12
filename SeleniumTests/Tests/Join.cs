@@ -32,7 +32,9 @@ namespace SeleniumTests.Tests
         private static int SecondsFromMidnight()
         {
             var dateTimeNow = DateTime.Now;
-            int secondsFromMidnight = dateTimeNow.Second + (60 * dateTimeNow.Minute) + (60 * 60  * dateTimeNow.Hour);
+            var dateTimeThen = DateTime.Now.Date; // using Date gets you midnight.
+            var timeSpan = dateTimeNow - dateTimeThen;
+            var secondsFromMidnight = (int)Math.Round(timeSpan.TotalSeconds);
             return secondsFromMidnight;
         }
 

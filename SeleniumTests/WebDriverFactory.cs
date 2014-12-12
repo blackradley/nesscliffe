@@ -25,7 +25,7 @@ namespace SeleniumTests
         /// The development machines all use this URL for testing, so it might not
         /// work on the Continuous Development server.
         /// </summary>
-        public const string BaseUrl = "http://localhost:56107"; 
+        public const string BaseUrl = "https://localhost:44300/"; 
         public const int AjaxWait = 30;
 
         /// <summary>
