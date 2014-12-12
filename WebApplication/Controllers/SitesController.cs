@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ClassLibrary;
+using Glimpse.Mvc.Message;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -21,9 +22,10 @@ namespace WebApplication.Controllers
         private readonly DataDb _dataDb = new DataDb();
 
         // GET: Sites for the user
-        public ActionResult Index()
+        public ActionResult Index(string message)
         {
             IEnumerable<Site> sitesList = _dataDb.Sites.ToList().Where(site => site.UserId == User.Identity.GetUserId());
+            ViewBag.Message = message;
             return View(sitesList);
         }
 
@@ -83,7 +85,9 @@ namespace WebApplication.Controllers
                 // The UserId is unmodified, the rest of the stuff comes from the form.
                 _dataDb.Entry(site).Property(e => e.UserId).IsModified = false;
                 _dataDb.SaveChanges();
-                return RedirectToAction("Index");
+                //ViewBag.Message = site.Name + " has been updated.";
+                //empData["Message"] = site.Name + " has been updated.";
+                return RedirectToAction("Index", "Sites", new { message = site.Name + " has been updated." });
             }
             return View(site);
         }

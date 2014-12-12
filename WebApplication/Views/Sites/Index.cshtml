@@ -5,9 +5,22 @@
 @{
     ViewBag.Title = "My Sites";
 }
-<h2>@ViewBag.Title</h2>
-<div>
-    @Html.ActionLink("Create a New Site", "Create")
+
+<div class="row">
+    <div class="col-md-3">
+        <h2>@ViewBag.Title</h2>
+        @Html.ActionLink("Create a New Site", "Create")
+    </div>
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-success alert-dismissible col-md-6" role="alert">
+            <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+            @ViewBag.Message
+        </div>
+    }
 </div>
 <table class="table">
     <tr>
@@ -19,7 +32,6 @@
         <th class="hidden-sm hidden-xs">Features</th>
         <th></th>
     </tr>
-
     @foreach (var item in Model)
     {
         <tr>
@@ -31,13 +43,13 @@
             </td>
             <td>@Html.DisplayFor(modelItem => item.Postcode)</td>
             <td class="hidden-sm hidden-xs">
-                
+
                 @Html.SiteSummaryIconsFor(item)
 
             </td>
             <td>
                 @Html.ActionLink("Edit Site", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Add Data", "Index", "Months", new { id = item.Id }, null) 
+                @Html.ActionLink("Add Data", "Index", "Months", new { id = item.Id }, null)
             </td>
         </tr>
     }
