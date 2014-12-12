@@ -169,16 +169,23 @@ namespace WebApplication.Controllers
                         new { userId = user.Id, code = code }, 
                         protocol: Request.Url.Scheme);
                     await UserManager.SendEmailAsync(user.Id, 
-                        "Confirm Your Insight Account",
-                        "Please confirm your Insight account by clicking <a href=\"" + callbackUrl + "\">here</a>.");
+                        "Welcome to Insight",
+                        "Thanks for joining Insight. Please confirm your Insight account by clicking <a href=\"" + callbackUrl + "\">here</a>.");
                     MailAdmin.Send("User Sign Up", user.Email + " just signed up.");
-                    return RedirectToAction("Index", "Sites");
+                    return RedirectToAction("Thanks", "Account");
                 }
                 AddErrors(result);
             }
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        //
+        // GET: /Account/Thanks
+        public ActionResult Thanks()
+        {
+            return View();
         }
 
         //

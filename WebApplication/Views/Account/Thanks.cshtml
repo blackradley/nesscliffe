@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Welcome to Insight";
+}
+<h2>@ViewBag.Title</h2>
+<p>
+    Thank you for joining Insight.
+</p>
+<p>
+    Visit @Html.ActionLink("My Sites", "Index", "Sites", routeValues: null, htmlAttributes: new { title = "Sites" })
+    to add information about your sites.
+<p>
+    Check your email to confirm your email address.
+    Your sites will not be included until your email address is confirmed.
+</p>
+<p>
+    To request another email confirmation visit your @Html.ActionLink("Account Settings.", "Index", "Manage", routeValues: null,
+        htmlAttributes: new { title = "Manage your Account" })
+</p>
+

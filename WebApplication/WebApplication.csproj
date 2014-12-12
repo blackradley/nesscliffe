@@ -323,6 +323,7 @@
     <Content Include="Views\Sites\_CreateEdit.cshtml" />
     <Content Include="Views\Months\_Months.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MonthYearDateTime.cshtml" />
+    <Content Include="Views\Account\Thanks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
