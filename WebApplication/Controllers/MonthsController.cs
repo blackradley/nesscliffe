@@ -74,7 +74,7 @@ namespace WebApplication.Controllers
         }
 
         // GET: Months/Edit/5
-        public ActionResult Edit(Guid? id)
+        public ActionResult Edit(Guid? id, string message)
         {
             if (id == null)
             {
@@ -85,6 +85,7 @@ namespace WebApplication.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Message = message;
             return View(month);
         }
 
@@ -93,13 +94,15 @@ namespace WebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,MonthTime,MarketingSpend,RegionalTv,NationalTv,OverseasTv,WebsiteUrl,WebsiteVisitors,FacebookUrl,TwitterUrl,FlickrUrl,InstagramUrl,YoutubeUrl,VimeoUrl,PinterestUrl,HoursMonday,HoursTuesday,HoursWednesday,HoursThursday,HoursFriday,HoursSaturday,HoursSunday,Visitors,IncomeAdmissions,IncomeAdditional,VisitorsAdditional")] Month month)
+        public ActionResult Edit(Month month) // TODO: replace the [Bind(Include = "
         {
             if (ModelState.IsValid)
             {
                 _dataDb.Entry(month).State = EntityState.Modified;
+                _dataDb.Entry(month).Property(e => e.MonthTime).IsModified = false;
+                _dataDb.Entry(month).Property(e => e.SiteId).IsModified = false;
                 _dataDb.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit", "Months", new { id = month.Id, message = "Attention has been updated." });
             }
             return View(month);
         }

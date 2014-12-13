@@ -18,7 +18,12 @@ namespace ClassLibrary
 
         [Display(Name = "Month")]
         public virtual DateTime MonthTime { get; set; }
-        public virtual int MarketingSpend { get; set; }
+
+        [Display(Name = "Marketing Spend", Description = "How much have you spent on marketing this month?")]
+        [Range(0, 99999, ErrorMessage = "Area must be between 0 and 99999.")]
+        [Required(ErrorMessage = "Please enter this month's marketing spend")]
+        public virtual float MarketingSpend { get; set; }
+
         public virtual bool RegionalTv { get; set; }
         public virtual bool NationalTv { get; set; }
         public virtual bool OverseasTv { get; set; }

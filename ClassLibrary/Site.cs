@@ -63,7 +63,7 @@ namespace ClassLibrary
 
         [Display(Name = "Indoor Area", Description = "How big is the indoor area which visitors can visit?  In square feet or square metres.")]
         [Range(0, 99999, ErrorMessage = "Area must be between 0 and 99999.")]
-        [Required(ErrorMessage = "Please enter the in door area.")]
+        [Required(ErrorMessage = "Please enter the indoor area.")]
         public virtual float AreaIndoor { get; set; }
         public virtual int AreaIndoorUnits { get; set; }
         public static readonly Dictionary<int, string> AreaIndoorUnitType = new Dictionary<int, string>
