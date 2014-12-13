@@ -12,7 +12,7 @@
     </div>
     @if (ViewBag.Message != null)
     {
-        <div class="alert alert-success alert-dismissible col-md-6" role="alert">
+        <div class="alert alert-success alert-dismissible col-md-8" role="alert">
             <button type="button" class="close" data-dismiss="alert">
                 <span aria-hidden="true">&times;</span>
                 <span class="sr-only">Close</span>
@@ -40,11 +40,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
-            <td>@Html.DisplayFor(modelItem => item.Postcode)</td>
+            <td style="text-transform:uppercase;">@Html.DisplayFor(modelItem => item.Postcode)</td>
             <td class="hidden-sm hidden-xs">
-
                 @Html.SiteSummaryIconsFor(item)
-
             </td>
             <td>
                 @Html.ActionLink("Edit Site", "Edit", new { id = item.Id }) |

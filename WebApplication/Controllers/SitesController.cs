@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -84,6 +85,9 @@ namespace WebApplication.Controllers
                 _dataDb.Entry(site).State = EntityState.Modified;
                 // The UserId is unmodified, the rest of the stuff comes from the form.
                 _dataDb.Entry(site).Property(e => e.UserId).IsModified = false;
+                // Capitalize the name of the site
+                var textInfo = new CultureInfo("en-GB").TextInfo;
+                site.Name = textInfo.ToTitleCase(site.Name);
                 _dataDb.SaveChanges();
                 //ViewBag.Message = site.Name + " has been updated.";
                 //empData["Message"] = site.Name + " has been updated.";
