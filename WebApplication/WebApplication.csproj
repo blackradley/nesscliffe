@@ -339,6 +339,10 @@
       <Project>{605f9e1e-7882-414b-9f1b-575d4219c6b0}</Project>
       <Name>ClassLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Resources\Resources.csproj">
+      <Project>{f7272979-6715-474c-b3fa-744d0bc56f95}</Project>
+      <Name>Resources</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201411262206024_InitialCreate.resx">

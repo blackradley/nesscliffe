@@ -1,9 +1,10 @@
 ﻿@using ClassLibrary
 @using WebApplication.Models
+@using Resources
 @model ClassLibrary.Site
 @{
+    ViewBag.Title = Resources.MonthlyPerformance;
     //TODO: Shift this stuff into the model so the Site has a property "AvailableMonths<DateTime>"
-    ViewBag.Title = "Monthly Performance";
     var now = DateTime.Now;
     const int monthsBetween = 18;
     var then = now.AddMonths(monthsBetween * (-1));
