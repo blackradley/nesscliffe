@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using ClassLibrary;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
@@ -14,4 +16,5 @@ namespace WebApplication.Models
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
     }
+      
 }

@@ -1,7 +1,9 @@
 ﻿@using ClassLibrary
+@using WebApplication.Models
 @model ClassLibrary.Site
 @{
-    ViewBag.Title = "Performance Data";
+    //TODO: Shift this stuff into the model so the Site has a property "AvailableMonths<DateTime>"
+    ViewBag.Title = "Monthly Performance";
     var now = DateTime.Now;
     const int monthsBetween = 18;
     var then = now.AddMonths(monthsBetween * (-1));
@@ -16,23 +18,45 @@
 <h2>@ViewBag.Title</h2>
 @Html.Partial("../Sites/_Details", @Model)
 
-@using (Html.BeginForm("Create", "Months", new { Id = @Model.Id }, FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
-    <div class="row">
-        <div class="form-group col-md-6">
-            <div class="form-inline">
-                @if (availableDates.Count() != 0)
+<table class="table">
+    <tr>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Months.First().MonthTime)
+        </th>
+        <th style="font-weight:normal; padding: 0px; width: 33%;">
+            @using (Html.BeginForm("Create", "Months", new { Id = @Model.Id }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                if (availableDates.Count() != 0)
                 {
-                    @Html.DropDownList("MonthTime", new SelectList(availableDates))
-                    <input type="submit" value="Add Month" class="btn btn-link" />
+                    <div>
+                        @Html.DropDownList("MonthTime", new SelectList(availableDates))
+                        <input type="submit" value="Add New Month" class="btn btn-link" />
+                    </div>
                 }
-            </div>
-        </div>
-    </div>
-}
+            }
+        </th>
+    </tr>
+    @foreach (var item in Model.Months)
+    {
+        <tr>
+            <td>@Html.ActionLink("Delete", "Delete", new { id = item.Id })</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MonthTime, "MonthYearDateTime")
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id })
 
-@Html.Partial("_Months", @Model.Months)
+            </td>
+        </tr>
+    }
+</table>
+<div class="row">
+    <div class="form-group col-md-offset-9 col-md-3">
+        @Html.ActionLink("Back to Sites List", "Index", "Sites")
+    </div>
+</div>
 
 
 
