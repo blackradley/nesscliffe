@@ -9,7 +9,6 @@
 <div class="row">
     <div class="col-md-3">
         <h2>@ViewBag.Title</h2>
-        @Html.ActionLink("Create a New Site", "Create")
     </div>
     @if (ViewBag.Message != null)
     {
@@ -30,7 +29,7 @@
         </th>
         <th>Postcode</th>
         <th class="hidden-sm hidden-xs">Features</th>
-        <th></th>
+        <th style="font-weight:normal;">@Html.ActionLink("Create a New Site", "Create")</th>
     </tr>
     @foreach (var item in Model)
     {

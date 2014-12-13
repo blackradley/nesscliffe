@@ -1,23 +1,24 @@
 ﻿@model IEnumerable<ClassLibrary.Month>
-
 <table class="table">
     <tr>
+        <th></th>
         <th>
             @Html.DisplayNameFor(model => model.MonthTime)
         </th>
 
-        <th></th>
+        <th style="font-weight:normal;">Create</th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
+            <td>@Html.ActionLink("Delete", "Delete", new { id = item.Id })</td>
             <td>
                 @Html.DisplayFor(modelItem => item.MonthTime, "MonthYearDateTime")
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) 
+                
             </td>
         </tr>
     }

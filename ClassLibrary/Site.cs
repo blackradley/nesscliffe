@@ -25,7 +25,7 @@ namespace ClassLibrary
         [ForeignKey("UserId")]
         public ApplicationUser User { get; set; }
 
-        [Display(Name = "Site Name", Description = "The name of the site so you can identify it while you work.")]
+        [Display(Name = "Site Name", Description = "The name of the site so you can identify it while you work.")] 
         [Required(ErrorMessage = "Please enter a name.")]
         public virtual String Name { get; set; }
 

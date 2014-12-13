@@ -17,7 +17,7 @@
 @Html.Partial("../Sites/_Details", @Model)
 
 @using (Html.BeginForm("Create", "Months", new { Id = @Model.Id }, FormMethod.Post))
-    {
+{
     @Html.AntiForgeryToken()
     <div class="row">
         <div class="form-group col-md-6">
@@ -30,9 +30,9 @@
             </div>
         </div>
     </div>
-    }
+}
 
-    @Html.Partial("_Months", @Model.Months)
+@Html.Partial("_Months", @Model.Months)
 
 
 
