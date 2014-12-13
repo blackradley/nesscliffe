@@ -13,7 +13,7 @@ namespace WebApplication.Controllers
 {
     public class MonthsController : Controller
     {
-        private DataDb db = new DataDb();
+        private readonly DataDb _dataDb = new DataDb();
 
         // GET: Months
         public ActionResult Index([Bind(Prefix = "id")]Guid? siteId)
@@ -22,7 +22,7 @@ namespace WebApplication.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Site site = db.Sites.Find(siteId);
+            Site site = _dataDb.Sites.Find(siteId);
             if (site == null)
             {
                 return HttpNotFound();
@@ -37,7 +37,7 @@ namespace WebApplication.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Month month = db.Months.Find(id);
+            Month month = _dataDb.Months.Find(id);
             if (month == null)
             {
                 return HttpNotFound();
@@ -63,8 +63,8 @@ namespace WebApplication.Controllers
             {
                 month.Id = Guid.NewGuid();
                 month.SiteId = id;
-                db.Months.Add(month);
-                db.SaveChanges();
+                _dataDb.Months.Add(month);
+                _dataDb.SaveChanges();
                 return RedirectToAction("Edit", new { Id = month.Id });
 
                 
@@ -80,7 +80,7 @@ namespace WebApplication.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Month month = db.Months.Find(id);
+            Month month = _dataDb.Months.Find(id);
             if (month == null)
             {
                 return HttpNotFound();
@@ -97,8 +97,8 @@ namespace WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(month).State = EntityState.Modified;
-                db.SaveChanges();
+                _dataDb.Entry(month).State = EntityState.Modified;
+                _dataDb.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(month);
@@ -111,7 +111,7 @@ namespace WebApplication.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Month month = db.Months.Find(id);
+            Month month = _dataDb.Months.Find(id);
             if (month == null)
             {
                 return HttpNotFound();
@@ -124,9 +124,9 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            Month month = db.Months.Find(id);
-            db.Months.Remove(month);
-            db.SaveChanges();
+            Month month = _dataDb.Months.Find(id);
+            _dataDb.Months.Remove(month);
+            _dataDb.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -134,7 +134,7 @@ namespace WebApplication.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _dataDb.Dispose();
             }
             base.Dispose(disposing);
         }

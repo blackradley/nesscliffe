@@ -31,7 +31,7 @@ namespace WebApplication.Helpers
                 {"IsPark", site.IsPark},
                 {"IsNatureReserve", site.IsNatureReserve}
             };
-            var divBuilder = new TagBuilder("div");
+            var spanBuilder = new TagBuilder("span");
             foreach (KeyValuePair<string, bool>icon in icons)
             {
                 if (icon.Value) // is true then spit out the HTML for the icon
@@ -46,10 +46,10 @@ namespace WebApplication.Helpers
 
                     imgbuilder.MergeAttribute("title", name);
                     imgbuilder.MergeAttribute("alt", name);
-                    divBuilder.InnerHtml += imgbuilder.ToString(TagRenderMode.SelfClosing);
+                    spanBuilder.InnerHtml += imgbuilder.ToString(TagRenderMode.SelfClosing);
                 }
             }
-            return MvcHtmlString.Create(divBuilder.ToString());
+            return MvcHtmlString.Create(spanBuilder.ToString());
         }
     }
 }

@@ -2,32 +2,37 @@
 @model ClassLibrary.Site
 @{
     ViewBag.Title = "Performance Data";
-
     var now = DateTime.Now;
-    const int monthsBetween = 12;
-    var then = now.AddMonths(monthsBetween* (-1));
-    var dates = Enumerable.Range(0, monthsBetween)
-        .Select(m => new DateTime(then.Year, then.Month, 1).AddMonths(m).ToString("MMM yyyy")).Reverse();
-      
-    // TODO: remove current dates from possibles list.
-    //http://stackoverflow.com/questions/16885704/what-is-the-best-way-to-remove-items-from-a-ienumerableselectlistitem
-    
+    const int monthsBetween = 18;
+    var then = now.AddMonths(monthsBetween * (-1));
+    var possibleDates = Enumerable.Range(0, monthsBetween)
+        .Select(m => new DateTime(then.Year, then.Month, 1).AddMonths(m)).Reverse();
+    var usedDates = from monthList in Model.Months select monthList.MonthTime;
+
+    // remove used dates from possibles list and format
+    var availableDates = possibleDates.Where(o => !usedDates.Contains(DateTime.Parse(o.ToLongDateString())))
+        .Select(d => d.ToString("MMM yyyy")).ToList();
 }
 <h2>@ViewBag.Title</h2>
 @Html.Partial("../Sites/_Details", @Model)
+
 @using (Html.BeginForm("Create", "Months", new { Id = @Model.Id }, FormMethod.Post))
-{
+    {
     @Html.AntiForgeryToken()
     <div class="row">
         <div class="form-group col-md-6">
             <div class="form-inline">
-                @Html.DropDownList("MonthTime", new SelectList(dates))
-                <input type="submit" value="Add Month" class="btn btn-link" />
+                @if (availableDates.Count() != 0)
+                {
+                    @Html.DropDownList("MonthTime", new SelectList(availableDates))
+                    <input type="submit" value="Add Month" class="btn btn-link" />
+                }
             </div>
         </div>
     </div>
-}
-@Html.Partial("_Months", @Model.Months)
+    }
+
+    @Html.Partial("_Months", @Model.Months)
 
 
 

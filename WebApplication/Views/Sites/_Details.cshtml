@@ -9,11 +9,12 @@
         @Html.LabelFor(model => model.Name)
         @Html.DisplayFor(model => model.Name)
     </div>
-    <div class="col-md-2">
+    <div class="col-md-4">
         @Html.LabelFor(model => model.Postcode)
         @Html.DisplayFor(model => model.Postcode, new { htmlAttributes = new { @style = "text-transform:uppercase" } })
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 hidden-sm hidden-xs">
+        <label>Features</label>
         @Html.SiteSummaryIconsFor(ViewData.Model)
     </div>
 </div>
