@@ -1,0 +1,24 @@
+﻿@using WebApplication.Helpers
+@model DataAccess.Month
+<div class="row">
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="@Html.SiteIsSelected(action: "Attention")">
+            <a href="@Url.Action("Attention", new { id = Model.Id})">Attention</a>
+        </li>
+        <li role="presentation" class="@Html.SiteIsSelected(action: "Arrive")">
+            <a href="@Url.Action("Arrive", new { id = Model.Id})">Arriving</a>
+        </li>
+        <li role="presentation" class="@Html.SiteIsSelected(action: "Shop")">
+            <a href="@Url.Action("Shop", new { id = Model.Id})">Shopping</a>
+        </li>
+        <li role="presentation" class="@Html.SiteIsSelected(action: "Eat")">
+            <a href="@Url.Action("Eat", new { id = Model.Id})">Refreshment</a>
+        </li>
+        <li role="presentation" class="@Html.SiteIsSelected(action: "Donate")">
+            <a href="@Url.Action("Donate", new { id = Model.Id})">Donation</a>
+        </li>
+        <li role="presentation" class="@Html.SiteIsSelected(action: "Experience")">
+            <a href="@Url.Action("Experience", new { id = Model.Id})">Experience</a>
+        </li>
+    </ul>
+</div>

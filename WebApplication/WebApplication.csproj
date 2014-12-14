@@ -193,10 +193,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\GetAttributeFromHelper.cs" />
-    <Compile Include="Helpers\RemainingMonths.cs" />
     <Compile Include="Helpers\SiteCheckBoxDisplayForHelper.cs" />
     <Compile Include="Helpers\SiteCheckBoxForHelper.cs" />
     <Compile Include="Helpers\SiteHelpIconForHelper.cs" />
+    <Compile Include="Helpers\SiteIsSelectedHelper.cs" />
     <Compile Include="Helpers\SiteSummaryIconsForHelper.cs" />
     <Compile Include="Migrations\201411262206024_InitialCreate.cs" />
     <Compile Include="Migrations\201411262206024_InitialCreate.Designer.cs">
@@ -318,11 +318,13 @@
     <Content Include="Views\Months\Create.cshtml" />
     <Content Include="Views\Months\Delete.cshtml" />
     <Content Include="Views\Months\Details.cshtml" />
-    <Content Include="Views\Months\Edit.cshtml" />
+    <Content Include="Views\Months\Attention.cshtml" />
     <Content Include="Views\Months\Index.cshtml" />
     <Content Include="Views\Sites\_CreateEdit.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MonthYearDateTime.cshtml" />
     <Content Include="Views\Account\Thanks.cshtml" />
+    <Content Include="Views\Months\Arrive.cshtml" />
+    <Content Include="Views\Months\_Navigation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -65,16 +65,16 @@ namespace WebApplication.Controllers
                 month.SiteId = id;
                 _dataDb.Months.Add(month);
                 _dataDb.SaveChanges();
-                return RedirectToAction("Edit", new { Id = month.Id });
-
-                
+                return RedirectToAction("Attention", new { Id = month.Id });
             }
 
             return View(month);
         }
 
-        // GET: Months/Edit/5
-        public ActionResult Edit(Guid? id, string message)
+        // GET: Months/Attention/117ca2a3-fb5a-4882-8e74-23cccf07db73
+        public ActionResult Attention(Guid? id, string message) {return this.GetView(id, message);}
+        public ActionResult Arrive(Guid? id, string message) { return this.GetView(id, message); }
+        private ActionResult GetView(Guid? id, string message)
         {
             if (id == null)
             {
@@ -89,12 +89,12 @@ namespace WebApplication.Controllers
             return View(month);
         }
 
-        // POST: Months/Edit/5
+        // POST: Months/Attention/117ca2a3-fb5a-4882-8e74-23cccf07db73
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Month month) // TODO: replace the [Bind(Include = "
+        public ActionResult Attention(Month month) // TODO: replace the [Bind(Include = "
         {
             if (ModelState.IsValid)
             {
@@ -102,7 +102,7 @@ namespace WebApplication.Controllers
                 _dataDb.Entry(month).Property(e => e.MonthTime).IsModified = false;
                 _dataDb.Entry(month).Property(e => e.SiteId).IsModified = false;
                 _dataDb.SaveChanges();
-                return RedirectToAction("Edit", "Months", new { id = month.Id, message = "Attention has been updated." });
+                return RedirectToAction("Attention", new { id = month.Id, message = "Attention has been updated." });
             }
             return View(month);
         }

@@ -1,4 +1,5 @@
 ﻿@model DataAccess.Month
+@using DataAccess
 @using WebApplication.Helpers
 @{
     ViewBag.Title = Html.DisplayFor(model => model.MonthTime, "MonthYearDateTime");
@@ -20,16 +21,8 @@
 </div>
 
 @Html.Partial("../Sites/_Details", Model.Site)
-<div class="row">
-    <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="#">Attention</a></li>
-        <li role="presentation"><a href="#">Arrival</a></li>
-        <li role="presentation"><a href="#">Shopping</a></li>
-        <li role="presentation"><a href="#">Refreshment</a></li>
-        <li role="presentation"><a href="#">Donation</a></li>
-        <li role="presentation"><a href="#">Experience</a></li>
-    </ul>
-</div>
+@Html.Partial("_Navigation", Model)
+
 
 @using (Html.BeginForm())
 {
@@ -52,7 +45,7 @@
     </div>
 
     <div class="form-horizontal">
-        
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.WebsiteUrl, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -131,7 +124,7 @@
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
             <div class="form-group col-md-3">
-                @Html.ActionLink("Back to Monthly Performance", "Index", "Months", new { id = Model.SiteId}, null)
+                @Html.ActionLink("Back to Monthly Performance", "Index", "Months", new { id = Model.SiteId }, null)
             </div>
         </div>
     </div>
