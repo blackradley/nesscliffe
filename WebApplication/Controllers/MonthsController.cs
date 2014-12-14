@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using ClassLibrary;
+using DataAccess;
 using WebApplication.Infrastructure;
 
 namespace WebApplication.Controllers

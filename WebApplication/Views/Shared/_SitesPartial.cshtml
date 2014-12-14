@@ -1,8 +1,9 @@
-﻿@using Microsoft.AspNet.Identity
+﻿@using Localization
+@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
     @Html.AntiForgeryToken()
     <li>
-        @Html.ActionLink("My Sites", "Index", "Sites", routeValues: null, htmlAttributes: new { title = "Sites" })
+        @Html.ActionLink(Resources.LabelSitesList, "Index", "Sites", routeValues: null, htmlAttributes: new { title = "Sites" })
     </li>
 }

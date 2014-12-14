@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary
+namespace DataAccess
 {
     public class Month
     {
@@ -23,9 +23,11 @@ namespace ClassLibrary
         [Range(0, 99999, ErrorMessage = "Area must be between 0 and 99999.")]
         [Required(ErrorMessage = "Please enter this month's marketing spend")]
         public virtual float MarketingSpend { get; set; }
-
+        [Display(Name = "Regional TV", Description = "Has your site appeared on regional TV?")]
         public virtual bool RegionalTv { get; set; }
+        [Display(Name = "National TV", Description = "Has your site appeared on national TV?")]
         public virtual bool NationalTv { get; set; }
+        [Display(Name = "Overseas TV", Description = "Has your site appeared on TV in another country?")]
         public virtual bool OverseasTv { get; set; }
         public virtual String WebsiteUrl { get; set; }
         public virtual int WebsiteVisitors { get; set; }

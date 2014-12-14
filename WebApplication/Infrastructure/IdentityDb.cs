@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
-using ClassLibrary;
+using DataAccess;
 using Microsoft.AspNet.Identity.EntityFramework;
 using WebApplication.Models;
 

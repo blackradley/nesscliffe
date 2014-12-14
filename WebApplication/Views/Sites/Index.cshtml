@@ -1,10 +1,10 @@
-﻿@using ClassLibrary
-@using Resources
+﻿@using DataAccess
+@using Localization
 @using WebApplication.Helpers
 @using WebGrease
-@model IEnumerable<ClassLibrary.Site>
+@model IEnumerable<DataAccess.Site>
 @{
-    ViewBag.Title = "My Sites";
+    ViewBag.Title = Resources.LabelSitesList;
 }
 <div class="row">
     <div class="col-md-3">
@@ -46,7 +46,7 @@
             </td>
             <td>
                 @Html.ActionLink("Edit Site", "Edit", new { id = item.Id }) |
-                @Html.ActionLink(Resources.MonthlyPerformance, "Index", "Months", new { id = item.Id }, null)
+                @Html.ActionLink(Resources.LabelPerformanceData, "Index", "Months", new { id = item.Id }, null)
             </td>
         </tr>
     }

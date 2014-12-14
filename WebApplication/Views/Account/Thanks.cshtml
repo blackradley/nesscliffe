@@ -1,4 +1,5 @@
-﻿@using Microsoft.AspNet.Identity
+﻿@using Localization
+@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "Welcome to Insight";
 }
@@ -7,7 +8,7 @@
     Thank you for joining Insight.
 </p>
 <p>
-    Visit @Html.ActionLink("My Sites", "Index", "Sites", routeValues: null, htmlAttributes: new { title = "Sites" })
+    Visit @Html.ActionLink(Resources.LabelSitesList, "Index", "Sites", routeValues: null, htmlAttributes: new { title = "Sites" })
     to add information about your sites.
 <p>
     Check your email to confirm your email address.

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using ClassLibrary;
+using DataAccess;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 

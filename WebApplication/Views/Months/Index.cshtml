@@ -1,9 +1,8 @@
-﻿@using ClassLibrary
-@using WebApplication.Models
-@using Resources
-@model ClassLibrary.Site
+﻿@using WebApplication.Models
+@using Localization
+@model DataAccess.Site
 @{
-    ViewBag.Title = Resources.MonthlyPerformance;
+    ViewBag.Title = Resources.LabelPerformanceData;
     //TODO: Shift this stuff into the model so the Site has a property "AvailableMonths<DateTime>"
     var now = DateTime.Now;
     const int monthsBetween = 18;
@@ -55,7 +54,7 @@
 </table>
 <div class="row">
     <div class="form-group col-md-offset-9 col-md-3">
-        @Html.ActionLink("Back to My Sites", "Index", "Sites")
+        @Html.ActionLink("Back to " + Resources.LabelSitesList, "Index", "Sites")
     </div>
 </div>
 

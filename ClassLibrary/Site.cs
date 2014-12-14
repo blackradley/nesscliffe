@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-namespace ClassLibrary
+namespace DataAccess
 {
     // TO DO: rework to match Dino Esposito's approach
     // http://devproconnections.com/entity-framework/domain-modeling-and-persistence-entity-framework-6

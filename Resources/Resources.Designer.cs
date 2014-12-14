@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Resources {
+namespace Localization {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Localization.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,9 +63,18 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Months.
         /// </summary>
-        public static string MonthlyPerformance {
+        public static string LabelPerformanceData {
             get {
-                return ResourceManager.GetString("MonthlyPerformance", resourceCulture);
+                return ResourceManager.GetString("LabelPerformanceData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Sites.
+        /// </summary>
+        public static string LabelSitesList {
+            get {
+                return ResourceManager.GetString("LabelSitesList", resourceCulture);
             }
         }
     }
