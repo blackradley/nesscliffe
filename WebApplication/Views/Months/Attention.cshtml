@@ -1,132 +1,98 @@
 ﻿@model DataAccess.Month
-@using DataAccess
+@using Localization
 @using WebApplication.Helpers
 @{
+    Layout = "_Layout.cshtml";
     ViewBag.Title = Html.DisplayFor(model => model.MonthTime, "MonthYearDateTime");
 }
+
+
 <div class="row">
-    <div class="col-md-3">
-        <h2>@ViewBag.Title</h2>
+    <div class="form-group col-md-3">
+        @Html.LabelFor(model => model.MarketingSpend, htmlAttributes: new { @for = "MarketingSpend" })
+        @Html.SiteHelpFor(model => model.MarketingSpend)
+        @Html.EditorFor(model => model.MarketingSpend, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.MarketingSpend)
     </div>
-    @if (ViewBag.Message != null)
-    {
-        <div class="alert alert-success alert-dismissible col-md-8" role="alert">
-            <button type="button" class="close" data-dismiss="alert">
-                <span aria-hidden="true">&times;</span>
-                <span class="sr-only">Close</span>
-            </button>
-            @ViewBag.Message
-        </div>
-    }
 </div>
 
-@Html.Partial("../Sites/_Details", Model.Site)
-@Html.Partial("_Navigation", Model)
-
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.Id)
-    <div class="row form-horizontal">
-        <div class="col-md-3">
-            @Html.LabelFor(model => model.MarketingSpend, htmlAttributes: new { @class = "control-label", @for = "MarketingSpend" })
-            @Html.SiteHelpFor(model => model.MarketingSpend)
-            @Html.EditorFor(model => model.MarketingSpend, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.MarketingSpend)
-        </div>
-
-        <div class="form-inline">
-            @Html.SiteCheckBoxFor(model => model.RegionalTv)
-            @Html.SiteCheckBoxFor(model => model.NationalTv)
-            @Html.SiteCheckBoxFor(model => model.OverseasTv)
-        </div>
+<div class="form-group">
+    @Html.SiteSectionLabel("TV Coverage", "Check the boxes which apply to your site")
+    <div class="row form-inline">
+        @Html.SiteCheckBoxFor(model => model.RegionalTv)
+        @Html.SiteCheckBoxFor(model => model.NationalTv)
+        @Html.SiteCheckBoxFor(model => model.OverseasTv)
     </div>
+</div>
 
-    <div class="form-horizontal">
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.WebsiteUrl, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.WebsiteUrl, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.WebsiteUrl, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.WebsiteVisitors, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.WebsiteVisitors, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.WebsiteVisitors, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.FacebookUrl, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FacebookUrl, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FacebookUrl, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.TwitterUrl, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TwitterUrl, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TwitterUrl, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.FlickrUrl, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FlickrUrl, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FlickrUrl, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.InstagramUrl, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.InstagramUrl, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.InstagramUrl, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.YoutubeUrl, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.YoutubeUrl, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.YoutubeUrl, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.VimeoUrl, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.VimeoUrl, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.VimeoUrl, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PinterestUrl, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PinterestUrl, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PinterestUrl, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="form-group col-md-9">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-            <div class="form-group col-md-3">
-                @Html.ActionLink("Back to Monthly Performance", "Index", "Months", new { id = Model.SiteId }, null)
-            </div>
-        </div>
+<div class="row">
+    <div class="form-group col-md-9">
+        @Html.LabelFor(model => model.WebsiteUrl, htmlAttributes: new { @for = "WebsiteUrl" })
+        @Html.SiteHelpFor(model => model.WebsiteUrl)
+        @Html.EditorFor(model => model.WebsiteUrl, new { htmlAttributes = new { @class = "form-control", @name = "WebsiteUrl", @style = "max-width: 500px;" } })
+        @Html.ValidationMessageFor(model => model.WebsiteUrl)
     </div>
-}
+    <div class="form-group col-md-3">
+        @Html.LabelFor(model => model.WebsiteVisitors, htmlAttributes: new { @for = "WebsiteVisitors" })
+        @Html.SiteHelpFor(model => model.WebsiteVisitors)
+        @Html.EditorFor(model => model.WebsiteVisitors, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.WebsiteVisitors)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.FacebookUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.FacebookUrl, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.FacebookUrl, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.TwitterUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.TwitterUrl, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.TwitterUrl, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.FlickrUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.FlickrUrl, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.FlickrUrl, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.InstagramUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.InstagramUrl, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.InstagramUrl, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.YoutubeUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.YoutubeUrl, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.YoutubeUrl, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.VimeoUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.VimeoUrl, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.VimeoUrl, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.PinterestUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.PinterestUrl, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.PinterestUrl, "", new { @class = "text-danger" })
+    </div>
+</div>
 

@@ -16,7 +16,7 @@
         .Select(d => d.ToString("MMM yyyy")).ToList();
 }
 <h2>@ViewBag.Title</h2>
-@Html.Partial("../Sites/_Details", @Model)
+@Html.Partial("_SiteDetailsPartial", @Model)
 
 <table class="table">
     <tr>

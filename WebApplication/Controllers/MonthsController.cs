@@ -74,6 +74,7 @@ namespace WebApplication.Controllers
         // GET: Months/Attention/117ca2a3-fb5a-4882-8e74-23cccf07db73
         public ActionResult Attention(Guid? id, string message) {return this.GetView(id, message);}
         public ActionResult Arrive(Guid? id, string message) { return this.GetView(id, message); }
+        public ActionResult Shop(Guid? id, string message) { return this.GetView(id, message); }
         private ActionResult GetView(Guid? id, string message)
         {
             if (id == null)

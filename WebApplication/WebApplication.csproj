@@ -197,6 +197,7 @@
     <Compile Include="Helpers\SiteCheckBoxForHelper.cs" />
     <Compile Include="Helpers\SiteHelpIconForHelper.cs" />
     <Compile Include="Helpers\SiteIsSelectedHelper.cs" />
+    <Compile Include="Helpers\SiteSectionLabelHelper.cs" />
     <Compile Include="Helpers\SiteSummaryIconsForHelper.cs" />
     <Compile Include="Migrations\201411262206024_InitialCreate.cs" />
     <Compile Include="Migrations\201411262206024_InitialCreate.Designer.cs">
@@ -264,6 +265,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Months\Arrive.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Views\Shared\_LoginPartial.cshtml">
       <SubType>Code</SubType>
     </Content>
@@ -313,7 +317,7 @@
     <Content Include="Views\Sites\Index.cshtml" />
     <Content Include="Views\Sites\Create.cshtml" />
     <Content Include="Views\Sites\Delete.cshtml" />
-    <Content Include="Views\Sites\_Details.cshtml" />
+    <Content Include="Views\Shared\_SiteDetailsPartial.cshtml" />
     <Content Include="Views\Sites\Edit.cshtml" />
     <Content Include="Views\Months\Create.cshtml" />
     <Content Include="Views\Months\Delete.cshtml" />
@@ -323,8 +327,9 @@
     <Content Include="Views\Sites\_CreateEdit.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MonthYearDateTime.cshtml" />
     <Content Include="Views\Account\Thanks.cshtml" />
-    <Content Include="Views\Months\Arrive.cshtml" />
-    <Content Include="Views\Months\_Navigation.cshtml" />
+    <Content Include="Views\Months\_Layout.cshtml" />
+    <Content Include="Views\Months\Shop.cshtml" />
+    <Content Include="Views\Shared\_PageTitlePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

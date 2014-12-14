@@ -17,10 +17,7 @@
     </div>
 </div>
 <div class="form-group">
-    <label>About the Site</label>
-    <a href="#" data-toggle="tooltip" data-title="Check the boxes which apply to your site">
-        <span class="glyphicon glyphicon-info-sign"></span>
-    </a>
+    @Html.SiteSectionLabel("About the Site", "Check the boxes which apply to your site")
     <div class="row form-inline">
         @Html.SiteCheckBoxFor(model => model.IsMuseum)
         @Html.SiteCheckBoxFor(model => model.IsAccredited)

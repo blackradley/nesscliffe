@@ -1,6 +1,14 @@
-﻿@using WebApplication.Helpers
+﻿@using Localization
+@using WebApplication.Helpers
 @model DataAccess.Month
-<div class="row">
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = Html.DisplayFor(model => model.MonthTime, "MonthYearDateTime");
+}
+@Html.Partial("_PageTitlePartial", Model.Site)
+@Html.Partial("_SiteDetailsPartial", Model.Site)
+@* VISITOR CYCLE NAVIGATION *@
+<div style="margin-bottom: 10px;">
     <ul class="nav nav-tabs">
         <li role="presentation" class="@Html.SiteIsSelected(action: "Attention")">
             <a href="@Url.Action("Attention", new { id = Model.Id})">Attention</a>
@@ -22,3 +30,20 @@
         </li>
     </ul>
 </div>
+@* MONTHLY PERFORMANCE DATA FORM *@
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+    @RenderBody()
+    <div class="row">
+        <div class="form-group col-md-9">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+        <div class="form-group col-md-3">
+            @Html.ActionLink("Back to " + Resources.LabelPerformanceData, "Index", "Months", new { id = Model.SiteId }, null)
+        </div>
+    </div>
+}
+

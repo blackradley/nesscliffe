@@ -4,7 +4,7 @@
     ViewBag.Title = "Delete this site?";
 }
 <h2>@ViewBag.Title</h2>
-@Html.Partial("../Sites/_Details", @Model)
+@Html.Partial("_SiteDetailsPartial", @Model)
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
