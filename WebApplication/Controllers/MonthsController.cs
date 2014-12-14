@@ -95,18 +95,31 @@ namespace WebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Attention(Month month) // TODO: replace the [Bind(Include = "
+        public ActionResult Attention(Month month) // TODO: replace the [Bind(Include = "MarketingSpend")]
         {
             if (ModelState.IsValid)
             {
-                _dataDb.Entry(month).State = EntityState.Modified;
-                _dataDb.Entry(month).Property(e => e.MonthTime).IsModified = false;
-                _dataDb.Entry(month).Property(e => e.SiteId).IsModified = false;
+                _dataDb.Entry(month).State = EntityState.Unchanged;
+                _dataDb.Entry(month).Property(e => e.MarketingSpend).IsModified = true;
                 _dataDb.SaveChanges();
-                return RedirectToAction("Attention", new { id = month.Id, message = "Attention has been updated." });
+                return RedirectToAction("Attention", new { id = month.Id, message = "Updated." });
             }
             return View(month);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Arrive(Month month) // TODO: replace the [Bind(Include = "HoursMonday")]
+        {
+            if (ModelState.IsValid)
+            {
+                _dataDb.Entry(month).State = EntityState.Unchanged;
+                _dataDb.Entry(month).Property(e => e.HoursMonday).IsModified = true;
+                _dataDb.SaveChanges();
+                return RedirectToAction("Arrive", new { id = month.Id, message = "Updated." });
+            }
+            return View(month);
+        }
+
 
         // GET: Months/Delete/5
         public ActionResult Delete(Guid? id)
