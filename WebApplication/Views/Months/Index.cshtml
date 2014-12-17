@@ -24,7 +24,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Months.First().MonthTime)
         </th>
-        <th style="font-weight:normal; padding: 0px; width: 33%;">
+        <th style="font-weight:normal; padding: 0; width: 33%;">
             @using (Html.BeginForm("Create", "Months", new { Id = @Model.Id }, FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
@@ -32,7 +32,7 @@
                 {
                     <div>
                         @Html.DropDownList("MonthTime", new SelectList(availableDates))
-                        <input type="submit" value="Add New Month" class="btn btn-link" />
+                        <input type="submit" value="Add This Month" class="btn btn-link" />
                     </div>
                 }
             }

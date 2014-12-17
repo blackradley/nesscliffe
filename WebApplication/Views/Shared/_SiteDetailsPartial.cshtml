@@ -1,20 +1,19 @@
 ﻿@using WebApplication.Helpers
-@model DataAccess.Month
-@{ DataAccess.Site site = Model.Site; }
+@model DataAccess.Site
 <div class="row">
     <div class="col-md-6">
-        @Html.LabelFor(model => site.Name)
-        @Html.ActionLink(site.Name, "Edit", "Sites", new { id = site.Id }, null)
+        @Html.LabelFor(model => model.Name)
+        @Html.ActionLink(Model.Name, "Edit", "Sites", new { id = Model.Id }, null)
     </div>
     <div class="col-md-3">
-        @Html.LabelFor(model => site.Postcode)
-        <a href="@(String.Format("https://www.google.com/maps?q={0}", site.Postcode))" target="blank" style="text-transform:uppercase;">
-            @Html.DisplayFor(model => site.Postcode, new { htmlAttributes = new { @style = "text-transform:uppercase" } })
+        @Html.LabelFor(model => model.Postcode)
+        <a href="@(String.Format("https://www.google.com/maps?q={0}", Model.Postcode))" target="blank" style="text-transform:uppercase;">
+            @Html.DisplayFor(model => model.Postcode, new { htmlAttributes = new { @style = "text-transform:uppercase" } })
         </a>
     </div>
     <div class="col-md-3 hidden-sm hidden-xs">
         <label>Features</label>
-        @Html.SiteSummaryIconsFor(site)
+        @Html.SiteSummaryIconsFor(ViewData.Model)
     </div>
 </div>
 

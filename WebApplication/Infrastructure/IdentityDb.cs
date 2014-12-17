@@ -24,8 +24,18 @@ namespace WebApplication.Infrastructure
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{
         //    base.OnModelCreating(modelBuilder);
-        //    modelBuilder.Entity<IdentityUser>().ToTable("AspNetUsers").Property(p => p.Id).HasColumnName("UserId"); ;
-        //    modelBuilder.Entity<ApplicationUser>().ToTable("AspNetUsers").Property(p => p.Id).HasColumnName("UserId");
+        //    modelBuilder.Entity<Month>().HasKey(pk => pk.Id).ToTable("Months");
+        //    modelBuilder.Entity<MonthAttention>().HasKey(pk => pk.Id).ToTable("Months");
+        //    modelBuilder.Entity<Month>()
+        //        .HasRequired(e => e.MonthAttention)
+        //        .WithRequiredPrincipal(c => c.Month);
+
+        //    modelBuilder.Entity<MonthArrive>().HasKey(pk => pk.Id).ToTable("Months");
+        //    modelBuilder.Entity<Month>()
+        //        .HasRequired(e => e.MonthArrive)
+        //        .WithRequiredPrincipal(c => c.Month);
+
+
         //}
     }
 }

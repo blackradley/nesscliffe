@@ -1,9 +1,9 @@
-﻿@model DataAccess.Month
+﻿@model DataAccess.MonthAttention
 @using Localization
 @using WebApplication.Helpers
 @{
     Layout = "_Layout.cshtml";
-    ViewBag.Title = Html.DisplayFor(model => model.MonthTime, "MonthYearDateTime");
+    ViewBag.Title = Html.DisplayFor(model => model.Month.MonthTime, "MonthYearDateTime");
 }
 <div class="row">
     <div class="form-group col-md-3">

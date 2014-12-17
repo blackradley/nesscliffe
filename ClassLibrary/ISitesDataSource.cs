@@ -9,7 +9,9 @@ namespace DataAccess
 {
     public interface ISitesDataSource
     {
-        IQueryable<Month> Months { get; }
         IQueryable<Site> Sites { get; }
+        IQueryable<Month> Months { get; }
+        IQueryable<MonthAttention> MonthAttentions { get; }
+        //IQueryable<MonthArrive> MonthArrives { get; }
     }
 }

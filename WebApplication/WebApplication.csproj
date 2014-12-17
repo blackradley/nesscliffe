@@ -200,9 +200,9 @@
     <Compile Include="Helpers\SiteIsSelectedHelper.cs" />
     <Compile Include="Helpers\SiteSectionLabelHelper.cs" />
     <Compile Include="Helpers\SiteSummaryIconsForHelper.cs" />
-    <Compile Include="Migrations\201411262206024_InitialCreate.cs" />
-    <Compile Include="Migrations\201411262206024_InitialCreate.Designer.cs">
-      <DependentUpon>201411262206024_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201412171419524_InitialCreate.cs" />
+    <Compile Include="Migrations\201412171419524_InitialCreate.Designer.cs">
+      <DependentUpon>201412171419524_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Infrastructure\DataDb.cs" />
@@ -320,7 +320,6 @@
     <Content Include="Views\Sites\Delete.cshtml" />
     <Content Include="Views\Shared\_SiteDetailsPartial.cshtml" />
     <Content Include="Views\Sites\Edit.cshtml" />
-    <Content Include="Views\Months\Create.cshtml" />
     <Content Include="Views\Months\Delete.cshtml" />
     <Content Include="Views\Months\Details.cshtml" />
     <Content Include="Views\Months\Attention.cshtml" />
@@ -354,8 +353,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201411262206024_InitialCreate.resx">
-      <DependentUpon>201411262206024_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201412171419524_InitialCreate.resx">
+      <DependentUpon>201412171419524_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

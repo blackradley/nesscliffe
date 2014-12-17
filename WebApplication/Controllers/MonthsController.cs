@@ -59,22 +59,35 @@ namespace WebApplication.Controllers
         public ActionResult Create([Bind(Include = "Id, MonthTime")] Guid id, Month month)
         {
             // TODO: check that the user is allowed to do this.
-            if (ModelState.IsValid)
-            {
-                month.Id = Guid.NewGuid();
-                month.SiteId = id;
-                _dataDb.Months.Add(month);
-                _dataDb.SaveChanges();
-                return RedirectToAction("Attention", new { Id = month.Id });
-            }
-
-            return View(month);
+            month.Id = Guid.NewGuid();
+            month.SiteId = id;
+            month.MonthAttention = new MonthAttention();
+            // Do not check if the model is valid because it certainly isn't at this point.
+            _dataDb.Months.Add(month);
+            _dataDb.Configuration.ValidateOnSaveEnabled = false;
+            _dataDb.SaveChanges();
+            return RedirectToAction("Attention", new { Id = month.Id });
         }
 
         // GET: Months/Attention/117ca2a3-fb5a-4882-8e74-23cccf07db73
-        public ActionResult Attention(Guid? id, string message) {return this.GetView(id, message);}
+        public ActionResult Attention(Guid? id, string message)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var monthAttention = _dataDb.MonthAttentions.Find(id);
+            if (monthAttention == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Message = message;
+            return View(monthAttention);
+        }
+
         public ActionResult Arrive(Guid? id, string message) { return this.GetView(id, message); }
         public ActionResult Shop(Guid? id, string message) { return this.GetView(id, message); }
+
         private ActionResult GetView(Guid? id, string message)
         {
             if (id == null)
@@ -95,43 +108,50 @@ namespace WebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Attention(Month month) // TODO: replace the [Bind(Include = "MarketingSpend")]
+        public ActionResult Attention(MonthAttention month) // TODO: replace the [Bind(Include = "MarketingSpend")]
         {
             if (ModelState.IsValid)
             {
-                _dataDb.Entry(month).State = EntityState.Unchanged;
-                _dataDb.Entry(month).Property(e => e.MarketingSpend).IsModified = true;
-                _dataDb.Entry(month).Property(e => e.RegionalTv).IsModified = true;
-                _dataDb.Entry(month).Property(e => e.NationalTv).IsModified = true;
-                _dataDb.Entry(month).Property(e => e.OverseasTv).IsModified = true;
-                _dataDb.Entry(month).Property(e => e.WebsiteUrl).IsModified = true;
-                _dataDb.Entry(month).Property(e => e.WebsiteVisitors).IsModified = true;
-                _dataDb.Entry(month).Property(e => e.FacebookUrl).IsModified = true;
-                _dataDb.Entry(month).Property(e => e.TwitterUrl).IsModified = true;
-                _dataDb.Entry(month).Property(e => e.FlickrUrl).IsModified = true;
-                _dataDb.Entry(month).Property(e => e.InstagramUrl).IsModified = true;
-                _dataDb.Entry(month).Property(e => e.YoutubeUrl).IsModified = true;
-                _dataDb.Entry(month).Property(e => e.VimeoUrl).IsModified = true;
-                _dataDb.Entry(month).Property(e => e.PinterestUrl).IsModified = true;
+                //var monthAttention = _dataDb.MonthAttentions.FirstOrDefault(m => m.Id == month.Id);
+                //if (monthAttention == null)
+                //{
+                //    monthAttention = _dataDb.MonthAttentions.Create();
+                //    monthAttention = month;
+                //}
+                //_dataDb.Entry(month).State = EntityState.Unchanged;
+                //_dataDb.Entry(month).Property(e => e.MarketingSpend).IsModified = true;
+                //_dataDb.Entry(month).Property(e => e.RegionalTv).IsModified = true;
+                //_dataDb.Entry(month).Property(e => e.NationalTv).IsModified = true;
+                //_dataDb.Entry(month).Property(e => e.OverseasTv).IsModified = true;
+                //_dataDb.Entry(month).Property(e => e.WebsiteUrl).IsModified = true;
+                //_dataDb.Entry(month).Property(e => e.WebsiteVisitors).IsModified = true;
+                //_dataDb.Entry(month).Property(e => e.FacebookUrl).IsModified = true;
+                //_dataDb.Entry(month).Property(e => e.TwitterUrl).IsModified = true;
+                //_dataDb.Entry(month).Property(e => e.FlickrUrl).IsModified = true;
+                //_dataDb.Entry(month).Property(e => e.InstagramUrl).IsModified = true;
+                //_dataDb.Entry(month).Property(e => e.YoutubeUrl).IsModified = true;
+                //_dataDb.Entry(month).Property(e => e.VimeoUrl).IsModified = true;
+                //_dataDb.Entry(month).Property(e => e.PinterestUrl).IsModified = true;
                 _dataDb.SaveChanges();
                 return RedirectToAction("Attention", new { id = month.Id, message = "Updated." });
             }
             return View(month);
+
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Arrive(Month month) // TODO: replace the [Bind(Include = "HoursMonday")]
-        {
-            if (ModelState.IsValid)
-            {
-                _dataDb.Entry(month).State = EntityState.Unchanged;
-                _dataDb.Entry(month).Property(e => e.HoursMonday).IsModified = true;
-                _dataDb.Entry(month).Property(e => e.HoursTuesday).IsModified = true;
-                _dataDb.SaveChanges();
-                return RedirectToAction("Arrive", new { id = month.Id, message = "Updated." });
-            }
-            return View(month);
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Arrive(MonthArrive month) // TODO: replace the [Bind(Include = "HoursMonday")]
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _dataDb.Entry(month).State = EntityState.Unchanged;
+        //        _dataDb.Entry(month).Property(e => e.HoursMonday).IsModified = true;
+        //        _dataDb.Entry(month).Property(e => e.HoursTuesday).IsModified = true;
+        //        _dataDb.SaveChanges();
+        //        return RedirectToAction("Arrive", new { id = month.Id, message = "Updated." });
+        //    }
+        //    return View(month);
+        //}
 
 
         // GET: Months/Delete/5
