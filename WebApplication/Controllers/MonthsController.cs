@@ -101,6 +101,18 @@ namespace WebApplication.Controllers
             {
                 _dataDb.Entry(month).State = EntityState.Unchanged;
                 _dataDb.Entry(month).Property(e => e.MarketingSpend).IsModified = true;
+                _dataDb.Entry(month).Property(e => e.RegionalTv).IsModified = true;
+                _dataDb.Entry(month).Property(e => e.NationalTv).IsModified = true;
+                _dataDb.Entry(month).Property(e => e.OverseasTv).IsModified = true;
+                _dataDb.Entry(month).Property(e => e.WebsiteUrl).IsModified = true;
+                _dataDb.Entry(month).Property(e => e.WebsiteVisitors).IsModified = true;
+                _dataDb.Entry(month).Property(e => e.FacebookUrl).IsModified = true;
+                _dataDb.Entry(month).Property(e => e.TwitterUrl).IsModified = true;
+                _dataDb.Entry(month).Property(e => e.FlickrUrl).IsModified = true;
+                _dataDb.Entry(month).Property(e => e.InstagramUrl).IsModified = true;
+                _dataDb.Entry(month).Property(e => e.YoutubeUrl).IsModified = true;
+                _dataDb.Entry(month).Property(e => e.VimeoUrl).IsModified = true;
+                _dataDb.Entry(month).Property(e => e.PinterestUrl).IsModified = true;
                 _dataDb.SaveChanges();
                 return RedirectToAction("Attention", new { id = month.Id, message = "Updated." });
             }
@@ -114,6 +126,7 @@ namespace WebApplication.Controllers
             {
                 _dataDb.Entry(month).State = EntityState.Unchanged;
                 _dataDb.Entry(month).Property(e => e.HoursMonday).IsModified = true;
+                _dataDb.Entry(month).Property(e => e.HoursTuesday).IsModified = true;
                 _dataDb.SaveChanges();
                 return RedirectToAction("Arrive", new { id = month.Id, message = "Updated." });
             }

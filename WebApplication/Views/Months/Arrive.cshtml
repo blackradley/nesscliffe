@@ -5,12 +5,46 @@
     Layout = "_Layout.cshtml";
     ViewBag.Title = Html.DisplayFor(model => model.MonthTime, "MonthYearDateTime");
 }
+@Html.SiteSectionLabel("Opening Times", "Fill in the number of hours your site was open")
 <div class="row">
     <div class="form-group col-md-3">
-        @Html.LabelFor(model => model.HoursMonday, htmlAttributes: new { @for = "HoursMonday" })
-        @Html.SiteHelpFor(model => model.HoursMonday)
-        @Html.EditorFor(model => model.HoursMonday, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.HoursMonday)
+        @Html.SiteTextBoxFor(model => model.HoursMonday)
+    </div>
+    <div class="form-group col-md-3">
+        @Html.SiteTextBoxFor(model => model.HoursTuesday)
+    </div>
+    <div class="form-group col-md-3">
+        @Html.SiteTextBoxFor(model => model.HoursWednesday)
+    </div>
+    <div class="form-group col-md-3">
+        @Html.SiteTextBoxFor(model => model.HoursThursday)
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="form-group col-md-3">
+        @Html.SiteTextBoxFor(model => model.HoursFriday)
+    </div>
+    <div class="form-group col-md-3">
+        @Html.SiteTextBoxFor(model => model.HoursSaturday)
+    </div>
+    <div class="form-group col-md-3">
+        @Html.SiteTextBoxFor(model => model.HoursSunday)
+    </div>
+</div>
+
+@Html.SiteSectionLabel("Admissions", "Tell us about the visitors to your site")
+
+<div class="row">
+    <div class="form-group col-md-3">
+        @Html.SiteTextBoxFor(model => model.Visitors)
+    </div>
+    <div class="form-group col-md-3">
+        @Html.SiteTextBoxFor(model => model.IncomeAdmissions)
+    </div>
+    <div class="form-group col-md-3">
+        @Html.SiteTextBoxFor(model => model.IncomeAdditional)
     </div>
 </div>
 

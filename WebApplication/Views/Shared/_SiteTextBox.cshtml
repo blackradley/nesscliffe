@@ -1,0 +1,6 @@
+﻿@using WebApplication.Helpers
+@model System.Linq.Expressions.Expression
+@Html.LabelFor(Model, htmlAttributes: new { @for = "WebsiteVisitors" })
+@Html.SiteHelpFor(Model)
+@Html.EditorFor(model => model.WebsiteVisitors, new { htmlAttributes = new { @class = "form-control" } })
+@Html.ValidationMessageFor(model => model.WebsiteVisitors)

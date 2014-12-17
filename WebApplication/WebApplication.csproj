@@ -194,6 +194,7 @@
     </Compile>
     <Compile Include="Helpers\GetAttributeFromHelper.cs" />
     <Compile Include="Helpers\SiteCheckBoxDisplayForHelper.cs" />
+    <Compile Include="Helpers\SiteTextBoxForHelper.cs" />
     <Compile Include="Helpers\SiteCheckBoxForHelper.cs" />
     <Compile Include="Helpers\SiteHelpIconForHelper.cs" />
     <Compile Include="Helpers\SiteIsSelectedHelper.cs" />
@@ -330,6 +331,7 @@
     <Content Include="Views\Months\_Layout.cshtml" />
     <Content Include="Views\Months\Shop.cshtml" />
     <Content Include="Views\Shared\_PageTitlePartial.cshtml" />
+    <Content Include="Views\Shared\_SiteTextBox.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
