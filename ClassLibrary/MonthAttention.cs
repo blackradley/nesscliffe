@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    [Table("Months")]
-    public class MonthAttention
+    [Table("MonthsAttention")]
+    public class MonthAttention : Month
     {
-         [Key, ForeignKey("Month")]
-        public virtual Guid Id { get; set; }
+        //[Key, ForeignKey("Month")]
+        //public virtual Guid Id { get; set; }
         // Navigation property back to the month
-        public virtual Month Month { get; set; }
+        //public virtual Month Month { get; set; }
 
         #region ATTENTION
         [Display(Name = "Marketing Spend", Description = "How much have you spent on marketing this month?")]
@@ -31,7 +31,6 @@ namespace DataAccess
         [Display(Name = "Website Url", Description = "Has your web site address?")]
         public virtual String WebsiteUrl { get; set; }
         [Display(Name = "Website Visitors", Description = "How many visitors did your website get?")]
-        [Required(ErrorMessage = "Please enter the number of website visitors")]
         public virtual Nullable<int> WebsiteVisitors { get; set; }
         [Display(Name = "Facebook Url", Description = "If you have a Facebook page, what it the address?")]
         public virtual String FacebookUrl { get; set; }

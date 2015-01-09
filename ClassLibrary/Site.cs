@@ -85,11 +85,6 @@ namespace DataAccess
             { 4, "Hectares" }
         };
 
-
-
-
-
-
     }
 
 }

@@ -12,6 +12,6 @@ namespace DataAccess
         IQueryable<Site> Sites { get; }
         IQueryable<Month> Months { get; }
         IQueryable<MonthAttention> MonthAttentions { get; }
-        //IQueryable<MonthArrive> MonthArrives { get; }
+        IQueryable<MonthArrive> MonthArrives { get; }
     }
 }

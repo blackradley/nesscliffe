@@ -9,9 +9,11 @@ namespace WebApplication.Migrations
     {
         public Configuration()
         {
-            // WARN: Turn these suckers off after the first live deployment.
-            AutomaticMigrationsEnabled = false;
-            AutomaticMigrationDataLossAllowed = false;
+            // No Automatic Migrations.  The Migrations are handled by the scripts
+            // in the Migrations directory and are run by the Global.asax if they 
+            // are needed.
+            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
             MigrationsDirectory = @"Migrations";
         }
 

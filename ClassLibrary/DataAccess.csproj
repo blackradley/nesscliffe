@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="ApplicationUser.cs" />
     <Compile Include="ISitesDataSource.cs" />
+    <Compile Include="MonthArrive.cs" />
     <Compile Include="MonthAttention.cs" />
     <Compile Include="Month.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

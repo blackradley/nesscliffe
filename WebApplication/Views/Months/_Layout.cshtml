@@ -1,32 +1,36 @@
-﻿@using Localization
+﻿@using DataAccess
+@using Localization
 @using WebApplication.Helpers
-@model DataAccess.Month
+@using WebApplication.Models
+@model BaseMonthViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = Html.DisplayFor(model => model.MonthTime, "MonthYearDateTime");
+    ViewBag.Title = Html.DisplayFor(model => model.Month.MonthTime, "MonthYearDateTime");
+    var month = Model.Month;
+    var site = Model.Month.Site;
 }
 @Html.Partial("_PageTitlePartial")
-@Html.Partial("_SiteDetailsPartial", Model.Site)
+@Html.Partial("_SiteDetailsPartial", site)
 @* VISITOR CYCLE NAVIGATION *@
 <div style="margin-bottom: 10px;">
     <ul class="nav nav-tabs">
         <li role="presentation" class="@Html.SiteIsSelected(action: "Attention")">
-            <a href="@Url.Action("Attention", new { id = Model.Id})">Attention</a>
+            <a href="@Url.Action("Attention", new { id = month.Id })">Attention</a>
         </li>
         <li role="presentation" class="@Html.SiteIsSelected(action: "Arrive")">
-            <a href="@Url.Action("Arrive", new { id = Model.Id})">Arriving</a>
+            <a href="@Url.Action("Arrive", new { id = month.Id })">Arriving</a>
         </li>
         <li role="presentation" class="@Html.SiteIsSelected(action: "Shop")">
-            <a href="@Url.Action("Shop", new { id = Model.Id})">Shopping</a>
+            <a href="@Url.Action("Shop", new { id = month.Id })">Shopping</a>
         </li>
         <li role="presentation" class="@Html.SiteIsSelected(action: "Eat")">
-            <a href="@Url.Action("Eat", new { id = Model.Id})">Refreshment</a>
+            <a href="@Url.Action("Eat", new { id = month.Id })">Refreshment</a>
         </li>
         <li role="presentation" class="@Html.SiteIsSelected(action: "Donate")">
-            <a href="@Url.Action("Donate", new { id = Model.Id})">Donation</a>
+            <a href="@Url.Action("Donate", new { id = month.Id })">Donation</a>
         </li>
         <li role="presentation" class="@Html.SiteIsSelected(action: "Experience")">
-            <a href="@Url.Action("Experience", new { id = Model.Id})">Experience</a>
+            <a href="@Url.Action("Experience", new { id = month.Id })">Experience</a>
         </li>
     </ul>
 </div>
@@ -35,14 +39,13 @@
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.Id)
     @RenderBody()
     <div class="row">
         <div class="form-group col-md-9">
             <input type="submit" value="Save" class="btn btn-default" />
         </div>
         <div class="form-group col-md-3">
-            @Html.ActionLink("Back to " + Resources.LabelPerformanceData, "Index", "Months", new { id = Model.SiteId }, null)
+            @Html.ActionLink("Back to " + Resources.LabelPerformanceData, "Index", "Months", new { id = Model.Month.SiteId }, null)
         </div>
     </div>
 }

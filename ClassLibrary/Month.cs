@@ -13,17 +13,20 @@ namespace DataAccess
     {
         [Key]
         public virtual Guid Id { get; set; }
-        // Foreign key
+        // Foreign key and navigation property back to site
+
         public virtual Guid SiteId { get; set; }
-        // Navigation property back to site
+        [ForeignKey("SiteId")]
         public virtual Site Site { get; set; }
 
+        [Index(IsUnique = true)] 
         [Display(Name = "Month")]
+        [Column(TypeName = "DateTime2")]
         public virtual DateTime MonthTime { get; set; }
 
-        // Navigation properties to the data 
-        [Required]
-        public virtual MonthAttention MonthAttention { get; set; }
+        // Navigation properties to the data for each category
+        //[Required]
+        //public virtual MonthAttention MonthAttention { get; set; }
         //[Required]
         //public virtual MonthArrive MonthArrive { get; set; }
     }

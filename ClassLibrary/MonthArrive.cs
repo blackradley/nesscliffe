@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    [Table("Months")]
-    public class MonthArrive
+    [Table("MonthsArrive")]
+    public class MonthArrive : Month
     {
-        [Key, ForeignKey("Month")]
-        public virtual Guid Id { get; set; }
-        // Navigation property back to the month
-        public virtual Month Month { get; set; }
+        //[Key, ForeignKey("Month")]
+        //public virtual Guid Id { get; set; }
+        //// Navigation property back to the month
+        //public virtual Month Month { get; set; }
 
         #region ARRIVAL
         [Display(Name = "Monday", Description = "How many hours were you open on Monday?")]

@@ -16,5 +16,20 @@ namespace WebApplication.Models
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
     }
-      
+
+    public abstract class BaseMonthViewModel
+    {
+        public Month Month { get; set; }
+        public Site Site { get; set; }
+    }
+
+    public class AttentionViewModel : BaseMonthViewModel
+    {
+        public MonthAttention MonthAttention { get; set; }
+    }
+
+    public class ArriveViewModel : BaseMonthViewModel
+    {
+        public MonthArrive MonthArrive { get; set; }
+    }
 }

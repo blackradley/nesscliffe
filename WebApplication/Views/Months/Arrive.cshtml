@@ -1,36 +1,37 @@
-﻿@model DataAccess.Month
-@using Localization
+﻿@using Localization
 @using WebApplication.Helpers
+@using WebApplication.Models
+@model ArriveViewModel
 @{
     Layout = "_Layout.cshtml";
-    ViewBag.Title = Html.DisplayFor(model => model.MonthTime, "MonthYearDateTime");
+    ViewBag.Title = Html.DisplayFor(model => model.Month.MonthTime, "MonthYearDateTime");
 }
 @Html.SiteSectionLabel("Opening Times", "Fill in the number of hours your site was open")
 <div class="row">
     <div class="form-group col-md-3">
-        @Html.SiteTextBoxFor(model => model.HoursMonday)
+        @Html.SiteTextBoxFor(model => model.MonthArrive.HoursMonday)
     </div>
     <div class="form-group col-md-3">
-        @Html.SiteTextBoxFor(model => model.HoursTuesday)
+        @Html.SiteTextBoxFor(model => model.MonthArrive.HoursTuesday)
     </div>
     <div class="form-group col-md-3">
-        @Html.SiteTextBoxFor(model => model.HoursWednesday)
+        @Html.SiteTextBoxFor(model => model.MonthArrive.HoursWednesday)
     </div>
     <div class="form-group col-md-3">
-        @Html.SiteTextBoxFor(model => model.HoursThursday)
+        @Html.SiteTextBoxFor(model => model.MonthArrive.HoursThursday)
     </div>
 </div>
 
 
 <div class="row">
     <div class="form-group col-md-3">
-        @Html.SiteTextBoxFor(model => model.HoursFriday)
+        @Html.SiteTextBoxFor(model => model.MonthArrive.HoursFriday)
     </div>
     <div class="form-group col-md-3">
-        @Html.SiteTextBoxFor(model => model.HoursSaturday)
+        @Html.SiteTextBoxFor(model => model.MonthArrive.HoursSaturday)
     </div>
     <div class="form-group col-md-3">
-        @Html.SiteTextBoxFor(model => model.HoursSunday)
+        @Html.SiteTextBoxFor(model => model.MonthArrive.HoursSunday)
     </div>
 </div>
 
@@ -38,13 +39,13 @@
 
 <div class="row">
     <div class="form-group col-md-3">
-        @Html.SiteTextBoxFor(model => model.Visitors)
+        @Html.SiteTextBoxFor(model => model.MonthArrive.Visitors)
     </div>
     <div class="form-group col-md-3">
-        @Html.SiteTextBoxFor(model => model.IncomeAdmissions)
+        @Html.SiteTextBoxFor(model => model.MonthArrive.IncomeAdmissions)
     </div>
     <div class="form-group col-md-3">
-        @Html.SiteTextBoxFor(model => model.IncomeAdditional)
+        @Html.SiteTextBoxFor(model => model.MonthArrive.IncomeAdditional)
     </div>
 </div>
 
