@@ -14,7 +14,6 @@ namespace DataAccess
         [Key]
         public virtual Guid Id { get; set; }
         // Foreign key and navigation property back to site
-
         public virtual Guid SiteId { get; set; }
         [ForeignKey("SiteId")]
         public virtual Site Site { get; set; }
@@ -26,8 +25,8 @@ namespace DataAccess
 
         // Navigation properties to the data for each category
         //[Required]
-        //public virtual MonthAttention MonthAttention { get; set; }
+        public virtual MonthAttention MonthAttention { get; set; }
         //[Required]
-        //public virtual MonthArrive MonthArrive { get; set; }
+        public virtual MonthArrive MonthArrive { get; set; }
     }
 }

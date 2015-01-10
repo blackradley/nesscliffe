@@ -73,18 +73,16 @@ namespace WebApplication.Controllers
         //// GET: Months/Attention/117ca2a3-fb5a-4882-8e74-23cccf07db73
         public ActionResult Attention(Guid id, string message)
         {
-            // Create the view model for the attention category for the month in question.
-            // TODO: Explain why I can't just navigate to the Site.  It seems that EF can't
-            // because there are separate models on a one months table.
-
             var month = _dataDb.Months.Find(id);
-            if (!(month is MonthAttention)) // it has not been previously saved
+            var monthAttention = month.MonthAttention;
+            if (monthAttention == null) // it has not been previously saved
             {
-                var monthAttention = new MonthAttention()
-                {
-                    Id = month.Id
-                };
-                _dataDb.MonthAttentions.Add(monthAttention);
+                monthAttention = new MonthAttention();
+                month.MonthAttention = monthAttention;
+
+                var monthArrive = new MonthArrive();
+                month.MonthArrive = monthArrive;
+                _dataDb.Configuration.ValidateOnSaveEnabled = false;
                 _dataDb.SaveChanges();
             }
 
@@ -134,15 +132,16 @@ namespace WebApplication.Controllers
             // TODO: Explain why I can't just navigate to the Site.  It seems that EF can't
             // because there are separate models on a one months table.
             var monthArrive = _dataDb.MonthArrives.Find(id);
-            var site = _dataDb.Sites.Find(monthArrive.SiteId);
-            var arriveViewModel = new ArriveViewModel()
-            {
-                Site = site,
-                Month = monthArrive,
-                MonthArrive = monthArrive
-            };
+            //var site = _dataDb.Sites.Find(monthArrive.SiteId);
+            //var arriveViewModel = new ArriveViewModel()
+            //{
+            //    Site = site,
+            //    Month = monthArrive,
+            //    MonthArrive = monthArrive
+            //};
             ViewBag.Message = message;
-            return View("Arrive", arriveViewModel);
+            //return View("Arrive", arriveViewModel);
+            return View("Arrive");
             
         }
         public ActionResult Shop(Guid? id, string message) { return this.GetView(id, message); }
