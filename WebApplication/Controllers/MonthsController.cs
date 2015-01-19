@@ -57,12 +57,15 @@ namespace WebApplication.Controllers
         public ActionResult Create([Bind(Include = "SiteId, MonthTime")] Guid siteId, DateTime monthTime)
         {
             // TODO: check that the user is allowed to do this.
+            // then create a new month.
             var month = new Month()
             {
                 SiteId = siteId,
                 Id = Guid.NewGuid(),
                 MonthTime = monthTime
             };
+            month.MonthAttention = new MonthAttention();
+            month.MonthArrive = new MonthArrive();
             // Do not check if the model is valid because it certainly isn't at this point.
             _dataDb.Months.Add(month);
             _dataDb.Configuration.ValidateOnSaveEnabled = false;
@@ -101,8 +104,7 @@ namespace WebApplication.Controllers
             var attentionViewModel = new AttentionViewModel()
             {
                 Site = month.Site,
-                Month = month,
-                MonthAttention = monthAttention
+                Month = month
             };
             if (ModelState.IsValid)
             {
