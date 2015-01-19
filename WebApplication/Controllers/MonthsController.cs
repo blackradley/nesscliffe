@@ -8,11 +8,13 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DataAccess;
+using Microsoft.AspNet.Identity;
 using WebApplication.Infrastructure;
 using WebApplication.Models;
 
 namespace WebApplication.Controllers
 {
+    [Authorize]
     public class MonthsController : Controller
     {
         private readonly DataDb _dataDb = new DataDb();
@@ -71,29 +73,20 @@ namespace WebApplication.Controllers
         }
 
         //// GET: Months/Attention/117ca2a3-fb5a-4882-8e74-23cccf07db73
-        public ActionResult Attention(Guid id, string message)
+        public ActionResult Attention(Guid id)
         {
             var month = _dataDb.Months.Find(id);
-            var monthAttention = month.MonthAttention;
-            if (monthAttention == null) // it has not been previously saved
-            {
-                monthAttention = new MonthAttention();
-                month.MonthAttention = monthAttention;
-
-                var monthArrive = new MonthArrive();
-
-                month.MonthArrive = monthArrive;
-                _dataDb.Configuration.ValidateOnSaveEnabled = false;
-                _dataDb.SaveChanges();
-            }
-
             var attentionViewModel = new AttentionViewModel()
             {
                 Site = month.Site,
-                Month = month
+                Month = month,
+                MonthAttention = month.MonthAttention
             };
-
-            //ViewBag.Message = message;
+            // Confirm the user owns this month.
+            if (User.Identity.GetUserId() != attentionViewModel.Site.UserId)
+            {
+                return RedirectToAction("Index", "Sites", new {message = "Your IP and behaviour has been logged."});
+            }
             return View("Attention", attentionViewModel);
         }
 
@@ -105,13 +98,12 @@ namespace WebApplication.Controllers
         public ActionResult Attention(Guid id, MonthAttention monthAttention) // TODO: replace the [Bind(Include = "MarketingSpend")]
         {
             var month = _dataDb.Months.Find(id);
-            var site = month.Site;
             var attentionViewModel = new AttentionViewModel()
             {
-                Site = site,
-                Month = month
+                Site = month.Site,
+                Month = month,
+                MonthAttention = monthAttention
             };
-
             if (ModelState.IsValid)
             {
                 monthAttention.Id = id; // The Id needs to be set because it isn't part of the monthAttention
@@ -129,22 +121,20 @@ namespace WebApplication.Controllers
 
         public ActionResult Arrive(Guid id, string message)
         {
-            // Create the view model for the attention category for the month in question.
-            // TODO: Explain why I can't just navigate to the Site.  It seems that EF can't
-            // because there are separate models on a one months table.
-            var monthArrive = _dataDb.MonthArrives.Find(id);
-            //var site = _dataDb.Sites.Find(monthArrive.SiteId);
-            //var arriveViewModel = new ArriveViewModel()
-            //{
-            //    Site = site,
-            //    Month = monthArrive,
-            //    MonthArrive = monthArrive
-            //};
-            ViewBag.Message = message;
-            //return View("Arrive", arriveViewModel);
-            return View("Arrive");
-            
+            var month = _dataDb.Months.Find(id);
+            var monthArrive = month.MonthArrive;
+            var arriveViewModel = new ArriveViewModel()
+            {
+                Site = month.Site,
+                Month = month
+            };
+            return View("Arrive", arriveViewModel);           
         }
+
+
+
+
+
         public ActionResult Shop(Guid? id, string message) { return this.GetView(id, message); }
 
         private ActionResult GetView(Guid? id, string message)
