@@ -81,6 +81,7 @@ namespace WebApplication.Controllers
                 month.MonthAttention = monthAttention;
 
                 var monthArrive = new MonthArrive();
+
                 month.MonthArrive = monthArrive;
                 _dataDb.Configuration.ValidateOnSaveEnabled = false;
                 _dataDb.SaveChanges();

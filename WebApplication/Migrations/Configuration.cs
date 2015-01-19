@@ -12,8 +12,8 @@ namespace WebApplication.Migrations
             // No Automatic Migrations.  The Migrations are handled by the scripts
             // in the Migrations directory and are run by the Global.asax if they 
             // are needed.
-            AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
+            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationDataLossAllowed = false;
             MigrationsDirectory = @"Migrations";
         }
 
