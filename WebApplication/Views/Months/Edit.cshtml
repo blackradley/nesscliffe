@@ -3,62 +3,49 @@
 @using WebApplication.Models
 @model SiteAndMonthViewModel
 @{
-    Layout = "_Layout.cshtml";
     ViewBag.Title = Html.DisplayFor(model => model.Month.MonthTime, "MonthYearDateTime");
+    var month = Model.Month;
+    var site = Model.Site;
 }
-<div class="row">
-    <div class="form-group col-md-3">
-        @Html.SiteTextBoxFor(model => model.Month.MarketingSpend)
-    </div>
+@Html.Partial("_PageTitlePartial")
+@Html.Partial("_SiteDetailsPartial", Model.Site)
+@* VISITOR CYCLE NAVIGATION *@
+<div style="margin-bottom: 10px;">
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="@Html.SiteIsSelected(action: "Attention")">
+            <a href="@Url.Action("Attention", new { id = month.Id })">Attention</a>
+        </li>
+        <li role="presentation" class="@Html.SiteIsSelected(action: "Arrive")">
+            <a href="@Url.Action("Arrive", new { id = month.Id })">Arriving</a>
+        </li>
+        <li role="presentation" class="@Html.SiteIsSelected(action: "Shop")">
+            <a href="@Url.Action("Shop", new { id = month.Id })">Shopping</a>
+        </li>
+        <li role="presentation" class="@Html.SiteIsSelected(action: "Eat")">
+            <a href="@Url.Action("Eat", new { id = month.Id })">Refreshment</a>
+        </li>
+        <li role="presentation" class="@Html.SiteIsSelected(action: "Donate")">
+            <a href="@Url.Action("Donate", new { id = month.Id })">Donation</a>
+        </li>
+        <li role="presentation" class="@Html.SiteIsSelected(action: "Experience")">
+            <a href="@Url.Action("Experience", new { id = month.Id })">Experience</a>
+        </li>
+    </ul>
 </div>
+@* MONTHLY PERFORMANCE DATA FORM *@
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+    @Html.Partial("_Attention", month)
+    @Html.Partial("_Arrive", month)
 
-<div class="form-group">
-    @Html.SiteSectionLabel("TV Coverage", "Check the boxes which apply to your site")
-    <div class="row form-inline">
-        @Html.SiteCheckBoxFor(model => model.Month.RegionalTv)
-        @Html.SiteCheckBoxFor(model => model.Month.NationalTv)
-        @Html.SiteCheckBoxFor(model => model.Month.OverseasTv)
+    <div class="row">
+        <div class="form-group col-md-9">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+        <div class="form-group col-md-3">
+            @Html.ActionLink("Back to " + Resources.LabelPerformanceData, "Index", "Months", new { id = Model.Month.SiteId }, null)
+        </div>
     </div>
-</div>
-
-<div class="row">
-    <div class="form-group col-md-9">
-        @Html.SiteTextBoxFor(model => model.Month.WebsiteUrl)
-    </div>
-    <div class="form-group col-md-3">
-        @Html.SiteTextBoxFor(model => model.Month.WebsiteVisitors)
-    </div>
-</div>
-
-<div class="row">
-    <div class="form-group col-md-6">
-        @Html.SiteTextBoxFor(model => model.Month.FacebookUrl)
-    </div>
-    <div class="form-group col-md-6">
-        @Html.SiteTextBoxFor(model => model.Month.TwitterUrl)
-    </div>
-</div>
-
-<div class="row">
-    <div class="form-group col-md-6">
-        @Html.SiteTextBoxFor(model => model.Month.FlickrUrl)
-    </div>
-    <div class="form-group col-md-6">
-        @Html.SiteTextBoxFor(model => model.Month.InstagramUrl)
-    </div>
-</div>
-
-<div class="row">
-    <div class="form-group col-md-6">
-        @Html.SiteTextBoxFor(model => model.Month.YoutubeUrl)
-    </div>
-    <div class="form-group col-md-6">
-        @Html.SiteTextBoxFor(model => model.Month.VimeoUrl)
-    </div>
-</div>
-
-<div class="row">
-    <div class="form-group col-md-6">
-        @Html.SiteTextBoxFor(model => model.Month.PinterestUrl)
-    </div>
-</div>
+}

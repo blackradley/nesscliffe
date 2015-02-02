@@ -326,6 +326,8 @@
     <Content Include="Views\Months\_Layout.cshtml" />
     <Content Include="Views\Shared\_PageTitlePartial.cshtml" />
     <Content Include="Views\Shared\_SiteTextBox.cshtml" />
+    <Content Include="Views\Months\_Attention.cshtml" />
+    <Content Include="Views\Months\_Arrive.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
