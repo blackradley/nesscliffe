@@ -11,12 +11,12 @@
 @Html.Partial("_SiteDetailsPartial", Model.Site)
 @* VISITOR CYCLE NAVIGATION *@
 <div style="margin-bottom: 10px;">
-    <ul class="nav nav-tabs">
-        <li role="presentation" class="@Html.SiteIsSelected(action: "Attention")">
-            <a href="@Url.Action("Attention", new { id = month.Id })">Attention</a>
+    <ul id="monthTab" class="nav nav-tabs">
+        <li role="presentation" class="active">
+            <a href="#Attention" data-toggle="tab">Attention</a>
         </li>
-        <li role="presentation" class="@Html.SiteIsSelected(action: "Arrive")">
-            <a href="@Url.Action("Arrive", new { id = month.Id })">Arriving</a>
+        <li role="presentation">
+            <a href="#Arriving" data-toggle="tab">Arriving</a>
         </li>
         <li role="presentation" class="@Html.SiteIsSelected(action: "Shop")">
             <a href="@Url.Action("Shop", new { id = month.Id })">Shopping</a>
@@ -36,10 +36,16 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true, "", new {@class = "text-danger"})
-    @Html.Partial("_Attention", month)
-    @Html.Partial("_Arrive", month)
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
+    <div id="monthTabContent" class="tab-content">
+        <div class="tab-pane fade active" id="Attention">
+            @Html.Partial("_Attention", month)
+        </div>
+        <div class="tab-pane fade" id="Arriving">
+            @Html.Partial("_Arriving", month)
+        </div>
+    </div>
     <div class="row">
         <div class="form-group col-md-9">
             <input type="submit" value="Save" class="btn btn-default" />
@@ -49,3 +55,17 @@
         </div>
     </div>
 }
+
+<script type="text/javascript">
+    
+    $('#monthTab a').click(function (e) {
+        if ($(this).parent('li').hasClass('active')) {
+            $($(this).attr('href')).hide();
+        }
+        else {
+            e.preventDefault();
+            $(this).tab('show');
+        }
+    });
+
+</script>
