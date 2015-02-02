@@ -21,7 +21,6 @@ namespace WebApplication.Models
     {
         public Site Site { get; set; }
         public Month Month { get; set; }
-        
     }
 
 }

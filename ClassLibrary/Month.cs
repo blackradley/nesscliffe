@@ -34,7 +34,7 @@ namespace DataAccess
         public virtual bool NationalTv { get; set; }
         [Display(Name = "Overseas TV", Description = "Has your site appeared on TV in another country?")]
         public virtual bool OverseasTv { get; set; }
-        [Display(Name = "Website Url", Description = "Has your web site address?")]
+        [Display(Name = "Website Url", Description = "What is your web site address?")]
         public virtual String WebsiteUrl { get; set; }
         [Display(Name = "Website Visitors", Description = "How many visitors did your website get?")]
         public virtual int? WebsiteVisitors { get; set; }
@@ -55,25 +55,25 @@ namespace DataAccess
         #endregion
 
         #region ARRIVAL
-        [Display(Name = "Monday", Description = "How many hours were you open on Monday?")]
+        [Display(Name = "Monday", Description = "How many hours were you open on Mondays?")]
         [Range(minimum: 0, maximum: 24, ErrorMessage = "Enter between 0 and 24 hours")]
         public virtual float HoursMonday { get; set; }
-        [Display(Name = "Tuesday", Description = "How many hours were you open on Tuesday?")]
+        [Display(Name = "Tuesday", Description = "How many hours were you open on Tuesdays?")]
         [Range(minimum: 0, maximum: 24, ErrorMessage = "Enter between 0 and 24 hours")]
         public virtual float HoursTuesday { get; set; }
-        [Display(Name = "Wednesday", Description = "How many hours were you open on Wednesday?")]
+        [Display(Name = "Wednesday", Description = "How many hours were you open on Wednesdays?")]
         [Range(minimum: 0, maximum: 24, ErrorMessage = "Enter between 0 and 24 hours")]
         public virtual float HoursWednesday { get; set; }
-        [Display(Name = "Thursday", Description = "How many hours were you open on Thursday?")]
+        [Display(Name = "Thursday", Description = "How many hours were you open on Thursdays?")]
         [Range(minimum: 0, maximum: 24, ErrorMessage = "Enter between 0 and 24 hours")]
         public virtual float HoursThursday { get; set; }
-        [Display(Name = "Friday", Description = "How many hours were you open on Friday?")]
+        [Display(Name = "Friday", Description = "How many hours were you open on Fridays?")]
         [Range(minimum: 0, maximum: 24, ErrorMessage = "Enter between 0 and 24 hours")]
         public virtual float HoursFriday { get; set; }
-        [Display(Name = "Saturday", Description = "How many hours were you open on Saturday?")]
+        [Display(Name = "Saturday", Description = "How many hours were you open on Saturdays?")]
         [Range(minimum: 0, maximum: 24, ErrorMessage = "Enter between 0 and 24 hours")]
         public virtual float HoursSaturday { get; set; }
-        [Display(Name = "Sunday", Description = "How many hours were you open on Sunday?")]
+        [Display(Name = "Sunday", Description = "How many hours were you open on Sundays?")]
         [Range(minimum: 0, maximum: 24, ErrorMessage = "Enter between 0 and 24 hours")]
         public virtual float HoursSunday { get; set; }
 

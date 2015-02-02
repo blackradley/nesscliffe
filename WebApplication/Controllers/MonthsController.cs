@@ -94,36 +94,36 @@ namespace WebApplication.Controllers
             // Confirm the user owns this month.
             if (User.Identity.GetUserId() != siteAndMonthViewModel.Site.UserId)
             {
-                return RedirectToAction("Index", "Sites", new {message = "Your IP and behaviour has been logged."});
+                return RedirectToAction("Index", "Sites", new { message = "Your IP and behaviour has been logged." });
             }
             return View("Edit", siteAndMonthViewModel);
         }
 
-        // POST: Months/Attention/117ca2a3-fb5a-4882-8e74-23cccf07db73
+        // POST: Months/Edit/117ca2a3-fb5a-4882-8e74-23cccf07db73
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Guid id, Month month) // TODO: replace the [Bind(Include = "MarketingSpend")]
         {
-            //var month = _dataDb.Months.Find(id);
             var siteAndMonthViewModel = new SiteAndMonthViewModel()
             {
-                Site = month.Site,
+                Site = _dataDb.Sites.Find(month.SiteId),
                 Month = month
             };
-            //if (ModelState.IsValid)
-            //{
-            //    monthAttention.Id = id; // The Id needs to be set because it isn't part of the monthAttention
-            //    _dataDb.Entry(monthAttention).State = EntityState.Modified;
-            //    _dataDb.SaveChanges();
-            //    attentionViewModel.MonthAttention = monthAttention;
-            //    ViewBag.Message = "Attention has been updated.";
-            //    return View("Attention", attentionViewModel);
-            //}
+            if (ModelState.IsValid)
+            {
+                _dataDb.Months.Attach(month);
+                var entry = _dataDb.Entry(month);
+                entry.State = EntityState.Modified;
+                entry.Property(e => e.SiteId).IsModified = false;
+                entry.Property(e => e.MonthTime).IsModified = false;
+                _dataDb.SaveChanges();
+                ViewBag.Message = "The month has been updated.";
+                return View("Edit", siteAndMonthViewModel);
+            }
             //// The model wasn't valid so show the view back to the user with the "duff" data.
-            //attentionViewModel.MonthAttention = monthAttention;
-            //ViewBag.Message = "Please check your entries.";
+            ViewBag.Message = "Please check your entries.";
             return View("Edit", siteAndMonthViewModel);
         }
 
