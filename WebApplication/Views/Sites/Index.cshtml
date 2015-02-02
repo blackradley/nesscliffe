@@ -14,7 +14,7 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>Postcode</th>
-        <th class="hidden-sm hidden-xs">Features</th>
+        <th class="hidden-xs">Features</th>
         <th style="font-weight:normal;">@Html.ActionLink("Create a New Site", "Create")</th>
     </tr>
     @foreach (var item in Model)
@@ -27,7 +27,7 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td style="text-transform:uppercase;">@Html.DisplayFor(modelItem => item.Postcode)</td>
-            <td class="hidden-sm hidden-xs">
+            <td class="hidden-xs">
                 @Html.SiteSummaryIconsFor(item)
             </td>
             <td>

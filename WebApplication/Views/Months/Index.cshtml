@@ -11,6 +11,7 @@
 <table class="table">
     <tr>
         <th></th>
+        <th class ="hidden-xs">Progress</thclass>
         <th>
             @Html.DisplayNameFor(model => model.Months.First().MonthTime) 
         </th>
@@ -22,11 +23,21 @@
             <td>
                 @if (item.Id != Guid.Empty) 
                 {
-                     @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+            </td>
+            <td class="hidden-xs">
+                @if (item.Id == Guid.Empty)
+                {
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 0%;"></div>
+                    </div>
                 }
                 else
                 {
-                    <text>Not started.</text>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 60%;"></div>
+                    </div>
                 }
             </td>
             <td>
