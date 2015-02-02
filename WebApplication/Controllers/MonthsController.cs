@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.Entity;
 using System.Diagnostics;
@@ -20,6 +21,7 @@ namespace WebApplication.Controllers
         private readonly DataDb _dataDb = new DataDb();
 
         // GET: Months
+        // TODO: restrict access to owner of this site
         public ActionResult Index([Bind(Prefix = "id")]Guid? siteId)
         {
             if (siteId == null)
@@ -27,6 +29,29 @@ namespace WebApplication.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Site site = _dataDb.Sites.Find(siteId);
+
+            // How many dates are available.
+            var now = DateTime.Now;
+            const int monthsBetween = 12;
+            var then = now.AddMonths(monthsBetween * (-1));
+            var possibleDates = Enumerable.Range(0, monthsBetween)
+                .Select(m => new DateTime(then.Year, then.Month, 1).AddMonths(m)).Reverse();
+            var usedDates = from monthList in site.Months select monthList.MonthTime;
+            var availableDates = possibleDates.Where(o => !usedDates.Contains(DateTime.Parse(o.ToLongDateString())))
+                .Select(d => d.ToString("MMM yyyy")).ToList();
+
+
+            // Add unused months to the months collection
+            foreach (var dateTime in availableDates)
+            {
+                var month = new Month
+                {
+                    MonthTime = Convert.ToDateTime(dateTime)
+                };
+                site.Months.Add(month);
+                site.Months = site.Months.OrderByDescending(i => i.MonthTime).ToList();
+            }
+   
             if (site == null)
             {
                 return HttpNotFound();
@@ -117,7 +142,7 @@ namespace WebApplication.Controllers
             }
             // The model wasn't valid so show the view back to the user with the "duff" data.
             attentionViewModel.MonthAttention = monthAttention;
-            ViewBag.Message = "The model is not valid.";
+            ViewBag.Message = "Please check your entries.";
             return View("Attention", attentionViewModel);
         }
 
@@ -132,9 +157,6 @@ namespace WebApplication.Controllers
             };
             return View("Arrive", arriveViewModel);           
         }
-
-
-
 
 
         public ActionResult Shop(Guid? id, string message) { return this.GetView(id, message); }
@@ -153,8 +175,6 @@ namespace WebApplication.Controllers
             ViewBag.Message = message;
             return View(month);
         }
-
-
 
         //[HttpPost]
         //[ValidateAntiForgeryToken]

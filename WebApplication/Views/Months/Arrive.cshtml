@@ -6,7 +6,7 @@
     Layout = "_Layout.cshtml";
     ViewBag.Title = Html.DisplayFor(model => model.Month.MonthTime, "MonthYearDateTime");
 }
-@Html.SiteSectionLabel("Opening Times", "Fill in the number of hours your site was open")
+@Html.SiteSectionLabel("Opening Hours", "Fill in the number of hours your site was open")
 <div class="row">
     <div class="form-group col-md-3">
         @Html.SiteTextBoxFor(model => model.MonthArrive.HoursMonday)
@@ -21,7 +21,6 @@
         @Html.SiteTextBoxFor(model => model.MonthArrive.HoursThursday)
     </div>
 </div>
-
 
 <div class="row">
     <div class="form-group col-md-3">

@@ -1,19 +1,9 @@
-﻿@using WebApplication.Models
+﻿@using System.Activities.Expressions
+@using WebApplication.Models
 @using Localization
 @model DataAccess.Site
 @{
     ViewBag.Title = Resources.LabelPerformanceData;
-    //TODO: Shift this stuff into the model so the Site has a property "AvailableMonths<DateTime>"
-    var now = DateTime.Now;
-    const int monthsBetween = 18;
-    var then = now.AddMonths(monthsBetween * (-1));
-    var possibleDates = Enumerable.Range(0, monthsBetween)
-        .Select(m => new DateTime(then.Year, then.Month, 1).AddMonths(m)).Reverse();
-    var usedDates = from monthList in Model.Months select monthList.MonthTime;
-
-    // remove used dates from possibles list and format
-    var availableDates = possibleDates.Where(o => !usedDates.Contains(DateTime.Parse(o.ToLongDateString())))
-        .Select(d => d.ToString("MMM yyyy")).ToList();
 }
 <h2>@ViewBag.Title</h2>
 @Html.Partial("_SiteDetailsPartial", @Model)
@@ -24,30 +14,33 @@
         <th>
             @Html.DisplayNameFor(model => model.Months.First().MonthTime) 
         </th>
-        <th style="font-weight:normal; padding: 0; width: 33%;">
-            @using (Html.BeginForm("Create", "Months", new { SiteId = @Model.Id }, FormMethod.Post))
-            {
-                @Html.AntiForgeryToken()
-                if (availableDates.Count() != 0)
-                {
-                    <div>
-                        @Html.DropDownList("MonthTime", new SelectList(availableDates))
-                        <input type="submit" value="Add This Month" class="btn btn-link" />
-                    </div>
-                }
-            }
-        </th>
+        <th></th>
     </tr>
     @foreach (var item in Model.Months)
     {
         <tr>
-            <td>@Html.ActionLink("Delete", "Delete", new { id = item.Id })</td>
+            <td>
+                @if (item.Id != Guid.Empty) 
+                {
+                     @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+                else
+                {
+                    <text>Not started.</text>
+                }
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MonthTime, "MonthYearDateTime")
             </td>
             <td>
-                @Html.ActionLink("Edit", "Attention", new { id = item.Id })
-
+                @if (item.Id == Guid.Empty)
+                {
+                    @Html.ActionLink("Create", "Create", new { SiteId = @Model.Id, MonthTime = item.MonthTime})
+                }
+                else
+                {
+                    @Html.ActionLink("Edit", "Attention", new { id = item.Id })
+                }
             </td>
         </tr>
     }
