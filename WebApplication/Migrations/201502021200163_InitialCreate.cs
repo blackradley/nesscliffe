@@ -3,31 +3,10 @@ namespace WebApplication.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initialize : DbMigration
+    public partial class InitialCreate : DbMigration
     {
         public override void Up()
         {
-            CreateTable(
-                "dbo.MonthArrives",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        HoursMonday = c.Single(nullable: false),
-                        HoursTuesday = c.Single(nullable: false),
-                        HoursWednesday = c.Single(nullable: false),
-                        HoursThursday = c.Single(nullable: false),
-                        HoursFriday = c.Single(nullable: false),
-                        HoursSaturday = c.Single(nullable: false),
-                        HoursSunday = c.Single(nullable: false),
-                        Visitors = c.Int(nullable: false),
-                        IncomeAdmissions = c.Single(nullable: false),
-                        IncomeAdditional = c.Single(nullable: false),
-                        VisitorsAdditional = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Months", t => t.Id)
-                .Index(t => t.Id);
-            
             CreateTable(
                 "dbo.Months",
                 c => new
@@ -35,17 +14,6 @@ namespace WebApplication.Migrations
                         Id = c.Guid(nullable: false),
                         SiteId = c.Guid(nullable: false),
                         MonthTime = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Sites", t => t.SiteId, cascadeDelete: true)
-                .Index(t => t.SiteId)
-                .Index(t => t.MonthTime, unique: true);
-            
-            CreateTable(
-                "dbo.MonthAttentions",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
                         MarketingSpend = c.Int(nullable: true),
                         RegionalTv = c.Boolean(nullable: false),
                         NationalTv = c.Boolean(nullable: false),
@@ -59,10 +27,22 @@ namespace WebApplication.Migrations
                         YoutubeUrl = c.String(),
                         VimeoUrl = c.String(),
                         PinterestUrl = c.String(),
+                        HoursMonday = c.Single(nullable: false),
+                        HoursTuesday = c.Single(nullable: false),
+                        HoursWednesday = c.Single(nullable: false),
+                        HoursThursday = c.Single(nullable: false),
+                        HoursFriday = c.Single(nullable: false),
+                        HoursSaturday = c.Single(nullable: false),
+                        HoursSunday = c.Single(nullable: false),
+                        Visitors = c.Int(nullable: false),
+                        IncomeAdmissions = c.Single(nullable: false),
+                        IncomeAdditional = c.Single(nullable: false),
+                        VisitorsAdditional = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Months", t => t.Id)
-                .Index(t => t.Id);
+                .ForeignKey("dbo.Sites", t => t.SiteId, cascadeDelete: true)
+                .Index(t => t.SiteId)
+                .Index(t => t.MonthTime, unique: true);
             
             CreateTable(
                 "dbo.Sites",
@@ -166,13 +146,11 @@ namespace WebApplication.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.MonthArrives", "Id", "dbo.Months");
             DropForeignKey("dbo.Sites", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Months", "SiteId", "dbo.Sites");
-            DropForeignKey("dbo.MonthAttentions", "Id", "dbo.Months");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
@@ -180,19 +158,15 @@ namespace WebApplication.Migrations
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.Sites", new[] { "UserId" });
-            DropIndex("dbo.MonthAttentions", new[] { "Id" });
             DropIndex("dbo.Months", new[] { "MonthTime" });
             DropIndex("dbo.Months", new[] { "SiteId" });
-            DropIndex("dbo.MonthArrives", new[] { "Id" });
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.Sites");
-            DropTable("dbo.MonthAttentions");
             DropTable("dbo.Months");
-            DropTable("dbo.MonthArrives");
         }
     }
 }

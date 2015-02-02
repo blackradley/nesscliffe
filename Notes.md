@@ -19,8 +19,9 @@ Migrations
 -----------
 Migrations are enabled for the datacontext.
 
-Enable-Migrations -Force –EnableAutomaticMigrations -ContextTypeName WebApplication.Models.DataContext -MigrationsDirectory:Migrations
-Add-Migration -configuration WebApplication.Migrations.Configuration <Initial>
+Add-Migration InitialCreate
+
+MarketingSpend = c.Int(nullable: true),
 
 Error Messages
 -----------

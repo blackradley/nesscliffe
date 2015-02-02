@@ -17,19 +17,11 @@ namespace WebApplication.Models
         public bool BrowserRemembered { get; set; }
     }
 
-    public abstract class BaseMonthViewModel
+    public class SiteAndMonthViewModel
     {
-        public Month Month { get; set; }
         public Site Site { get; set; }
+        public Month Month { get; set; }
+        
     }
 
-    public class AttentionViewModel : BaseMonthViewModel
-    {
-        public MonthAttention MonthAttention { get; set; }
-    }
-
-    public class ArriveViewModel : BaseMonthViewModel
-    {
-        public MonthArrive MonthArrive { get; set; }
-    }
 }

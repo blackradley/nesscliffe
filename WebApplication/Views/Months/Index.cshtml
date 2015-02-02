@@ -11,49 +11,53 @@
 <table class="table">
     <tr>
         <th></th>
-        <th class ="hidden-xs">Progress</thclass>
+        <th class="hidden-xs">Progress</th>
         <th>
-            @Html.DisplayNameFor(model => model.Months.First().MonthTime) 
+            @Html.DisplayNameFor(model => model.Months.First().MonthTime)
         </th>
         <th></th>
     </tr>
-    @foreach (var item in Model.Months)
+    @using (Html.BeginForm("Create", "Months", new { SiteId = @Model.Id }, FormMethod.Post))
     {
-        <tr>
-            <td>
-                @if (item.Id != Guid.Empty) 
-                {
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                }
-            </td>
-            <td class="hidden-xs">
-                @if (item.Id == Guid.Empty)
-                {
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 0%;"></div>
-                    </div>
-                }
-                else
-                {
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 60%;"></div>
-                    </div>
-                }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MonthTime, "MonthYearDateTime")
-            </td>
-            <td>
-                @if (item.Id == Guid.Empty)
-                {
-                    @Html.ActionLink("Create", "Create", new { SiteId = @Model.Id, MonthTime = item.MonthTime})
-                }
-                else
-                {
-                    @Html.ActionLink("Edit", "Attention", new { id = item.Id })
-                }
-            </td>
-        </tr>
+        @Html.AntiForgeryToken()
+        foreach (var item in Model.Months)
+        {
+            <tr>
+                <td>
+                    @if (item.Id != Guid.Empty)
+                    {
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    }
+                </td>
+                <td class="hidden-xs">
+                    @if (item.Id == Guid.Empty)
+                    {
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar"></div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 33%;"></div>
+                        </div>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MonthTime, "MonthYearDateTime")
+                </td>
+                <td>
+                    @if (item.Id == Guid.Empty)
+                    {
+                        <button type="submit" name="MonthTime" value="@item.MonthTime" class="btn btn-link">Create</button>
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    }
+                </td>
+            </tr>
+        }
     }
 </table>
 <div class="row">

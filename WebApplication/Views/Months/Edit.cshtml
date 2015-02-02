@@ -1,64 +1,64 @@
 ﻿@using Localization
 @using WebApplication.Helpers
 @using WebApplication.Models
-@model AttentionViewModel
+@model SiteAndMonthViewModel
 @{
     Layout = "_Layout.cshtml";
     ViewBag.Title = Html.DisplayFor(model => model.Month.MonthTime, "MonthYearDateTime");
 }
 <div class="row">
     <div class="form-group col-md-3">
-        @Html.SiteTextBoxFor(model => model.MonthAttention.MarketingSpend)
+        @Html.SiteTextBoxFor(model => model.Month.MarketingSpend)
     </div>
 </div>
 
 <div class="form-group">
     @Html.SiteSectionLabel("TV Coverage", "Check the boxes which apply to your site")
     <div class="row form-inline">
-        @Html.SiteCheckBoxFor(model => model.MonthAttention.RegionalTv)
-        @Html.SiteCheckBoxFor(model => model.MonthAttention.NationalTv)
-        @Html.SiteCheckBoxFor(model => model.MonthAttention.OverseasTv)
+        @Html.SiteCheckBoxFor(model => model.Month.RegionalTv)
+        @Html.SiteCheckBoxFor(model => model.Month.NationalTv)
+        @Html.SiteCheckBoxFor(model => model.Month.OverseasTv)
     </div>
 </div>
 
 <div class="row">
     <div class="form-group col-md-9">
-        @Html.SiteTextBoxFor(model => model.MonthAttention.WebsiteUrl)
+        @Html.SiteTextBoxFor(model => model.Month.WebsiteUrl)
     </div>
     <div class="form-group col-md-3">
-        @Html.SiteTextBoxFor(model => model.MonthAttention.WebsiteVisitors)
+        @Html.SiteTextBoxFor(model => model.Month.WebsiteVisitors)
     </div>
 </div>
 
 <div class="row">
     <div class="form-group col-md-6">
-        @Html.SiteTextBoxFor(model => model.MonthAttention.FacebookUrl)
+        @Html.SiteTextBoxFor(model => model.Month.FacebookUrl)
     </div>
     <div class="form-group col-md-6">
-        @Html.SiteTextBoxFor(model => model.MonthAttention.TwitterUrl)
-    </div>
-</div>
-
-<div class="row">
-    <div class="form-group col-md-6">
-        @Html.SiteTextBoxFor(model => model.MonthAttention.FlickrUrl)
-    </div>
-    <div class="form-group col-md-6">
-        @Html.SiteTextBoxFor(model => model.MonthAttention.InstagramUrl)
+        @Html.SiteTextBoxFor(model => model.Month.TwitterUrl)
     </div>
 </div>
 
 <div class="row">
     <div class="form-group col-md-6">
-        @Html.SiteTextBoxFor(model => model.MonthAttention.YoutubeUrl)
+        @Html.SiteTextBoxFor(model => model.Month.FlickrUrl)
     </div>
     <div class="form-group col-md-6">
-        @Html.SiteTextBoxFor(model => model.MonthAttention.VimeoUrl)
+        @Html.SiteTextBoxFor(model => model.Month.InstagramUrl)
     </div>
 </div>
 
 <div class="row">
     <div class="form-group col-md-6">
-        @Html.SiteTextBoxFor(model => model.MonthAttention.PinterestUrl)
+        @Html.SiteTextBoxFor(model => model.Month.YoutubeUrl)
+    </div>
+    <div class="form-group col-md-6">
+        @Html.SiteTextBoxFor(model => model.Month.VimeoUrl)
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group col-md-6">
+        @Html.SiteTextBoxFor(model => model.Month.PinterestUrl)
     </div>
 </div>
