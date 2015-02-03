@@ -4,7 +4,7 @@
 @model DataAccess.Site
 @{
     ViewBag.Title = Resources.LabelPerformanceData;
-    ViewBag.Link = "My Sites";
+    ViewBag.Link = Html.ActionLink("Back to " + Resources.LabelSitesList, "Index", "Sites");
 }
 @Html.Partial("_PageTitlePartial")
 @Html.Partial("_SiteDetailsPartial", @Model)
@@ -61,11 +61,7 @@
         }
     }
 </table>
-<div class="row">
-    <div class="form-group col-md-offset-9 col-md-3">
-        @Html.ActionLink("Back to " + Resources.LabelSitesList, "Index", "Sites")
-    </div>
-</div>
+
 
 
 

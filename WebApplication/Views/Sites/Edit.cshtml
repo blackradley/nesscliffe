@@ -1,12 +1,11 @@
-﻿@using DataAccess
-@using Localization
+﻿@using Localization
 @using WebApplication.Helpers
 @model DataAccess.Site
-
 @{
     ViewBag.Title = "Site Details";
+    ViewBag.Link = Html.ActionLink("Back to " + Resources.LabelSitesList, "Index");
 }
-<h2>@ViewBag.Title</h2>
+@Html.Partial("_PageTitlePartial")
 
 @using (Html.BeginForm())
 {
@@ -16,9 +15,6 @@
     <div class="row">
         <div class="form-group col-md-9">
             <input type="submit" value="Save" class="btn btn-default" />
-        </div>
-        <div class="form-group col-md-3">
-            @Html.ActionLink("Back to " + Resources.LabelSitesList, "Index")
         </div>
     </div>
 }

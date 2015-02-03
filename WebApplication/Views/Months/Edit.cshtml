@@ -4,7 +4,7 @@
 @model SiteAndMonthViewModel
 @{
     ViewBag.Title = Html.DisplayFor(model => model.Month.MonthTime, "MonthYearDateTime");
-    ViewBag.Link = "link";
+    ViewBag.Link = Html.ActionLink("Back to " + Resources.LabelPerformanceData, "Index", "Months", new { id = Model.Month.SiteId }, null);
     var month = Model.Month;
     var site = Model.Site;
 }
@@ -52,22 +52,21 @@
         <div class="form-group col-md-9">
             <input type="submit" value="Save" class="btn btn-default" />
         </div>
-        <div class="form-group col-md-3">
-            @Html.ActionLink("Back to " + Resources.LabelPerformanceData, "Index", "Months", new { id = Model.Month.SiteId }, null)
-        </div>
     </div>
 }
 
-<script type="text/javascript">
-    
-    $('#monthTab a').click(function (e) {
-        if ($(this).parent('li').hasClass('active')) {
-            $($(this).attr('href')).hide();
-        }
-        else {
-            e.preventDefault();
-            $(this).tab('show');
-        }
-    });
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
 
-</script>
+        $('#monthTab a').click(function(e) {
+            if ($(this).parent('li').hasClass('active')) {
+                $($(this).attr('href')).hide();
+            } else {
+                e.preventDefault();
+                $(this).tab('show');
+            }
+        });
+
+    </script>
+}
