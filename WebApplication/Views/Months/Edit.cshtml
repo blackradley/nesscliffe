@@ -38,6 +38,7 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.Hidden("SiteId", month.SiteId)
+    @Html.Hidden("MonthTime", month.MonthTime)
     <div id="monthTabContent" class="tab-content">
         <div class="tab-pane fade in active" id="Attention">
             @Html.Partial("_Attention", month)

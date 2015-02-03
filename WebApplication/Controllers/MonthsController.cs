@@ -106,6 +106,7 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Guid id, Month month) // TODO: replace the [Bind(Include = "MarketingSpend")]
         {
+            // We'll need a model to send back which includes the Site information
             var siteAndMonthViewModel = new SiteAndMonthViewModel()
             {
                 Site = _dataDb.Sites.Find(month.SiteId),
@@ -116,6 +117,7 @@ namespace WebApplication.Controllers
                 _dataDb.Months.Attach(month);
                 var entry = _dataDb.Entry(month);
                 entry.State = EntityState.Modified;
+                // The SiteId and MonthTime are in hidden field and should not be changed so...
                 entry.Property(e => e.SiteId).IsModified = false;
                 entry.Property(e => e.MonthTime).IsModified = false;
                 _dataDb.SaveChanges();
