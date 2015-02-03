@@ -1,5 +1,4 @@
 ﻿@using Localization
-@using WebApplication.Helpers
 @using WebApplication.Models
 @model SiteAndMonthViewModel
 @{
@@ -11,28 +10,31 @@
 @Html.Partial("_PageTitlePartial")
 @Html.Partial("_SiteDetailsPartial", site)
 @* VISITOR CYCLE NAVIGATION *@
-<div role="tablist" id="tabs" style="margin-bottom: 10px;">
-    <ul id="monthTab" class="nav nav-tabs">
-        <li role="presentation" class="active">
-            <a href="#Attention" data-toggle="tab">Attention</a>
-        </li>
-        <li role="presentation">
-            <a href="#Arriving" data-toggle="tab">Arriving</a>
-        </li>
-        <li role="presentation">
-            <a href="#Shopping" data-toggle="tab">Shopping</a>
-        </li>
-        <li role="presentation">
-            <a href="#Refreshment" data-toggle="tab">Refreshment</a>
-        </li>
-        <li role="presentation">
-            <a href="#Donation" data-toggle="tab">Donation</a>
-        </li>
-        <li role="presentation">
-            <a href="#Experience" data-toggle="tab">Experience</a>
-        </li>
-    </ul>
+<div class="row">
+    <div role="tablist" id="tabs" style="margin-bottom: 10px;">
+        <ul id="monthTab" class="nav nav-tabs">
+            <li role="presentation" class="active">
+                <a href="#Attention" data-toggle="tab">Attention</a>
+            </li>
+            <li role="presentation">
+                <a href="#Arriving" data-toggle="tab">Arriving</a>
+            </li>
+            <li role="presentation">
+                <a href="#Shopping" data-toggle="tab">Shopping</a>
+            </li>
+            <li role="presentation">
+                <a href="#Refreshment" data-toggle="tab">Refreshment</a>
+            </li>
+            <li role="presentation">
+                <a href="#Donation" data-toggle="tab">Donation</a>
+            </li>
+            <li role="presentation">
+                <a href="#Experience" data-toggle="tab">Experience</a>
+            </li>
+        </ul>
+    </div>
 </div>
+
 @* MONTHLY PERFORMANCE DATA FORM *@
 @using (Html.BeginForm())
 {
@@ -71,10 +73,10 @@
     <script type="text/javascript">
         // Adapted from https://gist.github.com/brendanmckenzie/8f8008d3d51c07b2700f
         // but using the month.id as key.
-        $(function() {
+        $(function () {
             'use strict';
             // When the tab is clicked stash the name in local storage.
-            $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
                 var id = $(this).parents('[role="tablist"]').attr('id');
                 console.log(document.URL.split("/").pop());
                 var key = document.URL.split("/").pop();

@@ -53,6 +53,24 @@ namespace DataAccess
         #endregion
 
         #region ARRIVING
+        [Display(Name = "Visitor Numbers", Description = "How many visitors came to your site this month?")]
+        public virtual int Visitors { get; set; }
+        [Display(Name = "Visitor Income", Description = "What was the income from visitors this month?")]
+        public virtual float IncomeAdmissions { get; set; }
+        [Display(Name = "Additional Events", Description = "How many additional events did you run at your site this month?")]
+        public virtual int AdditionalEvents { get; set; }
+        [Display(Name = "Additional Events Numbers", Description = "How many visitors took part in additional events at your site this month?")]
+        public virtual int VisitorsAdditional { get; set; }
+        [Display(Name = "Additional Events Income", Description = "What was the income from additional events this month?")]
+        public virtual float IncomeAdditional { get; set; }
+
+        [Display(Name = "No Family", Description = "What percentage of visitors were not part of a family?")]
+        public virtual int VisitorsPercentNoFamily { get; set; }
+        [Display(Name = "Family", Description = "What percentage of visitors were part of a family?")]
+        public virtual int VisitorsPercentFamily { get; set; }
+        [Display(Name = "Retired", Description = "What percentage of visitors were retired?")]
+        public virtual int VisitorsPercentRetired { get; set; }
+        
         [Display(Name = "Monday", Description = "How many hours were you open on Mondays?")]
         [Range(minimum: 0, maximum: 24, ErrorMessage = "Enter between 0 and 24 hours")]
         public virtual float HoursMonday { get; set; }
@@ -75,10 +93,8 @@ namespace DataAccess
         [Range(minimum: 0, maximum: 24, ErrorMessage = "Enter between 0 and 24 hours")]
         public virtual float HoursSunday { get; set; }
 
-        public virtual int Visitors { get; set; }
-        public virtual float IncomeAdmissions { get; set; }
-        public virtual float IncomeAdditional { get; set; }
-        public virtual int VisitorsAdditional { get; set; }
+
+        
         #endregion
 
         #region SHOPPING
