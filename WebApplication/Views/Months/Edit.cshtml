@@ -66,19 +66,3 @@
         </div>
     </div>
 }
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script type="text/javascript">
-
-        $('#monthTab a').click(function(e) {
-            if ($(this).parent('li').hasClass('active')) {
-                $($(this).attr('href')).hide();
-            } else {
-                e.preventDefault();
-                $(this).tab('show');
-            }
-        });
-
-    </script>
-}
