@@ -26,7 +26,6 @@ namespace DataAccess
         #region ATTENTION
         [Display(Name = "Marketing Spend", Description = "How much have you spent on marketing this month?")]
         [Range(0, 99999, ErrorMessage = "Area must be between 0 and 99999")]
-        [Required(ErrorMessage = "Please enter this month's marketing spend")]
         public virtual int? MarketingSpend { get; set; }
         [Display(Name = "Regional TV", Description = "Has your site appeared on regional TV?")]
         public virtual bool RegionalTv { get; set; }
@@ -54,7 +53,7 @@ namespace DataAccess
         public virtual String PinterestUrl { get; set; }
         #endregion
 
-        #region ARRIVAL
+        #region ARRIVING
         [Display(Name = "Monday", Description = "How many hours were you open on Mondays?")]
         [Range(minimum: 0, maximum: 24, ErrorMessage = "Enter between 0 and 24 hours")]
         public virtual float HoursMonday { get; set; }
@@ -83,5 +82,25 @@ namespace DataAccess
         public virtual int VisitorsAdditional { get; set; }
         #endregion
 
+        #region SHOPPING
+        [Display(Name = "Retail Income", Description = "How much was your retail income this month?")]
+        [Range(0, 99999, ErrorMessage = "Area must be between 0 and 99999")]
+        public virtual int? RetailIncome { get; set; }
+        [Display(Name = "Shop behind pay barrier?", Description = "Do visitors have to pay to get to the shop?")]
+        public virtual bool PayToShop { get; set; }
+        [Display(Name = "Shop visible from entrance?", Description = "Can you see the shop before you enter?")]
+        public virtual bool ShopVisibleFromEntrance { get; set; }
+        [Display(Name = "Exit through the shop?", Description = "Do visitors have leave via the shop?")]
+        public virtual bool ExitViaShop { get; set; }
+        #endregion
+        
+        #region REFRESHMENT
+        #endregion
+        
+        #region DONATION
+        #endregion
+        
+        #region EXPERIENCE
+        #endregion
     }
 }

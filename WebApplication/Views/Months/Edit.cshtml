@@ -19,17 +19,17 @@
         <li role="presentation">
             <a href="#Arriving" data-toggle="tab">Arriving</a>
         </li>
-        <li role="presentation" class="@Html.SiteIsSelected(action: "Shop")">
-            <a href="@Url.Action("Shop", new { id = month.Id })">Shopping</a>
+        <li role="presentation">
+            <a href="#Shopping" data-toggle="tab">Shopping</a>
         </li>
-        <li role="presentation" class="@Html.SiteIsSelected(action: "Eat")">
-            <a href="@Url.Action("Eat", new { id = month.Id })">Refreshment</a>
+        <li role="presentation">
+            <a href="#Refreshment" data-toggle="tab">Refreshment</a>
         </li>
-        <li role="presentation" class="@Html.SiteIsSelected(action: "Donate")">
-            <a href="@Url.Action("Donate", new { id = month.Id })">Donation</a>
+        <li role="presentation">
+            <a href="#Donation" data-toggle="tab">Donation</a>
         </li>
-        <li role="presentation" class="@Html.SiteIsSelected(action: "Experience")">
-            <a href="@Url.Action("Experience", new { id = month.Id })">Experience</a>
+        <li role="presentation">
+            <a href="#Experience" data-toggle="tab">Experience</a>
         </li>
     </ul>
 </div>
@@ -46,6 +46,18 @@
         </div>
         <div class="tab-pane fade" id="Arriving">
             @Html.Partial("_Arriving", month)
+        </div>
+        <div class="tab-pane fade" id="Shopping">
+            @Html.Partial("_Shopping", month)
+        </div>
+        <div class="tab-pane fade" id="Refreshment">
+            @Html.Partial("_Refreshment", month)
+        </div>
+        <div class="tab-pane fade" id="Donation">
+            @Html.Partial("_Donation", month)
+        </div>
+        <div class="tab-pane fade" id="Experience">
+            @Html.Partial("_Experience", month)
         </div>
     </div>
     <div class="row">

@@ -14,7 +14,7 @@ namespace WebApplication.Migrations
                         Id = c.Guid(nullable: false),
                         SiteId = c.Guid(nullable: false),
                         MonthTime = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
-                        MarketingSpend = c.Int(nullable: true),
+                        MarketingSpend = c.Int(),
                         RegionalTv = c.Boolean(nullable: false),
                         NationalTv = c.Boolean(nullable: false),
                         OverseasTv = c.Boolean(nullable: false),
@@ -38,6 +38,10 @@ namespace WebApplication.Migrations
                         IncomeAdmissions = c.Single(nullable: false),
                         IncomeAdditional = c.Single(nullable: false),
                         VisitorsAdditional = c.Int(nullable: false),
+                        RetailIncome = c.Int(),
+                        PayToShop = c.Boolean(nullable: false),
+                        ShopVisibleFromEntrance = c.Boolean(nullable: false),
+                        ExitViaShop = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Sites", t => t.SiteId, cascadeDelete: true)

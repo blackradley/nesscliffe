@@ -1,0 +1,15 @@
+﻿@using WebApplication.Helpers
+@model DataAccess.Month
+<div class="row">
+    <div class="form-group col-md-3">
+        @Html.SiteTextBoxFor(model => model.RetailIncome)
+    </div>
+</div>
+<div class="form-group">
+    @Html.SiteSectionLabel("Shop Position", "Check the boxes which apply to your site")
+    <div class="row form-inline">
+        @Html.SiteCheckBoxFor(model => model.PayToShop)
+        @Html.SiteCheckBoxFor(model => model.ShopVisibleFromEntrance)
+        @Html.SiteCheckBoxFor(model => model.ExitViaShop)
+    </div>
+</div>
