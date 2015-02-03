@@ -4,8 +4,9 @@
 @model DataAccess.Site
 @{
     ViewBag.Title = Resources.LabelPerformanceData;
+    ViewBag.Link = "My Sites";
 }
-<h2>@ViewBag.Title</h2>
+@Html.Partial("_PageTitlePartial")
 @Html.Partial("_SiteDetailsPartial", @Model)
 
 <table class="table">

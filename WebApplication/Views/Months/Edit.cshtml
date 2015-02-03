@@ -4,6 +4,7 @@
 @model SiteAndMonthViewModel
 @{
     ViewBag.Title = Html.DisplayFor(model => model.Month.MonthTime, "MonthYearDateTime");
+    ViewBag.Link = "link";
     var month = Model.Month;
     var site = Model.Site;
 }

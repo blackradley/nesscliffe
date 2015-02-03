@@ -323,7 +323,6 @@
     <Content Include="Views\Sites\_CreateEdit.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MonthYearDateTime.cshtml" />
     <Content Include="Views\Account\Thanks.cshtml" />
-    <Content Include="Views\Months\_Layout.cshtml" />
     <Content Include="Views\Shared\_PageTitlePartial.cshtml" />
     <Content Include="Views\Shared\_SiteTextBox.cshtml" />
     <Content Include="Views\Months\_Attention.cshtml" />

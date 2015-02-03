@@ -79,7 +79,15 @@ namespace WebApplication.Controllers
             _dataDb.Configuration.ValidateOnSaveEnabled = false;
             _dataDb.SaveChanges();
 
-            return RedirectToAction("Edit", new { month.Id, message = "New month " + month.MonthTime.ToString("MMM yyyy") + " added." });
+            // TODO: find out why below doesn't work, it would be nice to merge these two methods.
+            //var site = _dataDb.Sites.Find(siteId);
+            //var siteAndMonthViewModel = new SiteAndMonthViewModel()
+            //{
+            //    Site = site,
+            //    Month = month
+            //};
+            //return View("Edit", siteAndMonthViewModel);
+            return RedirectToAction("Edit", new { month.Id, message = "A new month (" + month.MonthTime.ToString("MMM yyyy") + ") has been added." });
         }
 
         //// GET: Months/Attention/117ca2a3-fb5a-4882-8e74-23cccf07db73
@@ -121,7 +129,7 @@ namespace WebApplication.Controllers
                 entry.Property(e => e.SiteId).IsModified = false;
                 entry.Property(e => e.MonthTime).IsModified = false;
                 _dataDb.SaveChanges();
-                ViewBag.Message = "The month has been updated.";
+                ViewBag.Message = "This month (" + month.MonthTime.ToString("MMM yyyy") + ") has been updated.";
                 return View("Edit", siteAndMonthViewModel);
             }
             //// The model wasn't valid so show the view back to the user with the "duff" data.
