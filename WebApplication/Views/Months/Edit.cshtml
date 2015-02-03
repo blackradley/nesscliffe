@@ -69,13 +69,15 @@
 @section scripts
 {
     <script type="text/javascript">
-        // Copied from https://gist.github.com/brendanmckenzie/8f8008d3d51c07b2700f
+        // Adapted from https://gist.github.com/brendanmckenzie/8f8008d3d51c07b2700f
+        // but using the month.id as key.
         $(function() {
             'use strict';
             // When the tab is clicked stash the name in local storage.
             $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
                 var id = $(this).parents('[role="tablist"]').attr('id');
-                var key = 'lastTag';
+                console.log(document.URL.split("/").pop());
+                var key = document.URL.split("/").pop();
                 if (id) {
                     key += ':' + id;
                 }
@@ -85,7 +87,7 @@
             // When the page is loaded set the tab to the value in local storage.
             $('[role="tablist"]').each(function (idx, elem) {
                 var id = $(elem).attr('id');
-                var key = 'lastTag';
+                var key = document.URL.split("/").pop();
                 if (id) {
                     key += ':' + id;
                 }

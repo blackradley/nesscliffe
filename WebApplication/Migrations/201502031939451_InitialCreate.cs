@@ -45,8 +45,7 @@ namespace WebApplication.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Sites", t => t.SiteId, cascadeDelete: true)
-                .Index(t => t.SiteId)
-                .Index(t => t.MonthTime, unique: true);
+                .Index(t => t.SiteId);
             
             CreateTable(
                 "dbo.Sites",
@@ -162,7 +161,6 @@ namespace WebApplication.Migrations
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.Sites", new[] { "UserId" });
-            DropIndex("dbo.Months", new[] { "MonthTime" });
             DropIndex("dbo.Months", new[] { "SiteId" });
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.AspNetUserRoles");

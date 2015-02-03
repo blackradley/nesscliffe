@@ -18,7 +18,6 @@ namespace DataAccess
         [ForeignKey("SiteId")]
         public virtual Site Site { get; set; }
 
-        [Index(IsUnique = true)] 
         [Display(Name = "Month")]
         [Column(TypeName = "DateTime2")]
         public virtual DateTime MonthTime { get; set; }
