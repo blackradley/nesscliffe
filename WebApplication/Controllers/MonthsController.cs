@@ -137,32 +137,31 @@ namespace WebApplication.Controllers
             return View("Edit", siteAndMonthViewModel);
         }
 
-
-
-        // GET: Months/Delete/5
-        public ActionResult Delete(Guid? id)
+        // GET: Months/Delete/1ddf361e-29c4-43d4-9d7f-f4656520789e
+        public ActionResult Delete(Guid id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Month month = _dataDb.Months.Find(id);
             if (month == null)
             {
                 return HttpNotFound();
             }
-            return View(month);
+            var siteAndMonthViewModel = new SiteAndMonthViewModel()
+            {
+                Site = month.Site,
+                Month = month
+            };
+            return View(siteAndMonthViewModel);
         }
 
-        // POST: Months/Delete/5
+        // POST: Months/Delete/1ddf361e-29c4-43d4-9d7f-f4656520789e
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            Month month = _dataDb.Months.Find(id);
+            var month = _dataDb.Months.Find(id);
             _dataDb.Months.Remove(month);
             _dataDb.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Months", new { id = month.SiteId});
         }
 
         protected override void Dispose(bool disposing)

@@ -1,32 +1,23 @@
-﻿@model DataAccess.Month
-
+﻿@using Localization
+@using WebApplication.Helpers
+@using WebApplication.Models
+@model SiteAndMonthViewModel
 @{
-    ViewBag.Title = "Delete";
+    var month = Model.Month;
+    var site = Model.Site;
+    ViewBag.Title = "Delete " + month.MonthTime.ToString("MMM yyyy") + "?";
+    ViewBag.Link = Html.ActionLink("Back to " + Resources.LabelPerformanceData, "Index", "Months", new { id = month.SiteId }, null);
+
 }
+@Html.Partial("_PageTitlePartial")
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
+<p>Are you sure you want to delete @month.MonthTime.ToString("MMMM yyyy") from @site.Name?</p>
 <div>
-    <h4>Month</h4>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.MonthTime)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MonthTime)
-        </dd>
-
-  
-    </dl>
-
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+        @Html.Hidden("Id", month.Id)
+        <div>
+            <input type="submit" value="Delete" class="btn btn-default" />
         </div>
     }
 </div>
