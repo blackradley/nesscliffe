@@ -11,7 +11,7 @@
 @Html.Partial("_PageTitlePartial")
 @Html.Partial("_SiteDetailsPartial", site)
 @* VISITOR CYCLE NAVIGATION *@
-<div style="margin-bottom: 10px;">
+<div role="tablist" id="tabs" style="margin-bottom: 10px;">
     <ul id="monthTab" class="nav nav-tabs">
         <li role="presentation" class="active">
             <a href="#Attention" data-toggle="tab">Attention</a>
@@ -40,7 +40,7 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.Hidden("SiteId", month.SiteId)
     @Html.Hidden("MonthTime", month.MonthTime)
-    <div id="monthTabContent" class="tab-content">
+    <div class="tab-content">
         <div class="tab-pane fade in active" id="Attention">
             @Html.Partial("_Attention", month)
         </div>
@@ -65,4 +65,35 @@
             <input type="submit" value="Save" class="btn btn-default" />
         </div>
     </div>
+}
+@section scripts
+{
+    <script type="text/javascript">
+        // Copied from https://gist.github.com/brendanmckenzie/8f8008d3d51c07b2700f
+        $(function() {
+            'use strict';
+            // When the tab is clicked stash the name in local storage.
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+                var id = $(this).parents('[role="tablist"]').attr('id');
+                var key = 'lastTag';
+                if (id) {
+                    key += ':' + id;
+                }
+                localStorage.setItem(key, $(e.target).attr('href'));
+            });
+
+            // When the page is loaded set the tab to the value in local storage.
+            $('[role="tablist"]').each(function (idx, elem) {
+                var id = $(elem).attr('id');
+                var key = 'lastTag';
+                if (id) {
+                    key += ':' + id;
+                }
+                var lastTab = localStorage.getItem(key);
+                if (lastTab) {
+                    $('[href="' + lastTab + '"]').tab('show');
+                }
+            });
+        });
+    </script>
 }
