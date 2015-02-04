@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess
 {
@@ -54,15 +51,15 @@ namespace DataAccess
 
         #region ARRIVING
         [Display(Name = "Visitor Numbers", Description = "How many visitors came to your site this month?")]
-        public virtual int Visitors { get; set; }
+        public virtual int NumberVisitors { get; set; }
         [Display(Name = "Visitor Income", Description = "What was the income from visitors this month?")]
-        public virtual float IncomeAdmissions { get; set; }
+        public virtual int IncomeAdmissions { get; set; }
         [Display(Name = "Additional Events", Description = "How many additional events did you run at your site this month?")]
-        public virtual int AdditionalEvents { get; set; }
+        public virtual int NumberAdditionalEvents { get; set; }
         [Display(Name = "Additional Events Numbers", Description = "How many visitors took part in additional events at your site this month?")]
-        public virtual int VisitorsAdditional { get; set; }
+        public virtual int NumberVisitorsAdditional { get; set; }
         [Display(Name = "Additional Events Income", Description = "What was the income from additional events this month?")]
-        public virtual float IncomeAdditional { get; set; }
+        public virtual int IncomeAdditional { get; set; }
 
         [Display(Name = "No Family", Description = "What percentage of visitors were not part of a family?")]
         public virtual int VisitorsPercentNoFamily { get; set; }
@@ -91,31 +88,96 @@ namespace DataAccess
         public virtual float HoursSaturday { get; set; }
         [Display(Name = "Sunday", Description = "How many hours were you open on Sundays?")]
         [Range(minimum: 0, maximum: 24, ErrorMessage = "Enter between 0 and 24 hours")]
-        public virtual float HoursSunday { get; set; }
-
-
-        
+        public virtual float HoursSunday { get; set; }       
         #endregion
 
         #region SHOPPING
         [Display(Name = "Retail Income", Description = "How much was your retail income this month?")]
-        [Range(0, 99999, ErrorMessage = "Area must be between 0 and 99999")]
-        public virtual int? RetailIncome { get; set; }
+        public virtual int? IncomeRetail { get; set; }
         [Display(Name = "Shop behind pay barrier?", Description = "Do visitors have to pay to get to the shop?")]
         public virtual bool PayToShop { get; set; }
         [Display(Name = "Shop visible from entrance?", Description = "Can you see the shop before you enter?")]
         public virtual bool ShopVisibleFromEntrance { get; set; }
         [Display(Name = "Exit through the shop?", Description = "Do visitors have leave via the shop?")]
         public virtual bool ExitViaShop { get; set; }
+        [Display(Name = "Distance to Shop", Description = "How far is it from the entrance to the shop?")]
+        public virtual int? DistanceToShop { get; set; }
+        public virtual int DistanceToShopUnits { get; set; }
+        public static readonly Dictionary<int, string> DistanceUnitType = new Dictionary<int, string>
+        {
+            { 1, "Metres" },
+            { 2, "Feet" },
+            { 3, "Paces"}
+        };
+        [Display(Name = "Area of Shop", Description = "How big is the shop?  In square feet or square metres.")]
+        public virtual int? AreaShop { get; set; }
+        public virtual int AreaShopUnits { get; set; }
+        public static readonly Dictionary<int, string> AreaShopUnitType = new Dictionary<int, string>
+        {
+            { 1, "Square Metres" },
+            { 2, "Square Feet" }
+        };
+        [Display(Name = "Number of Products", Description = "How many product lines does the shop have?")]
+        public virtual int? NumberProducts { get; set; }
+        [Display(Name = "Number of Related Products", Description = "How many of those product lines are directly related to the site?")]
+        public virtual int? NumberRelatedProducts { get; set; }
         #endregion
         
         #region REFRESHMENT
+        [Display(Name = "Catering Income", Description = "What was your catering income for this month?")]
+        public virtual int? IncomeCatering { get; set; }
+        [Display(Name = "Café behind pay barrier?", Description = "Do visitors have to pay to get to the café?")]
+        public virtual bool PayToCafe { get; set; }
+        [Display(Name = "Café visible from entrance?", Description = "Can you see the cafe before you enter the site?")]
+        public virtual bool CafeVisibleFromEntrance { get; set; }
+        [Display(Name = "Distance to Cafe", Description = "How far is it from the entrance to the café?")]
+        public virtual int? DistanceToCafe { get; set; }
+        public virtual int DistanceToCafeUnits { get; set; }
+        [Display(Name = "Covers/Seats", Description = "How many people can the café seat?")]
+        public virtual int? NumberCafeSeats { get; set; }
+        [Display(Name = "Basserie and Bistro", Description = "Would you describe your café as a basserie or bistro style?")]
+        public virtual bool IsBasserie { get; set; }
+        [Display(Name = "Buffet and Smörgåsbord", Description = "Is your café buffet or smörgåsbord style?")]
+        public virtual bool IsBuffet { get; set; }
+        [Display(Name = "Café", Description = "Is your café just a regular café?")]
+        public virtual bool IsCafe { get; set; }
+        [Display(Name = "Cafeteria", Description = "Is your café cafeteria style?")]
+        public virtual bool IsCafeteria { get; set; }
+        [Display(Name = "Coffeehouse", Description = "Is your café really a kind of coffeehouse?")]
+        public virtual bool IsCoffeehouse { get; set; }
+        [Display(Name = "Destination Restaurant", Description = "Would you describe your cafe as a destination restaurant?")]
+        public virtual bool IsDestinationRestaurant { get; set; }
+        [Display(Name = "In House", Description = "Is the catering provided in house?")]
+        public virtual bool IsCateringInHouse { get; set; }
+        [Display(Name = "Out sourced to Local Authority", Description = "Is the catering out sourced to the local authority?")]
+        public virtual bool IsCateringOutToLocalAuthority { get; set; }
+        [Display(Name = "Out sourced to Private Company", Description = "Is the catering out sourced to a private company?")]
+        public virtual bool IsCateringOutToCompany { get; set; }
         #endregion
         
         #region DONATION
+        [Display(Name = "Donation Opportunities", Description = "Do you provide visitors with opportunites to make donations?")]
+        public virtual bool IsDonationOpportunity { get; set; }
+        [Display(Name = "Donation Income", Description = "What was your income from donations for this month?")]
+        public virtual int? IncomeDonation { get; set; }
+        [Display(Name = "Distance to Donation", Description = "How far is it from the entrance to the first opportunity to make a donation?")]
+        public virtual int? DistanceToDonation { get; set; }
+        public virtual int DistanceToDonationUnits { get; set; }
+        [Display(Name = "Number of Donation Opportunities", Description = "How many donation opportunites does your site offer?")]
+        public virtual int NumberDonationOpportunities { get; set; }
         #endregion
         
         #region EXPERIENCE
+        [Display(Name = "Number of Artefacts", Description = "Approximately how many artefacts are in your collections?")]
+        public virtual int? NumberArtefacts { get; set; }
+        [Display(Name = "Percentage of Artefacts on Display", Description = "Approximately what percentage of the artefacts are on display?")]
+        public virtual int ArtefactsDisplay { get; set; }
+        [Display(Name = "Outstanding Collections", Description = "Do you any collections designated 'Outstanding' by the Arts Council?")]
+        public virtual bool IsCollectionOutstanding { get; set; }
+        [Display(Name = "Number of Outstanding Collections", Description = "How many collections are collections designated 'Outstanding' by the Arts Council?")]
+        public virtual int NumberCollectionsOutstanding { get; set; }
+        [Display(Name = "Describe your Programme", Description = "10 for mass appeal and 1 for niche?")]
+        public virtual int ProgrammeMassAppeal { get; set; }
         #endregion
     }
 }

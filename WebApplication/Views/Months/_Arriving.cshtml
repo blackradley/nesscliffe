@@ -4,7 +4,7 @@
 @Html.SiteSectionLabel("Visitors", "Tell us about the visitors to your site")
 <div class="row">
     <div class="form-group col-md-3">
-        @Html.SiteTextBoxFor(model => model.Visitors)
+        @Html.SiteTextBoxFor(model => model.NumberVisitors)
     </div>
     <div class="form-group col-md-3">
         @Html.SiteTextBoxFor(model => model.IncomeAdmissions)
@@ -12,10 +12,10 @@
 </div>
 <div class="row">
     <div class="form-group col-md-3">
-        @Html.SiteTextBoxFor(model => model.AdditionalEvents)
+        @Html.SiteTextBoxFor(model => model.NumberAdditionalEvents)
     </div>
     <div class="form-group col-md-3">
-        @Html.SiteTextBoxFor(model => model.VisitorsAdditional)
+        @Html.SiteTextBoxFor(model => model.NumberVisitorsAdditional)
     </div>
     <div class="form-group col-md-3">
         @Html.SiteTextBoxFor(model => model.IncomeAdditional)
