@@ -61,7 +61,7 @@ namespace DataAccess
         [Display(Name = "Additional Events Income", Description = "What was the income from additional events this month?")]
         public virtual int IncomeAdditional { get; set; }
 
-        [Display(Name = "No Family", Description = "What percentage of visitors were not part of a family?")]
+        [Display(Name = "Not with a Family", Description = "What percentage of visitors were not part of a family?")]
         public virtual int VisitorsPercentNoFamily { get; set; }
         [Display(Name = "Family", Description = "What percentage of visitors were part of a family?")]
         public virtual int VisitorsPercentFamily { get; set; }
@@ -149,9 +149,9 @@ namespace DataAccess
         public virtual bool IsDestinationRestaurant { get; set; }
         [Display(Name = "In House", Description = "Is the catering provided in house?")]
         public virtual bool IsCateringInHouse { get; set; }
-        [Display(Name = "Out sourced to Local Authority", Description = "Is the catering out sourced to the local authority?")]
+        [Display(Name = "Out sourced to LA", Description = "Is the catering out sourced to the local authority?")]
         public virtual bool IsCateringOutToLocalAuthority { get; set; }
-        [Display(Name = "Out sourced to Private Company", Description = "Is the catering out sourced to a private company?")]
+        [Display(Name = "Out sourced to Company", Description = "Is the catering out sourced to a private company?")]
         public virtual bool IsCateringOutToCompany { get; set; }
         #endregion
         
