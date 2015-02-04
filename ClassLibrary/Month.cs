@@ -31,7 +31,7 @@ namespace DataAccess
         public virtual bool OverseasTv { get; set; }
         [Display(Name = "Website Url", Description = "What is your web site address?")]
         public virtual String WebsiteUrl { get; set; }
-        [Display(Name = "Website Visitors", Description = "How many visitors did your website get?")]
+        [Display(Name = "Website Visitors", Description = "How many visitors did your website get this month?")]
         public virtual int? WebsiteVisitors { get; set; }
         [Display(Name = "Facebook Url", Description = "If you have a Facebook page, what it the address?")]
         public virtual String FacebookUrl { get; set; }
@@ -163,7 +163,7 @@ namespace DataAccess
         [Display(Name = "Distance to Donation", Description = "How far is it from the entrance to the first opportunity to make a donation?")]
         public virtual int? DistanceToDonation { get; set; }
         public virtual int DistanceToDonationUnits { get; set; }
-        [Display(Name = "Number of Donation Opportunities", Description = "How many donation opportunites does your site offer?")]
+        [Display(Name = "Number of Donation Boxes", Description = "How many donation opportunites does your site offer?")]
         public virtual int NumberDonationOpportunities { get; set; }
         #endregion
         
