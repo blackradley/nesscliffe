@@ -1,6 +1,6 @@
 ﻿@using DataAccess
 @using WebApplication.Helpers
-@model DataAccess.Month
+@model Month
 <div class="row">
     <div class="form-group col-md-3">
         @Html.SiteTextBoxFor(model => model.NumberArtefacts)
@@ -20,7 +20,8 @@
     </div>
 </div>
 <div class="row">
-    <div class="form-group col-md-3">
-        @Html.SiteTextBoxFor(model => model.ProgrammeMassAppeal)
-    </div>
+    @foreach (var rating in Scales.Rating)
+    {
+        @Html.RadioButtonFor(model => model.ProgrammeMassAppeal, rating.Key)
+    }
 </div>
