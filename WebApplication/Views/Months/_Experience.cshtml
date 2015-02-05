@@ -20,8 +20,7 @@
     </div>
 </div>
 <div class="row">
-    @foreach (var rating in Scales.Rating)
-    {
-        @Html.RadioButtonFor(model => model.ProgrammeMassAppeal, rating.Key)
-    }
+    <div class="form-group col-md-6">
+        @Html.SiteRatingScaleFor(model => model.ProgrammeMassAppeal, Scales.Rating7, "Niche Interest", "Mass Market Appeal")
+    </div>
 </div>

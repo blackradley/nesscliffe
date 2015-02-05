@@ -193,10 +193,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\GetAttributeFromHelper.cs" />
-    <Compile Include="Helpers\SiteCheckBoxDisplayForHelper.cs" />
+    <Compile Include="Helpers\SiteCheckBoxForHelper.cs" />
     <Compile Include="Helpers\SiteRatingScaleForHelper.cs" />
     <Compile Include="Helpers\SiteTextBoxForHelper.cs" />
-    <Compile Include="Helpers\SiteCheckBoxForHelper.cs" />
     <Compile Include="Helpers\SiteHelpIconForHelper.cs" />
     <Compile Include="Helpers\SiteIsSelectedHelper.cs" />
     <Compile Include="Helpers\SiteSectionLabelHelper.cs" />

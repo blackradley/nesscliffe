@@ -166,7 +166,7 @@ namespace DataAccess
         public virtual bool IsCollectionOutstanding { get; set; }
         [Display(Name = "Outstanding Collections", Description = "How many collections are collections designated 'Outstanding' by the Arts Council?")]
         public virtual int NumberCollectionsOutstanding { get; set; }
-        [Display(Name = "Describe your Programme", Description = "11 for mass appeal and 1 for niche?")]
+        [Display(Name = "Describe your Programme", Description = "On this scale from niche interest to mass appeal?")]
         public virtual int ProgrammeMassAppeal { get; set; }
         #endregion
     }
