@@ -17,7 +17,7 @@
         @Html.SiteHelpFor(model => model.DistanceToDonation)
         <div class="form-inline">
             @Html.EditorFor(model => model.DistanceToDonation, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.DropDownListFor(model => model.DistanceToDonationUnits, new SelectList(Month.DistanceUnitType, "Key", "Value"))
+            @Html.DropDownListFor(model => model.DistanceToDonationUnits, new SelectList(Units.DistanceIndoor, "Key", "Value"))
         </div>
         @Html.ValidationMessageFor(model => model.DistanceToDonation)
     </div>

@@ -103,20 +103,10 @@ namespace DataAccess
         [Display(Name = "Distance to Shop", Description = "How far is it from the entrance to the shop?")]
         public virtual int? DistanceToShop { get; set; }
         public virtual int DistanceToShopUnits { get; set; }
-        public static readonly Dictionary<int, string> DistanceUnitType = new Dictionary<int, string>
-        {
-            { 1, "Metres" },
-            { 2, "Feet" },
-            { 3, "Paces"}
-        };
+
         [Display(Name = "Area of Shop", Description = "How big is the shop?  In square feet or square metres.")]
         public virtual int? AreaShop { get; set; }
         public virtual int AreaShopUnits { get; set; }
-        public static readonly Dictionary<int, string> AreaShopUnitType = new Dictionary<int, string>
-        {
-            { 1, "Square Metres" },
-            { 2, "Square Feet" }
-        };
         [Display(Name = "Number of Products", Description = "How many product lines does the shop have?")]
         public virtual int? NumberProducts { get; set; }
         [Display(Name = "Number of Related Products", Description = "How many of those product lines are directly related to the site?")]
@@ -170,13 +160,13 @@ namespace DataAccess
         #region EXPERIENCE
         [Display(Name = "Number of Artefacts", Description = "Approximately how many artefacts are in your collections?")]
         public virtual int? NumberArtefacts { get; set; }
-        [Display(Name = "Percentage of Artefacts on Display", Description = "Approximately what percentage of the artefacts are on display?")]
+        [Display(Name = "Artefacts on Display", Description = "Approximately what percentage of the artefacts are on display?")]
         public virtual int ArtefactsDisplay { get; set; }
         [Display(Name = "Outstanding Collections", Description = "Do you any collections designated 'Outstanding' by the Arts Council?")]
         public virtual bool IsCollectionOutstanding { get; set; }
         [Display(Name = "Number of Outstanding Collections", Description = "How many collections are collections designated 'Outstanding' by the Arts Council?")]
         public virtual int NumberCollectionsOutstanding { get; set; }
-        [Display(Name = "Describe your Programme", Description = "10 for mass appeal and 1 for niche?")]
+        [Display(Name = "Describe your Programme", Description = "11 for mass appeal and 1 for niche?")]
         public virtual int ProgrammeMassAppeal { get; set; }
         #endregion
     }

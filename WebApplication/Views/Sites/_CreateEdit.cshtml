@@ -43,7 +43,7 @@
         @Html.SiteHelpFor(model => model.AreaIndoor)
         <div class="form-inline">
             @Html.EditorFor(model => model.AreaIndoor, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.DropDownListFor(model => model.AreaIndoorUnits, new SelectList(Site.AreaIndoorUnitType, "Key", "Value"))
+            @Html.DropDownListFor(model => model.AreaIndoorUnits, new SelectList(Units.AreaIndoor, "Key", "Value"))
         </div>
         @Html.ValidationMessageFor(model => model.AreaIndoor)
     </div>
@@ -52,7 +52,7 @@
         @Html.SiteHelpFor(model => model.AreaOutdoor)
         <div class="form-inline">
             @Html.EditorFor(model => model.AreaOutdoor, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.DropDownListFor(model => model.AreaOutdoorUnits, new SelectList(Site.AreaOutdoorUnitType, "Key", "Value"))
+            @Html.DropDownListFor(model => model.AreaOutdoorUnits, new SelectList(Units.AreaOutdoor, "Key", "Value"))
         </div>
         @Html.ValidationMessageFor(model => model.AreaOutdoor)
     </div>
