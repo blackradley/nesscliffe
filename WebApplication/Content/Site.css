@@ -90,3 +90,22 @@ h1, h2, h3, h4, h5, h6 {
     outline: none; 
     padding: 0;
 }
+
+.form-control {
+    /* set the width to less than 100% to leave space for £ and %  */
+    display: inline;
+    width: 80%;
+}
+
+.percentage:after {
+    content: "%";
+}
+
+.pounds:after {
+    content: "£";
+}
+
+
+.hours:after {
+    content: "hrs";
+}

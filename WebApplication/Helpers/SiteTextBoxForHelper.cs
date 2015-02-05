@@ -27,7 +27,7 @@ namespace WebApplication.Helpers
             var help = htmlHelper.SiteHelpFor(expression);
             var editor = htmlHelper.EditorFor(expression, new {htmlAttributes = new {@class = "form-control", @style = "max-width: 500px;", @name = name}});
             var validation = htmlHelper.ValidationMessageFor(expression);
-            return new MvcHtmlString(label + "\n" + help + "\n" + editor + "\n" + validation);
+            return new MvcHtmlString(label + "\n" + help + "</br>" + editor + "\n" + validation);
         }
     }
 }

@@ -6,6 +6,7 @@
     <div class="form-group col-md-9">
         @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label", @for = "name" })
         @Html.SiteHelpFor(model => model.Name)
+        <br/>
         @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @name = "name", @placeholder="Site Name", @style = "max-width: 500px;" } })
         @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
     </div>

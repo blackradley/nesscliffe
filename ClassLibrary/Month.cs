@@ -109,8 +109,8 @@ namespace DataAccess
         public virtual int AreaShopUnits { get; set; }
         [Display(Name = "Number of Products", Description = "How many product lines does the shop have?")]
         public virtual int? NumberProducts { get; set; }
-        [Display(Name = "Number of Related Products", Description = "How many of those product lines are directly related to the site?")]
-        public virtual int? NumberRelatedProducts { get; set; }
+        [Display(Name = "Percentage Related Products", Description = "How many of those product lines are directly related to the site?")]
+        public virtual int? PercentageRelatedProducts { get; set; }
         #endregion
         
         #region REFRESHMENT

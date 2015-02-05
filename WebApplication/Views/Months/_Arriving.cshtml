@@ -6,7 +6,7 @@
     <div class="form-group col-md-3">
         @Html.SiteTextBoxFor(model => model.NumberVisitors)
     </div>
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-3 pounds">
         @Html.SiteTextBoxFor(model => model.IncomeAdmissions)
     </div>
 </div>
@@ -17,45 +17,45 @@
     <div class="form-group col-md-3">
         @Html.SiteTextBoxFor(model => model.NumberVisitorsAdditional)
     </div>
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-3 pounds">
         @Html.SiteTextBoxFor(model => model.IncomeAdditional)
     </div>
 </div>
 <div class="row">
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-3 percentage">
         @Html.SiteTextBoxFor(model => model.VisitorsPercentNoFamily)
     </div>
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-3 percentage">
         @Html.SiteTextBoxFor(model => model.VisitorsPercentFamily)
     </div>
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-3 percentage">
         @Html.SiteTextBoxFor(model => model.VisitorsPercentRetired)
     </div>
 </div>
 
 @Html.SiteSectionLabel("Opening Hours", "Fill in the number of hours your site was open")
 <div class="row">
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-3 hours">
         @Html.SiteTextBoxFor(model => model.HoursMonday)
     </div>
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-3 hours">
         @Html.SiteTextBoxFor(model => model.HoursTuesday)
     </div>
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-3 hours">
         @Html.SiteTextBoxFor(model => model.HoursWednesday)
     </div>
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-3 hours">
         @Html.SiteTextBoxFor(model => model.HoursThursday)
     </div>
 </div>
 <div class="row">
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-3 hours">
         @Html.SiteTextBoxFor(model => model.HoursFriday)
     </div>
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-3 hours">
         @Html.SiteTextBoxFor(model => model.HoursSaturday)
     </div>
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-3 hours">
         @Html.SiteTextBoxFor(model => model.HoursSunday)
     </div>
 </div>

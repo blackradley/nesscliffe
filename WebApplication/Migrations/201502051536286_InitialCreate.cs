@@ -51,7 +51,7 @@ namespace WebApplication.Migrations
                         AreaShop = c.Int(),
                         AreaShopUnits = c.Int(nullable: false),
                         NumberProducts = c.Int(),
-                        NumberRelatedProducts = c.Int(),
+                        PercentageRelatedProducts = c.Int(),
                         IncomeCatering = c.Int(),
                         PayToCafe = c.Boolean(nullable: false),
                         CafeVisibleFromEntrance = c.Boolean(nullable: false),

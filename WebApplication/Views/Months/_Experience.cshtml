@@ -5,8 +5,8 @@
     <div class="form-group col-md-3">
         @Html.SiteTextBoxFor(model => model.NumberArtefacts)
     </div>
-    <div class="form-group col-md-3">
-        @Html.SiteTextBoxFor(model => model.ArtefactsDisplay) %
+    <div class="form-group col-md-3 percentage">
+        @Html.SiteTextBoxFor(model => model.ArtefactsDisplay)
     </div>
 </div>
 <div class="form-group">
@@ -24,3 +24,4 @@
         @Html.SiteRatingScaleFor(model => model.ProgrammeMassAppeal, Scales.Rating7, "Niche Interest", "Mass Market Appeal")
     </div>
 </div>
+

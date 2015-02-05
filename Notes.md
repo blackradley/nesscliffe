@@ -21,8 +21,6 @@ Migrations are enabled for the datacontext.
 
 Add-Migration InitialCreate
 
-MarketingSpend = c.Int(nullable: true),
-
 Error Messages
 -----------
 * Apologise.
