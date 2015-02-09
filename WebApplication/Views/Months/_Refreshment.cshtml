@@ -1,19 +1,18 @@
 ﻿@using DataAccess
 @using WebApplication.Helpers
 @model DataAccess.Month
+<div class="form-group">
+    <div class="row form-inline">
+        @Html.SiteCheckBoxFor(model => model.IsCatering)
+    </div>
+</div>
 <div class="row">
     <div class="form-group col-md-3 pounds">
         @Html.SiteTextBoxFor(model => model.IncomeCatering)
     </div>
-</div>
-<div class="form-group">
-    @Html.SiteSectionLabel("Café Position", "Check the boxes which apply to your site")
-    <div class="row form-inline">
-        @Html.SiteCheckBoxFor(model => model.PayToCafe)
-        @Html.SiteCheckBoxFor(model => model.CafeVisibleFromEntrance)
+    <div class="form-group col-md-3">
+        @Html.SiteTextBoxFor(model => model.NumberCafeSeats)
     </div>
-</div>
-<div class="row">
     <div class="form-group col-md-6">
         @Html.LabelFor(model => model.DistanceToCafe, htmlAttributes: new { @class = "control-label", @for = "DistanceToCafe" })
         @Html.SiteHelpFor(model => model.DistanceToCafe)
@@ -23,8 +22,12 @@
         </div>
         @Html.ValidationMessageFor(model => model.DistanceToCafe)
     </div>
-    <div class="form-group col-md-3">
-        @Html.SiteTextBoxFor(model => model.NumberCafeSeats)
+</div>
+<div class="form-group">
+    @Html.SiteSectionLabel("Café Position", "Check the boxes which apply to your site")
+    <div class="row form-inline">
+        @Html.SiteCheckBoxFor(model => model.PayToCafe)
+        @Html.SiteCheckBoxFor(model => model.CafeVisibleFromEntrance)
     </div>
 </div>
 <div class="form-group">
