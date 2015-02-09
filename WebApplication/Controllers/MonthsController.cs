@@ -90,9 +90,10 @@ namespace WebApplication.Controllers
             return RedirectToAction("Edit", new { month.Id, message = "A new month (" + month.MonthTime.ToString("MMM yyyy") + ") has been added." });
         }
 
-        //// GET: Months/Attention/117ca2a3-fb5a-4882-8e74-23cccf07db73
-        public ActionResult Edit(Guid id)
+        //// GET: Months/Edit/117ca2a3-fb5a-4882-8e74-23cccf07db73
+        public ActionResult Edit(Guid? id)
         {
+            if (!id.HasValue) return RedirectToAction("Index", "Home");// Catch null ids.
             var month = _dataDb.Months.Find(id);
             var siteAndMonthViewModel = new SiteAndMonthViewModel()
             {

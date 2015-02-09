@@ -10,7 +10,8 @@ namespace WebApplication
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/knockout-{version}.debug.js"));
+                        "~/Scripts/knockout-{version}.debug.js",
+                        "~/Scripts/knockout.mapping-latest.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));

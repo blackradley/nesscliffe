@@ -12,7 +12,7 @@ namespace WebApplication.Helpers
         /// Extension method to provide consistent check box layouts.
         /// </summary>
         public static MvcHtmlString SiteTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> htmlHelper, 
-            Expression<Func<TModel, TValue>> expression, String knockoutBinding = "")
+            Expression<Func<TModel, TValue>> expression)
         {
             //@Html.LabelFor(model => model.WebsiteUrl, htmlAttributes: new { @for = "WebsiteUrl" })
             //@Html.SiteHelpFor(model => model.WebsiteUrl)
@@ -33,11 +33,6 @@ namespace WebApplication.Helpers
                 { "name", name},
                 { "placeholder", displayName}
             };
-            // Add the knockout binding if given.
-            if (knockoutBinding != String.Empty)
-            {
-                htmlAttributes.Add("data-bind", knockoutBinding);
-            }
             var editor = htmlHelper.EditorFor(expression, new { htmlAttributes });
             var validation = htmlHelper.ValidationMessageFor(expression);
             return new MvcHtmlString(label + "\n" + help + "</br>" + editor + "\n" + validation);

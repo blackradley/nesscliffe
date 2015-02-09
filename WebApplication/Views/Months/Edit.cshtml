@@ -1,4 +1,5 @@
-﻿@using Localization
+﻿@using DataAccess
+@using Localization
 @using WebApplication.Models
 @model SiteAndMonthViewModel
 @{
@@ -16,7 +17,7 @@
             <li role="presentation" class="active">
                 <a href="#Attention" data-toggle="tab">
                     Attention
-                    @*<i data-bind="visible: monthKnockout.isAttentionComplete()" class="glyphicon glyphicon-ok"></i>*@
+                    @* <i class="glyphicon glyphicon-ok"></i>*@
                 </a>
             </li>
             <li role="presentation">
@@ -105,25 +106,6 @@
                 }
             });
         });
-
-        //function MonthKnockout() {
-        //    var self = this;
-        //    self.marketingEffort = ko.observable('');
-        //    self.websiteVisitors = ko.observable('');
-        //    self.isAttentionComplete = ko.computed(function () {
-        //        console.debug("test");
-        //        console.debug("test" + self.marketingEffort().length);
-        //        if ((self.marketingEffort().length > 0) && (self.websiteVisitors().length > 0)) {
-        //            console.debug("test" + self.marketingEffort().length);
-        //            return true;
-        //        } else {
-        //            return false;
-        //        }
-        //    });
-        //}
-
-        //var monthKnockout = new MonthKnockout();
-        //ko.applyBindings(monthKnockout);
 
     </script>
 }
