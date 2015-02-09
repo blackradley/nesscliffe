@@ -47,22 +47,22 @@
     @Html.Hidden("SiteId", month.SiteId)
     @Html.Hidden("MonthTime", month.MonthTime)
     <div class="tab-content">
-        <div class="tab-pane fade in active" id="Attention">
+        <div class="tab-pane in active" id="Attention">
             @Html.Partial("_Attention", month)
         </div>
-        <div class="tab-pane fade" id="Arriving">
+        <div class="tab-pane" id="Arriving">
             @Html.Partial("_Arriving", month)
         </div>
-        <div class="tab-pane fade" id="Shopping">
+        <div class="tab-pane" id="Shopping">
             @Html.Partial("_Shopping", month)
         </div>
-        <div class="tab-pane fade" id="Refreshment">
+        <div class="tab-pane" id="Refreshment">
             @Html.Partial("_Refreshment", month)
         </div>
-        <div class="tab-pane fade" id="Donation">
+        <div class="tab-pane" id="Donation">
             @Html.Partial("_Donation", month)
         </div>
-        <div class="tab-pane fade" id="Experience">
+        <div class="tab-pane" id="Experience">
             @Html.Partial("_Experience", month)
         </div>
     </div>
@@ -105,6 +105,44 @@
                     $('[href="' + lastTab + '"]').tab('show');
                 }
             });
+        });
+
+        // TODO: Dry this out a bit.
+
+        $(document).ready(function () {
+            // Attach a function to the change event
+            $('#IsRetail').change(function () {
+                if (this.checked)
+                    $('#Retail').fadeIn();
+                else
+                    $('#Retail').hide();
+            });
+            // Call the event so the div is set correctly
+            $('#IsRetail').change();
+        });
+
+        $(document).ready(function () {
+            // Attach a function to the change event
+            $('#IsCatering').change(function () {
+                if (this.checked)
+                    $('#Catering').fadeIn();
+                else
+                    $('#Catering').hide();
+            });
+            // Call the event so the div is set correctly
+            $('#IsCatering').change();
+        });
+
+        $(document).ready(function () {
+            // Attach a function to the change event
+            $('#IsDonationOpportunity').change(function () {
+                if (this.checked)
+                    $('#DonationOpportunity').fadeIn();
+                else
+                    $('#DonationOpportunity').hide();
+            });
+            // Call the event so the div is set correctly
+            $('#IsDonationOpportunity').change();
         });
 
     </script>
