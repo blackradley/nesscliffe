@@ -92,6 +92,8 @@ namespace DataAccess
         #endregion
 
         #region SHOPPING
+        [Display(Name = "Do you have a shop?", Description = "Was there a shop or retail outlet open on your site this month?")]
+        public virtual bool IsRetail { get; set; }
         [Display(Name = "Retail Income", Description = "How much was your retail income this month?")]
         public virtual int? IncomeRetail { get; set; }
         [Display(Name = "Shop behind pay barrier?", Description = "Do visitors have to pay to get to the shop?")]
@@ -114,6 +116,8 @@ namespace DataAccess
         #endregion
         
         #region REFRESHMENT
+        [Display(Name = "Do you have catering?", Description = "Did you provide catering on your site this month?")]
+        public virtual bool IsCatering { get; set; }
         [Display(Name = "Catering Income", Description = "What was your catering income for this month?")]
         public virtual int? IncomeCatering { get; set; }
         [Display(Name = "Café behind pay barrier?", Description = "Do visitors have to pay to get to the café?")]

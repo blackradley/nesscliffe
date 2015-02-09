@@ -9,7 +9,13 @@
 <div class="form-group">
     @Html.SiteSectionLabel("Shop Position", "Check the boxes which apply to your site")
     <div class="row form-inline">
-        @Html.SiteCheckBoxFor(model => model.PayToShop)
+      
+        @Html.RadioButtonFor(model => model.PayToShop, true, new { id = "PayToShop_true" })
+        <label for="PayToShop_true">Yes</label>
+        <br />
+        @Html.RadioButtonFor(model => model.PayToShop, false, new { id = "PayToShop_false" })
+        <label for="PayToShop_false">No</label>
+
         @Html.SiteCheckBoxFor(model => model.ShopVisibleFromEntrance)
         @Html.SiteCheckBoxFor(model => model.ExitViaShop)
     </div>
