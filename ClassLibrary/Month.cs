@@ -20,7 +20,7 @@ namespace DataAccess
         public virtual DateTime MonthTime { get; set; }
 
         #region ATTENTION
-        [Display(Name = "Marketing Spend", Description = "How much have you spent on marketing this month?")]
+        [Display(Name = "Marketing Effort", Description = "Approximately how many person hours were spent on marketing tasks this month?")]
         [Range(0, 99999, ErrorMessage = "Area must be between 0 and 99999")]
         public virtual int? MarketingSpend { get; set; }
         [Display(Name = "Regional TV", Description = "Has your site appeared on regional TV?")]
