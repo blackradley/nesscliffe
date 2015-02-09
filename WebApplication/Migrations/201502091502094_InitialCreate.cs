@@ -75,9 +75,9 @@ namespace WebApplication.Migrations
                         DistanceToDonationUnits = c.Int(nullable: false),
                         NumberDonationOpportunities = c.Int(nullable: false),
                         NumberArtefacts = c.Int(),
-                        ArtefactsDisplay = c.Int(nullable: false),
+                        ArtefactsDisplay = c.Int(),
                         IsCollectionOutstanding = c.Boolean(nullable: false),
-                        NumberCollectionsOutstanding = c.Int(nullable: false),
+                        NumberCollectionsOutstanding = c.Int(),
                         ProgrammeMassAppeal = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)

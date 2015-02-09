@@ -11,13 +11,8 @@ namespace WebApplication.Helpers
         /// <summary>
         /// Extension method to provide consistent check box layouts.
         /// </summary>
-        /// <typeparam name="TModel"></typeparam>
-        /// <typeparam name="TValue"></typeparam>
-        /// <param name="htmlHelper"></param>
-        /// <param name="expression"></param>
-        /// <returns></returns>
         public static MvcHtmlString SiteTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> htmlHelper, 
-            Expression<Func<TModel, TValue>> expression)
+            Expression<Func<TModel, TValue>> expression, String knockoutBinding = "")
         {
             //@Html.LabelFor(model => model.WebsiteUrl, htmlAttributes: new { @for = "WebsiteUrl" })
             //@Html.SiteHelpFor(model => model.WebsiteUrl)
@@ -30,8 +25,20 @@ namespace WebApplication.Helpers
             // Get the display name for the placeholder
             var metaData = ModelMetadata.FromLambdaExpression(expression, htmlHelper.ViewData);
             var displayName = metaData.DisplayName;
-
-            var editor = htmlHelper.EditorFor(expression, new { htmlAttributes = new { @class = "form-control", @style = "max-width: 500px;", @name = name, @placeholder = displayName } });
+            // Attributes for the editor
+            var htmlAttributes = new ViewDataDictionary
+            {
+                { "class", "form-control" }, 
+                { "style", "max-width: 500px;" },
+                { "name", name},
+                { "placeholder", displayName}
+            };
+            // Add the knockout binding if given.
+            if (knockoutBinding != String.Empty)
+            {
+                htmlAttributes.Add("data-bind", knockoutBinding);
+            }
+            var editor = htmlHelper.EditorFor(expression, new { htmlAttributes });
             var validation = htmlHelper.ValidationMessageFor(expression);
             return new MvcHtmlString(label + "\n" + help + "</br>" + editor + "\n" + validation);
         }

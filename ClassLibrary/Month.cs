@@ -164,11 +164,11 @@ namespace DataAccess
         [Display(Name = "Number of Artefacts", Description = "Approximately how many artefacts are in your collections?")]
         public virtual int? NumberArtefacts { get; set; }
         [Display(Name = "Artefacts on Display", Description = "Approximately what percentage of the artefacts are on display?")]
-        public virtual int ArtefactsDisplay { get; set; }
+        public virtual int? ArtefactsDisplay { get; set; }
         [Display(Name = "Outstanding Collections", Description = "Do you any collections designated 'Outstanding' by the Arts Council?")]
         public virtual bool IsCollectionOutstanding { get; set; }
         [Display(Name = "Outstanding Collections", Description = "How many collections are collections designated 'Outstanding' by the Arts Council?")]
-        public virtual int NumberCollectionsOutstanding { get; set; }
+        public virtual int? NumberCollectionsOutstanding { get; set; }
         [Display(Name = "Describe your Programme", Description = "On this scale from niche interest to mass appeal?")]
         public virtual int ProgrammeMassAppeal { get; set; }
         #endregion
