@@ -21,8 +21,7 @@ namespace DataAccess
 
         #region ATTENTION
         [Display(Name = "Marketing Effort", Description = "Approximately how many person hours were spent on marketing tasks this month?")]
-        [Range(0, 99999, ErrorMessage = "Area must be between 0 and 99999")]
-        public virtual int? MarketingSpend { get; set; }
+        public virtual int? MarketingEffort { get; set; }
         [Display(Name = "Regional TV", Description = "Has your site appeared on regional TV?")]
         public virtual bool RegionalTv { get; set; }
         [Display(Name = "National TV", Description = "Has your site appeared on national TV?")]

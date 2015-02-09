@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
@@ -25,7 +26,12 @@ namespace WebApplication.Helpers
             string name = ExpressionHelper.GetExpressionText(expression);
             var label = htmlHelper.LabelFor(expression, htmlAttributes: new {@for = name});
             var help = htmlHelper.SiteHelpFor(expression);
-            var editor = htmlHelper.EditorFor(expression, new {htmlAttributes = new {@class = "form-control", @style = "max-width: 500px;", @name = name}});
+
+            // Get the display name for the placeholder
+            var metaData = ModelMetadata.FromLambdaExpression(expression, htmlHelper.ViewData);
+            var displayName = metaData.DisplayName;
+
+            var editor = htmlHelper.EditorFor(expression, new { htmlAttributes = new { @class = "form-control", @style = "max-width: 500px;", @name = name, @placeholder = displayName } });
             var validation = htmlHelper.ValidationMessageFor(expression);
             return new MvcHtmlString(label + "\n" + help + "</br>" + editor + "\n" + validation);
         }

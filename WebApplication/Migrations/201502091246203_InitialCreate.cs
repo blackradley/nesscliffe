@@ -14,7 +14,7 @@ namespace WebApplication.Migrations
                         Id = c.Guid(nullable: false),
                         SiteId = c.Guid(nullable: false),
                         MonthTime = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
-                        MarketingSpend = c.Int(),
+                        MarketingEffort = c.Int(),
                         RegionalTv = c.Boolean(nullable: false),
                         NationalTv = c.Boolean(nullable: false),
                         OverseasTv = c.Boolean(nullable: false),

@@ -200,9 +200,9 @@
     <Compile Include="Helpers\SiteIsSelectedHelper.cs" />
     <Compile Include="Helpers\SiteSectionLabelHelper.cs" />
     <Compile Include="Helpers\SiteSummaryIconsForHelper.cs" />
-    <Compile Include="Migrations\201502091154227_InitialCreate.cs" />
-    <Compile Include="Migrations\201502091154227_InitialCreate.Designer.cs">
-      <DependentUpon>201502091154227_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201502091246203_InitialCreate.cs" />
+    <Compile Include="Migrations\201502091246203_InitialCreate.Designer.cs">
+      <DependentUpon>201502091246203_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Infrastructure\DataDb.cs" />
@@ -261,6 +261,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-3.2.0.debug.js" />
+    <Content Include="Scripts\knockout-3.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\pwstrength.js" />
     <Content Include="Scripts\respond.js" />
@@ -353,8 +355,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201502091154227_InitialCreate.resx">
-      <DependentUpon>201502091154227_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201502091246203_InitialCreate.resx">
+      <DependentUpon>201502091246203_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
