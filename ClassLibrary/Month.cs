@@ -14,7 +14,6 @@ namespace DataAccess
         public virtual Guid SiteId { get; set; }
         [ForeignKey("SiteId")]
         public virtual Site Site { get; set; }
-
         [Display(Name = "Month")]
         [Column(TypeName = "DateTime2")]
         public virtual DateTime MonthTime { get; set; }
@@ -104,7 +103,6 @@ namespace DataAccess
         [Display(Name = "Distance to Shop", Description = "How far is it from the entrance to the shop?")]
         public virtual int? DistanceToShop { get; set; }
         public virtual int DistanceToShopUnits { get; set; }
-
         [Display(Name = "Area of Shop", Description = "How big is the shop?  In square feet or square metres.")]
         public virtual int? AreaShop { get; set; }
         public virtual int AreaShopUnits { get; set; }
@@ -172,6 +170,48 @@ namespace DataAccess
         [Display(Name = "Describe your Programme", Description = "On this scale from niche interest to mass appeal?")]
         public virtual int ProgrammeMassAppeal { get; set; }
         #endregion
+
+
+        public Month ShallowCopy()
+        {
+            var newMonth = new Month()
+            {
+                // Attention
+                WebsiteUrl = this.WebsiteUrl,
+                FacebookUrl = this.FacebookUrl,
+                TwitterUrl = this.TwitterUrl,
+                FlickrUrl = this.FlickrUrl,
+                InstagramUrl = this.InstagramUrl,
+                YoutubeUrl = this.YoutubeUrl,
+                PinterestUrl = this.PinterestUrl,
+                // Arriving
+                HoursMonday = this.HoursMonday,
+                HoursTuesday = this.HoursTuesday,
+                HoursWednesday = this.HoursWednesday,
+                HoursThursday = this.HoursThursday,
+                HoursFriday = this.HoursFriday,
+                HoursSaturday = this.HoursSaturday,
+                HoursSunday = this.HoursSunday,  
+                // Shop
+                IsRetail = this.IsRetail,
+                PayToShop = this.PayToShop,
+                ShopVisibleFromEntrance = this.ShopVisibleFromEntrance,
+                ExitViaShop = this.ExitViaShop,
+                DistanceToShop = this.DistanceToShop,
+                DistanceToShopUnits = this.DistanceToShopUnits,
+                AreaShop = this.AreaShop,
+                AreaShopUnits = this.AreaShopUnits,
+                NumberProducts = this.NumberProducts,
+                PercentageRelatedProducts = this.PercentageRelatedProducts
+                // Refreshment
+
+                // Donation 
+
+                // Experience
+
+            };
+            return newMonth;
+        }
     }
 }
 

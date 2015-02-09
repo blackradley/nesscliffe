@@ -68,26 +68,61 @@ namespace WebApplication.Controllers
         {
             // TODO: check that the user is allowed to do this.
             // then create a new month.
-            var month = new Month()
+            var newMonth = new Month();
+
+            // Get the months either side of the current month.
+            var site = _dataDb.Sites.Find(siteId);
+            var earliest = monthTime.AddMonths(5);
+            var latest = monthTime.AddMonths(-5);
+            var months = site.Months
+                .Where(m => m.MonthTime > latest)
+                .Where(m => m.MonthTime < earliest)
+                .Select(m => m)
+                .OrderBy(m => m.MonthTime)
+                .ToList();
+
+            // Find the month nearest to the current month.
+            long min = long.MaxValue;
+            Month nearestMonth = new Month();
+            foreach (Month oldMonth in months)
             {
-                SiteId = siteId,
-                Id = Guid.NewGuid(),
-                MonthTime = monthTime
-            };
-            // Do not check if the model is valid because it certainly isn't at this point.
-            _dataDb.Months.Add(month);
+                if (Math.Abs(oldMonth.MonthTime.Ticks - monthTime.Ticks) < min)
+                {
+                    min = oldMonth.MonthTime.Ticks - monthTime.Ticks;
+                    nearestMonth = oldMonth;
+                }
+            }
+            if (nearestMonth.Id != Guid.Empty)
+            {
+                newMonth = nearestMonth.ShallowCopy();
+            }
+
+            newMonth.SiteId = siteId;
+            newMonth.Id = Guid.NewGuid();
+            newMonth.MonthTime = monthTime;
+            _dataDb.Months.Add(newMonth);
             _dataDb.Configuration.ValidateOnSaveEnabled = false;
             _dataDb.SaveChanges();
 
-            // TODO: find out why below doesn't work, it would be nice to merge these two methods.
-            //var site = _dataDb.Sites.Find(siteId);
+
+            //var nearest = monthTime >= months.Last().MonthTime
+            //    ? months.Last()
+            //    : monthTime <= months.First().MonthTime
+            //        ? months.First()
+            //        : months.First(d => d >= monthTime);
+            //foreach (Month oldMonth in months)
+            //{
+            //    oldMonth.MonthTime = newMonth.MonthTime + oldMonth.MonthTime.Subtract((newMonth.MonthTime.AddDays(-15)));
+            //}
+            //months = months.OrderBy(m => m.MonthTime);
+
             //var siteAndMonthViewModel = new SiteAndMonthViewModel()
             //{
             //    Site = site,
             //    Month = month
             //};
             //return View("Edit", siteAndMonthViewModel);
-            return RedirectToAction("Edit", new { month.Id, message = "A new month (" + month.MonthTime.ToString("MMM yyyy") + ") has been added." });
+            return RedirectToAction("Edit", new { newMonth.Id, message = "A new month (" + newMonth.MonthTime.ToString("MMM yyyy") + ") has been added." });
         }
 
         //// GET: Months/Edit/117ca2a3-fb5a-4882-8e74-23cccf07db73
