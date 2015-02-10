@@ -11,8 +11,8 @@ namespace WebApplication.Helpers
         /// <summary>
         /// Extension method to provide consistent check box layouts.
         /// </summary>
-        public static MvcHtmlString SiteTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> htmlHelper, 
-            Expression<Func<TModel, TValue>> expression)
+        public static MvcHtmlString SiteTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> htmlHelper,
+            Expression<Func<TModel, TValue>> expression, int max = int.MaxValue, int min = int.MinValue, int maxLength = 0)
         {
             //@Html.LabelFor(model => model.WebsiteUrl, htmlAttributes: new { @for = "WebsiteUrl" })
             //@Html.SiteHelpFor(model => model.WebsiteUrl)
@@ -33,6 +33,9 @@ namespace WebApplication.Helpers
                 { "name", name},
                 { "placeholder", displayName}
             };
+            if (max != int.MaxValue) htmlAttributes.Add("max", max);
+            if (min != int.MinValue) htmlAttributes.Add("min", min);
+            if (maxLength != 0) htmlAttributes.Add("maxlength", maxLength);
             var editor = htmlHelper.EditorFor(expression, new { htmlAttributes });
             var validation = htmlHelper.ValidationMessageFor(expression);
             return new MvcHtmlString(label + "\n" + help + "</br>" + editor + "\n" + validation);

@@ -12,23 +12,23 @@
 </div>
 <div class="row">
     <div class="form-group col-md-3 percentage">
-        @Html.SiteTextBoxFor(model => model.VisitorsPercentNoFamily)
+        @Html.SiteTextBoxFor(model => model.VisitorsPercentNoFamily, 100, 0)
     </div>
     <div class="form-group col-md-3 percentage">
-        @Html.SiteTextBoxFor(model => model.VisitorsPercentFamily)
+        @Html.SiteTextBoxFor(model => model.VisitorsPercentFamily, 100, 0)
     </div>
     <div class="form-group col-md-3 percentage">
-        @Html.SiteTextBoxFor(model => model.VisitorsPercentRetired)
+        @Html.SiteTextBoxFor(model => model.VisitorsPercentRetired, 100, 0)
     </div>
 </div>
 
 @Html.SiteSectionLabel("Opening Hours", "Fill in the number of hours your site was open")
 <div class="row">
     <div class="form-group col-md-3 hours">
-        @Html.SiteTextBoxFor(model => model.HoursMonday)
+        @Html.SiteTextBoxFor(model => model.HoursMonday, maxLength: 4)
     </div>
     <div class="form-group col-md-3 hours">
-        @Html.SiteTextBoxFor(model => model.HoursTuesday)
+        @Html.SiteTextBoxFor(model => model.HoursTuesday, maxLength: 4)
     </div>
     <div class="form-group col-md-3 hours">
         @Html.SiteTextBoxFor(model => model.HoursWednesday)
