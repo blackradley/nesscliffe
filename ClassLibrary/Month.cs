@@ -206,13 +206,34 @@ namespace DataAccess
                 AreaShop = this.AreaShop,
                 AreaShopUnits = this.AreaShopUnits,
                 NumberProducts = this.NumberProducts,
-                PercentageRelatedProducts = this.PercentageRelatedProducts
+                PercentageRelatedProducts = this.PercentageRelatedProducts,
                 // Refreshment
-
+                IsCatering = this.IsCatering,
+                PayToCafe = this.PayToCafe,
+                CafeVisibleFromEntrance = this.CafeVisibleFromEntrance,
+                DistanceToCafe = this.DistanceToCafe,
+                DistanceToCafeUnits = this.DistanceToCafeUnits,
+                NumberCafeSeats = this.NumberCafeSeats,
+                IsBasserie = this.IsBasserie,
+                IsBuffet = this.IsBuffet,
+                IsCafe = this.IsCafe,
+                IsCafeteria = this.IsCafeteria,
+                IsCoffeehouse = this.IsCoffeehouse,
+                IsDestinationRestaurant = this.IsDestinationRestaurant,
+                IsCateringInHouse = this.IsCateringInHouse,
+                IsCateringOutToLocalAuthority = this.IsCateringOutToLocalAuthority,
+                IsCateringOutToCompany = this.IsCateringOutToCompany,
                 // Donation 
-
-                // Experience
-
+                IsDonationOpportunity = this.IsDonationOpportunity,
+                DistanceToDonation = this.DistanceToDonation,
+                DistanceToDonationUnits = this.DistanceToDonationUnits,
+                NumberDonationOpportunities = this.NumberDonationOpportunities,
+                // Experience    
+                NumberArtefacts = this.NumberArtefacts,
+                ArtefactsDisplay = this.ArtefactsDisplay,
+                IsCollectionOutstanding = this.IsCollectionOutstanding,
+                NumberCollectionsOutstanding = this.NumberCollectionsOutstanding,
+                ProgrammeMassAppeal = this.ProgrammeMassAppeal
             };
             return newMonth;
         }
