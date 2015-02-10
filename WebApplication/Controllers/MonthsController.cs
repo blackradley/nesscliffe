@@ -79,6 +79,7 @@ namespace WebApplication.Controllers
                 .Where(m => m.MonthTime < earliest)
                 .Select(m => m)
                 .ToList();
+            // TODO: make sure this month hasn't already been created, if it is in this list just go to it.
 
             // Find the month nearest to the current month.
             var min = int.MaxValue; // Just a big number to start from

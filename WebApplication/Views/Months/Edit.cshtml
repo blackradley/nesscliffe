@@ -145,5 +145,29 @@
             $('#IsDonationOpportunity').change();
         });
 
+        $(document).ready(function () {
+            // Attach a function to the change event
+            $('#IsEvents').change(function () {
+                if (this.checked)
+                    $('#Events').fadeIn();
+                else
+                    $('#Events').hide();
+            });
+            // Call the event so the div is set correctly
+            $('#IsEvents').change();
+        });
+
+        $(document).ready(function () {
+            // Attach a function to the change event
+            $('#IsCollectionsOutstanding').change(function () {
+                if (this.checked)
+                    $('#CollectionsOutstanding').fadeIn();
+                else
+                    $('#CollectionsOutstanding').hide();
+            });
+            // Call the event so the div is set correctly
+            $('#IsCollectionsOutstanding').change();
+        });
+
     </script>
 }

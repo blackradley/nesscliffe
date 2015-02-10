@@ -52,13 +52,6 @@ namespace DataAccess
         public virtual int NumberVisitors { get; set; }
         [Display(Name = "Visitor Income", Description = "What was the income from visitors this month?")]
         public virtual int IncomeAdmissions { get; set; }
-        [Display(Name = "Additional Events", Description = "How many additional events did you run at your site this month?")]
-        public virtual int NumberAdditionalEvents { get; set; }
-        [Display(Name = "Additional Events Numbers", Description = "How many visitors took part in additional events at your site this month?")]
-        public virtual int NumberVisitorsAdditional { get; set; }
-        [Display(Name = "Additional Events Income", Description = "What was the income from additional events this month?")]
-        public virtual int IncomeAdditional { get; set; }
-
         [Display(Name = "Not with a Family", Description = "What percentage of visitors were not part of a family?")]
         public virtual int VisitorsPercentNoFamily { get; set; }
         [Display(Name = "Family", Description = "What percentage of visitors were part of a family?")]
@@ -159,12 +152,21 @@ namespace DataAccess
         #endregion
         
         #region EXPERIENCE
+        [Display(Name = "Any special events?", Description = "Did you have any special events at your site this month?")]
+        public virtual bool IsEvents { get; set; }
+        [Display(Name = "Additional Events", Description = "How many additional events did you run at your site this month?")]
+        public virtual int NumberAdditionalEvents { get; set; }
+        [Display(Name = "Additional Events Numbers", Description = "How many visitors took part in additional events at your site this month?")]
+        public virtual int NumberVisitorsAdditional { get; set; }
+        [Display(Name = "Additional Events Income", Description = "What was the income from additional events this month?")]
+        public virtual int IncomeAdditional { get; set; }
+
         [Display(Name = "Number of Artefacts", Description = "Approximately how many artefacts are in your collections?")]
         public virtual int? NumberArtefacts { get; set; }
         [Display(Name = "Artefacts on Display", Description = "Approximately what percentage of the artefacts are on display?")]
         public virtual int? ArtefactsDisplay { get; set; }
-        [Display(Name = "Outstanding Collections", Description = "Do you any collections designated 'Outstanding' by the Arts Council?")]
-        public virtual bool IsCollectionOutstanding { get; set; }
+        [Display(Name = "Outstanding Collections", Description = "Do you have any collections designated 'Outstanding' by the Arts Council?")]
+        public virtual bool IsCollectionsOutstanding { get; set; }
         [Display(Name = "Outstanding Collections", Description = "How many collections are collections designated 'Outstanding' by the Arts Council?")]
         public virtual int? NumberCollectionsOutstanding { get; set; }
         [Display(Name = "Describe your Programme", Description = "On this scale from niche interest to mass appeal?")]
@@ -231,7 +233,7 @@ namespace DataAccess
                 // Experience    
                 NumberArtefacts = this.NumberArtefacts,
                 ArtefactsDisplay = this.ArtefactsDisplay,
-                IsCollectionOutstanding = this.IsCollectionOutstanding,
+                IsCollectionsOutstanding = this.IsCollectionsOutstanding,
                 NumberCollectionsOutstanding = this.NumberCollectionsOutstanding,
                 ProgrammeMassAppeal = this.ProgrammeMassAppeal
             };
