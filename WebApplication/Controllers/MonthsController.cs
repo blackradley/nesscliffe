@@ -78,17 +78,21 @@ namespace WebApplication.Controllers
                 .Where(m => m.MonthTime > latest)
                 .Where(m => m.MonthTime < earliest)
                 .Select(m => m)
-                .OrderBy(m => m.MonthTime)
                 .ToList();
 
             // Find the month nearest to the current month.
-            long min = long.MaxValue;
-            Month nearestMonth = new Month();
+            var min = int.MaxValue; // Just a big number to start from
+            var epoch = new DateTime(1970, 1, 1); // Begining of the Unix epoch, well you have to choose something.
+            var newMonthDaysSinceEpoch = monthTime.Subtract(epoch).Days;
+            var nearestMonth = new Month();
             foreach (Month oldMonth in months)
             {
-                if (Math.Abs(oldMonth.MonthTime.Ticks - monthTime.Ticks) < min)
+                var oldMonthDaysSinceEpoch = oldMonth.MonthTime.Subtract(epoch).Days;
+                oldMonthDaysSinceEpoch += 15; // To favour the previous month.
+                var daysBetweenOldAndNew = Math.Abs(newMonthDaysSinceEpoch - oldMonthDaysSinceEpoch);        
+                if (daysBetweenOldAndNew < min)
                 {
-                    min = oldMonth.MonthTime.Ticks - monthTime.Ticks;
+                    min = daysBetweenOldAndNew;
                     nearestMonth = oldMonth;
                 }
             }
@@ -96,7 +100,7 @@ namespace WebApplication.Controllers
             {
                 newMonth = nearestMonth.ShallowCopy();
             }
-
+            // Set the new month values and save
             newMonth.SiteId = siteId;
             newMonth.Id = Guid.NewGuid();
             newMonth.MonthTime = monthTime;
@@ -104,24 +108,6 @@ namespace WebApplication.Controllers
             _dataDb.Configuration.ValidateOnSaveEnabled = false;
             _dataDb.SaveChanges();
 
-
-            //var nearest = monthTime >= months.Last().MonthTime
-            //    ? months.Last()
-            //    : monthTime <= months.First().MonthTime
-            //        ? months.First()
-            //        : months.First(d => d >= monthTime);
-            //foreach (Month oldMonth in months)
-            //{
-            //    oldMonth.MonthTime = newMonth.MonthTime + oldMonth.MonthTime.Subtract((newMonth.MonthTime.AddDays(-15)));
-            //}
-            //months = months.OrderBy(m => m.MonthTime);
-
-            //var siteAndMonthViewModel = new SiteAndMonthViewModel()
-            //{
-            //    Site = site,
-            //    Month = month
-            //};
-            //return View("Edit", siteAndMonthViewModel);
             return RedirectToAction("Edit", new { newMonth.Id, message = "A new month (" + newMonth.MonthTime.ToString("MMM yyyy") + ") has been added." });
         }
 

@@ -172,6 +172,10 @@ namespace DataAccess
         #endregion
 
 
+        /// <summary>
+        /// Copy the stuff that probably hasn't changed.
+        /// </summary>
+        /// <returns></returns>
         public Month ShallowCopy()
         {
             var newMonth = new Month()
