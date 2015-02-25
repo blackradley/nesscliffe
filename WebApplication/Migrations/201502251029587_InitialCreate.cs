@@ -31,6 +31,7 @@ namespace WebApplication.Migrations
                         IncomeAdmissions = c.Int(nullable: false),
                         VisitorsPercentNoFamily = c.Int(nullable: false),
                         VisitorsPercentFamily = c.Int(nullable: false),
+                        VisitorsPercentThirdAge = c.Int(nullable: false),
                         VisitorsPercentRetired = c.Int(nullable: false),
                         HoursMonday = c.Single(nullable: false),
                         HoursTuesday = c.Single(nullable: false),

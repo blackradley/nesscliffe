@@ -52,11 +52,13 @@ namespace DataAccess
         public virtual int NumberVisitors { get; set; }
         [Display(Name = "Visitor Income", Description = "What was the income from visitors this month?")]
         public virtual int IncomeAdmissions { get; set; }
-        [Display(Name = "Not with a Family", Description = "What percentage of visitors were not part of a family?")]
+        [Display(Name = "Not with a Family", Description = "What percentage of visitors are under the age of 45 who are not parents?")]
         public virtual int VisitorsPercentNoFamily { get; set; }
-        [Display(Name = "Family", Description = "What percentage of visitors were part of a family?")]
+        [Display(Name = "Family", Description = "What percentage of visitors were any age with at least one child under age 16 still at home?")]
         public virtual int VisitorsPercentFamily { get; set; }
-        [Display(Name = "Retired", Description = "What percentage of visitors were retired?")]
+        [Display(Name = "Third Age", Description = "What percentage of visitors were aged 45 through 64 with no children under age 16 still living at home?")]
+        public virtual int VisitorsPercentThirdAge { get; set; }
+        [Display(Name = "Retired", Description = "What percentage of visitors were over the age of 65 with no children under the age of 16 still living at home?")]
         public virtual int VisitorsPercentRetired { get; set; }
         
         [Display(Name = "Monday", Description = "How many hours were you open on Mondays?")]
