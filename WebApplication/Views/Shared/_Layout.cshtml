@@ -30,19 +30,18 @@
         </div>
         <div class="container body-content">
             @RenderBody()
-            <footer class="hidden-xs hidden-sm">
-                <p class="pull-right">
-                    <span id="logos">
-                        &copy; @DateTime.Now.Year - Black Radley Limited
-                        <img src="/Content/Images/Logos/BlackRadley.jpg" alt="Black Radley" />
-                        <img src="/Content/Images/Logos/BSU.jpg" alt="Bath Spa University" />
-                        <img src="/Content/Images/Logos/ROP.jpg" alt="Ryan O'Neill Partnership" />
-                        <img src="/Content/Images/Logos/Support.jpg" alt="Ryan O'Neill Partnership" />
-                    </span>
-                </p>
-            </footer>
         </div>
-
+        <footer class="footer hidden-xs hidden-sm">
+            <div class="container">
+                <span id="logos">
+                    &copy; @DateTime.Now.Year - Black Radley Limited
+                    <img src="/Content/Images/Logos/BlackRadley.jpg" alt="Black Radley" />
+                    <img src="/Content/Images/Logos/BSU.jpg" alt="Bath Spa University" />
+                    <img src="/Content/Images/Logos/ROP.jpg" alt="Ryan O'Neill Partnership" />
+                    <img src="/Content/Images/Logos/Support.jpg" alt="Ryan O'Neill Partnership" />
+                </span>
+            </div>
+        </footer>
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)

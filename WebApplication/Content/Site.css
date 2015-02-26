@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    min-height: 100%;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -117,4 +118,19 @@ h1, h2, h3, h4, h5, h6 {
     height:115px;
     background:url("/Content/Images/Logos/Beta.png") no-repeat;
     z-index: 9999;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    height: 100%;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
 }
