@@ -235,6 +235,7 @@
     <Content Include="Content\Images\Icons\IsOpenAir.png" />
     <Content Include="Content\Images\Icons\IsWorldHeritageSite.png" />
     <Content Include="Content\Images\Icons\IsNatureReserve.png" />
+    <Content Include="Content\Images\Logos\Beta.png" />
     <Content Include="Content\Images\Logos\BlackRadley.jpg" />
     <Content Include="Content\Images\Logos\BSU.jpg" />
     <Content Include="Content\Images\Logos\Insight.png" />
