@@ -12,7 +12,7 @@
 @Html.Partial("_SiteDetailsPartial", site)
 @* VISITOR CYCLE NAVIGATION *@
 <div class="row">
-    <div role="tablist" id="tabs" style="margin-bottom: 10px;">
+    <div role="tablist" id="tabs" style="margin-bottom: 10px;" class="col-sm-10">
         <ul id="monthTab" class="nav nav-tabs">
             <li role="presentation" class="active">
                 <a href="#Attention" data-toggle="tab">
@@ -36,6 +36,9 @@
                 <a href="#Experience" data-toggle="tab">Experience</a>
             </li>
         </ul>
+    </div>
+    <div class="col-sm-2 pull-right">
+        <input type="submit" value="Save" class="btn btn-primary" />
     </div>
 </div>
 
