@@ -33,13 +33,15 @@
         </div>
         <footer class="footer hidden-xs hidden-sm">
             <div class="container">
-                <span id="logos">
-                    &copy; @DateTime.Now.Year - Black Radley Limited
-                    <img src="/Content/Images/Logos/BlackRadley.jpg" alt="Black Radley" />
-                    <img src="/Content/Images/Logos/BSU.jpg" alt="Bath Spa University" />
-                    <img src="/Content/Images/Logos/ROP.jpg" alt="Ryan O'Neill Partnership" />
-                    <img src="/Content/Images/Logos/Support.jpg" alt="Ryan O'Neill Partnership" />
-                </span>
+                <div class="pull-right">
+                    <span id="logos">
+                        &copy; @DateTime.Now.Year - Black Radley Limited
+                        <img src="/Content/Images/Logos/BlackRadley.jpg" alt="Black Radley" />
+                        <img src="/Content/Images/Logos/BSU.jpg" alt="Bath Spa University" />
+                        <img src="/Content/Images/Logos/ROP.jpg" alt="Ryan O'Neill Partnership" />
+                        <img src="/Content/Images/Logos/Support.jpg" alt="Ryan O'Neill Partnership" />
+                    </span>
+                </div>
             </div>
         </footer>
         @Scripts.Render("~/bundles/jquery")
