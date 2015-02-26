@@ -332,6 +332,7 @@
     <Content Include="Views\Months\_Shopping.cshtml" />
     <Content Include="Views\Months\_Refreshment.cshtml" />
     <Content Include="Views\Months\_Donation.cshtml" />
+    <Content Include="Views\Account\TermsAndConditions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

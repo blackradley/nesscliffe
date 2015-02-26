@@ -1,4 +1,5 @@
-﻿@model WebApplication.Models.RegisterViewModel
+﻿@using WebApplication.Helpers
+@model WebApplication.Models.RegisterViewModel
 @{
     ViewBag.Title = "Join";
 }
@@ -25,7 +26,14 @@
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-4">
-            <input type="submit" class="btn btn-default" value="Join" />
+            <input type="checkbox" name="agree" id="agree">
+            I agree to the @Html.ActionLink("Terms and Conditions", "TermsAndConditions", null, new { target = "_blank" })
+            @Html.SiteHelpFor("Opens a new tab so you can review the Terms and Conditions.")
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-4">
+            <input id="submit" type="submit" class="btn btn-default" value="Join" disabled="disabled" />
         </div>
     </div>
 }
@@ -46,6 +54,10 @@
                 }
             };
             $('#Password').pwstrength(options);
+
+            $("#agree").change(function () {
+                $("#submit").attr("disabled", !this.checked);
+            });
         });
     </script>
 }

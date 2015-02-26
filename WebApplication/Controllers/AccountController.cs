@@ -419,6 +419,14 @@ namespace WebApplication.Controllers
             return View();
         }
 
+        //
+        // GET: /Account/TermsAndConditions
+        [AllowAnonymous]
+        public ActionResult TermsAndConditions()
+        {
+            return View();
+        }
+
         #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
