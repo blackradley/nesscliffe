@@ -10,41 +10,41 @@
 }
 @Html.Partial("_PageTitlePartial")
 @Html.Partial("_SiteDetailsPartial", site)
-@* VISITOR CYCLE NAVIGATION *@
-<div class="row">
-    <div role="tablist" id="tabs" style="margin-bottom: 10px;" class="col-sm-10">
-        <ul id="monthTab" class="nav nav-tabs">
-            <li role="presentation" class="active">
-                <a href="#Attention" data-toggle="tab">
-                    Attention
-                    @* <i class="glyphicon glyphicon-ok"></i>*@
-                </a>
-            </li>
-            <li role="presentation">
-                <a href="#Arriving" data-toggle="tab">Arriving</a>
-            </li>
-            <li role="presentation">
-                <a href="#Shopping" data-toggle="tab">Shopping</a>
-            </li>
-            <li role="presentation">
-                <a href="#Refreshment" data-toggle="tab">Refreshment</a>
-            </li>
-            <li role="presentation">
-                <a href="#Donation" data-toggle="tab">Donation</a>
-            </li>
-            <li role="presentation">
-                <a href="#Experience" data-toggle="tab">Experience</a>
-            </li>
-        </ul>
-    </div>
-    <div class="col-sm-2 pull-right">
-        <input type="submit" value="Save" class="btn btn-primary" />
-    </div>
-</div>
-
-@* MONTHLY PERFORMANCE DATA FORM *@
 @using (Html.BeginForm())
 {
+    @* VISITOR CYCLE NAVIGATION *@
+    <div class="row">
+        <div role="tablist" id="tabs" style="margin-bottom: 10px;" class="col-sm-10">
+            <ul id="monthTab" class="nav nav-tabs">
+                <li role="presentation" class="active">
+                    <a href="#Attention" data-toggle="tab">
+                        Attention
+                        @* <i class="glyphicon glyphicon-ok"></i>*@
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#Arriving" data-toggle="tab">Arriving</a>
+                </li>
+                <li role="presentation">
+                    <a href="#Shopping" data-toggle="tab">Shopping</a>
+                </li>
+                <li role="presentation">
+                    <a href="#Refreshment" data-toggle="tab">Refreshment</a>
+                </li>
+                <li role="presentation">
+                    <a href="#Donation" data-toggle="tab">Donation</a>
+                </li>
+                <li role="presentation">
+                    <a href="#Experience" data-toggle="tab">Experience</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-2 pull-right">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </div>
+
+    @* MONTHLY PERFORMANCE DATA FORM *@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.Hidden("SiteId", month.SiteId)
@@ -83,10 +83,10 @@
         // Adapted from https://gist.github.com/brendanmckenzie/8f8008d3d51c07b2700f
         // but using the month.id as key to it is unique to each month.
         // ---------------------
-        $(function () {
+        $(function() {
             'use strict';
             // When the tab is clicked stash the name in local storage.
-            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
                 var id = $(this).parents('[role="tablist"]').attr('id');
                 console.log(document.URL.split("/").pop());
                 var key = document.URL.split("/").pop();
@@ -97,7 +97,7 @@
             });
 
             // When the page is loaded set the tab to the value in local storage.
-            $('[role="tablist"]').each(function (idx, elem) {
+            $('[role="tablist"]').each(function(idx, elem) {
                 var id = $(elem).attr('id');
                 var key = document.URL.split("/").pop();
                 if (id) {
@@ -110,11 +110,34 @@
             });
         });
 
-        // TODO: Dry this out a bit.
+        //$('#VisitorsPercentNoFamily').tooltip({ 'trigger': 'focus', 'title': 'Password tooltip' });
+        //$('input[type="number"]').focus(function () {
+        //    alert("Handler for .focus() called.");
+        //});
 
-        $(document).ready(function () {
+        // ---------------------
+        // Calculated the total percentage to give the user feedback about that
+        // the market segmentation figurers are related.
+        // ---------------------
+        $(document).ready(AddUpMarketSegmentation);
+        $('#MarketSegmentation input').bind("keyup", AddUpMarketSegmentation);
+        $('#MarketSegmentation input').bind("mousewheel", AddUpMarketSegmentation);
+        $('#MarketSegmentation input').bind("input", AddUpMarketSegmentation);
+        function AddUpMarketSegmentation() {
+            var sum = 0;
+            $('#MarketSegmentation input').each(function() {
+                sum += Number($(this).val());
+            });
+            $('#MarketSegmentationTotal').text(sum);
+        }
+
+        // ---------------------
+        // TODO: Dry this out a bit.
+        // Show and hide parts of the form
+        // ---------------------
+        $(document).ready(function() {
             // Attach a function to the change event
-            $('#IsRetail').change(function () {
+            $('#IsRetail').change(function() {
                 if (this.checked)
                     $('#Retail').fadeIn();
                 else
@@ -124,9 +147,9 @@
             $('#IsRetail').change();
         });
 
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Attach a function to the change event
-            $('#IsCatering').change(function () {
+            $('#IsCatering').change(function() {
                 if (this.checked)
                     $('#Catering').fadeIn();
                 else
@@ -136,9 +159,9 @@
             $('#IsCatering').change();
         });
 
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Attach a function to the change event
-            $('#IsDonationOpportunity').change(function () {
+            $('#IsDonationOpportunity').change(function() {
                 if (this.checked)
                     $('#DonationOpportunity').fadeIn();
                 else
@@ -148,9 +171,9 @@
             $('#IsDonationOpportunity').change();
         });
 
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Attach a function to the change event
-            $('#IsEvents').change(function () {
+            $('#IsEvents').change(function() {
                 if (this.checked)
                     $('#Events').fadeIn();
                 else
@@ -160,9 +183,9 @@
             $('#IsEvents').change();
         });
 
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Attach a function to the change event
-            $('#IsCollectionsOutstanding').change(function () {
+            $('#IsCollectionsOutstanding').change(function() {
                 if (this.checked)
                     $('#CollectionsOutstanding').fadeIn();
                 else

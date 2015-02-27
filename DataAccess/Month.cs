@@ -21,11 +21,11 @@ namespace DataAccess
         #region ATTENTION
         [Display(Name = "Marketing Effort", Description = "Approximately how many person hours were spent on marketing tasks this month?")]
         public virtual int? MarketingEffort { get; set; }
-        [Display(Name = "Regional TV", Description = "Has your site appeared on regional TV?")]
+        [Display(Name = "Regional TV", Description = "Has your site appeared on regional TV this month?")]
         public virtual bool RegionalTv { get; set; }
-        [Display(Name = "National TV", Description = "Has your site appeared on national TV?")]
+        [Display(Name = "National TV", Description = "Has your site appeared on national TV this month?")]
         public virtual bool NationalTv { get; set; }
-        [Display(Name = "Overseas TV", Description = "Has your site appeared on TV in another country?")]
+        [Display(Name = "Overseas TV", Description = "Has your site appeared on TV in another country this month?")]
         public virtual bool OverseasTv { get; set; }
         [Display(Name = "Website Url", Description = "What is your web site address?")]
         public virtual String WebsiteUrl { get; set; }
@@ -50,9 +50,9 @@ namespace DataAccess
         #region ARRIVING
         [Display(Name = "Visitor Numbers", Description = "How many visitors came to your site this month?")]
         public virtual int NumberVisitors { get; set; }
-        [Display(Name = "Visitor Income", Description = "What was the income from visitors this month?")]
+        [Display(Name = "Admission Income", Description = "What was the income from visitor admissions this month?")]
         public virtual int IncomeAdmissions { get; set; }
-        [Display(Name = "Not with a Family", Description = "What percentage of visitors are under the age of 45 who are not parents?")]
+        [Display(Name = "Not with Family", Description = "What percentage of visitors are under the age of 45 who are not parents?")]
         public virtual int VisitorsPercentNoFamily { get; set; }
         [Display(Name = "Family", Description = "What percentage of visitors were any age with at least one child under age 16 still at home?")]
         public virtual int VisitorsPercentFamily { get; set; }
