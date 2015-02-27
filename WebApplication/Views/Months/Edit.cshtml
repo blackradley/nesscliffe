@@ -17,10 +17,7 @@
         <div role="tablist" id="tabs" style="margin-bottom: 10px;" class="col-sm-10">
             <ul id="monthTab" class="nav nav-tabs">
                 <li role="presentation" class="active">
-                    <a href="#Attention" data-toggle="tab">
-                        Attention
-                        @* <i class="glyphicon glyphicon-ok"></i>*@
-                    </a>
+                    <a href="#Attention" data-toggle="tab">Attention</a>
                 </li>
                 <li role="presentation">
                     <a href="#Arriving" data-toggle="tab">Arriving</a>
@@ -116,6 +113,12 @@
         //});
 
         // ---------------------
+        // ATTENTION
+        // ---------------------
+
+        // ---------------------
+        // ARRIVING
+        // ---------------------
         // Calculated the total percentage to give the user feedback about that
         // the market segmentation figurers are related.
         // ---------------------
@@ -125,10 +128,25 @@
         $('#MarketSegmentation input').bind("input", AddUpMarketSegmentation);
         function AddUpMarketSegmentation() {
             var sum = 0;
-            $('#MarketSegmentation input').each(function() {
+            $('#MarketSegmentation input').each(function () {
                 sum += Number($(this).val());
             });
             $('#MarketSegmentationTotal').text(sum);
+        }
+
+        $(document).ready(function () {
+            validate();
+            $('#inputName, #inputEmail, #inputTel').change(validate);
+        });
+        function validate() {
+            if ($('#inputName').val().length > 0 &&
+                $('#inputEmail').val().length > 0 &&
+                $('#inputTel').val().length > 0) {
+                $("input[type=submit]").prop("disabled", false);
+            }
+            else {
+                $("input[type=submit]").prop("disabled", true);
+            }
         }
 
         // ---------------------

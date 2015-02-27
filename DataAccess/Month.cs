@@ -50,13 +50,13 @@ namespace DataAccess
         #region ARRIVING
         [Display(Name = "General Visitors", Description = "How many general visitors came to your site this month?")]
         public virtual int VisitorsGeneral { get; set; }
-        [Display(Name = "Paid Exhibition Visitors", Description = "How many visitors came to paid exhibitions at your site this month?")]
+        [Display(Name = "Exhibition Visitors", Description = "How many visitors came to paid exhibitions at your site this month?")]
         public virtual int VisitorsExhibition { get; set; }
         [Display(Name = "Schools Visitors", Description = "How many school visitors came to your site this month?")]
         public virtual int VisitorsSchools { get; set; }
-
         [Display(Name = "Admission Income", Description = "What was the income from visitor admissions this month?")]
         public virtual int IncomeAdmissions { get; set; }
+        
         [Display(Name = "Not with Family", Description = "What percentage of visitors are under the age of 45 who are not parents?")]
         public virtual int VisitorsPercentNoFamily { get; set; }
         [Display(Name = "Family", Description = "What percentage of visitors were any age with at least one child under age 16 still at home?")]
@@ -180,7 +180,6 @@ namespace DataAccess
         public virtual int ProgrammeMassAppeal { get; set; }
         #endregion
 
-
         /// <summary>
         /// Copy the stuff that probably hasn't changed.
         /// </summary>
@@ -198,6 +197,10 @@ namespace DataAccess
                 YoutubeUrl = this.YoutubeUrl,
                 PinterestUrl = this.PinterestUrl,
                 // Arriving
+                VisitorsPercentNoFamily = this.VisitorsPercentNoFamily,
+                VisitorsPercentFamily = this.VisitorsPercentFamily,
+                VisitorsPercentThirdAge = this.VisitorsPercentThirdAge,
+                VisitorsPercentRetired = this.VisitorsPercentRetired,
                 HoursMonday = this.HoursMonday,
                 HoursTuesday = this.HoursTuesday,
                 HoursWednesday = this.HoursWednesday,

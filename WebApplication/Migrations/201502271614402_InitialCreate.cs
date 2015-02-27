@@ -14,6 +14,7 @@ namespace WebApplication.Migrations
                         Id = c.Guid(nullable: false),
                         SiteId = c.Guid(nullable: false),
                         MonthTime = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
+                        // ATTENTION
                         MarketingEffort = c.Int(),
                         RegionalTv = c.Boolean(nullable: false),
                         NationalTv = c.Boolean(nullable: false),
@@ -27,6 +28,7 @@ namespace WebApplication.Migrations
                         YoutubeUrl = c.String(),
                         VimeoUrl = c.String(),
                         PinterestUrl = c.String(),
+                        // ARRIVING
                         VisitorsGeneral = c.Int(nullable: false),
                         VisitorsExhibition = c.Int(nullable: false),
                         VisitorsSchools = c.Int(nullable: false),
@@ -42,6 +44,7 @@ namespace WebApplication.Migrations
                         HoursFriday = c.Single(nullable: false),
                         HoursSaturday = c.Single(nullable: false),
                         HoursSunday = c.Single(nullable: false),
+                        // SHOPPING
                         IsRetail = c.Boolean(nullable: false),
                         IncomeRetail = c.Int(),
                         PayToShop = c.Boolean(nullable: false),
@@ -53,6 +56,7 @@ namespace WebApplication.Migrations
                         AreaShopUnits = c.Int(nullable: false),
                         NumberProducts = c.Int(),
                         PercentageRelatedProducts = c.Int(),
+                        // REFRESHMENT
                         IsCatering = c.Boolean(nullable: false),
                         IncomeCatering = c.Int(),
                         PayToCafe = c.Boolean(nullable: false),
@@ -70,10 +74,12 @@ namespace WebApplication.Migrations
                         IsCateringOutToLocalAuthority = c.Boolean(nullable: false),
                         IsCateringOutToCompany = c.Boolean(nullable: false),
                         IsDonationOpportunity = c.Boolean(nullable: false),
+                        // DONATION
                         IncomeDonation = c.Int(),
                         DistanceToDonation = c.Int(),
                         DistanceToDonationUnits = c.Int(nullable: false),
                         NumberDonationOpportunities = c.Int(nullable: false),
+                        // EXPERIENCE
                         IsEvents = c.Boolean(nullable: false),
                         NumberAdditionalEvents = c.Int(nullable: false),
                         NumberVisitorsAdditional = c.Int(nullable: false),
