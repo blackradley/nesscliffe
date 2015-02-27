@@ -48,8 +48,13 @@ namespace DataAccess
         #endregion
 
         #region ARRIVING
-        [Display(Name = "Visitor Numbers", Description = "How many visitors came to your site this month?")]
-        public virtual int NumberVisitors { get; set; }
+        [Display(Name = "General Visitors", Description = "How many general visitors came to your site this month?")]
+        public virtual int VisitorsGeneral { get; set; }
+        [Display(Name = "Paid Exhibition Visitors", Description = "How many visitors came to paid exhibitions at your site this month?")]
+        public virtual int VisitorsExhibition { get; set; }
+        [Display(Name = "Schools Visitors", Description = "How many school visitors came to your site this month?")]
+        public virtual int VisitorsSchools { get; set; }
+
         [Display(Name = "Admission Income", Description = "What was the income from visitor admissions this month?")]
         public virtual int IncomeAdmissions { get; set; }
         [Display(Name = "Not with Family", Description = "What percentage of visitors are under the age of 45 who are not parents?")]
@@ -103,12 +108,12 @@ namespace DataAccess
         public virtual int AreaShopUnits { get; set; }
         [Display(Name = "Number of Products", Description = "How many product lines does the shop have?")]
         public virtual int? NumberProducts { get; set; }
-        [Display(Name = "Related Products", Description = "How many of those product lines are directly related to the site?")]
+        [Display(Name = "Related Products", Description = "How many of those product lines are directly related to your exhibitions this month?")]
         public virtual int? PercentageRelatedProducts { get; set; }
         #endregion
         
         #region REFRESHMENT
-        [Display(Name = "Do you provide catering?", Description = "Did you provide catering on your site this month?")]
+        [Display(Name = "Is there catering?", Description = "Did you provide catering on your site this month?")]
         public virtual bool IsCatering { get; set; }
         [Display(Name = "Catering Income", Description = "What was your catering income for this month?")]
         public virtual int? IncomeCatering { get; set; }
@@ -119,7 +124,7 @@ namespace DataAccess
         [Display(Name = "Distance to Cafe", Description = "How far is it from the entrance to the café?")]
         public virtual int? DistanceToCafe { get; set; }
         public virtual int DistanceToCafeUnits { get; set; }
-        [Display(Name = "Covers/Seats", Description = "How many people can the café seat?")]
+        [Display(Name = "Seats", Description = "How many people can the café or restaurant seat?")]
         public virtual int? NumberCafeSeats { get; set; }
         [Display(Name = "Basserie and Bistro", Description = "Would you describe your café as a basserie or bistro style?")]
         public virtual bool IsBasserie { get; set; }
@@ -154,7 +159,7 @@ namespace DataAccess
         #endregion
         
         #region EXPERIENCE
-        [Display(Name = "Any special events?", Description = "Did you have any special events at your site this month?")]
+        [Display(Name = "Any special events?", Description = "Did you have any special events this month? e.g. corporate hire or after hours tours.")]
         public virtual bool IsEvents { get; set; }
         [Display(Name = "Additional Events", Description = "How many additional events did you run at your site this month?")]
         public virtual int NumberAdditionalEvents { get; set; }
