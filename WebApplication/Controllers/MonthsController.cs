@@ -1,15 +1,11 @@
-﻿using System;
+﻿using DataAccess;
+using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Data;
 using System.Data.Entity;
-using System.Diagnostics;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using DataAccess;
-using Microsoft.AspNet.Identity;
 using WebApplication.Infrastructure;
 using WebApplication.Models;
 
@@ -61,42 +57,36 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "SiteId, MonthTime")] Guid siteId, DateTime monthTime)
         {
-            // TODO: check that the user is allowed to do this.
-            // then create a new month.
-            var newMonth = new Month();
-
-            // Get the months either side of the current month.
             var site = _dataDb.Sites.Find(siteId);
-            var earliest = monthTime.AddMonths(5);
-            var latest = monthTime.AddMonths(-5);
-            var months = site.Months
-                .Where(m => m.MonthTime > latest)
-                .Where(m => m.MonthTime < earliest)
-                .Select(m => m)
-                .ToList();
-            // TODO: make sure this month hasn't already been created, if it is in this list just go to it.
+            var newMonth = new Month();
+            var message = monthTime.ToString("MMM yyyy");
 
-            // Find the month nearest to the current month.
-            var min = int.MaxValue; // Just a big number to start from
-            var epoch = new DateTime(1970, 1, 1); // Begining of the Unix epoch, well you have to choose something.
-            var newMonthDaysSinceEpoch = monthTime.Subtract(epoch).Days;
-            var nearestMonth = new Month();
-            foreach (Month oldMonth in months)
+            // Confirm the user owns this site.
+            if (User.Identity.GetUserId() != site.UserId)
             {
-                var oldMonthDaysSinceEpoch = oldMonth.MonthTime.Subtract(epoch).Days;
-                oldMonthDaysSinceEpoch += 15; // To favour the previous month.
-                var daysBetweenOldAndNew = Math.Abs(newMonthDaysSinceEpoch - oldMonthDaysSinceEpoch);        
-                if (daysBetweenOldAndNew < min)
-                {
-                    min = daysBetweenOldAndNew;
-                    nearestMonth = oldMonth;
-                }
+                return RedirectToAction("Index", "Sites", new { message = "Your IP has been logged." });
             }
 
+            // Make sure this month hasn't already been created, if it is in this list just go to it.
+            var monthsEitherSide = MonthsEitherSide(monthTime, site);
+            var thisMonth = monthsEitherSide.Find(i => i.MonthTime == monthTime);
+            if (thisMonth != null) // the month is already present.
+            {
+                return RedirectToAction("Edit", new { thisMonth.Id, message = message + " already present." });
+            }
+
+            // Copy the nearest month if there is one.
+            var nearestMonth = NearestMonth(monthTime, monthsEitherSide);
             if (nearestMonth.Id != Guid.Empty)
             {
                 newMonth = nearestMonth.ShallowCopy();
+                message += " copied from " + nearestMonth.MonthTime.ToString("MMM yyyy");
             }
+            else
+            {
+                message += " added";
+            }
+
             // Set the new month values and save
             newMonth.SiteId = siteId;
             newMonth.Id = Guid.NewGuid();
@@ -105,11 +95,55 @@ namespace WebApplication.Controllers
             _dataDb.Configuration.ValidateOnSaveEnabled = false;
             _dataDb.SaveChanges();
 
-            return RedirectToAction("Edit", new { newMonth.Id, message = newMonth.MonthTime.ToString("MMM yyyy") + " has been added." });
+            return RedirectToAction("Edit", new { newMonth.Id, message });
+        }
+
+        /// <summary>
+        /// Find the month nearest to the given month.
+        /// </summary>
+        /// <param name="monthTime"></param>
+        /// <param name="monthsEitherSide"></param>
+        /// <returns></returns>
+        private static Month NearestMonth(DateTime monthTime, IEnumerable<Month> monthsEitherSide)
+        {
+            var min = int.MaxValue; // Just a big number to start from
+            var epoch = new DateTime(1970, 1, 1); // Begining of the Unix epoch, well you have to choose something.
+            var newMonthDaysSinceEpoch = monthTime.Subtract(epoch).Days;
+            var nearestMonth = new Month();
+            foreach (Month oldMonth in monthsEitherSide)
+            {
+                var oldMonthDaysSinceEpoch = oldMonth.MonthTime.Subtract(epoch).Days;
+                oldMonthDaysSinceEpoch += 15; // To favour the previous month.
+                var daysBetweenOldAndNew = Math.Abs(newMonthDaysSinceEpoch - oldMonthDaysSinceEpoch);
+                if (daysBetweenOldAndNew < min)
+                {
+                    min = daysBetweenOldAndNew;
+                    nearestMonth = oldMonth;
+                }
+            }
+            return nearestMonth;
+        }
+
+        /// <summary>
+        /// Get the months either side of a given month.
+        /// </summary>
+        /// <param name="monthTime"></param>
+        /// <param name="site"></param>
+        /// <returns></returns>
+        private static List<Month> MonthsEitherSide(DateTime monthTime, Site site)
+        {
+            var earliest = monthTime.AddMonths(5);
+            var latest = monthTime.AddMonths(-5);
+            var months = site.Months
+                .Where(m => m.MonthTime > latest)
+                .Where(m => m.MonthTime < earliest)
+                .Select(m => m)
+                .ToList();
+            return months;
         }
 
         //// GET: Months/Edit/117ca2a3-fb5a-4882-8e74-23cccf07db73
-        public ActionResult Edit(Guid? id)
+        public ActionResult Edit(Guid? id, String message)
         {
             if (!id.HasValue) return RedirectToAction("Index", "Home");// Catch null ids.
             var month = _dataDb.Months.Find(id);
@@ -121,8 +155,9 @@ namespace WebApplication.Controllers
             // Confirm the user owns this month.
             if (User.Identity.GetUserId() != siteAndMonthViewModel.Site.UserId)
             {
-                return RedirectToAction("Index", "Sites", new { message = "Your IP and behaviour has been logged." });
+                return RedirectToAction("Index", "Sites", new { message = "Your IP has been logged." });
             }
+            ViewBag.Message = message;
             return View("Edit", siteAndMonthViewModel);
         }
 
@@ -148,7 +183,7 @@ namespace WebApplication.Controllers
                 entry.Property(e => e.SiteId).IsModified = false;
                 entry.Property(e => e.MonthTime).IsModified = false;
                 _dataDb.SaveChanges();
-                ViewBag.Message = "This month (" + month.MonthTime.ToString("MMM yyyy") + ") has been updated.";
+                ViewBag.Message = "This month has been updated.";
                 return View("Edit", siteAndMonthViewModel);
             }
             //// The model wasn't valid so show the view back to the user with the "duff" data.
