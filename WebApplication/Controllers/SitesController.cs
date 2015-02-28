@@ -89,7 +89,7 @@ namespace WebApplication.Controllers
                 var textInfo = new CultureInfo("en-GB").TextInfo;
                 site.Name = textInfo.ToTitleCase(site.Name);
                 _dataDb.SaveChanges();
-                return RedirectToAction("Index", "Sites", new { message = site.Name + " has been updated." });
+                return RedirectToAction("Index", "Sites", new { message = site.Name + " updated." });
             }
             return View(site);
         }
