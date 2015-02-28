@@ -38,24 +38,10 @@ namespace WebApplication.Helpers
             labelbuilder.InnerHtml += htmlHelper.LabelFor(expression);
             labelbuilder.InnerHtml += " ";
 
-            //
-            var aBuilder = new TagBuilder("a");
-            aBuilder.MergeAttribute("href", "#");
+            var helpIcon = htmlHelper.SiteHelpFor(expression);
 
-            var spanBuilder = new TagBuilder("span");
-            spanBuilder.AddCssClass("glyphicon glyphicon-info-sign");
-            spanBuilder.MergeAttribute("data-toggle", "tooltip");
-
-            ModelMetadata metaData = ModelMetadata.FromLambdaExpression(expression, htmlHelper.ViewData);
-            if (!string.IsNullOrEmpty(metaData.Description))
-                spanBuilder.MergeAttribute("data-title", metaData.Description);
-            //
-            var help = htmlHelper.SiteHelpFor(expression);
-
-            aBuilder.InnerHtml += spanBuilder.ToString();
-            labelbuilder.InnerHtml += aBuilder.ToString();
+            labelbuilder.InnerHtml += helpIcon.ToString();
             divBuilder.InnerHtml += labelbuilder.ToString();
-
             return MvcHtmlString.Create(divBuilder.ToString());
         }
     }

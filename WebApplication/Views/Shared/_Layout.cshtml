@@ -1,51 +1,57 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>@ViewBag.Title - Insight</title>
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
-    </head>
-    <body>
-        <div class="version"></div>
-        <div class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("Insight", "Index", "Home", null, new { @class = "navbar-brand", @title = "Home Page" })
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("About", "About", "Home", null, new { @title = "About Page" })</li>
-                        @Html.Partial("_SitesPartial")
-                    </ul>
-                    @Html.Partial("_LoginPartial")
-                </div>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Insight</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="version"></div>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Insight", "Index", "Home", null, new { @class = "navbar-brand", @title = "Home Page" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("About", "About", "Home", null, new { @title = "About Page" })</li>
+                    @Html.Partial("_SitesPartial")
+                </ul>
+                @Html.Partial("_LoginPartial")
             </div>
         </div>
-        <div class="container body-content">
-            @RenderBody()
-        </div>
-        <footer class="footer hidden-xs hidden-sm">
-            <div class="container">
-                <div class="pull-right">
-                    <span id="logos">
-                        &copy; @DateTime.Now.Year - Black Radley Limited
-                        <img src="/Content/Images/Logos/BlackRadley.jpg" alt="Black Radley" />
-                        <img src="/Content/Images/Logos/BSU.jpg" alt="Bath Spa University" />
-                        <img src="/Content/Images/Logos/ROP.jpg" alt="Ryan O'Neill Partnership" />
-                        <img src="/Content/Images/Logos/Support.jpg" alt="Ryan O'Neill Partnership" />
-                    </span>
-                </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    <footer class="footer hidden-xs hidden-sm">
+        <div class="container">
+            <div class="pull-right">
+                <span id="logos">
+                    &copy; @DateTime.Now.Year - Black Radley Limited
+                    <img src="/Content/Images/Logos/BlackRadley.jpg" alt="Black Radley" />
+                    <img src="/Content/Images/Logos/BSU.jpg" alt="Bath Spa University" />
+                    <img src="/Content/Images/Logos/ROP.jpg" alt="Ryan O'Neill Partnership" />
+                    <img src="/Content/Images/Logos/Support.jpg" alt="Ryan O'Neill Partnership" />
+                </span>
             </div>
-        </footer>
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
-    </body>
+        </div>
+    </footer>
+    <div>
+        Icons made by <a href="http://www.flaticon.com/authors/zurb" title="Zurb">Zurb</a>,
+        <a href="http://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from
+        <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by 
+        <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
 </html>

@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using DataAccess;
 
 namespace WebApplication.Helpers
 {
@@ -17,14 +13,8 @@ namespace WebApplication.Helpers
             //</a>
             var labelBuilder = new TagBuilder("label");
             labelBuilder.SetInnerText(text);
-            var aBuilder = new TagBuilder("a");
-            aBuilder.MergeAttribute("href", "#");
-            aBuilder.MergeAttribute("data-toggle", "tooltip");
-            aBuilder.MergeAttribute("data-title", help);
-            var spanBuilder = new TagBuilder("span");
-            spanBuilder.AddCssClass("glyphicon glyphicon-info-sign");
-            aBuilder.InnerHtml += spanBuilder.ToString();
-            return MvcHtmlString.Create(labelBuilder.ToString() + "&nbsp;" + aBuilder.ToString());
+            var helpIcon = htmlHelper.SiteHelpFor(help);
+            return MvcHtmlString.Create(labelBuilder.ToString() + "&nbsp;" + helpIcon.ToString());
         }
     }
 }
