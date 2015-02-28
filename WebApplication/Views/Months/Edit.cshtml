@@ -189,15 +189,15 @@
         // ---------------------
         $(document).ready(function() {
             // Attach a function to the change event
-            $('input:radio[name=IsEvents]').change(function () {
-                var checkedValue = $("input[name=IsEvents]:checked").val();
+            $('input:radio[name=IsAdditionalEvents]').change(function () {
+                var checkedValue = $("input[name=IsAdditionalEvents]:checked").val();
                 if (checkedValue == "true")
                     $('#Events').fadeIn();
                 else
                     $('#Events').hide();
             });
             // Call the event so the div is set correctly
-            $('#IsEvents').change();
+            $('#IsAdditionalEvents').change();
         });
 
         $(document).ready(function() {

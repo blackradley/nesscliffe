@@ -138,3 +138,7 @@ body {
   /* Set the fixed height of the footer here */
   height: 60px;
 }
+
+.icon {
+    padding-right: 2px;
+}

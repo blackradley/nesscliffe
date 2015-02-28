@@ -202,9 +202,9 @@
     <Compile Include="Helpers\SiteIsSelectedHelper.cs" />
     <Compile Include="Helpers\SiteSectionLabelHelper.cs" />
     <Compile Include="Helpers\SiteSummaryIconsForHelper.cs" />
-    <Compile Include="Migrations\201502280018044_InitialCreate.cs" />
-    <Compile Include="Migrations\201502280018044_InitialCreate.Designer.cs">
-      <DependentUpon>201502280018044_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201502281627490_InitialCreate.cs" />
+    <Compile Include="Migrations\201502281627490_InitialCreate.Designer.cs">
+      <DependentUpon>201502281627490_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Infrastructure\DataDb.cs" />
@@ -226,9 +226,12 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\BackgroundGallery.jpg" />
     <Content Include="Content\Images\Icons\Arriving.png" />
+    <Content Include="Content\Images\Icons\CateringNo.png" />
+    <Content Include="Content\Images\Icons\DonationNo.png" />
+    <Content Include="Content\Images\Icons\DonationYes.png" />
+    <Content Include="Content\Images\Icons\ExperienceNo.png" />
+    <Content Include="Content\Images\Icons\ExperienceYes.png" />
     <Content Include="Content\Images\Icons\Marketing.png" />
-    <Content Include="Content\Images\Icons\Donation.png" />
-    <Content Include="Content\Images\Icons\Experience.png" />
     <Content Include="Content\Images\Icons\IsPark.png" />
     <Content Include="Content\Images\Icons\IsAccredited.png" />
     <Content Include="Content\Images\Icons\IsArtsCentre.png" />
@@ -241,7 +244,7 @@
     <Content Include="Content\Images\Icons\IsOpenAir.png" />
     <Content Include="Content\Images\Icons\IsWorldHeritageSite.png" />
     <Content Include="Content\Images\Icons\IsNatureReserve.png" />
-    <Content Include="Content\Images\Icons\Refreshment.png" />
+    <Content Include="Content\Images\Icons\CateringYes.png" />
     <Content Include="Content\Images\Icons\ShoppingNo.png" />
     <Content Include="Content\Images\Icons\ShoppingYes.png" />
     <Content Include="Content\Images\Icons\Website.png" />
@@ -365,8 +368,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201502280018044_InitialCreate.resx">
-      <DependentUpon>201502280018044_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201502281627490_InitialCreate.resx">
+      <DependentUpon>201502281627490_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

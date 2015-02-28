@@ -33,6 +33,7 @@ namespace WebApplication.Helpers
                     var imgbuilder = new TagBuilder("img");
                     imgbuilder.MergeAttribute("src", "/Content/Images/Icons/" + icon.Key + ".png");
                     imgbuilder.MergeAttribute("width", "16");
+                    imgbuilder.MergeAttribute("class", "icon");
 
                     var name = icon.Key;
                     Attribute attribute = site.GetAttributeFrom<DisplayAttribute>(icon.Key);

@@ -163,14 +163,14 @@ namespace DataAccess
         
         #region EXPERIENCE
         [Display(Name = "Any special events?", Description = "Did you have any special events this month? e.g. corporate hire or after hours tours.")]
-        public virtual bool? IsEvents { get; set; }
+        public virtual bool? IsAdditionalEvents { get; set; }
 
         [Display(Name = "Additional Events", Description = "How many additional events did you run at your site this month?")]
         public virtual int? NumberAdditionalEvents { get; set; }
         [Display(Name = "Additional Events Numbers", Description = "How many visitors took part in additional events at your site this month?")]
         public virtual int? NumberVisitorsAdditional { get; set; }
         [Display(Name = "Additional Events Income", Description = "What was the income from additional events this month?")]
-        public virtual int? IncomeAdditional { get; set; }
+        public virtual int? IncomeAdditionalEvents { get; set; }
 
         [Display(Name = "Number of Artefacts", Description = "Approximately how many artefacts are in your collections?")]
         public virtual int? NumberArtefacts { get; set; }

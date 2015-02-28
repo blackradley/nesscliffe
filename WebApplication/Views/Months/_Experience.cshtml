@@ -3,7 +3,7 @@
 @model Month
 <div class="form-group">
     <div class="row form-inline">
-        @Html.SiteYesNoFor(model => model.IsEvents)
+        @Html.SiteYesNoFor(model => model.IsAdditionalEvents)
     </div>
 </div>    
 <div id="Events">
@@ -15,7 +15,7 @@
             @Html.SiteTextBoxFor(model => model.NumberVisitorsAdditional)
         </div>
         <div class="form-group col-md-3 pounds">
-            @Html.SiteTextBoxFor(model => model.IncomeAdditional)
+            @Html.SiteTextBoxFor(model => model.IncomeAdditionalEvents)
         </div>
     </div>
 </div>
