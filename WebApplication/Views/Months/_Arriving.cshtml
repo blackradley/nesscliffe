@@ -3,16 +3,16 @@
 
 @Html.SiteSectionLabel("Visitors Numbers and Income", "Tell us about the visitors to your site")
 <div class="row">
-    <div class="form-group col-sm-3">
+    <div class="form-group col-sm-4 col-md-3">
         @Html.SiteTextBoxFor(model => model.VisitorsGeneral)
     </div>
-    <div class="form-group col-sm-3">
+    <div class="form-group col-sm-4 col-md-3">
         @Html.SiteTextBoxFor(model => model.VisitorsExhibition)
     </div>
-    <div class="form-group col-sm-3">
+    <div class="form-group col-sm-4 col-md-3">
         @Html.SiteTextBoxFor(model => model.VisitorsSchools)
     </div>
-    <div class="form-group col-sm-3 pounds">
+    <div class="form-group col-sm-4 col-md-3 pounds">
         @Html.SiteTextBoxFor(model => model.IncomeAdmissions)
     </div>
 </div>
@@ -20,43 +20,43 @@
 @Html.SiteSectionLabel("Visitor Segmentation", "Tell us about the kinds of people visitoring your site")
 Total <span id="MarketSegmentationTotal">0</span> %
 <div id="MarketSegmentation" class="row">
-    <div class="form-group col-sm-3 percentage">
+    <div class="form-group col-sm-4 col-md-3 percentage">
         @Html.SiteTextBoxFor(model => model.VisitorsPercentNoFamily, 100, 0, maxLength: 3)
     </div>
-    <div class="form-group col-sm-3 percentage">
+    <div class="form-group col-sm-4 col-md-3 percentage">
         @Html.SiteTextBoxFor(model => model.VisitorsPercentFamily, 100, 0, maxLength: 3)
     </div>
-    <div class="form-group col-sm-3 percentage">
+    <div class="form-group col-sm-4 col-md-3 percentage">
         @Html.SiteTextBoxFor(model => model.VisitorsPercentThirdAge, 100, 0, maxLength: 3)
     </div>
-    <div class="form-group col-sm-3 percentage">
+    <div class="form-group col-sm-4 col-md-3 percentage">
         @Html.SiteTextBoxFor(model => model.VisitorsPercentRetired, 100, 0, maxLength: 3)
     </div>
 </div>
 
 @Html.SiteSectionLabel("Opening Hours", "Fill in the number of hours your site was open")
 <div class="row">
-    <div class="form-group col-sm-3 hours">
+    <div class="form-group col-sm-4 col-md-3 hours">
         @Html.SiteTextBoxFor(model => model.HoursMonday, maxLength: 4)
     </div>
-    <div class="form-group col-sm-3 hours">
+    <div class="form-group col-sm-4 col-md-3 hours">
         @Html.SiteTextBoxFor(model => model.HoursTuesday, maxLength: 4)
     </div>
-    <div class="form-group col-sm-3 hours">
+    <div class="form-group col-sm-4 col-md-3 hours">
         @Html.SiteTextBoxFor(model => model.HoursWednesday, maxLength: 4)
     </div>
-    <div class="form-group col-sm-3 hours">
+    <div class="form-group col-sm-4 col-md-3 hours">
         @Html.SiteTextBoxFor(model => model.HoursThursday, maxLength: 4)
     </div>
 </div>
 <div class="row">
-    <div class="form-group col-sm-3 hours">
+    <div class="form-group col-sm-4 col-md-3 hours">
         @Html.SiteTextBoxFor(model => model.HoursFriday, maxLength: 4)
     </div>
-    <div class="form-group col-sm-3 hours">
+    <div class="form-group col-sm-4 col-md-3 hours">
         @Html.SiteTextBoxFor(model => model.HoursSaturday, maxLength: 4)
     </div>
-    <div class="form-group col-sm-3 hours">
+    <div class="form-group col-sm-4 col-md-3 hours">
         @Html.SiteTextBoxFor(model => model.HoursSunday, maxLength: 4)
     </div>
 </div>
