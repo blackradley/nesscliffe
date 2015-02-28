@@ -21,6 +21,9 @@ namespace DataAccess
         #region ATTENTION
         [Display(Name = "Marketing Effort", Description = "Approximately how many person hours were spent on marketing tasks this month?")]
         public virtual int? MarketingEffort { get; set; }
+        [Display(Name = "Website Visitors", Description = "How many visitors did your website get this month?")]
+        public virtual int? WebsiteVisitors { get; set; }
+
         [Display(Name = "Regional TV", Description = "Has your site appeared on regional TV this month?")]
         public virtual bool RegionalTv { get; set; }
         [Display(Name = "National TV", Description = "Has your site appeared on national TV this month?")]
@@ -29,8 +32,6 @@ namespace DataAccess
         public virtual bool OverseasTv { get; set; }
         [Display(Name = "Website Url", Description = "What is your web site address?")]
         public virtual String WebsiteUrl { get; set; }
-        [Display(Name = "Website Visitors", Description = "How many visitors did your website get this month?")]
-        public virtual int? WebsiteVisitors { get; set; }
         [Display(Name = "Facebook Url", Description = "If you have a Facebook page, what it the address?")]
         public virtual String FacebookUrl { get; set; }
         [Display(Name = "Twitter Url", Description = "If you have a Twitter page, what it the address?")]
@@ -49,13 +50,13 @@ namespace DataAccess
 
         #region ARRIVING
         [Display(Name = "General Visitors", Description = "How many general visitors came to your site this month?")]
-        public virtual int VisitorsGeneral { get; set; }
+        public virtual int? VisitorsGeneral { get; set; }
         [Display(Name = "Exhibition Visitors", Description = "How many visitors came to paid exhibitions at your site this month?")]
-        public virtual int VisitorsExhibition { get; set; }
+        public virtual int? VisitorsExhibition { get; set; }
         [Display(Name = "Schools Visitors", Description = "How many school visitors came to your site this month?")]
-        public virtual int VisitorsSchools { get; set; }
+        public virtual int? VisitorsSchools { get; set; }
         [Display(Name = "Admission Income", Description = "What was the income from visitor admissions this month?")]
-        public virtual int IncomeAdmissions { get; set; }
+        public virtual int? IncomeAdmissions { get; set; }
         
         [Display(Name = "Not with Family", Description = "What percentage of visitors are under the age of 45 who are not parents?")]
         public virtual int VisitorsPercentNoFamily { get; set; }
@@ -65,7 +66,6 @@ namespace DataAccess
         public virtual int VisitorsPercentThirdAge { get; set; }
         [Display(Name = "Retired", Description = "What percentage of visitors were over the age of 65 with no children under the age of 16 still living at home?")]
         public virtual int VisitorsPercentRetired { get; set; }
-        
         [Display(Name = "Monday", Description = "How many hours were you open on Mondays?")]
         [Range(minimum: 0, maximum: 24, ErrorMessage = "Enter between 0 and 24 hours")]
         public virtual float HoursMonday { get; set; }
@@ -91,7 +91,8 @@ namespace DataAccess
 
         #region SHOPPING
         [Display(Name = "Do you have a shop?", Description = "Was there a shop or retail outlet open on your site this month?")]
-        public virtual bool IsRetail { get; set; }
+        public virtual bool? IsRetail { get; set; }
+
         [Display(Name = "Retail Income", Description = "How much was your retail income this month?")]
         public virtual int? IncomeRetail { get; set; }
         [Display(Name = "Shop behind pay barrier?", Description = "Do visitors have to pay to get to the shop?")]
@@ -113,8 +114,9 @@ namespace DataAccess
         #endregion
         
         #region REFRESHMENT
-        [Display(Name = "Is there catering?", Description = "Did you provide catering on your site this month?")]
-        public virtual bool IsCatering { get; set; }
+        [Display(Name = "Is there catering on site?", Description = "Did you provide catering on your site this month?")]
+        public virtual bool? IsCatering { get; set; }
+
         [Display(Name = "Catering Income", Description = "What was your catering income for this month?")]
         public virtual int? IncomeCatering { get; set; }
         [Display(Name = "Café behind pay barrier?", Description = "Do visitors have to pay to get to the café?")]
@@ -148,25 +150,27 @@ namespace DataAccess
         
         #region DONATION
         [Display(Name = "Donation Opportunities", Description = "Do you provide visitors with opportunites to make donations?")]
-        public virtual bool IsDonationOpportunity { get; set; }
+        public virtual bool? IsDonationOpportunity { get; set; }
+
         [Display(Name = "Donation Income", Description = "What was your income from donations for this month?")]
         public virtual int? IncomeDonation { get; set; }
         [Display(Name = "Distance to Donation", Description = "How far is it from the entrance to the first opportunity to make a donation?")]
         public virtual int? DistanceToDonation { get; set; }
         public virtual int DistanceToDonationUnits { get; set; }
         [Display(Name = "Number of Donation Boxes", Description = "How many donation opportunites does your site offer?")]
-        public virtual int NumberDonationOpportunities { get; set; }
+        public virtual int? NumberDonationOpportunities { get; set; }
         #endregion
         
         #region EXPERIENCE
         [Display(Name = "Any special events?", Description = "Did you have any special events this month? e.g. corporate hire or after hours tours.")]
-        public virtual bool IsEvents { get; set; }
+        public virtual bool? IsEvents { get; set; }
+
         [Display(Name = "Additional Events", Description = "How many additional events did you run at your site this month?")]
-        public virtual int NumberAdditionalEvents { get; set; }
+        public virtual int? NumberAdditionalEvents { get; set; }
         [Display(Name = "Additional Events Numbers", Description = "How many visitors took part in additional events at your site this month?")]
-        public virtual int NumberVisitorsAdditional { get; set; }
+        public virtual int? NumberVisitorsAdditional { get; set; }
         [Display(Name = "Additional Events Income", Description = "What was the income from additional events this month?")]
-        public virtual int IncomeAdditional { get; set; }
+        public virtual int? IncomeAdditional { get; set; }
 
         [Display(Name = "Number of Artefacts", Description = "Approximately how many artefacts are in your collections?")]
         public virtual int? NumberArtefacts { get; set; }

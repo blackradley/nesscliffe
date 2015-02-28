@@ -76,6 +76,8 @@
 {
     <script type="text/javascript">
         // ---------------------
+        // PRESERVE TAB
+        // ---------------------
         // Preserve the selected tab between postbacks and visits
         // Adapted from https://gist.github.com/brendanmckenzie/8f8008d3d51c07b2700f
         // but using the month.id as key to it is unique to each month.
@@ -134,29 +136,15 @@
             $('#MarketSegmentationTotal').text(sum);
         }
 
-        $(document).ready(function () {
-            validate();
-            $('#inputName, #inputEmail, #inputTel').change(validate);
-        });
-        function validate() {
-            if ($('#inputName').val().length > 0 &&
-                $('#inputEmail').val().length > 0 &&
-                $('#inputTel').val().length > 0) {
-                $("input[type=submit]").prop("disabled", false);
-            }
-            else {
-                $("input[type=submit]").prop("disabled", true);
-            }
-        }
-
-        // ---------------------
         // TODO: Dry this out a bit.
-        // Show and hide parts of the form
         // ---------------------
-        $(document).ready(function() {
+        // SHOPPING
+        // ---------------------
+        $(document).ready(function () {
             // Attach a function to the change event
-            $('#IsRetail').change(function() {
-                if (this.checked)
+            $('input:radio[name=IsRetail]').change(function () {
+                var checkedValue = $("input[name=IsRetail]:checked").val();
+                if (checkedValue == "true")
                     $('#Retail').fadeIn();
                 else
                     $('#Retail').hide();
@@ -165,10 +153,13 @@
             $('#IsRetail').change();
         });
 
+        // ---------------------
+        // REFRESHMENT
+        // ---------------------
         $(document).ready(function() {
-            // Attach a function to the change event
-            $('#IsCatering').change(function() {
-                if (this.checked)
+            $('input:radio[name=IsCatering]').change(function () {
+                var checkedValue = $("input[name=IsCatering]:checked").val();
+                if (checkedValue == "true")
                     $('#Catering').fadeIn();
                 else
                     $('#Catering').hide();
@@ -177,10 +168,14 @@
             $('#IsCatering').change();
         });
 
+        // ---------------------
+        // DONATION
+        // ---------------------
         $(document).ready(function() {
             // Attach a function to the change event
-            $('#IsDonationOpportunity').change(function() {
-                if (this.checked)
+            $('input:radio[name=IsDonationOpportunity]').change(function () {
+                var checkedValue = $("input[name=IsDonationOpportunity]:checked").val();
+                if (checkedValue == "true")
                     $('#DonationOpportunity').fadeIn();
                 else
                     $('#DonationOpportunity').hide();
@@ -189,10 +184,14 @@
             $('#IsDonationOpportunity').change();
         });
 
+        // ---------------------
+        // EXPERIENCE
+        // ---------------------
         $(document).ready(function() {
             // Attach a function to the change event
-            $('#IsEvents').change(function() {
-                if (this.checked)
+            $('input:radio[name=IsEvents]').change(function () {
+                var checkedValue = $("input[name=IsEvents]:checked").val();
+                if (checkedValue == "true")
                     $('#Events').fadeIn();
                 else
                     $('#Events').hide();
@@ -203,7 +202,7 @@
 
         $(document).ready(function() {
             // Attach a function to the change event
-            $('#IsCollectionsOutstanding').change(function() {
+            $('#IsCollectionsOutstanding').change(function () {
                 if (this.checked)
                     $('#CollectionsOutstanding').fadeIn();
                 else

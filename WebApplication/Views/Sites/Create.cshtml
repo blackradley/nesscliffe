@@ -17,13 +17,3 @@
         </div>
     </div>
 }
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script language="javascript">
-        $(document).ready(function () {
-            if ($("#AreaIndoor").value == undefined) $("#AreaIndoor").val("0");
-            if ($("#AreaOutdoor").value == undefined) $("#AreaOutdoor").val("0");
-        });
-    </script>
-}

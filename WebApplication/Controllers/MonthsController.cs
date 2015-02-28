@@ -51,11 +51,6 @@ namespace WebApplication.Controllers
                 site.Months.Add(month);
                 site.Months = site.Months.OrderByDescending(i => i.MonthTime).ToList();
             }
-   
-            if (site == null)
-            {
-                return HttpNotFound();
-            }
             return View(site);
         }
 
@@ -97,6 +92,7 @@ namespace WebApplication.Controllers
                     nearestMonth = oldMonth;
                 }
             }
+
             if (nearestMonth.Id != Guid.Empty)
             {
                 newMonth = nearestMonth.ShallowCopy();
@@ -109,7 +105,7 @@ namespace WebApplication.Controllers
             _dataDb.Configuration.ValidateOnSaveEnabled = false;
             _dataDb.SaveChanges();
 
-            return RedirectToAction("Edit", new { newMonth.Id, message = "A new month (" + newMonth.MonthTime.ToString("MMM yyyy") + ") has been added." });
+            return RedirectToAction("Edit", new { newMonth.Id, message = newMonth.MonthTime.ToString("MMM yyyy") + " has been added." });
         }
 
         //// GET: Months/Edit/117ca2a3-fb5a-4882-8e74-23cccf07db73

@@ -1,4 +1,5 @@
-﻿@using Localization
+﻿@using System.Activities.Expressions
+@using Localization
 @model DataAccess.Site
 @{
     ViewBag.Title = Resources.LabelPerformanceData;
@@ -10,7 +11,7 @@
 <table class="table">
     <tr>
         <th></th>
-        <th class="hidden-xs">Progress</th>
+        <th class="hidden-xs">Summary</th>
         <th>
             @Html.DisplayNameFor(model => model.Months.First().MonthTime)
         </th>
@@ -31,9 +32,7 @@
                 <td class="hidden-xs">
                     @if (item.Id == Guid.Empty)
                     {
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar"></div>
-                        </div>
+                        <div>Not Started</div>
                     }
                     else
                     {

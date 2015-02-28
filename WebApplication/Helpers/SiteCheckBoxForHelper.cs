@@ -2,6 +2,7 @@
 using System.Linq.Expressions;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
+using Microsoft.Ajax.Utilities;
 
 namespace WebApplication.Helpers
 {
@@ -37,6 +38,7 @@ namespace WebApplication.Helpers
             labelbuilder.InnerHtml += htmlHelper.LabelFor(expression);
             labelbuilder.InnerHtml += " ";
 
+            //
             var aBuilder = new TagBuilder("a");
             aBuilder.MergeAttribute("href", "#");
 
@@ -47,6 +49,8 @@ namespace WebApplication.Helpers
             ModelMetadata metaData = ModelMetadata.FromLambdaExpression(expression, htmlHelper.ViewData);
             if (!string.IsNullOrEmpty(metaData.Description))
                 spanBuilder.MergeAttribute("data-title", metaData.Description);
+            //
+            var help = htmlHelper.SiteHelpFor(expression);
 
             aBuilder.InnerHtml += spanBuilder.ToString();
             labelbuilder.InnerHtml += aBuilder.ToString();
