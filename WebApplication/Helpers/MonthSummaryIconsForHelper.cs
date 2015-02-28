@@ -9,8 +9,26 @@ namespace WebApplication.Helpers
         {
             var spanBuilder = new TagBuilder("span");
 
+            bool marketing = month.MarketingEffort > 0;
+            bool website = month.WebsiteVisitors > 0;
             bool shoppingYes = month.IsRetail ?? false;
             bool shoppingNo = !month.IsRetail ?? false;
+
+            if (marketing) // is true then spit out the HTML for the icon
+            {
+                var imgbuilder = new TagBuilder("img");
+                imgbuilder.MergeAttribute("src", "/Content/Images/Icons/Marketing.png");
+                imgbuilder.MergeAttribute("width", "16");
+                spanBuilder.InnerHtml += imgbuilder.ToString(TagRenderMode.SelfClosing);
+            }
+
+            if (website) // is true then spit out the HTML for the icon
+            {
+                var imgbuilder = new TagBuilder("img");
+                imgbuilder.MergeAttribute("src", "/Content/Images/Icons/Website.png");
+                imgbuilder.MergeAttribute("width", "16");
+                spanBuilder.InnerHtml += imgbuilder.ToString(TagRenderMode.SelfClosing);
+            }
 
             if (shoppingYes) // is true then spit out the HTML for the icon
             {
