@@ -193,6 +193,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\GetAttributeFromHelper.cs" />
+    <Compile Include="Helpers\MonthSummaryIconsForHelper.cs" />
     <Compile Include="Helpers\SiteYesNoForHelper.cs" />
     <Compile Include="Helpers\SiteCheckBoxForHelper.cs" />
     <Compile Include="Helpers\SiteRatingScaleForHelper.cs" />
@@ -224,6 +225,10 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\BackgroundGallery.jpg" />
+    <Content Include="Content\Images\Icons\Arriving.png" />
+    <Content Include="Content\Images\Icons\Attention.png" />
+    <Content Include="Content\Images\Icons\Donation.png" />
+    <Content Include="Content\Images\Icons\Experience.png" />
     <Content Include="Content\Images\Icons\IsPark.png" />
     <Content Include="Content\Images\Icons\IsAccredited.png" />
     <Content Include="Content\Images\Icons\IsArtsCentre.png" />
@@ -236,6 +241,9 @@
     <Content Include="Content\Images\Icons\IsOpenAir.png" />
     <Content Include="Content\Images\Icons\IsWorldHeritageSite.png" />
     <Content Include="Content\Images\Icons\IsNatureReserve.png" />
+    <Content Include="Content\Images\Icons\Refreshment.png" />
+    <Content Include="Content\Images\Icons\ShoppingNo.png" />
+    <Content Include="Content\Images\Icons\ShoppingYes.png" />
     <Content Include="Content\Images\Logos\Beta.png" />
     <Content Include="Content\Images\Logos\BlackRadley.jpg" />
     <Content Include="Content\Images\Logos\BSU.jpg" />

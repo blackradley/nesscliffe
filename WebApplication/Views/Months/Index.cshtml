@@ -1,5 +1,6 @@
 ﻿@using System.Activities.Expressions
 @using Localization
+@using WebApplication.Helpers
 @model DataAccess.Site
 @{
     ViewBag.Title = Resources.LabelPerformanceData;
@@ -36,9 +37,7 @@
                     }
                     else
                     {
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 33%;"></div>
-                        </div>
+                        @Html.MonthSummaryIconsFor(item)
                     }
                 </td>
                 <td>
