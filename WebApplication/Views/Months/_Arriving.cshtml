@@ -2,7 +2,8 @@
 @model DataAccess.Month
 
 @Html.SiteSectionLabel("Visitors Numbers and Income", "Tell us about the visitors to your site")
-<div class="row">
+Total <span id="VisitorsTotal">0</span>
+<div id="Visitors" class="row">
     <div class="form-group col-sm-4 col-md-3">
         @Html.SiteTextBoxFor(model => model.VisitorsGeneral)
     </div>

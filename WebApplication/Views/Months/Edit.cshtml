@@ -142,7 +142,8 @@
         // ---------------------
         // ARRIVING
         // ---------------------
-        // Calculated the total percentage to give the user feedback about that
+        // TODO: Dry this out a bit.
+        // Calculate the total percentage to give the user feedback about that
         // the market segmentation figurers are related.
         // ---------------------
         $(document).ready(AddUpMarketSegmentation);
@@ -155,6 +156,21 @@
                 sum += Number($(this).val());
             });
             $('#MarketSegmentationTotal').text(sum);
+        }
+
+        // ---------------------
+        // Calculate the total number of visitors to provide user feedback.
+        // ---------------------
+        $(document).ready(AddUpVisitors);
+        $('#Visitors input').bind("keyup", AddUpVisitors);
+        $('#Visitors input').bind("mousewheel", AddUpVisitors);
+        $('#Visitors input').bind("input", AddUpVisitors);
+        function AddUpVisitors() {
+            var sum = 0;
+            $('#Visitors input').each(function () {
+                sum += Number($(this).val());
+            });
+            $('#VisitorsTotal').text(sum);
         }
 
         // TODO: Dry this out a bit.
