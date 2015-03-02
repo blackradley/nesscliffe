@@ -13,7 +13,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
-        <th class="hidden-sm">Postcode</th>
+        <th class="hidden-sm hidden-xs">Postcode</th>
         <th class="hidden-xs">Features</th>
         <th style="font-weight:normal;">@Html.ActionLink("Create a New Site", "Create")</th>
     </tr>
@@ -26,12 +26,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
-            <td class="hidden-sm" style="text-transform:uppercase;">@Html.DisplayFor(modelItem => item.Postcode)</td>
+            <td class="hidden-sm hidden-xs" style="text-transform:uppercase;">@Html.DisplayFor(modelItem => item.Postcode)</td>
             <td class="hidden-xs">
                 @Html.SiteSummaryIconsFor(item)
             </td>
             <td>
-                @Html.ActionLink("Site Report", "Report", new { id = item.Id }) |
+                <span class="hidden-xs">@Html.ActionLink("Site Report", "Report", new { id = item.Id }) | </span>
                 @Html.ActionLink("Edit Site", "Edit", new { id = item.Id }) |
                 @Html.ActionLink(Resources.LabelPerformanceData, "Index", "Months", new { id = item.Id }, null)
             </td>
