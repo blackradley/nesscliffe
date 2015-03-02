@@ -254,6 +254,7 @@ namespace DataAccess
                 DistanceToDonationUnits = this.DistanceToDonationUnits,
                 NumberDonationOpportunities = this.NumberDonationOpportunities,
                 // Experience    
+                IsAdditionalEvents = this.IsAdditionalEvents,
                 NumberArtefacts = this.NumberArtefacts,
                 ArtefactsDisplay = this.ArtefactsDisplay,
                 IsCollectionsOutstanding = this.IsCollectionsOutstanding,

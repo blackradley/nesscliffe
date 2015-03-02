@@ -40,7 +40,5 @@ namespace WebApplication.Helpers
             divBuilder.InnerHtml += validation;
             return MvcHtmlString.Create(divBuilder.ToString());
         }
-
-
     }
 }
