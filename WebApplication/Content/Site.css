@@ -119,6 +119,12 @@ h1, h2, h3, h4, h5, h6 {
     z-index: 9999;
 }
 
+
+.input-validation-error {
+    background-color: #ffeeee;
+    outline: 1px solid #ff0000;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {

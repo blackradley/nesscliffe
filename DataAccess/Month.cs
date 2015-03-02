@@ -20,6 +20,7 @@ namespace DataAccess
 
         #region ATTENTION
         [Display(Name = "Marketing Effort", Description = "Approximately how many person hours were spent on marketing tasks this month?")]
+        [Required(ErrorMessage = "*")]
         public virtual int? MarketingEffort { get; set; }
         [Display(Name = "Website Visitors", Description = "How many visitors did your website get this month?")]
         public virtual int? WebsiteVisitors { get; set; }
@@ -50,12 +51,16 @@ namespace DataAccess
 
         #region ARRIVING
         [Display(Name = "General Visitors", Description = "How many general visitors came to your site this month?")]
+        [Required(ErrorMessage = "*")]
         public virtual int? VisitorsGeneral { get; set; }
-        [Display(Name = "Exhibition Visitors", Description = "How many visitors came to paid exhibitions at your site this month?")]
-        public virtual int? VisitorsExhibition { get; set; }
+        [Display(Name = "Member Visitors", Description = "How many visitors were members/season ticket holders at your site this month?")]
+        [Required(ErrorMessage = "*")]
+        public virtual int? VisitorsMember { get; set; }
         [Display(Name = "Schools Visitors", Description = "How many school visitors came to your site this month?")]
-        public virtual int? VisitorsSchools { get; set; }
+        [Required(ErrorMessage = "*")]
+        public virtual int? VisitorsSchool { get; set; }
         [Display(Name = "Admission Income", Description = "What was the income from visitor admissions this month?")]
+        [Required(ErrorMessage = "*")]
         public virtual int? IncomeAdmissions { get; set; }
         
         [Display(Name = "Not with Family", Description = "What percentage of visitors are under the age of 45 who are not parents?")]
@@ -91,6 +96,7 @@ namespace DataAccess
 
         #region SHOPPING
         [Display(Name = "Do you have a shop?", Description = "Was there a shop or retail outlet open on your site this month?")]
+        [Required(ErrorMessage = "*")]
         public virtual bool? IsRetail { get; set; }
 
         [Display(Name = "Retail Income", Description = "How much was your retail income this month?")]
@@ -115,6 +121,7 @@ namespace DataAccess
         
         #region REFRESHMENT
         [Display(Name = "Is there catering on site?", Description = "Did you provide catering on your site this month?")]
+        [Required(ErrorMessage = "*")]
         public virtual bool? IsCatering { get; set; }
 
         [Display(Name = "Catering Income", Description = "What was your catering income for this month?")]
@@ -150,6 +157,7 @@ namespace DataAccess
         
         #region DONATION
         [Display(Name = "Donation Opportunities", Description = "Do you provide visitors with opportunites to make donations?")]
+        [Required(ErrorMessage = "*")]
         public virtual bool? IsDonationOpportunity { get; set; }
 
         [Display(Name = "Donation Income", Description = "What was your income from donations for this month?")]
@@ -163,6 +171,7 @@ namespace DataAccess
         
         #region EXPERIENCE
         [Display(Name = "Any special events?", Description = "Did you have any special events this month? e.g. corporate hire or after hours tours.")]
+        [Required(ErrorMessage = "*")]
         public virtual bool? IsAdditionalEvents { get; set; }
 
         [Display(Name = "Additional Events", Description = "How many additional events did you run at your site this month?")]

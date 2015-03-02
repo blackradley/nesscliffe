@@ -17,9 +17,24 @@ namespace WebApplication.Models
         public bool BrowserRemembered { get; set; }
     }
 
-    public class SiteAndMonthViewModel
+    /// <summary>
+    /// Subclass!  Why?
+    /// 
+    /// You are looking at this, thinking why on earth does the view model subclass the Month?
+    /// There appears to be no need for it.  That is true except the Validation Messages were
+    /// inaccessible in the Site.  So this will not work in the parent of the partial class.
+    /// 
+    ///     @Html.ValidationMessageFor(model => model.Month.MarketingEffort, "!")
+    ///  
+    /// If the Site subclasses the month they become available like this.
+    /// 
+    ///     @Html.ValidationMessageFor(model => model.MarketingEffort, "!")
+    /// 
+    /// Personally I think it is messy but I couldn't think of another way of getting to them.
+    /// </summary>
+    public class SiteAndMonthViewModel : Month
     {
-        public Site Site { get; set; }
+        public new Site Site { get; set; }
         public Month Month { get; set; }
     }
 

@@ -19,7 +19,7 @@ Migrations
 -----------
 Migrations are enabled for the datacontext.
 
-Add-Migration InitialCreate
+Add-Migration InitialCreate -Force
 
 Error Messages
 -----------

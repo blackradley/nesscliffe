@@ -33,9 +33,11 @@ namespace WebApplication.Helpers
             labelbuilder.InnerHtml += htmlHelper.RadioButtonFor(expression, "false") + " No ";
 
             var helpIcon = " " + htmlHelper.SiteHelpFor(expression);
+            var validation = " " + htmlHelper.ValidationMessageFor(expression);
 
             divBuilder.InnerHtml += labelbuilder.ToString();
             divBuilder.InnerHtml += helpIcon;
+            divBuilder.InnerHtml += validation;
             return MvcHtmlString.Create(divBuilder.ToString());
         }
 

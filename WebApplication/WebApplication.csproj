@@ -202,9 +202,9 @@
     <Compile Include="Helpers\SiteIsSelectedHelper.cs" />
     <Compile Include="Helpers\SiteSectionLabelHelper.cs" />
     <Compile Include="Helpers\SiteSummaryIconsForHelper.cs" />
-    <Compile Include="Migrations\201502281627490_InitialCreate.cs" />
-    <Compile Include="Migrations\201502281627490_InitialCreate.Designer.cs">
-      <DependentUpon>201502281627490_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201503021112032_InitialCreate.cs" />
+    <Compile Include="Migrations\201503021112032_InitialCreate.Designer.cs">
+      <DependentUpon>201503021112032_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Infrastructure\DataDb.cs" />
@@ -368,8 +368,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201502281627490_InitialCreate.resx">
-      <DependentUpon>201502281627490_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201503021112032_InitialCreate.resx">
+      <DependentUpon>201503021112032_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,5 +1,4 @@
-﻿@using DataAccess
-@using Localization
+﻿@using Localization
 @using WebApplication.Models
 @model SiteAndMonthViewModel
 @{
@@ -17,22 +16,44 @@
         <div role="tablist" id="tabs" style="margin-bottom: 10px;" class="col-sm-10">
             <ul id="monthTab" class="nav nav-tabs">
                 <li role="presentation" class="active">
-                    <a href="#Attention" data-toggle="tab">Attention</a>
+                    <a href="#Attention" data-toggle="tab">
+                        Attention 
+                        @Html.ValidationMessageFor(model => model.MarketingEffort, "!")
+                        @Html.ValidationMessageFor(model => model.Month.MarketingEffort, "!")
+                    </a>
                 </li>
                 <li role="presentation">
-                    <a href="#Arriving" data-toggle="tab">Arriving</a>
+                    <a href="#Arriving" data-toggle="tab">
+                        Arriving
+                        @Html.ValidationMessageFor(model => model.VisitorsGeneral, "!")
+                        @Html.ValidationMessageFor(model => model.VisitorsMember, "!")
+                        @Html.ValidationMessageFor(model => model.VisitorsSchool, "!")
+                        @Html.ValidationMessageFor(model => model.IncomeAdmissions, "!")
+                    </a>
                 </li>
                 <li role="presentation">
-                    <a href="#Shopping" data-toggle="tab">Shopping</a>
+                    <a href="#Shopping" data-toggle="tab">
+                        Shopping
+                        @Html.ValidationMessageFor(model => model.IsRetail, "!")
+                    </a>
                 </li>
                 <li role="presentation">
-                    <a href="#Refreshment" data-toggle="tab">Refreshment</a>
+                    <a href="#Refreshment" data-toggle="tab">
+                        Refreshment
+                        @Html.ValidationMessageFor(model => model.IsCatering, "!")
+                    </a>
                 </li>
                 <li role="presentation">
-                    <a href="#Donation" data-toggle="tab">Donation</a>
+                    <a href="#Donation" data-toggle="tab">
+                        Donation
+                        @Html.ValidationMessageFor(model => model.IsDonationOpportunity, "!")
+                    </a>
                 </li>
                 <li role="presentation">
-                    <a href="#Experience" data-toggle="tab">Experience</a>
+                    <a href="#Experience" data-toggle="tab">
+                        Experience
+                        @Html.ValidationMessageFor(model => model.IsAdditionalEvents, "!")
+                    </a>
                 </li>
             </ul>
         </div>
