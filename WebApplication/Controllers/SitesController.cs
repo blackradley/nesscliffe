@@ -1,19 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using DataAccess;
-using Glimpse.Mvc.Message;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
 using WebApplication.Infrastructure;
-using WebApplication.Models;
 
 namespace WebApplication.Controllers
 {
@@ -54,7 +48,7 @@ namespace WebApplication.Controllers
             return View(site);
         }
 
-        // GET: Sites/Edit/5
+        //TODO: This is identical to Sites/Report/c4868028-d113-42ef-af6a-3ac2b00742fc. Merge them?
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
@@ -94,7 +88,27 @@ namespace WebApplication.Controllers
             return View(site);
         }
 
-        // GET: Sites/Delete/5
+
+        //TODO: This is identical to Sites/Edit/c4868028-d113-42ef-af6a-3ac2b00742fc. Merge them?
+        public ActionResult Report(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Site site = _dataDb.Sites.Find(id);
+            if (site == null)
+            {
+                return HttpNotFound();
+            }
+            if (site.UserId != User.Identity.GetUserId())
+            {
+                return HttpNotFound();
+            }
+            return View(site);
+        }
+
+        // GET: Sites/Delete/c4868028-d113-42ef-af6a-3ac2b00742fc
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
@@ -109,7 +123,7 @@ namespace WebApplication.Controllers
             return View(site);
         }
 
-        // POST: Sites/Delete/5
+        // POST: Sites/Delete/c4868028-d113-42ef-af6a-3ac2b00742fc
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)

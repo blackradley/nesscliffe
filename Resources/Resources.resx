@@ -120,6 +120,9 @@
   <data name="LabelPerformanceData" xml:space="preserve">
     <value>Months</value>
   </data>
+  <data name="LabelReport" xml:space="preserve">
+    <value>Site Report</value>
+  </data>
   <data name="LabelSitesList" xml:space="preserve">
     <value>My Sites</value>
   </data>

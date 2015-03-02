@@ -1,0 +1,12 @@
+﻿@using System.Activities.Expressions
+@using Localization
+@using WebApplication.Helpers
+@model DataAccess.Site
+@{
+    ViewBag.Title = Resources.LabelReport;
+    ViewBag.Link = Html.ActionLink("Back to " + Resources.LabelSitesList, "Index", "Sites");
+}
+@Html.Partial("_PageTitlePartial")
+@Html.Partial("_SiteDetailsPartial", @Model)
+
+*** Under Contruction ****
