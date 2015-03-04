@@ -9,59 +9,46 @@
 }
 @Html.Partial("_PageTitlePartial")
 @Html.Partial("_SiteDetailsPartial", site)
+
+@* VISITOR CYCLE NAVIGATION *@
+<div class="row">
+    <div role="tablist" id="tabs" style="margin-bottom: 10px;" class="col-sm-10">
+        <ul id="monthTab" class="nav nav-tabs">
+            <li role="presentation" class="active">
+                <a href="#Attention" data-toggle="tab">
+                    Attention
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="#Arriving" data-toggle="tab">
+                    Arriving
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="#Shopping" data-toggle="tab">
+                    Shopping
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="#Refreshment" data-toggle="tab">
+                    Refreshment
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="#Donation" data-toggle="tab">
+                    Donation
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="#Experience" data-toggle="tab">
+                    Experience
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
 @using (Html.BeginForm())
 {
-    @* VISITOR CYCLE NAVIGATION *@
-    <div class="row">
-        <div role="tablist" id="tabs" style="margin-bottom: 10px;" class="col-sm-10">
-            <ul id="monthTab" class="nav nav-tabs">
-                <li role="presentation" class="active">
-                    <a href="#Attention" data-toggle="tab">
-                        Attention 
-                        @Html.ValidationMessageFor(model => model.MarketingEffort, "!")
-                        @Html.ValidationMessageFor(model => model.Month.MarketingEffort, "!")
-                    </a>
-                </li>
-                <li role="presentation">
-                    <a href="#Arriving" data-toggle="tab">
-                        Arriving
-                        @Html.ValidationMessageFor(model => model.VisitorsGeneral, "!")
-                        @Html.ValidationMessageFor(model => model.VisitorsMember, "!")
-                        @Html.ValidationMessageFor(model => model.VisitorsSchool, "!")
-                        @Html.ValidationMessageFor(model => model.IncomeAdmissions, "!")
-                    </a>
-                </li>
-                <li role="presentation">
-                    <a href="#Shopping" data-toggle="tab">
-                        Shopping
-                        @Html.ValidationMessageFor(model => model.IsRetail, "!")
-                    </a>
-                </li>
-                <li role="presentation">
-                    <a href="#Refreshment" data-toggle="tab">
-                        Refreshment
-                        @Html.ValidationMessageFor(model => model.IsCatering, "!")
-                    </a>
-                </li>
-                <li role="presentation">
-                    <a href="#Donation" data-toggle="tab">
-                        Donation
-                        @Html.ValidationMessageFor(model => model.IsDonationOpportunity, "!")
-                    </a>
-                </li>
-                <li role="presentation">
-                    <a href="#Experience" data-toggle="tab">
-                        Experience
-                        @Html.ValidationMessageFor(model => model.IsAdditionalEvents, "!")
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="col-sm-2 pull-right">
-            <input type="submit" value="Save" class="btn btn-primary" />
-        </div>
-    </div>
-
     @* MONTHLY PERFORMANCE DATA FORM *@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -103,10 +90,10 @@
         // Adapted from https://gist.github.com/brendanmckenzie/8f8008d3d51c07b2700f
         // but using the month.id as key to it is unique to each month.
         // ---------------------
-        $(function() {
+        $(function () {
             'use strict';
             // When the tab is clicked stash the name in local storage.
-            $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
                 var id = $(this).parents('[role="tablist"]').attr('id');
                 console.log(document.URL.split("/").pop());
                 var key = document.URL.split("/").pop();
@@ -117,7 +104,7 @@
             });
 
             // When the page is loaded set the tab to the value in local storage.
-            $('[role="tablist"]').each(function(idx, elem) {
+            $('[role="tablist"]').each(function (idx, elem) {
                 var id = $(elem).attr('id');
                 var key = document.URL.split("/").pop();
                 if (id) {
@@ -193,7 +180,7 @@
         // ---------------------
         // REFRESHMENT
         // ---------------------
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('input:radio[name=IsCatering]').change(function () {
                 var checkedValue = $("input[name=IsCatering]:checked").val();
                 if (checkedValue == "true")
@@ -208,7 +195,7 @@
         // ---------------------
         // DONATION
         // ---------------------
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Attach a function to the change event
             $('input:radio[name=IsDonationOpportunity]').change(function () {
                 var checkedValue = $("input[name=IsDonationOpportunity]:checked").val();
@@ -224,7 +211,7 @@
         // ---------------------
         // EXPERIENCE
         // ---------------------
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Attach a function to the change event
             $('input:radio[name=IsAdditionalEvents]').change(function () {
                 var checkedValue = $("input[name=IsAdditionalEvents]:checked").val();
@@ -237,7 +224,7 @@
             $('#IsAdditionalEvents').change();
         });
 
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Attach a function to the change event
             $('#IsCollectionsOutstanding').change(function () {
                 if (this.checked)
