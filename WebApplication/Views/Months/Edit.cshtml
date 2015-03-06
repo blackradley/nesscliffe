@@ -21,7 +21,7 @@
             </li>
             <li role="presentation">
                 <a href="#Arriving" data-toggle="tab">
-                    Arriving
+                    Arrival
                 </a>
             </li>
             <li role="presentation">
@@ -96,12 +96,7 @@
             // When the tab is clicked stash the name in local storage.
             $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
                 var id = $(this).parents('[role="tablist"]').attr('id');
-                var key = document.URL.split("/").pop();
-                key = key.substring(0, key.indexOf('?'));
-                if (id) {
-                    key += ':' + id;
-                }
-                console.log(key);
+                var key = GetKey(id);
                 var tab = $(e.target).attr('href');
                 console.log(tab);
                 localStorage.setItem(key, $(e.target).attr('href'));
@@ -111,36 +106,59 @@
             // When the page is loaded set the tab to the value in local storage.
             $('[role="tablist"]').each(function(idx, elem) {
                 var id = $(elem).attr('id');
-                var key = document.URL.split("/").pop();
-                key = key.substring(0, key.indexOf('?'));
-                if (id) {
-                    key += ':' + id;
-                }
+                var key = GetKey(id);
                 var lastTab = localStorage.getItem(key);
                 if (lastTab) {
                     $('[href="' + lastTab + '"]').tab('show');
                 }
-
+                HideAndShowButtons();
             });
-            HideAndShowButtons();
+
+            // When the previous is clicked stash the previous tab in local storage.
+            $('#previous').click(function (event) {
+                var index = $('ul#monthTab li').index($('.active')) - 1;
+                $('ul#monthTab li a').eq(index).tab('show');
+            });
+
+            // When the next is clicked stash the previous tab in local storage.
+            $('#next').click(function (event) {
+                var index = $('ul#monthTab li').index($('.active')) + 1;
+                $('ul#monthTab li a').eq(index).tab('show');
+            });
 
         });
 
+        // ---------------------
+        // Get the key for the last tab.
+        // ---------------------
+        function GetKey(id) {
+            var key = document.URL.split("/").pop();
+            key = key.substring(0, key.indexOf('?'));
+            if (id) {
+                key += ':' + id;
+            }
+            return key;
+        }
+
+        // ---------------------
+        // Hide the buttons that aren't relevant.
+        // ---------------------
         function HideAndShowButtons() {
-            // Hide the buttons that aren't relevant.
-            var index = $('ul#monthTab li').index($('.active'));
+            var index = $('ul#monthTab li').index($('.active')); // Bootstrap marks the active tab
             var lastIndex = $('ul#monthTab li').length - 1;
             if (index == 0) {
                 $('#previous').hide();
             } else {
                 $('#previous').show();
             }
-            if (index == lastIndex){
+            if (index == lastIndex) {
                 $('#next').hide();
             } else {
                 $('#next').show();
             }
         };
+
+
 
         //$('#VisitorsPercentNoFamily').tooltip({ 'trigger': 'focus', 'title': 'Password tooltip' });
         //$('input[type="number"]').focus(function () {
@@ -162,9 +180,10 @@
         $('#MarketSegmentation input').bind("keyup", AddUpMarketSegmentation);
         $('#MarketSegmentation input').bind("mousewheel", AddUpMarketSegmentation);
         $('#MarketSegmentation input').bind("input", AddUpMarketSegmentation);
+
         function AddUpMarketSegmentation() {
             var sum = 0;
-            $('#MarketSegmentation input').each(function () {
+            $('#MarketSegmentation input').each(function() {
                 sum += Number($(this).val());
             });
             $('#MarketSegmentationTotal').text(sum);
@@ -177,9 +196,10 @@
         $('#Visitors input').bind("keyup", AddUpVisitors);
         $('#Visitors input').bind("mousewheel", AddUpVisitors);
         $('#Visitors input').bind("input", AddUpVisitors);
+
         function AddUpVisitors() {
             var sum = 0;
-            $('#Visitors input').each(function () {
+            $('#Visitors input').each(function() {
                 sum += Number($(this).val());
             });
             $('#VisitorsTotal').text(sum);
@@ -189,9 +209,9 @@
         // ---------------------
         // SHOPPING
         // ---------------------
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Attach a function to the change event
-            $('input:radio[name=IsRetail]').change(function () {
+            $('input:radio[name=IsRetail]').change(function() {
                 var checkedValue = $("input[name=IsRetail]:checked").val();
                 if (checkedValue == "true")
                     $('#Retail').fadeIn();
@@ -205,8 +225,8 @@
         // ---------------------
         // REFRESHMENT
         // ---------------------
-        $(document).ready(function () {
-            $('input:radio[name=IsCatering]').change(function () {
+        $(document).ready(function() {
+            $('input:radio[name=IsCatering]').change(function() {
                 var checkedValue = $("input[name=IsCatering]:checked").val();
                 if (checkedValue == "true")
                     $('#Catering').fadeIn();
@@ -220,9 +240,9 @@
         // ---------------------
         // DONATION
         // ---------------------
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Attach a function to the change event
-            $('input:radio[name=IsDonationOpportunity]').change(function () {
+            $('input:radio[name=IsDonationOpportunity]').change(function() {
                 var checkedValue = $("input[name=IsDonationOpportunity]:checked").val();
                 if (checkedValue == "true")
                     $('#DonationOpportunity').fadeIn();
@@ -236,9 +256,9 @@
         // ---------------------
         // EXPERIENCE
         // ---------------------
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Attach a function to the change event
-            $('input:radio[name=IsAdditionalEvents]').change(function () {
+            $('input:radio[name=IsAdditionalEvents]').change(function() {
                 var checkedValue = $("input[name=IsAdditionalEvents]:checked").val();
                 if (checkedValue == "true")
                     $('#Events').fadeIn();
@@ -249,9 +269,9 @@
             $('#IsAdditionalEvents').change();
         });
 
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Attach a function to the change event
-            $('#IsCollectionsOutstanding').change(function () {
+            $('#IsCollectionsOutstanding').change(function() {
                 if (this.checked)
                     $('#CollectionsOutstanding').fadeIn();
                 else
