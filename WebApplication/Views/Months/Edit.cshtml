@@ -91,10 +91,10 @@
         // Adapted from https://gist.github.com/brendanmckenzie/8f8008d3d51c07b2700f
         // but using the month.id as key to it is unique to each month.
         // ---------------------
-        $(function () {
+        $(function() {
             'use strict';
             // When the tab is clicked stash the name in local storage.
-            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
                 var id = $(this).parents('[role="tablist"]').attr('id');
                 var key = document.URL.split("/").pop();
                 key = key.substring(0, key.indexOf('?'));
@@ -105,10 +105,11 @@
                 var tab = $(e.target).attr('href');
                 console.log(tab);
                 localStorage.setItem(key, $(e.target).attr('href'));
+                HideAndShowButtons();
             });
 
             // When the page is loaded set the tab to the value in local storage.
-            $('[role="tablist"]').each(function (idx, elem) {
+            $('[role="tablist"]').each(function(idx, elem) {
                 var id = $(elem).attr('id');
                 var key = document.URL.split("/").pop();
                 key = key.substring(0, key.indexOf('?'));
@@ -121,11 +122,25 @@
                 }
 
             });
+            HideAndShowButtons();
 
+        });
+
+        function HideAndShowButtons() {
             // Hide the buttons that aren't relevant.
             var index = $('ul#monthTab li').index($('.active'));
-            if (index == 0) $('#previous').hide();
-        });
+            var lastIndex = $('ul#monthTab li').length - 1;
+            if (index == 0) {
+                $('#previous').hide();
+            } else {
+                $('#previous').show();
+            }
+            if (index == lastIndex){
+                $('#next').hide();
+            } else {
+                $('#next').show();
+            }
+        };
 
         //$('#VisitorsPercentNoFamily').tooltip({ 'trigger': 'focus', 'title': 'Password tooltip' });
         //$('input[type="number"]').focus(function () {
