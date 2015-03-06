@@ -95,48 +95,46 @@
             'use strict';
             // When the tab is clicked stash the name in local storage.
             $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
-                var id = $(this).parents('[role="tablist"]').attr('id');
-                var key = GetKey(id);
-                var tab = $(e.target).attr('href');
-                console.log(tab);
-                localStorage.setItem(key, $(e.target).attr('href'));
+                var key = GetKey();
+                var tabToStash = $(e.target).attr('href');
+                localStorage.setItem(key, tabToStash);
                 HideAndShowButtons();
             });
 
             // When the page is loaded set the tab to the value in local storage.
             $('[role="tablist"]').each(function(idx, elem) {
-                var id = $(elem).attr('id');
-                var key = GetKey(id);
-                var lastTab = localStorage.getItem(key);
-                if (lastTab) {
-                    $('[href="' + lastTab + '"]').tab('show');
+                var key = GetKey();
+                var stashedTab = localStorage.getItem(key);
+                if (stashedTab) {
+                    $('[href="' + stashedTab + '"]').tab('show');
                 }
                 HideAndShowButtons();
             });
 
             // When the previous is clicked stash the previous tab in local storage.
-            $('#previous').click(function (event) {
+            $('#previous').click(function () {
+                var key = GetKey();
                 var index = $('ul#monthTab li').index($('.active')) - 1;
-                $('ul#monthTab li a').eq(index).tab('show');
+                var tabToStash = $('ul#monthTab li a').eq(index).attr('href');
+                localStorage.setItem(key, tabToStash);
             });
 
-            // When the next is clicked stash the previous tab in local storage.
-            $('#next').click(function (event) {
+            // When the next is clicked stash the next tab in local storage.
+            $('#next').click(function () {
+                var key = GetKey();
                 var index = $('ul#monthTab li').index($('.active')) + 1;
-                $('ul#monthTab li a').eq(index).tab('show');
+                var tabToStash = $('ul#monthTab li a').eq(index).attr('href');
+                localStorage.setItem(key, tabToStash);
             });
-
         });
 
         // ---------------------
         // Get the key for the last tab.
         // ---------------------
-        function GetKey(id) {
+        function GetKey() {
             var key = document.URL.split("/").pop();
             key = key.substring(0, key.indexOf('?'));
-            if (id) {
-                key += ':' + id;
-            }
+            key += ':tabs';
             return key;
         }
 
