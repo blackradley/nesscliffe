@@ -16,7 +16,7 @@
         <ul id="monthTab" class="nav nav-tabs">
             <li role="presentation" class="active">
                 <a href="#Attention" data-toggle="tab">
-                    Attention
+                    Marketing
                 </a>
             </li>
             <li role="presentation">
@@ -76,7 +76,8 @@
     </div>
     <div class="row">
         <div class="form-group col-md-9">
-            <input type="submit" value="Save" class="btn btn-primary" />
+            <input id="previous" type="submit" value="<< Save and Previous" class="btn btn-primary" />
+            <input id="next" type="submit" value="Save and Next >>" class="btn btn-primary" />
         </div>
     </div>
 }
@@ -95,11 +96,14 @@
             // When the tab is clicked stash the name in local storage.
             $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
                 var id = $(this).parents('[role="tablist"]').attr('id');
-                console.log(document.URL.split("/").pop());
                 var key = document.URL.split("/").pop();
+                key = key.substring(0, key.indexOf('?'));
                 if (id) {
                     key += ':' + id;
                 }
+                console.log(key);
+                var tab = $(e.target).attr('href');
+                console.log(tab);
                 localStorage.setItem(key, $(e.target).attr('href'));
             });
 
@@ -107,6 +111,7 @@
             $('[role="tablist"]').each(function (idx, elem) {
                 var id = $(elem).attr('id');
                 var key = document.URL.split("/").pop();
+                key = key.substring(0, key.indexOf('?'));
                 if (id) {
                     key += ':' + id;
                 }
@@ -114,7 +119,12 @@
                 if (lastTab) {
                     $('[href="' + lastTab + '"]').tab('show');
                 }
+
             });
+
+            // Hide the buttons that aren't relevant.
+            var index = $('ul#monthTab li').index($('.active'));
+            if (index == 0) $('#previous').hide();
         });
 
         //$('#VisitorsPercentNoFamily').tooltip({ 'trigger': 'focus', 'title': 'Password tooltip' });
