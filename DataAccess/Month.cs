@@ -34,7 +34,7 @@ namespace DataAccess
         public virtual String WebsiteUrl { get; set; }
         [Display(Name = "Facebook Url", Description = "If you have a Facebook page, what it the address?")]
         public virtual String FacebookUrl { get; set; }
-        [Display(Name = "Twitter Url", Description = "If you have a Twitter page, what it the address?")]
+        [Display(Name = "Twitter Account", Description = "If you have a Twitter account, what is your account name?")]
         public virtual String TwitterUrl { get; set; }
         [Display(Name = "Flickr Url", Description = "If you have a Flickr page, what it the address?")]
         public virtual String FlickrUrl { get; set; }

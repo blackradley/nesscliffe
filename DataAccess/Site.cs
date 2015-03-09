@@ -38,7 +38,7 @@ namespace DataAccess
 
         [Display(Name = "Arts Centre", Description = "Is your site an Arts Centre?")]
         public virtual bool IsArtsCentre { get; set; }
-        [Display(Name = "Gallery", Description = "Is there a gallery at your site?")]
+        [Display(Name = "Gallery", Description = "Is there an art gallery at your site?")]
         public virtual bool IsGallery { get; set; }
 
         [Display(Name = "World Heritage Site", Description = "Is your site in a UNESCO World Heritage Site?")]
@@ -46,13 +46,13 @@ namespace DataAccess
         [Display(Name = "Open Air", Description = "Does your site have open air displays and areas?")]
         public virtual bool IsOpenAir { get; set; }
 
-        [Display(Name = "Heritage Site", Description = "Is your site a heritage site? e.g. a battle field.")]
+        [Display(Name = "Heritage Site", Description = "Is your site a historical site, building or area important to the area's heritage.")]
         public virtual bool IsHeritageSite { get; set; }
-        [Display(Name = "National Trust", Description = "Is your site in the National Trust?")]
+        [Display(Name = "National Trust", Description = "Is your site part of the National Trust?")]
         public virtual bool IsNationalTrust { get; set; }
         [Display(Name = "Country Park", Description = "Is your site a country park or estate?")]
         public virtual bool IsPark { get; set; }
-        [Display(Name = "Nature Reserve", Description = "Is your site in the Nature Reserve?")]
+        [Display(Name = "Nature Reserve", Description = "Is your site a Nature Reserve?")]
         public virtual bool IsNatureReserve { get; set; }
 
         [Display(Name = "Indoor Area", Description = "How big is the indoor area which visitors can visit?  In square feet or square metres.")]

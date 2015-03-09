@@ -15,8 +15,8 @@ Total <span id="VisitorsTotal">0</span>
             @Html.SiteTextBoxFor(model => model.VisitorsSchool)
         </div>
     </div>
-    <div class="form-group col-sm-4 col-md-3 pounds">
-        @Html.SiteTextBoxFor(model => model.IncomeAdmissions)
+    <div class="form-group col-sm-4 col-md-3">
+        @Html.SiteTextBoxFor(model => model.IncomeAdmissions, prefix:"£" )
     </div>
 </div>
 

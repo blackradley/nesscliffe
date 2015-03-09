@@ -14,8 +14,8 @@
         <div class="form-group col-sm-4 col-md-3">
             @Html.SiteTextBoxFor(model => model.NumberVisitorsAdditional)
         </div>
-        <div class="form-group col-sm-4 col-md-3 pounds">
-            @Html.SiteTextBoxFor(model => model.IncomeAdditionalEvents)
+        <div class="form-group col-sm-4 col-md-3">
+            @Html.SiteTextBoxFor(model => model.IncomeAdditionalEvents, prefix: "£")
         </div>
     </div>
 </div>

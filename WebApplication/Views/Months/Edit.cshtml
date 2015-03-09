@@ -85,6 +85,7 @@
 @section scripts
 {
     <script type="text/javascript">
+        'use strict';
         // ---------------------
         // PRESERVE TAB
         // ---------------------
@@ -93,7 +94,6 @@
         // but using the month.id as key to it is unique to each month.
         // ---------------------
         $(function() {
-            'use strict';
             // When the tab is clicked stash the name in local storage.
             $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
                 var key = GetKey();

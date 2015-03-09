@@ -27,6 +27,7 @@ textarea {
 
 input.input-validation-error {
     border: 2px solid #b94a48;
+    display: inline;
 }
 
 input[type="checkbox"].input-validation-error {
@@ -99,10 +100,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .percentage:after {
     content: "%";
-}
-
-.pounds:after {
-    content: "£";
 }
 
 .hours:after {
