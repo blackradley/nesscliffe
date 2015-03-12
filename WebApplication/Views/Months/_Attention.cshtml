@@ -9,14 +9,32 @@
     </div>
 </div>
 
+
 <div class="form-group">
-    @Html.SiteSectionLabel("TV Coverage", "Check the boxes which apply to your site")
+    @Html.SiteSectionLabel("News Paper Coverage", "Has your site been featured in newspapers or magazines this month?")
+    <div class="row form-inline">
+        @Html.SiteCheckBoxFor(model => model.RegionalNewsPaper)
+        @Html.SiteCheckBoxFor(model => model.NationalNewsPaper)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.SiteSectionLabel("Radio Coverage", "Has your site featured on broadcast radio this month?")
+    <div class="row form-inline">
+        @Html.SiteCheckBoxFor(model => model.RegionalRadio)
+        @Html.SiteCheckBoxFor(model => model.NationalRadio)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.SiteSectionLabel("TV Coverage", "Has your site appeared on broadcast TV?")
     <div class="row form-inline">
         @Html.SiteCheckBoxFor(model => model.RegionalTv)
         @Html.SiteCheckBoxFor(model => model.NationalTv)
         @Html.SiteCheckBoxFor(model => model.OverseasTv)
     </div>
 </div>
+
 
 <div class="row">
     <div class="form-group col-md-6">
@@ -32,24 +50,7 @@
         @Html.SiteTextBoxFor(model => model.FacebookUrl, prefix: "http://")
     </div>
     <div class="form-group col-md-6">
-        @Html.SiteTextBoxFor(model => model.FlickrUrl, prefix: "http://")
-    </div>
-</div>
-
-<div class="row">
-    <div class="form-group col-md-6">
         @Html.SiteTextBoxFor(model => model.YoutubeUrl, prefix: "http://")
     </div>
-    <div class="form-group col-md-6">
-        @Html.SiteTextBoxFor(model => model.VimeoUrl, prefix: "http://")
-    </div>
 </div>
 
-<div class="row">
-    <div class="form-group col-md-6">
-        @Html.SiteTextBoxFor(model => model.InstagramUrl, prefix: "http://")
-    </div>
-    <div class="form-group col-md-6">
-        @Html.SiteTextBoxFor(model => model.PinterestUrl, prefix: "http://")
-    </div>
-</div>

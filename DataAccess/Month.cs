@@ -24,28 +24,29 @@ namespace DataAccess
         [Display(Name = "Website Visitors", Description = "How many visitors did your website get this month?")]
         public virtual int? WebsiteVisitors { get; set; }
 
-        [Display(Name = "Regional TV", Description = "Has your site appeared on regional TV this month?")]
+        [Display(Name = "Regional TV", Description = "Has your site featured on regional TV this month?")]
         public virtual bool RegionalTv { get; set; }
-        [Display(Name = "National TV", Description = "Has your site appeared on national TV this month?")]
+        [Display(Name = "National TV", Description = "Has your site featured on national TV this month?")]
         public virtual bool NationalTv { get; set; }
-        [Display(Name = "Overseas TV", Description = "Has your site appeared on TV in another country this month?")]
+        [Display(Name = "Overseas TV", Description = "Has your site featured on TV in another country this month?")]
         public virtual bool OverseasTv { get; set; }
+        [Display(Name = "Regional Radio", Description = "Has your site featured on a regional radio station this month?")]
+        public virtual bool RegionalRadio { get; set; }
+        [Display(Name = "National Radio", Description = "Has your site featured on national radio this month?")]
+        public virtual bool NationalRadio { get; set; }
+        [Display(Name = "Regional Newspaper", Description = "Has your been site featured in a regional newspaper or magazine?")]
+        public virtual bool RegionalNewsPaper { get; set; }
+        [Display(Name = "National Radio", Description = "Has your site featured in a national newspaper or magazine?")]
+        public virtual bool NationalNewsPaper { get; set; }
+
         [Display(Name = "Website Url", Description = "What is your web site address?")]
         public virtual String WebsiteUrl { get; set; }
         [Display(Name = "Facebook Url", Description = "If you have a Facebook page, what it the address?")]
         public virtual String FacebookUrl { get; set; }
         [Display(Name = "Twitter Account", Description = "If you have a Twitter account, what is your account name?")]
         public virtual String TwitterUrl { get; set; }
-        [Display(Name = "Flickr Url", Description = "If you have a Flickr page, what it the address?")]
-        public virtual String FlickrUrl { get; set; }
-        [Display(Name = "Instagram Url", Description = "If you have an Instagram page, what it the address?")]
-        public virtual String InstagramUrl { get; set; }
         [Display(Name = "Youtube Url", Description = "If you have a Youtube page, what it the address?")]
         public virtual String YoutubeUrl { get; set; }
-        [Display(Name = "Vimeo Url", Description = "If you have a Vimeo page, what it the address?")]
-        public virtual String VimeoUrl { get; set; }
-        [Display(Name = "Pinterest Url", Description = "If you have a Pinterest page, what it the address?")]
-        public virtual String PinterestUrl { get; set; }
         #endregion
 
         #region ARRIVING
@@ -58,33 +59,37 @@ namespace DataAccess
         [Display(Name = "Admission Income", Description = "What was the income from visitor admissions this month?")]
         public virtual int? IncomeAdmissions { get; set; }
         
-        [Display(Name = "Not with Family", Description = "What percentage of visitors are under the age of 45 who are not parents?")]
+        [Display(Name = "Not with Family", Description = "What percentage of visitors were not with a family?")]
         public virtual int VisitorsPercentNoFamily { get; set; }
-        [Display(Name = "Family", Description = "What percentage of visitors were any age with at least one child under age 16 still at home?")]
+        [Display(Name = "In a Family", Description = "What percentage of visitors were with a family?")]
         public virtual int VisitorsPercentFamily { get; set; }
-        [Display(Name = "Third Age", Description = "What percentage of visitors were aged 45 through 64 with no children under age 16 still living at home?")]
-        public virtual int VisitorsPercentThirdAge { get; set; }
-        [Display(Name = "Retired", Description = "What percentage of visitors were over the age of 65 with no children under the age of 16 still living at home?")]
+
+        [Display(Name = "Children", Description = "What percentage of visitors were children under 16 years old?")]
+        public virtual int VisitorsPercentChildren { get; set; }
+        [Display(Name = "Working Age Adults", Description = "What percentage of visitors were adults of working age?")]
+        public virtual int VisitorsPercentAdult { get; set; }
+        [Display(Name = "Retired", Description = "What percentage of visitors were over 65, retired or semi-retired?")]
         public virtual int VisitorsPercentRetired { get; set; }
-        [Display(Name = "Monday", Description = "How many hours were you open on Mondays?")]
+
+        [Display(Name = "Hours Monday", Description = "How many hours were you open on Mondays?")]
         [Range(minimum: 0, maximum: 24, ErrorMessage = "Enter between 0 and 24 hours")]
         public virtual float HoursMonday { get; set; }
-        [Display(Name = "Tuesday", Description = "How many hours were you open on Tuesdays?")]
+        [Display(Name = "Hours Tuesday", Description = "How many hours were you open on Tuesdays?")]
         [Range(minimum: 0, maximum: 24, ErrorMessage = "Enter between 0 and 24 hours")]
         public virtual float HoursTuesday { get; set; }
-        [Display(Name = "Wednesday", Description = "How many hours were you open on Wednesdays?")]
+        [Display(Name = "Hours Wednesday", Description = "How many hours were you open on Wednesdays?")]
         [Range(minimum: 0, maximum: 24, ErrorMessage = "Enter between 0 and 24 hours")]
         public virtual float HoursWednesday { get; set; }
-        [Display(Name = "Thursday", Description = "How many hours were you open on Thursdays?")]
+        [Display(Name = "Hours Thursday", Description = "How many hours were you open on Thursdays?")]
         [Range(minimum: 0, maximum: 24, ErrorMessage = "Enter between 0 and 24 hours")]
         public virtual float HoursThursday { get; set; }
-        [Display(Name = "Friday", Description = "How many hours were you open on Fridays?")]
+        [Display(Name = "Hours Friday", Description = "How many hours were you open on Fridays?")]
         [Range(minimum: 0, maximum: 24, ErrorMessage = "Enter between 0 and 24 hours")]
         public virtual float HoursFriday { get; set; }
-        [Display(Name = "Saturday", Description = "How many hours were you open on Saturdays?")]
+        [Display(Name = "Hours Saturday", Description = "How many hours were you open on Saturdays?")]
         [Range(minimum: 0, maximum: 24, ErrorMessage = "Enter between 0 and 24 hours")]
         public virtual float HoursSaturday { get; set; }
-        [Display(Name = "Sunday", Description = "How many hours were you open on Sundays?")]
+        [Display(Name = "Hours Sunday", Description = "How many hours were you open on Sundays?")]
         [Range(minimum: 0, maximum: 24, ErrorMessage = "Enter between 0 and 24 hours")]
         public virtual float HoursSunday { get; set; }       
         #endregion
@@ -114,37 +119,55 @@ namespace DataAccess
         #endregion
         
         #region REFRESHMENT
-        [Display(Name = "Is there catering on site?", Description = "Did you provide catering on your site this month?")]
-        public virtual bool? IsCatering { get; set; }
+        [Display(Name = "Refreshments Available?", Description = "Did you provide refreshments for visitors this month?")]
+        public virtual bool? IsRefreshment { get; set; }
 
-        [Display(Name = "Catering Income", Description = "What was your catering income for this month?")]
-        public virtual int? IncomeCatering { get; set; }
-        [Display(Name = "Café behind pay barrier?", Description = "Do visitors have to pay to get to the café?")]
-        public virtual bool PayToCafe { get; set; }
-        [Display(Name = "Café visible from entrance?", Description = "Can you see the cafe before you enter the site?")]
-        public virtual bool CafeVisibleFromEntrance { get; set; }
-        [Display(Name = "Distance to Cafe", Description = "How far is it from the entrance to the café?")]
-        public virtual int? DistanceToCafe { get; set; }
-        public virtual int DistanceToCafeUnits { get; set; }
-        [Display(Name = "Seats", Description = "How many people can the café or restaurant seat?")]
-        public virtual int? NumberCafeSeats { get; set; }
-        [Display(Name = "Basserie and Bistro", Description = "Would you describe your café as a basserie or bistro style?")]
-        public virtual bool IsBasserie { get; set; }
-        [Display(Name = "Buffet and Smörgåsbord", Description = "Is your café buffet or smörgåsbord style?")]
-        public virtual bool IsBuffet { get; set; }
-        [Display(Name = "Café", Description = "Is your café just a regular café?")]
-        public virtual bool IsCafe { get; set; }
-        [Display(Name = "Cafeteria", Description = "Is your café cafeteria style?")]
+        [Display(Name = "Refreshments Income", Description = "What was your income from refreshments sales this month?")]
+        public virtual int? IncomeRefreshment { get; set; }
+        [Display(Name = "Behind Pay Barrier?", Description = "Do visitors have to pay to enter before they can get refreshments?")]
+        public virtual bool PayToRefreshment { get; set; }
+        [Display(Name = "Visible from Entrance?", Description = "Can you see the refreshment service before you enter the site?")]
+        public virtual bool RefreshmentVisibleFromEntrance { get; set; }
+        [Display(Name = "Distance to Refreshments", Description = "How far is it from the entrance to the refreshment service?")]
+        public virtual int? DistanceToRefreshment { get; set; }
+        public virtual int DistanceToRefreshmentUnits { get; set; }
+        [Display(Name = "Indoor Seats", Description = "How many people can the café or restaurant seat indoors?")]
+        public virtual int? NumberSeatsIndoors { get; set; }
+        [Display(Name = "Outdoor Seats", Description = "How seats are available outside?")]
+        public virtual int? NumberSeatsOutside { get; set; }
+
+        [Display(Name = "Vending Machines", Description = "Are refreshment provided by vending machines?")]
+        public virtual bool IsVending { get; set; }
+        [Display(Name = "Cafeteria", Description = "Do visitors select and collect their own refreshments?")]
         public virtual bool IsCafeteria { get; set; }
-        [Display(Name = "Coffeehouse", Description = "Is your café really a kind of coffeehouse?")]
-        public virtual bool IsCoffeehouse { get; set; }
-        [Display(Name = "Destination Restaurant", Description = "Would you describe your cafe as a destination restaurant?")]
-        public virtual bool IsDestinationRestaurant { get; set; }
-        [Display(Name = "In House", Description = "Is the catering provided in house?")]
+        [Display(Name = "Table Service", Description = "Do you provide a waiter table service?")]
+        public virtual bool IsTableService { get; set; }
+        [Display(Name = "Outside Hours", Description = "Is your refreshment service open outside normal site hours?")]
+        public virtual bool IsRefreshmentOutsideHours { get; set; }
+
+        [Display(Name = "Teas and Coffee", Description = "Are tea and coffee available?")]
+        public virtual bool IsTeaAndCoffee { get; set; }
+        [Display(Name = "Cakes and Desserts", Description = "Are cakes, desserts and cookies available?")]
+        public virtual bool IsCakeAndBiscuit { get; set; }
+        [Display(Name = "Light Meals", Description = "Are snacks, sandwiches and light meals available?")]
+        public virtual bool IsLightMeals { get; set; }
+        [Display(Name = "Full Meals", Description = "Do you provide large or main meals?")]
+        public virtual bool IsFullMeal { get; set; }
+
+        [Display(Name = "Organic or Local", Description = "Are any of your refreshments organic or locally sourced?")]
+        public virtual bool IsOrganic { get; set; }
+        [Display(Name = "Vegetarian or Vegan", Description = "Are vegetarian or vegan options available?")]
+        public virtual bool IsVegetarian { get; set; }
+        [Display(Name = "Gluten Free", Description = "Are gluten free options available?")]
+        public virtual bool IsGlutenFree { get; set; }
+        [Display(Name = "Alcohol", Description = "Do you serve alcohol?")]
+        public virtual bool IsAlcohol { get; set; }
+        
+        [Display(Name = "In House", Description = "Are refreshments provided by in house staff?")]
         public virtual bool IsCateringInHouse { get; set; }
-        [Display(Name = "Out sourced to LA", Description = "Is the catering out sourced to the local authority?")]
+        [Display(Name = "Out sourced to LA", Description = "Are the refreshments out sourced to the local authority?")]
         public virtual bool IsCateringOutToLocalAuthority { get; set; }
-        [Display(Name = "Out sourced to Company", Description = "Is the catering out sourced to a private company?")]
+        [Display(Name = "Out sourced to Company", Description = "Are the refreshments provided by a private company?")]
         public virtual bool IsCateringOutToCompany { get; set; }
         #endregion
         
@@ -196,14 +219,12 @@ namespace DataAccess
                 WebsiteUrl = this.WebsiteUrl,
                 FacebookUrl = this.FacebookUrl,
                 TwitterUrl = this.TwitterUrl,
-                FlickrUrl = this.FlickrUrl,
-                InstagramUrl = this.InstagramUrl,
                 YoutubeUrl = this.YoutubeUrl,
-                PinterestUrl = this.PinterestUrl,
                 // Arriving
                 VisitorsPercentNoFamily = this.VisitorsPercentNoFamily,
                 VisitorsPercentFamily = this.VisitorsPercentFamily,
-                VisitorsPercentThirdAge = this.VisitorsPercentThirdAge,
+                VisitorsPercentChildren = this.VisitorsPercentChildren,
+                VisitorsPercentAdult = this.VisitorsPercentAdult,
                 VisitorsPercentRetired = this.VisitorsPercentRetired,
                 HoursMonday = this.HoursMonday,
                 HoursTuesday = this.HoursTuesday,
@@ -224,18 +245,25 @@ namespace DataAccess
                 NumberProducts = this.NumberProducts,
                 PercentageRelatedProducts = this.PercentageRelatedProducts,
                 // Refreshment
-                IsCatering = this.IsCatering,
-                PayToCafe = this.PayToCafe,
-                CafeVisibleFromEntrance = this.CafeVisibleFromEntrance,
-                DistanceToCafe = this.DistanceToCafe,
-                DistanceToCafeUnits = this.DistanceToCafeUnits,
-                NumberCafeSeats = this.NumberCafeSeats,
-                IsBasserie = this.IsBasserie,
-                IsBuffet = this.IsBuffet,
-                IsCafe = this.IsCafe,
+                IsRefreshment = this.IsRefreshment,
+                PayToRefreshment = this.PayToRefreshment,
+                RefreshmentVisibleFromEntrance = this.RefreshmentVisibleFromEntrance,
+                DistanceToRefreshment = this.DistanceToRefreshment,
+                DistanceToRefreshmentUnits = this.DistanceToRefreshmentUnits,
+                NumberSeatsIndoors = this.NumberSeatsIndoors,
+                NumberSeatsOutside = this.NumberSeatsOutside,
+                IsVending = this.IsVending,
                 IsCafeteria = this.IsCafeteria,
-                IsCoffeehouse = this.IsCoffeehouse,
-                IsDestinationRestaurant = this.IsDestinationRestaurant,
+                IsTableService = this.IsTableService,
+                IsRefreshmentOutsideHours = this.IsRefreshmentOutsideHours,
+                IsTeaAndCoffee = this.IsTeaAndCoffee,
+                IsCakeAndBiscuit  = this.IsCakeAndBiscuit,
+                IsLightMeals = this.IsLightMeals,
+                IsFullMeal = this.IsFullMeal,
+                IsOrganic = this.IsOrganic,
+                IsVegetarian = this.IsVegetarian,
+                IsGlutenFree = this.IsGlutenFree,
+                IsAlcohol = this.IsAlcohol,
                 IsCateringInHouse = this.IsCateringInHouse,
                 IsCateringOutToLocalAuthority = this.IsCateringOutToLocalAuthority,
                 IsCateringOutToCompany = this.IsCateringOutToCompany,

@@ -16,28 +16,37 @@ Total <span id="VisitorsTotal">0</span>
         </div>
     </div>
     <div class="form-group col-sm-4 col-md-3">
-        @Html.SiteTextBoxFor(model => model.IncomeAdmissions, prefix:"£" )
+        @Html.SiteTextBoxFor(model => model.IncomeAdmissions, prefix: "£")
     </div>
 </div>
 
-@Html.SiteSectionLabel("Visitor Segmentation", "Tell us about the kinds of people visitoring your site")
-Total <span id="MarketSegmentationTotal">0</span> %
-<div id="MarketSegmentation" class="row">
-    <div class="form-group col-sm-4 col-md-3 percentage">
-        @Html.SiteTextBoxFor(model => model.VisitorsPercentNoFamily, 100, 0, maxLength: 3)
-    </div>
+@Html.SiteSectionLabel("Family Visitors", "What proportion of your visitors were families?")
+Total <span id="FamiliesTotal">0</span> %
+<div id="Families" class="row">
     <div class="form-group col-sm-4 col-md-3 percentage">
         @Html.SiteTextBoxFor(model => model.VisitorsPercentFamily, 100, 0, maxLength: 3)
     </div>
     <div class="form-group col-sm-4 col-md-3 percentage">
-        @Html.SiteTextBoxFor(model => model.VisitorsPercentThirdAge, 100, 0, maxLength: 3)
+        @Html.SiteTextBoxFor(model => model.VisitorsPercentNoFamily, 100, 0, maxLength: 3)
+    </div>
+
+</div>
+
+@Html.SiteSectionLabel("Visitor Ages", "What percentage for visitoring were in each age group?")
+Total <span id="AgesTotal">0</span> %
+<div id="Ages" class="row">
+    <div class="form-group col-sm-4 col-md-3 percentage">
+        @Html.SiteTextBoxFor(model => model.VisitorsPercentChildren, 100, 0, maxLength: 3)
+    </div>
+    <div class="form-group col-sm-4 col-md-3 percentage">
+        @Html.SiteTextBoxFor(model => model.VisitorsPercentAdult, 100, 0, maxLength: 3)
     </div>
     <div class="form-group col-sm-4 col-md-3 percentage">
         @Html.SiteTextBoxFor(model => model.VisitorsPercentRetired, 100, 0, maxLength: 3)
     </div>
 </div>
 
-@Html.SiteSectionLabel("Opening Hours", "Fill in the number of hours your site was open")
+@Html.SiteSectionLabel("Hours Open", "How many hours your site was open for each day?")
 <div class="row">
     <div class="form-group col-sm-4 col-md-3 hours">
         @Html.SiteTextBoxFor(model => model.HoursMonday, maxLength: 4)

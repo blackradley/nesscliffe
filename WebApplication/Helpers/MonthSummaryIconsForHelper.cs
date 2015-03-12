@@ -59,14 +59,14 @@ namespace WebApplication.Helpers
                 {
                     "CateringYes", new IconProperties
                     {
-                        IsDisplayed = month.IsCatering ?? false,
-                        Description = "£" + month.IncomeCatering + " catering income"
+                        IsDisplayed = month.IsRefreshment ?? false,
+                        Description = "£" + month.IncomeRefreshment + " catering income"
                     }
                 },
                 {
                     "CateringNo", new IconProperties
                     {
-                        IsDisplayed = !month.IsCatering ?? false,
+                        IsDisplayed = !month.IsRefreshment ?? false,
                         Description = "No catering"
                     }
                 },

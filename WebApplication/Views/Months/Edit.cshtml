@@ -157,8 +157,6 @@
             }
         };
 
-
-
         //$('#VisitorsPercentNoFamily').tooltip({ 'trigger': 'focus', 'title': 'Password tooltip' });
         //$('input[type="number"]').focus(function () {
         //    alert("Handler for .focus() called.");
@@ -171,22 +169,36 @@
         // ---------------------
         // ARRIVING
         // ---------------------
-        // TODO: Dry this out a bit.
+        // TODO: Dry this out.
         // Calculate the total percentage to give the user feedback about that
         // the market segmentation figurers are related.
         // ---------------------
-        $(document).ready(AddUpMarketSegmentation);
-        $('#MarketSegmentation input').bind("keyup", AddUpMarketSegmentation);
-        $('#MarketSegmentation input').bind("mousewheel", AddUpMarketSegmentation);
-        $('#MarketSegmentation input').bind("input", AddUpMarketSegmentation);
+        $(document).ready(AddUpFamilies);
+        $('#Families input').bind("keyup", AddUpFamilies);
+        $('#Families input').bind("mousewheel", AddUpFamilies);
+        $('#Families input').bind("input", AddUpFamilies);
 
-        function AddUpMarketSegmentation() {
+        function AddUpFamilies() {
             var sum = 0;
-            $('#MarketSegmentation input').each(function() {
+            $('#Families input').each(function () {
                 sum += Number($(this).val());
             });
-            $('#MarketSegmentationTotal').text(sum);
+            $('#FamiliesTotal').text(sum);
         }
+
+        $(document).ready(AddUpAges);
+        $('#Ages input').bind("keyup", AddUpAges);
+        $('#Ages input').bind("mousewheel", AddUpAges);
+        $('#Ages input').bind("input", AddUpAges);
+
+        function AddUpAges() {
+            var sum = 0;
+            $('#Ages input').each(function () {
+                sum += Number($(this).val());
+            });
+            $('#AgesTotal').text(sum);
+        }
+
 
         // ---------------------
         // Calculate the total number of visitors to provide user feedback.
@@ -225,15 +237,15 @@
         // REFRESHMENT
         // ---------------------
         $(document).ready(function() {
-            $('input:radio[name=IsCatering]').change(function() {
-                var checkedValue = $("input[name=IsCatering]:checked").val();
+            $('input:radio[name=IsRefreshment]').change(function () {
+                var checkedValue = $("input[name=IsRefreshment]:checked").val();
                 if (checkedValue == "true")
                     $('#Catering').fadeIn();
                 else
                     $('#Catering').hide();
             });
             // Call the event so the div is set correctly
-            $('#IsCatering').change();
+            $('#IsRefreshment').change();
         });
 
         // ---------------------

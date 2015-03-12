@@ -3,49 +3,65 @@
 @model DataAccess.Month
 <div class="form-group">
     <div class="row form-inline">
-        @Html.SiteYesNoFor(model => model.IsCatering)
+        @Html.SiteYesNoFor(model => model.IsRefreshment)
     </div>
 </div>
 <div id="Catering">
     <div class="row">
         <div class="form-group col-sm-4 col-md-3">
-            @Html.SiteTextBoxFor(model => model.IncomeCatering, prefix: "£")
+            @Html.SiteTextBoxFor(model => model.IncomeRefreshment, prefix: "£")
         </div>
         <div class="form-group col-sm-4 col-md-3">
-            @Html.SiteTextBoxFor(model => model.NumberCafeSeats)
+            @Html.SiteTextBoxFor(model => model.NumberSeatsIndoors)
         </div>
-        <div class="form-group col-md-6">
-            @Html.LabelFor(model => model.DistanceToCafe, htmlAttributes: new { @class = "control-label", @for = "DistanceToCafe" })
-            @Html.SiteHelpFor(model => model.DistanceToCafe)
-            <div class="form-inline">
-                @Html.EditorFor(model => model.DistanceToCafe, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.DropDownListFor(model => model.DistanceToCafeUnits, new SelectList(Units.DistanceIndoor, "Key", "Value"))
-            </div>
-            @Html.ValidationMessageFor(model => model.DistanceToCafe)
+        <div class="form-group col-sm-4 col-md-3">
+            @Html.SiteTextBoxFor(model => model.NumberSeatsOutside)
         </div>
     </div>
+
     <div class="form-group">
         @Html.SiteSectionLabel("Café Position", "Check the boxes which apply to your site")
         <div class="row form-inline">
-            @Html.SiteCheckBoxFor(model => model.PayToCafe)
-            @Html.SiteCheckBoxFor(model => model.CafeVisibleFromEntrance)
+            @Html.SiteCheckBoxFor(model => model.RefreshmentVisibleFromEntrance)
+            @Html.SiteCheckBoxFor(model => model.PayToRefreshment)
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.DistanceToRefreshment, htmlAttributes: new { @class = "control-label", @for = "DistanceToCafe" })
+                @Html.SiteHelpFor(model => model.DistanceToRefreshment)
+                <div class="form-inline">
+                    @Html.EditorFor(model => model.DistanceToRefreshment, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.DropDownListFor(model => model.DistanceToRefreshmentUnits, new SelectList(Units.DistanceIndoor, "Key", "Value"))
+                </div>
+            </div>
         </div>
     </div>
+
     <div class="form-group">
-        @Html.SiteSectionLabel("Café Type or Style", "Check the boxes which you consider apply to your café")
+        @Html.SiteSectionLabel("Service", "What types of service do you provide?")
         <div class="row form-inline">
-            @Html.SiteCheckBoxFor(model => model.IsBasserie)
-            @Html.SiteCheckBoxFor(model => model.IsBuffet)
-            @Html.SiteCheckBoxFor(model => model.IsCafe)
-        </div>
-        <div class="row form-inline">
+            @Html.SiteCheckBoxFor(model => model.IsVending)
             @Html.SiteCheckBoxFor(model => model.IsCafeteria)
-            @Html.SiteCheckBoxFor(model => model.IsCoffeehouse)
-            @Html.SiteCheckBoxFor(model => model.IsDestinationRestaurant)
+            @Html.SiteCheckBoxFor(model => model.IsTableService)
+            @Html.SiteCheckBoxFor(model => model.IsRefreshmentOutsideHours)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.SiteSectionLabel("Menu", "Check the boxes which you think apply to your menu")
+        <div class="row form-inline">
+            @Html.SiteCheckBoxFor(model => model.IsTeaAndCoffee)
+            @Html.SiteCheckBoxFor(model => model.IsCakeAndBiscuit)
+            @Html.SiteCheckBoxFor(model => model.IsLightMeals)
+            @Html.SiteCheckBoxFor(model => model.IsFullMeal)
+        </div>
+        <div class="row form-inline">
+            @Html.SiteCheckBoxFor(model => model.IsOrganic)
+            @Html.SiteCheckBoxFor(model => model.IsVegetarian)
+            @Html.SiteCheckBoxFor(model => model.IsGlutenFree)
+            @Html.SiteCheckBoxFor(model => model.IsAlcohol)
         </div>
     </div>
     <div class="form-group">
-        @Html.SiteSectionLabel("Catering Provider", "Check the boxes which you consider apply to your café")
+        @Html.SiteSectionLabel("Refreshment Provider", "Who provides the refreshment services?")
         <div class="row form-inline">
             @Html.SiteCheckBoxFor(model => model.IsCateringInHouse)
             @Html.SiteCheckBoxFor(model => model.IsCateringOutToLocalAuthority)

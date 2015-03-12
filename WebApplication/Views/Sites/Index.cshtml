@@ -31,7 +31,7 @@
                 @Html.SiteSummaryIconsFor(item)
             </td>
             <td>
-                <span class="hidden-xs">@Html.ActionLink("Site Report", "Report", new { id = item.Id }) | </span>
+                @* <span class="hidden-xs">@Html.ActionLink("Site Report", "Report", new { id = item.Id }) | </span> *@
                 @Html.ActionLink("Edit Site", "Edit", new { id = item.Id }) |
                 @Html.ActionLink(Resources.LabelPerformanceData, "Index", "Months", new { id = item.Id }, null)
             </td>

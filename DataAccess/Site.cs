@@ -46,7 +46,7 @@ namespace DataAccess
         [Display(Name = "Open Air", Description = "Does your site have open air displays and areas?")]
         public virtual bool IsOpenAir { get; set; }
 
-        [Display(Name = "Heritage Site", Description = "Is your site a historical site, building or area important to the area's heritage.")]
+        [Display(Name = "Heritage Site", Description = "Is your site a historical site, building or place important to the area's heritage.")]
         public virtual bool IsHeritageSite { get; set; }
         [Display(Name = "National Trust", Description = "Is your site part of the National Trust?")]
         public virtual bool IsNationalTrust { get; set; }
