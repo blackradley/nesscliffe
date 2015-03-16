@@ -32,13 +32,6 @@
         @Html.SiteCheckBoxFor(model => model.IsCollectionsOutstanding)
     </div>
 </div>
-<div id="CollectionsOutstanding">
-    <div class="row">
-        <div class="form-group col-sm-4 col-md-3">
-            @Html.SiteTextBoxFor(model => model.NumberCollectionsOutstanding)
-        </div>
-    </div>
-</div>
 <div class="row">
     <div class="form-group col-md-6">
         @Html.SiteRatingScaleFor(model => model.ProgrammeMassAppeal, Scales.Rating7, "Niche Interest", "Mass Public Appeal")

@@ -75,10 +75,11 @@ namespace WebApplication.Migrations
                         IsGlutenFree = c.Boolean(nullable: false),
                         IsAlcohol = c.Boolean(nullable: false),
                         IsCateringInHouse = c.Boolean(nullable: false),
-                        IsCateringOutToLocalAuthority = c.Boolean(nullable: false),
-                        IsCateringOutToCompany = c.Boolean(nullable: false),
+                        IsCateringOutSourced = c.Boolean(nullable: false),
                         IsDonationOpportunity = c.Boolean(),
                         IncomeDonation = c.Int(),
+                        PayToDonate = c.Boolean(nullable: false),
+                        DonationVisibleFromEntrance = c.Boolean(nullable: false),
                         DistanceToDonation = c.Int(),
                         DistanceToDonationUnits = c.Int(nullable: false),
                         NumberDonationOpportunities = c.Int(),
@@ -89,7 +90,6 @@ namespace WebApplication.Migrations
                         NumberArtefacts = c.Int(),
                         ArtefactsDisplay = c.Int(),
                         IsCollectionsOutstanding = c.Boolean(nullable: false),
-                        NumberCollectionsOutstanding = c.Int(),
                         ProgrammeMassAppeal = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)

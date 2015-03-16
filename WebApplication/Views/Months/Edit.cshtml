@@ -21,7 +21,7 @@
             </li>
             <li role="presentation">
                 <a href="#Arriving" data-toggle="tab">
-                    Arrival
+                    Visiting
                 </a>
             </li>
             <li role="presentation">
@@ -279,18 +279,5 @@
             // Call the event so the div is set correctly
             $('#IsAdditionalEvents').change();
         });
-
-        $(document).ready(function() {
-            // Attach a function to the change event
-            $('#IsCollectionsOutstanding').change(function() {
-                if (this.checked)
-                    $('#CollectionsOutstanding').fadeIn();
-                else
-                    $('#CollectionsOutstanding').hide();
-            });
-            // Call the event so the div is set correctly
-            $('#IsCollectionsOutstanding').change();
-        });
-
     </script>
 }

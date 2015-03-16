@@ -114,7 +114,7 @@ namespace DataAccess
         public virtual int AreaShopUnits { get; set; }
         [Display(Name = "Number of Products", Description = "How many product lines does the shop have?")]
         public virtual int? NumberProducts { get; set; }
-        [Display(Name = "Related Products", Description = "How many of those product lines are directly related to your exhibitions this month?")]
+        [Display(Name = "Exhibition Related Products", Description = "How many of those product lines are directly related to your exhibitions this month?")]
         public virtual int? PercentageRelatedProducts { get; set; }
         #endregion
         
@@ -165,18 +165,20 @@ namespace DataAccess
         
         [Display(Name = "In House", Description = "Are refreshments provided by in house staff?")]
         public virtual bool IsCateringInHouse { get; set; }
-        [Display(Name = "Out sourced to LA", Description = "Are the refreshments out sourced to the local authority?")]
-        public virtual bool IsCateringOutToLocalAuthority { get; set; }
-        [Display(Name = "Out sourced to Company", Description = "Are the refreshments provided by a private company?")]
-        public virtual bool IsCateringOutToCompany { get; set; }
+        [Display(Name = "Out sourced", Description = "Are the refreshments out sourced to another organisation?")]
+        public virtual bool IsCateringOutSourced { get; set; }
         #endregion
         
         #region DONATION
-        [Display(Name = "Donation Opportunities", Description = "Do you provide visitors with opportunites to make donations?")]
+        [Display(Name = "Donation Opportunity?", Description = "Do you provide visitors with opportunites to make donations?")]
         public virtual bool? IsDonationOpportunity { get; set; }
 
         [Display(Name = "Donation Income", Description = "What was your income from donations for this month?")]
         public virtual int? IncomeDonation { get; set; }
+        [Display(Name = "Behind Pay Barrier?", Description = "Do visitors have to pay to enter before they can make a donation?")]
+        public virtual bool PayToDonate { get; set; }
+        [Display(Name = "Visible from Entrance?", Description = "Can you see the donation opportunity before you enter the site?")]
+        public virtual bool DonationVisibleFromEntrance { get; set; }
         [Display(Name = "Distance to Donation", Description = "How far is it from the entrance to the first opportunity to make a donation?")]
         public virtual int? DistanceToDonation { get; set; }
         public virtual int DistanceToDonationUnits { get; set; }
@@ -185,7 +187,7 @@ namespace DataAccess
         #endregion
         
         #region EXPERIENCE
-        [Display(Name = "Any special events?", Description = "Did you have any special events this month? e.g. corporate hire or after hours tours.")]
+        [Display(Name = "Additional Events?", Description = "Did you have any additional or special events this month? e.g. corporate hire or after hours tours.")]
         public virtual bool? IsAdditionalEvents { get; set; }
 
         [Display(Name = "Additional Events", Description = "How many additional events did you run at your site this month?")]
@@ -199,10 +201,8 @@ namespace DataAccess
         public virtual int? NumberArtefacts { get; set; }
         [Display(Name = "Artefacts on Display", Description = "Approximately what percentage of the artefacts are on display?")]
         public virtual int? ArtefactsDisplay { get; set; }
-        [Display(Name = "Outstanding Collections", Description = "Do you have any collections designated 'Outstanding' by the Arts Council?")]
+        [Display(Name = "Designated Collections", Description = "Do you have any collections designated 'Outstanding' by the Arts Council?")]
         public virtual bool IsCollectionsOutstanding { get; set; }
-        [Display(Name = "Outstanding Collections", Description = "How many collections are collections designated 'Outstanding' by the Arts Council?")]
-        public virtual int? NumberCollectionsOutstanding { get; set; }
         [Display(Name = "Describe your Programme", Description = "On this scale from niche interest to mass appeal?")]
         public virtual int ProgrammeMassAppeal { get; set; }
         #endregion
@@ -265,19 +265,20 @@ namespace DataAccess
                 IsGlutenFree = this.IsGlutenFree,
                 IsAlcohol = this.IsAlcohol,
                 IsCateringInHouse = this.IsCateringInHouse,
-                IsCateringOutToLocalAuthority = this.IsCateringOutToLocalAuthority,
-                IsCateringOutToCompany = this.IsCateringOutToCompany,
+                IsCateringOutSourced = this.IsCateringOutSourced,
                 // Donation 
                 IsDonationOpportunity = this.IsDonationOpportunity,
+                NumberDonationOpportunities = this.NumberDonationOpportunities,
+                DonationVisibleFromEntrance = this.DonationVisibleFromEntrance,
+                PayToDonate = this.PayToDonate,
                 DistanceToDonation = this.DistanceToDonation,
                 DistanceToDonationUnits = this.DistanceToDonationUnits,
-                NumberDonationOpportunities = this.NumberDonationOpportunities,
+                
                 // Experience    
                 IsAdditionalEvents = this.IsAdditionalEvents,
                 NumberArtefacts = this.NumberArtefacts,
                 ArtefactsDisplay = this.ArtefactsDisplay,
                 IsCollectionsOutstanding = this.IsCollectionsOutstanding,
-                NumberCollectionsOutstanding = this.NumberCollectionsOutstanding,
                 ProgrammeMassAppeal = this.ProgrammeMassAppeal
             };
             return newMonth;

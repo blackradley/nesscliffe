@@ -20,7 +20,7 @@
     </div>
 
     <div class="form-group">
-        @Html.SiteSectionLabel("Café Position", "Check the boxes which apply to your site")
+        @Html.SiteSectionLabel("Refreshment Position", "Tell us about the position of your refreshments")
         <div class="row form-inline">
             @Html.SiteCheckBoxFor(model => model.RefreshmentVisibleFromEntrance)
             @Html.SiteCheckBoxFor(model => model.PayToRefreshment)
@@ -64,8 +64,7 @@
         @Html.SiteSectionLabel("Refreshment Provider", "Who provides the refreshment services?")
         <div class="row form-inline">
             @Html.SiteCheckBoxFor(model => model.IsCateringInHouse)
-            @Html.SiteCheckBoxFor(model => model.IsCateringOutToLocalAuthority)
-            @Html.SiteCheckBoxFor(model => model.IsCateringOutToCompany)
+            @Html.SiteCheckBoxFor(model => model.IsCateringOutSourced)
         </div>
     </div>
 </div>
