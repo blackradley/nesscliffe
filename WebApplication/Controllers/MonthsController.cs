@@ -1,4 +1,4 @@
-﻿using DataAccess;
+﻿ using DataAccess;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -35,7 +35,6 @@ namespace WebApplication.Controllers
             var usedDates = from monthList in site.Months select monthList.MonthTime;
             var availableDates = possibleDates.Where(o => !usedDates.Contains(DateTime.Parse(o.ToLongDateString())))
                 .Select(d => d.ToString("MMM yyyy")).ToList();
-
 
             // Add unused months to the months collection
             foreach (var dateTime in availableDates)
@@ -166,12 +165,13 @@ namespace WebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Guid id, Month month) // TODO: replace the [Bind(Include = "MarketingSpend")]
+        public ActionResult Edit(Guid id, Month month, String submit) // TODO: replace the [Bind(Include = "MarketingSpend")]
         {
             // We'll need a model to send back which includes the Site information
+            var site = _dataDb.Sites.Find(month.SiteId);
             var siteAndMonthViewModel = new SiteAndMonthViewModel()
             {
-                Site = _dataDb.Sites.Find(month.SiteId),
+                Site = site,
                 Month = month
             };
             if (ModelState.IsValid)
@@ -183,8 +183,18 @@ namespace WebApplication.Controllers
                 entry.Property(e => e.SiteId).IsModified = false;
                 entry.Property(e => e.MonthTime).IsModified = false;
                 _dataDb.SaveChanges();
-                ViewBag.Message = "This month has been updated.";
-                return View("Edit", siteAndMonthViewModel);
+                if (submit == "Save")
+                {
+                    var message = month.MonthTime.ToString("MMM yyyy") + " has been saved.";
+                    return RedirectToAction("Index", "Months", new { id = month.SiteId, message });
+                    //return View("Index", site);
+                }
+                else
+                {
+                    ViewBag.Message = "This month has been updated.";
+                    return View("Edit", siteAndMonthViewModel);  
+                }
+                
             }
             //// The model wasn't valid so show the view back to the user with the "duff" data.
             ViewBag.Message = "Please check your entries.";
