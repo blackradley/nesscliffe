@@ -18,7 +18,7 @@ namespace WebApplication.Controllers
 
         // GET: Months
         // TODO: restrict access to owner of this site
-        public ActionResult Index([Bind(Prefix = "id")]Guid? siteId)
+        public ActionResult Index([Bind(Prefix = "id")]Guid? siteId, String message)
         {
             if (siteId == null)
             {
@@ -46,6 +46,7 @@ namespace WebApplication.Controllers
                 site.Months.Add(month);
                 site.Months = site.Months.OrderByDescending(i => i.MonthTime).ToList();
             }
+            ViewBag.Message = message;
             return View(site);
         }
 
@@ -94,7 +95,7 @@ namespace WebApplication.Controllers
             _dataDb.Configuration.ValidateOnSaveEnabled = false;
             _dataDb.SaveChanges();
 
-            return RedirectToAction("Edit", new { newMonth.Id, message });
+            return RedirectToAction("Edit", new { newMonth.Id, messge = message });
         }
 
         /// <summary>
