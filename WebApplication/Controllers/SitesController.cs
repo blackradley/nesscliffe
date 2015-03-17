@@ -9,6 +9,7 @@ using DataAccess;
 using Microsoft.AspNet.Identity;
 using WebApplication.Helpers;
 using WebApplication.Infrastructure;
+using WebGrease;
 
 namespace WebApplication.Controllers
 {
@@ -135,9 +136,12 @@ namespace WebApplication.Controllers
             return RedirectToAction("Index");
         }
 
+        // 
         public JsonResult ReportData(Guid? id)
         {
             Site site = _dataDb.Sites.Find(id);
+            var months = site.Months.OrderBy(c => c.MonthTime).ToList();
+            site.Months = months;
             return Json(site, JsonRequestBehavior.AllowGet);
         }
 

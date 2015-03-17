@@ -9,4 +9,66 @@
 @Html.Partial("_PageTitlePartial")
 @Html.Partial("_SiteDetailsPartial", @Model)
 
-*** Under Contruction ****
+<h3>Income</h3>
+<div id="chartdiv" style="width: 600px; height: 350px;">
+</div>  
+
+@section scripts
+{
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>  
+    <script type="text/javascript">
+        google.load("visualization", "1", { packages: ["corechart"] });
+    </script>  
+    <script type="text/javascript">
+        $(function() {
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                contentType: 'application/json',
+                url: '@Url.Action("ReportData", new {id = Model.Id} )',
+                data: '{}',
+                success: function(chartsdata) {
+
+                    // Callback that creates and populates a data table,
+                    // instantiates the pie chart, passes in the data and
+                    // draws it.
+
+                    var data = new google.visualization.DataTable();
+
+                    data.addColumn('date', 'Month');
+                    data.addColumn('number', 'Admissions Income');
+                    data.addColumn('number', 'Retail Income');
+                    data.addColumn('number', 'Refreshments Income');
+                    data.addColumn('number', 'Donations Income');
+
+                    var months = chartsdata.Months;
+
+                    for (var i = 0; i < months.length; i++) {
+                        data.addRow([new Date(months[i].MonthTime),
+                            months[i].IncomeAdmissions, months[i].IncomeRetail,
+                            months[i].IncomeRefreshment, months[i].IncomeDonation]);
+                    }
+
+                    // Instantiate and draw our chart, passing in some options
+                    var chart = new google.visualization.LineChart(document.getElementById('chartdiv'));
+
+                    chart.draw(data,
+                    {
+                        width: 600,
+                        height: 300,
+                        hAxis: {
+                            format: 'MMM-yyyy'
+                        },
+                        vAxis: {
+                            title: "Income"
+                        }
+                    });
+                },
+                error: function() {
+                    alert("Error loading data! Please try again.");
+                }
+            });
+        })
+
+    </script> 
+}
