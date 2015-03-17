@@ -128,10 +128,8 @@
                 localStorage.setItem(key, tabToStash);
             });
         });
-
-        // ---------------------
+ 
         // Get the key for the last tab.
-        // ---------------------
         function GetKey() {
             var key = document.URL.split("/").pop();
             key = key.substring(0, key.indexOf('?'));
@@ -140,7 +138,7 @@
         }
 
         // ---------------------
-        // Hide the buttons that aren't relevant.
+        // Hide the submit buttons when they aren't relevant.
         // ---------------------
         function HideAndShowButtons() {
             var index = $('ul#monthTab li').index($('.active')); // Bootstrap marks the active tab
