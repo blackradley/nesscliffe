@@ -113,7 +113,7 @@
             });
 
             // When the previous is clicked stash the previous tab in local storage.
-            $('#previous').click(function () {
+            $('#previous').click(function() {
                 var key = GetKey();
                 var index = $('ul#monthTab li').index($('.active')) - 1;
                 var tabToStash = $('ul#monthTab li a').eq(index).attr('href');
@@ -121,7 +121,7 @@
             });
 
             // When the next is clicked stash the next tab in local storage.
-            $('#next').click(function () {
+            $('#next').click(function() {
                 var key = GetKey();
                 var index = $('ul#monthTab li').index($('.active')) + 1;
                 var tabToStash = $('ul#monthTab li a').eq(index).attr('href');
@@ -157,64 +157,26 @@
             }
         };
 
-        //$('#VisitorsPercentNoFamily').tooltip({ 'trigger': 'focus', 'title': 'Password tooltip' });
-        //$('input[type="number"]').focus(function () {
-        //    alert("Handler for .focus() called.");
-        //});
+        // ---------------------
+        // Total the families, ages and visitors
+        // ---------------------
+        var cssClasses = ["#Families", "#Ages", "#Visitors"];
+        cssClasses.forEach(function (cssClass) {
+            $(cssClass + ' input').bind("keyup", { suffix: cssClass }, AddUp); // Add up on keyup
+            $(cssClass + ' input').bind("mousewheel", { suffix: cssClass }, AddUp); // Add up on mousewheel
+            $(cssClass + ' input').bind("input", { suffix: cssClass }, AddUp); // Add up on input
+            $(document).ready($(cssClass + ' input').trigger("input")); // Add up on document ready
+        });
 
-        // ---------------------
-        // ATTENTION
-        // ---------------------
-
-        // ---------------------
-        // ARRIVING
-        // ---------------------
-        // TODO: Dry this out.
-        // Calculate the total percentage to give the user feedback about that
-        // the market segmentation figurers are related.
-        // ---------------------
-        $(document).ready(AddUpFamilies);
-        $('#Families input').bind("keyup", AddUpFamilies);
-        $('#Families input').bind("mousewheel", AddUpFamilies);
-        $('#Families input').bind("input", AddUpFamilies);
-
-        function AddUpFamilies() {
+        function AddUp(event) {
             var sum = 0;
-            $('#Families input').each(function () {
+            var suffix = event.data.suffix;
+            $(suffix + ' input').each(function () {
                 sum += Number($(this).val());
             });
-            $('#FamiliesTotal').text(sum);
+            $(suffix + 'Total').text(sum);
         }
 
-        $(document).ready(AddUpAges);
-        $('#Ages input').bind("keyup", AddUpAges);
-        $('#Ages input').bind("mousewheel", AddUpAges);
-        $('#Ages input').bind("input", AddUpAges);
-
-        function AddUpAges() {
-            var sum = 0;
-            $('#Ages input').each(function () {
-                sum += Number($(this).val());
-            });
-            $('#AgesTotal').text(sum);
-        }
-
-
-        // ---------------------
-        // Calculate the total number of visitors to provide user feedback.
-        // ---------------------
-        $(document).ready(AddUpVisitors);
-        $('#Visitors input').bind("keyup", AddUpVisitors);
-        $('#Visitors input').bind("mousewheel", AddUpVisitors);
-        $('#Visitors input').bind("input", AddUpVisitors);
-
-        function AddUpVisitors() {
-            var sum = 0;
-            $('#Visitors input').each(function() {
-                sum += Number($(this).val());
-            });
-            $('#VisitorsTotal').text(sum);
-        }
 
         // TODO: Dry this out a bit.
         // ---------------------
@@ -237,7 +199,7 @@
         // REFRESHMENT
         // ---------------------
         $(document).ready(function() {
-            $('input:radio[name=IsRefreshment]').change(function () {
+            $('input:radio[name=IsRefreshment]').change(function() {
                 var checkedValue = $("input[name=IsRefreshment]:checked").val();
                 if (checkedValue == "true")
                     $('#Catering').fadeIn();
