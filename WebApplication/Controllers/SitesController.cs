@@ -7,6 +7,7 @@ using System.Net;
 using System.Web.Mvc;
 using DataAccess;
 using Microsoft.AspNet.Identity;
+using WebApplication.Helpers;
 using WebApplication.Infrastructure;
 
 namespace WebApplication.Controllers
@@ -134,6 +135,12 @@ namespace WebApplication.Controllers
             return RedirectToAction("Index");
         }
 
+        public JsonResult ReportData(Guid? id)
+        {
+            Site site = _dataDb.Sites.Find(id);
+            return Json(site, JsonRequestBehavior.AllowGet);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -141,6 +148,17 @@ namespace WebApplication.Controllers
                 _dataDb.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        protected override JsonResult Json(object data, string contentType, System.Text.Encoding contentEncoding, JsonRequestBehavior behavior)
+        {
+            return new JsonNetResult
+            {
+                Data = data,
+                ContentType = contentType,
+                ContentEncoding = contentEncoding,
+                JsonRequestBehavior = behavior
+            };
         }
     }
 }
