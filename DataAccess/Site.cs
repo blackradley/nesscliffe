@@ -27,7 +27,7 @@ namespace DataAccess
         [Required(ErrorMessage = "*")]
         public virtual String Postcode { get; set; }
 
-        [Display(Name = "Museum", Description = "Does your site include a musuem?")]
+        [Display(Name = "Museum", Description = "Does your site include a museum?")]
         public virtual bool IsMuseum { get; set; }
         [Display(Name = "ACE Accredited Museum", Description = "Do you have Arts Council of England Accreditation?")]
         public virtual bool IsAccredited { get; set; }
@@ -59,13 +59,13 @@ namespace DataAccess
         [Range(0, 99999, ErrorMessage = "Area must be between 0 and 99999.")]
         [Required(ErrorMessage = "*")]
         public virtual int? AreaIndoor { get; set; }
-        public virtual int AreaIndoorUnits { get; set; }
+        public virtual Units.AreaIndoorEnum AreaIndoorUnits { get; set; }
 
         [Display(Name = "Outdoor Area", Description = "How big is the outdoor area which visitors can visit?  In square feet, square metres, hectares or acres.")]
         [Range(0, 99999, ErrorMessage = "Area must be between 0 and 99999.")]
         [Required(ErrorMessage = "*")]
         public virtual float AreaOutdoor { get; set; }
-        public virtual int AreaOutdoorUnits { get; set; }
+        public virtual Units.AreaOutdoorEnum AreaOutdoorUnits { get; set; }
     }
 
 }

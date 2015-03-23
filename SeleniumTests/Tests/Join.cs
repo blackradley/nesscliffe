@@ -38,7 +38,7 @@ namespace SeleniumTests.Tests
             return secondsFromMidnight;
         }
 
-        /// <summary>
+        /// <summary> 
         /// Send emails to Alice, Bob and Carol etc...
         /// </summary>
         [TestMethod]

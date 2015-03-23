@@ -19,8 +19,7 @@ namespace WebApplication.Models
 
     public class SiteAndMonthViewModel
     {
-        public new Site Site { get; set; }
+        public Site Site { get; set; }
         public Month Month { get; set; }
     }
-
 }
