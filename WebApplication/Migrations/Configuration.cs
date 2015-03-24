@@ -31,7 +31,6 @@ namespace WebApplication.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-
         }
     }
 }
