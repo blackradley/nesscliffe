@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -108,7 +107,7 @@ namespace DataAccess
         public virtual bool ExitViaShop { get; set; }
         [Display(Name = "Distance to Shop", Description = "How far is it from the entrance to the shop?")]
         public virtual int? DistanceToShop { get; set; }
-        public virtual Units.DistanceIndoorEnum DistanceToShopUnits { get; set; }
+        public virtual int DistanceToShopUnits { get; set; }
         [Display(Name = "Area of Shop", Description = "How big is the shop?  In square feet or square metres.")]
         public virtual int? AreaShop { get; set; }
         public virtual int AreaShopUnits { get; set; }
@@ -130,7 +129,7 @@ namespace DataAccess
         public virtual bool RefreshmentVisibleFromEntrance { get; set; }
         [Display(Name = "Distance to Refreshments", Description = "How far is it from the entrance to the refreshment service?")]
         public virtual int? DistanceToRefreshment { get; set; }
-        public virtual Units.DistanceIndoorEnum DistanceToRefreshmentUnits { get; set; }
+        public virtual int DistanceToRefreshmentUnits { get; set; }
         [Display(Name = "Indoor Seats", Description = "How many people can the café or restaurant seat indoors?")]
         public virtual int? NumberSeatsIndoors { get; set; }
         [Display(Name = "Outdoor Seats", Description = "How seats are available outside?")]
@@ -181,7 +180,7 @@ namespace DataAccess
         public virtual bool DonationVisibleFromEntrance { get; set; }
         [Display(Name = "Distance to Donation", Description = "How far is it from the entrance to the first opportunity to make a donation?")]
         public virtual int? DistanceToDonation { get; set; }
-        public virtual Units.DistanceIndoorEnum DistanceToDonationUnits { get; set; }
+        public virtual int DistanceToDonationUnits { get; set; }
         [Display(Name = "Number of Donation Boxes", Description = "How many donation opportunites does your site offer?")]
         public virtual int? NumberDonationOpportunities { get; set; }
         #endregion

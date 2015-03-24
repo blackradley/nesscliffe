@@ -58,12 +58,12 @@ namespace DataAccess
         [Display(Name = "Indoor Area", Description = "How big is the indoor area which visitors can visit?  In square feet or square metres.")]
         [Range(0, 99999, ErrorMessage = "Area must be between 0 and 99999.")]
         public virtual int? AreaIndoor { get; set; }
-        public virtual Units.AreaIndoorEnum AreaIndoorUnits { get; set; }
+        public virtual int AreaIndoorUnits { get; set; }
 
         [Display(Name = "Outdoor Area", Description = "How big is the outdoor area which visitors can visit?  In square feet, square metres, hectares or acres.")]
         [Range(0, 99999, ErrorMessage = "Area must be between 0 and 99999.")]
         public virtual float? AreaOutdoor { get; set; }
-        public virtual Units.AreaOutdoorEnum AreaOutdoorUnits { get; set; }
+        public virtual int AreaOutdoorUnits { get; set; }
     }
 
 }

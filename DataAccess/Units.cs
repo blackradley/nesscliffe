@@ -1,35 +1,28 @@
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Runtime.Serialization;
-
 
 namespace DataAccess
 {
     public class Units
     {
-        public enum AreaIndoorEnum
+        public static readonly Dictionary<int, string> AreaIndoor = new Dictionary<int, string>
         {
-            [Display(Name = "Square Metres")]
-            SquareMetres = 1,
-            [Display(Name = "Square Feet")]
-            SquareFeet = 2
-        }
+            { 1, "Square Metres" },
+            { 2, "Square Feet" }
+        };
 
-        public enum AreaOutdoorEnum
+        public static readonly Dictionary<int, string> AreaOutdoor = new Dictionary<int, string>
         {
-            [Display(Name = "Square Metres")]
-            SquareMetres = 1,
-            [Display(Name = "Square Feet")]
-            SquareFeet = 2,
-            Acres = 3,
-            Hectares = 4
-        }
+           { 1, "Square Metres" },
+           { 2, "Square Feet" },
+           { 3, "Acres" },
+           { 4, "Hectares" }
+        };
 
-        public enum DistanceIndoorEnum
+        public static readonly Dictionary<int, string> DistanceIndoor = new Dictionary<int, string>
         {
-            Metres = 1,
-            Feet = 2,
-            Paces = 3
-        }
+            { 1, "Metres" },
+            { 2, "Feet" },
+            { 3, "Paces"}
+        };
     }
 }
