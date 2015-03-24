@@ -207,6 +207,10 @@
     <Compile Include="Migrations\201503161600580_InitialCreate.Designer.cs">
       <DependentUpon>201503161600580_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503241533023_RemoveSiteAreaRequired.cs" />
+    <Compile Include="Migrations\201503241533023_RemoveSiteAreaRequired.Designer.cs">
+      <DependentUpon>201503241533023_RemoveSiteAreaRequired.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Infrastructure\DataDb.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -372,6 +376,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201503161600580_InitialCreate.resx">
       <DependentUpon>201503161600580_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503241533023_RemoveSiteAreaRequired.resx">
+      <DependentUpon>201503241533023_RemoveSiteAreaRequired.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
