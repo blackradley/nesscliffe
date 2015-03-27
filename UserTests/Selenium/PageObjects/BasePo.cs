@@ -3,11 +3,11 @@ using OpenQA.Selenium.Support.PageObjects;
 using System;
 using OpenQA.Selenium.Support.UI;
 
-namespace SeleniumTests.PageObjects
+namespace UserTests.Selenium.PageObjects
 {
     public class BasePo
     {
-        public IWebDriver driver;
+        public IWebDriver Driver;
 
         public BasePo() { }
 
@@ -18,7 +18,7 @@ namespace SeleniumTests.PageObjects
         /// <param name="driver"></param>
         public BasePo(IWebDriver driver)
         {
-            this.driver = driver;
+            this.Driver = driver;
             PageFactory.InitElements(driver, this);
         }
 
@@ -27,7 +27,7 @@ namespace SeleniumTests.PageObjects
         /// </summary>
         public String Url
         {
-            get { return driver.Url; }
+            get { return Driver.Url; }
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace SeleniumTests.PageObjects
         /// <returns></returns>
         public String PageSource
         {
-            get { return driver.PageSource; }
+            get { return Driver.PageSource; }
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SeleniumTests.PageObjects
+namespace UserTests.Selenium.PageObjects
 {
     public class NotTheRightPageException : Exception
     {

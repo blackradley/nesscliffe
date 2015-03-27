@@ -9,7 +9,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Reflection;
 
-namespace SeleniumTests
+namespace UserTests.Selenium
 {
     /// <summary>
     /// There are a number of different approaches to getting a group of tests
@@ -25,7 +25,7 @@ namespace SeleniumTests
         /// The development machines all use this URL for testing, so it might not
         /// work on the Continuous Development server.
         /// </summary>
-        public const string BaseUrl = "https://localhost:44300/"; 
+        public const string BaseUrl = "https://localhost:44300"; 
         public const int AjaxWait = 30;
 
         /// <summary>

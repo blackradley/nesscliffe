@@ -6,8 +6,8 @@
     <ProjectGuid>{C7B71D9D-C140-4E8C-B37C-C9572744E5D4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SeleniumTests</RootNamespace>
-    <AssemblyName>SeleniumTests</AssemblyName>
+    <RootNamespace>UserTests</RootNamespace>
+    <AssemblyName>UserTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -39,11 +39,12 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
-    <Reference Include="WebDriver">
-      <HintPath>..\packages\Selenium.WebDriver.2.44.0\lib\net40\WebDriver.dll</HintPath>
+    <Reference Include="WebDriver, Version=2.45.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Selenium.WebDriver.2.45.0\lib\net40\WebDriver.dll</HintPath>
     </Reference>
     <Reference Include="WebDriver.Support">
-      <HintPath>..\packages\Selenium.Support.2.44.0\lib\net40\WebDriver.Support.dll</HintPath>
+      <HintPath>..\packages\Selenium.Support.2.45.0\lib\net40\WebDriver.Support.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Choose>
@@ -59,25 +60,25 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="PageObjects\HomePo.cs" />
-    <Compile Include="PageObjects\JoinPo.cs" />
-    <Compile Include="PageObjects\BasePo.cs" />
-    <Compile Include="PageObjects\PoException.cs" />
+    <Compile Include="Selenium\PageObjects\ThanksPo.cs" />
+    <Compile Include="Selenium\PageObjects\HomePo.cs" />
+    <Compile Include="Selenium\PageObjects\JoinPo.cs" />
+    <Compile Include="Selenium\PageObjects\BasePo.cs" />
+    <Compile Include="Selenium\PageObjects\PoException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tests\Join.cs" />
-    <Compile Include="WebDriverFactory.cs" />
+    <Compile Include="Selenium\Tests\Join.cs" />
+    <Compile Include="Selenium\WebDriverFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\packages\PhantomJS.1.9.8\tools\phantomjs\phantomjs.exe">
-      <Link>phantomjs.exe</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="phantomjs-license.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Casper\Pages\join_page.js" />
+    <Content Include="Casper\Tests\join.js" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Casper\development_tests_run.cmd" />
     <None Include="packages.config" />
+    <None Include="Selenium\Tests\Smoke.orderedtest">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Choose>

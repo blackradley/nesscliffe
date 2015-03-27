@@ -2,13 +2,13 @@
 using System;
 using System.Diagnostics;
 
-namespace SeleniumTests.PageObjects
+namespace UserTests.Selenium.PageObjects
 {
-    public class HomePo : BasePo
+    public class ThanksPo : BasePo
     {
-        public HomePo(IWebDriver driver) : base(driver)
+        public ThanksPo(IWebDriver driver) : base(driver)
         {
-            this.driver = driver;
+            this.Driver = driver;
             driver.Navigate().GoToUrl(WebDriverFactory.BaseUrl);
             // Check that we're on the right page.
             if (Url.Equals(WebDriverFactory.BaseUrl))
