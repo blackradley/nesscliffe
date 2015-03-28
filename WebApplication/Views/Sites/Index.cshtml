@@ -15,7 +15,7 @@
         </th>
         <th class="hidden-sm hidden-xs">Postcode</th>
         <th class="hidden-xs">Features</th>
-        <th style="font-weight:normal;">@Html.ActionLink("Create a New Site", "Create")</th>
+        <th style="font-weight:normal;">@Html.ActionLink("Create a New Site", "Create", null, new { id = "link-create-site" })</th>
     </tr>
     @foreach (var item in Model)
     {

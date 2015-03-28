@@ -9,8 +9,9 @@ function SignInPage() {
 
     this.checkPage = function () {
         casper.then(function () {
-            casper.test.assertUrlMatch('Account/Login', 'Is on join page');
-            casper.test.assertExists('form[id="sign-in"]', 'Sign in page form has been found');
+            casper.waitForUrl('Account/Login', function() {
+                casper.test.assertExists('form[id="sign-in"]', 'Sign in page form has been found');
+            });
         });
     };
 
@@ -20,6 +21,7 @@ function SignInPage() {
                 '#Email': email,
                 '#Password': password
             }, false);
+
         });
     };
 

@@ -7,13 +7,13 @@
     ViewBag.Link = Html.ActionLink("Back to " + Resources.LabelSitesList, "Index");
 }
 @Html.Partial("_PageTitlePartial")
-@using (Html.BeginForm())
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "site-create" }))
 {
     @Html.AntiForgeryToken()
     @Html.Partial("~/Views/Sites/_CreateEdit.cshtml");
     <div class="row">
         <div class="form-group col-md-9">
-            <input type="submit" value="Save" class="btn btn-primary" />
+            <input id="submit" type="submit" value="Save" class="btn btn-primary" />
         </div>
     </div>
 }

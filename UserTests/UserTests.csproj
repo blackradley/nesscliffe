@@ -70,6 +70,7 @@
     <Compile Include="Selenium\WebDriverFactory.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Casper\Pages\new_site_page.js" />
     <Content Include="Casper\Pages\thanks_page.js" />
     <Content Include="Casper\Pages\sites_page.js" />
     <Content Include="Casper\Pages\utilities.js" />
