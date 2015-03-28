@@ -1,5 +1,9 @@
-var JoinPage = require("./pages/join_page.js");
-var joinPage = new JoinPage(casper);
+var require = patchRequire(require);
+var JoinPage = require("./Pages/join_page.js");
+var Utilities = require("./Pages/utilities.js");
+
+var joinPage = new JoinPage();
+var utilities = new Utilities();
 
 casper.test.begin('Test join ' + casper.cli.options.baseUrl, {
     setUp: function (test) {
@@ -10,11 +14,11 @@ casper.test.begin('Test join ' + casper.cli.options.baseUrl, {
         joinPage.startOnJoinPage();
         joinPage.checkPage();
         joinPage.typeForm("insightblackradley@mailinator.com", "pa55worD");
-        casper.then(function () { this.capture("join_form.png"); });
+        utilities.snap('JoinUserAlreadyPresent');
         joinPage.submitForm();
+        // Email is already present so you should still be on the JoinPage
         joinPage.checkPage();
         casper.run(function () {
-            
             test.done();
         });
     },

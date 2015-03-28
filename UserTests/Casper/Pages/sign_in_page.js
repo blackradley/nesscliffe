@@ -1,25 +1,24 @@
 ﻿
-function JoinPage() {
+function SignInPage() {
     this.casper = casper;
 
-    this.startOnJoinPage = function () {
+    this.startOnSignInPage = function () {
         casper.echo("base url is : " + casper.cli.options.baseUrl);
-        casper.start(casper.cli.options.baseUrl + 'Account/Register');
+        casper.start(casper.cli.options.baseUrl + 'Account/Login');
     };
 
     this.checkPage = function () {
         casper.then(function () {
-            casper.test.assertUrlMatch('Account/Register', 'Is on join page');
-            casper.test.assertExists('form[id="register"]', 'Login page form has been found');
+            casper.test.assertUrlMatch('Account/Login', 'Is on join page');
+            casper.test.assertExists('form[id="sign-in"]', 'Sign in page form has been found');
         });
     };
 
     this.fillForm = function (email, password) {
         casper.then(function () {
-            this.fill('form[id="register"]', {
+            this.fill('form[id="sign-in"]', {
                 '#Email': email,
-                '#Password': password,
-                '#agree': true
+                '#Password': password
             }, false);
         });
     };
@@ -28,16 +27,15 @@ function JoinPage() {
         casper.then(function () {
             this.sendKeys('#Email', email);
             this.sendKeys('#Password', password);
-            this.click('#agree');
         });
     };
 
     this.submitForm = function () {
         casper.then(function () {
-            this.click('form[id="register"] #submit', 'Join submit button clicked');
+            this.click('form[id="sign-in"] #submit', 'Sign in submit button clicked');
         });
     };
 
 };
 
-module.exports = JoinPage;
+module.exports = SignInPage;

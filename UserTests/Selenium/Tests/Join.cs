@@ -20,8 +20,8 @@ namespace UserTests.Selenium.Tests
         [TestInitialize]
         public void FixtureSetup()
         {
-            //_webDriver = WebDriverFactory.GetPhantomJsDriver();
-            _webDriver = WebDriverFactory.GetFireFoxDriver();
+            _webDriver = WebDriverFactory.GetPhantomJsDriver();
+            //_webDriver = WebDriverFactory.GetFireFoxDriver();
             _joinPo = new PageObjects.JoinPo(_webDriver);
         }
 
@@ -32,12 +32,15 @@ namespace UserTests.Selenium.Tests
         public void Join_User_Already_Present()
         {
             var joinPo = new JoinPo(_webDriver);
+            Console.Write(_webDriver.Title);
+            //_webDriver.ScreenShot();
             const String emailAddress = @"insightblackradley@mailinator.com";
             const String password = "pa55worD";
-            joinPo.Join(emailAddress, password);
-            _webDriver.ScreenShot();
+            joinPo.TypeEmailAddress(emailAddress);
+            //joinPo.Join(emailAddress, password);
+
             // Still on the join page
-            Assert.IsTrue(_joinPo.PageSource.Contains("Enter your email and choose a password"));
+            // Assert.IsTrue(_joinPo.PageSource.Contains("Enter your email and choose a password"));
         }
 
         /// <summary>

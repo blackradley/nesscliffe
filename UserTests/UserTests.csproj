@@ -70,17 +70,19 @@
     <Compile Include="Selenium\WebDriverFactory.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Casper\Pages\thanks_page.js" />
+    <Content Include="Casper\Pages\sites_page.js" />
+    <Content Include="Casper\Pages\utilities.js" />
+    <Content Include="Casper\Pages\sign_in_page.js" />
     <Content Include="Casper\Pages\join_page.js" />
-    <Content Include="Casper\Tests\join.js" />
+    <Content Include="Casper\Tests\join_new_user.js" />
+    <Content Include="Casper\Tests\join_user_already_present.js" />
+    <Content Include="Casper\Tests\add_4_months.js" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Casper\development_tests_run.cmd" />
     <None Include="packages.config" />
-    <None Include="Selenium\Tests\Smoke.orderedtest">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
-  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
