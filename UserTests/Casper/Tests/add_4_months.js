@@ -28,7 +28,7 @@ casper.test.begin('Sign in the seeded user and add a site', {
         sitesPage.clickCreateSite();
         // Should be on the data entry page
         newSitePage.checkPage();
-        var siteName = "Insight test " + utilities.secondsFromMidnight();
+        var siteName = "Insight test site " + utilities.secondsFromMidnight();
         utilities.snap('NewSite');
         newSitePage.fillForm(siteName, "SW1A 0AA");
         newSitePage.clickSaveNewSite();

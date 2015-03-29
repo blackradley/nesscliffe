@@ -15,10 +15,18 @@ function NewSitePage() {
         casper.then(function () {
             casper.waitForSelector("#submit",
                 function pass() {
-                    this.sendKeys('#Name', name);
-                    this.sendKeys('#Postcode', postcode);
-                    this.sendKeys('#AreaIndoor', 78);
-                    this.sendKeys('#AreaOutdoor', 700);
+                    this.sendKeys('#Name', name); // Required field
+                    this.sendKeys('#Postcode', postcode); // Required field
+                    this.click('#IsMuseum');
+                    this.click('#IsGallery');
+                    this.click('#IsPark');
+                    this.click('#IsHistoricHouse');
+                    this.fillSelectors('form#site-create', {
+                        '#AreaIndoor': 77,
+                        '#AreaIndoorUnits': 1,
+                        '#AreaOutdoor': 12,
+                        '#AreaOutdoorUnits': 3
+                    }, false);
                 },
                 function fail() {
                     test.fail("Did not load element #Submit");
