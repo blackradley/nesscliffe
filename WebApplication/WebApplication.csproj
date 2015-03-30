@@ -188,7 +188,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MonthsController.cs" />
-    <Compile Include="Controllers\SendMailController.cs" />
     <Compile Include="Controllers\SitesController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
@@ -328,8 +327,6 @@
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\SendMail\RequestInvite.cshtml" />
-    <Content Include="Views\SendMail\RequestThanks.cshtml" />
     <Content Include="Views\Home\Funding.cshtml" />
     <Content Include="Views\Shared\_SitesPartial.cshtml" />
     <Content Include="Views\Sites\Index.cshtml" />
