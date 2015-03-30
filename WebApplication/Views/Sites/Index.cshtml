@@ -33,9 +33,10 @@
             <td>
                 @* <span class="hidden-xs">@Html.ActionLink("Site Report", "Report", new { id = item.Id }) | </span> *@
                 @Html.ActionLink("Edit Site", "Edit", new { id = item.Id }) |
-                @Html.ActionLink(Resources.LabelPerformanceData, "Index", "Months", new { id = item.Id }, null)
+                @Html.ActionLink(Resources.LabelPerformanceData, "Index", "Months", new { id = item.Id }, new { name = "link-months" })
             </td>
         </tr>
     }
+    
 </table>
 

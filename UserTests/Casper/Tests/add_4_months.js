@@ -2,11 +2,15 @@
 var SignInPage = require("./Pages/sign_in_page.js");
 var SitesPage = require("./Pages/sites_page.js");
 var NewSitePage = require("./Pages/new_site_page.js");
+var MonthsPage = require("./Pages/months_page.js");
+var MonthPage = require("./Pages/month_page.js");
 var Utilities = require("./Pages/utilities.js");
 
 var signInPage = new SignInPage();
 var sitesPage = new SitesPage();
 var newSitePage = new NewSitePage();
+var monthsPage = new MonthsPage();
+var monthPage = new MonthPage();
 var utilities = new Utilities();
 
 // Sign in using the test user and add 4 months worth of data
@@ -33,6 +37,16 @@ casper.test.begin('Sign in the seeded user and add a site', {
         newSitePage.fillForm(siteName, "SW1A 0AA");
         newSitePage.clickSaveNewSite();
         utilities.snap('NewSiteSaved');
+        // Should be on my sites page
+        sitesPage.checkPage();
+        sitesPage.clickMonthsForFirstSite();
+        // Should be on months page
+        monthsPage.checkPage();
+        utilities.snap('Months');
+        monthsPage.clickCreateFirstMonth();
+        // Should be on single month page
+        monthPage.checkPage();
+        utilities.snap('Month');
 
         casper.run(function () {
             test.done();
