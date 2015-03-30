@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
+    @Html.Hidden("UserId", @Model.UserId)
     @Html.Partial("~/Views/Sites/_CreateEdit.cshtml");
     <div class="row">
         <div class="form-group col-md-9">
