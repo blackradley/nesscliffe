@@ -18,14 +18,12 @@ namespace WebApplication.Controllers
         private readonly DataDb _dataDb = new DataDb();
 
         // GET: Months
-        // TODO: restrict access to owner of this site
         public ActionResult Index([Bind(Prefix = "id")]Guid? siteId, String message)
         {
-            if (siteId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            if (siteId == null) throw new HttpException(404, "Not found");
             Site site = _dataDb.Sites.Find(siteId);
+            if (site == null) throw new HttpException(404, "Not found");
+            if (UserNotAllowed(site)) throw new HttpException(404, "Not found");
 
             // How many dates are available.
             var now = DateTime.Now;
@@ -58,13 +56,13 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "SiteId, MonthTime")] Guid siteId, DateTime monthTime)
         {
+            if (siteId == null) throw new HttpException(404, "Not found");
             var site = _dataDb.Sites.Find(siteId);
-            var newMonth = new Month();
-            var message = monthTime.ToString("MMM yyyy");
-
-            // Confirm the user owns this site.
+            if (site == null) throw new HttpException(404, "Not found");
             if (UserNotAllowed(site)) throw new HttpException(404, "Not found");
 
+            var newMonth = new Month();
+            var message = monthTime.ToString("MMM yyyy");
             // Make sure this month hasn't already been created, if it is in this list just go to it.
             var monthsEitherSide = MonthsEitherSide(monthTime, site);
             var thisMonth = monthsEitherSide.Find(i => i.MonthTime == monthTime);
@@ -222,6 +220,7 @@ namespace WebApplication.Controllers
         public ActionResult DeleteConfirmed(Guid id)
         {
             var month = _dataDb.Months.Find(id);
+            if (UserNotAllowed(month.Site)) throw new HttpException(404, "Not found");
             _dataDb.Months.Remove(month);
             _dataDb.SaveChanges();
             return RedirectToAction("Index", "Months", new { id = month.SiteId});
