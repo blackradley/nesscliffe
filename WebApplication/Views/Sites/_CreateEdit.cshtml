@@ -1,7 +1,8 @@
 ﻿@using DataAccess
 @using WebApplication.Helpers
 @model DataAccess.Site
-           
+
+@Html.Hidden("UserId", @Model.UserId)
 <div class="row">
     <div class="form-group col-md-6">
         @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label", @for = "name" })

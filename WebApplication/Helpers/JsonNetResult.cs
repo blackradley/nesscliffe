@@ -8,6 +8,9 @@ using Newtonsoft.Json;
 
 namespace WebApplication.Helpers
 {
+    /// <summary>
+    /// Replacement Json serializer
+    /// </summary>
     public class JsonNetResult : JsonResult
     {
         public JsonNetResult()

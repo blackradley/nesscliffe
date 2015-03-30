@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using DataAccess;
 using Microsoft.AspNet.Identity;
@@ -50,22 +51,14 @@ namespace WebApplication.Controllers
             return View(site);
         }
 
+
         //TODO: This is identical to Sites/Report/c4868028-d113-42ef-af6a-3ac2b00742fc. Merge them?
         public ActionResult Edit(Guid? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            if (id == null) throw new HttpException(404, "Not found");
             Site site = _dataDb.Sites.Find(id);
-            if (site == null)
-            {
-                return HttpNotFound();
-            }
-            if (site.UserId != User.Identity.GetUserId())
-            {
-                return HttpNotFound();
-            }
+            if (site == null) throw new HttpException(404, "Not found");
+            if (UserNotAllowed(site)) throw new HttpException(404, "Not found");
             return View(site);
         }
 
@@ -76,52 +69,39 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Site site) // TODO: Replace the [Bind(Include = "Id,Name,....
         {
+            if (UserNotAllowed(site)) throw new HttpException(404, "Not found");
             if (ModelState.IsValid)
             {
                 _dataDb.Entry(site).State = EntityState.Modified;
                 // The UserId is unmodified, the rest of the stuff comes from the form.
                 _dataDb.Entry(site).Property(e => e.UserId).IsModified = false;
-                // Capitalize the name of the site
+                // Capitalize the name of the site and the postcode
                 var textInfo = new CultureInfo("en-GB").TextInfo;
                 site.Name = textInfo.ToTitleCase(site.Name);
+                site.Postcode = textInfo.ToUpper(site.Postcode);
                 _dataDb.SaveChanges();
                 return RedirectToAction("Index", "Sites", new { message = site.Name + " updated." });
             }
             return View(site);
         }
 
-
         //TODO: This is identical to Sites/Edit/c4868028-d113-42ef-af6a-3ac2b00742fc. Merge them?
         public ActionResult Report(Guid? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            if (id == null) throw new HttpException(404, "Not found");
             Site site = _dataDb.Sites.Find(id);
-            if (site == null)
-            {
-                return HttpNotFound();
-            }
-            if (site.UserId != User.Identity.GetUserId())
-            {
-                return HttpNotFound();
-            }
+            if (site == null) throw new HttpException(404, "Not found");
+            if (UserNotAllowed(site)) throw new HttpException(404, "Not found");
             return View(site);
         }
 
         // GET: Sites/Delete/c4868028-d113-42ef-af6a-3ac2b00742fc
         public ActionResult Delete(Guid? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            if (id == null) throw new HttpException(404, "Not found");
             Site site = _dataDb.Sites.Find(id);
-            if (site == null)
-            {
-                return HttpNotFound();
-            }
+            if (site == null) throw new HttpException(404, "Not found");
+            if (UserNotAllowed(site)) throw new HttpException(404, "Not found");
             return View(site);
         }
 
@@ -131,15 +111,29 @@ namespace WebApplication.Controllers
         public ActionResult DeleteConfirmed(Guid id)
         {
             Site site = _dataDb.Sites.Find(id);
+            if (UserNotAllowed(site)) throw new HttpException(404, "Not found");
             _dataDb.Sites.Remove(site);
             _dataDb.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        // 
+        /// <summary>
+        /// Does the user own this site and is therefore allowed
+        /// to do stuff to it.
+        /// </summary>
+        /// <param name="site"></param>
+        /// <returns></returns>
+        private Boolean UserNotAllowed(Site site)
+        {
+            var siteUserId = site.UserId;
+            var userId = User.Identity.GetUserId();
+            return siteUserId != userId;
+        }
+
         public JsonResult ReportData(Guid? id)
         {
             Site site = _dataDb.Sites.Find(id);
+            if (UserNotAllowed(site)) throw new HttpException(404, "Not found");
             var months = site.Months.OrderBy(c => c.MonthTime).ToList();
             site.Months = months;
             return Json(site, JsonRequestBehavior.AllowGet);
@@ -154,6 +148,15 @@ namespace WebApplication.Controllers
             base.Dispose(disposing);
         }
 
+        /// <summary>
+        /// The built in Json serializer cannot handle circular references so override
+        /// it with the Newtonsoft.Json one.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="contentType"></param>
+        /// <param name="contentEncoding"></param>
+        /// <param name="behavior"></param>
+        /// <returns></returns>
         protected override JsonResult Json(object data, string contentType, System.Text.Encoding contentEncoding, JsonRequestBehavior behavior)
         {
             return new JsonNetResult
