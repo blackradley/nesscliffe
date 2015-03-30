@@ -1,4 +1,5 @@
-﻿ using DataAccess;
+﻿ using System.Web;
+ using DataAccess;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ using WebApplication.Models;
 namespace WebApplication.Controllers
 {
     [Authorize]
-    public class MonthsController : Controller
+    public class MonthsController : BaseController
     {
         private readonly DataDb _dataDb = new DataDb();
 
@@ -62,10 +63,7 @@ namespace WebApplication.Controllers
             var message = monthTime.ToString("MMM yyyy");
 
             // Confirm the user owns this site.
-            if (User.Identity.GetUserId() != site.UserId)
-            {
-                return RedirectToAction("Index", "Sites", new { message = "Your IP has been logged." });
-            }
+            if (UserNotAllowed(site)) throw new HttpException(404, "Not found");
 
             // Make sure this month hasn't already been created, if it is in this list just go to it.
             var monthsEitherSide = MonthsEitherSide(monthTime, site);
@@ -153,10 +151,7 @@ namespace WebApplication.Controllers
                 Month = month
             };
             // Confirm the user owns this month.
-            if (User.Identity.GetUserId() != siteAndMonthViewModel.Site.UserId)
-            {
-                return RedirectToAction("Index", "Sites", new { message = "Your IP has been logged." });
-            }
+            if (UserNotAllowed(siteAndMonthViewModel.Site)) throw new HttpException(404, "Not found");
             ViewBag.Message = message;
             return View("Edit", siteAndMonthViewModel);
         }
@@ -175,6 +170,8 @@ namespace WebApplication.Controllers
                 Site = site,
                 Month = month
             };
+            // Confirm the user owns this month.
+            if (UserNotAllowed(siteAndMonthViewModel.Site)) throw new HttpException(404, "Not found");
             if (ModelState.IsValid)
             {
                 _dataDb.Months.Attach(month);
@@ -195,7 +192,6 @@ namespace WebApplication.Controllers
                     ViewBag.Message = "This month has been updated.";
                     return View("Edit", siteAndMonthViewModel);  
                 }
-                
             }
             //// The model wasn't valid so show the view back to the user with the "duff" data.
             ViewBag.Message = "Please check your entries.";
@@ -215,6 +211,8 @@ namespace WebApplication.Controllers
                 Site = month.Site,
                 Month = month
             };
+            // Confirm the user owns this month.
+            if (UserNotAllowed(siteAndMonthViewModel.Site)) throw new HttpException(404, "Not found");
             return View(siteAndMonthViewModel);
         }
 

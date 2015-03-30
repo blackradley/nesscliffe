@@ -15,7 +15,7 @@ using WebGrease;
 namespace WebApplication.Controllers
 {
     [Authorize]
-    public class SitesController : Controller
+    public class SitesController : BaseController
     {
         private readonly DataDb _dataDb = new DataDb();
 
@@ -115,19 +115,6 @@ namespace WebApplication.Controllers
             _dataDb.Sites.Remove(site);
             _dataDb.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        /// <summary>
-        /// Does the user own this site and is therefore allowed
-        /// to do stuff to it.
-        /// </summary>
-        /// <param name="site"></param>
-        /// <returns></returns>
-        private Boolean UserNotAllowed(Site site)
-        {
-            var siteUserId = site.UserId;
-            var userId = User.Identity.GetUserId();
-            return siteUserId != userId;
         }
 
         public JsonResult ReportData(Guid? id)
