@@ -55,7 +55,7 @@ namespace DataAccess
         public virtual int? VisitorsMember { get; set; }
         [Display(Name = "Schools Visitors", Description = "How many school visitors came to your site this month?")]
         public virtual int? VisitorsSchool { get; set; }
-        [Display(Name = "Admission Income", Description = "What was the income from visitor admissions this month?")]
+        [Display(Name = "Admission Income", Description = "What was the income from visitor admissions this month? Excluding VAT")]
         public virtual int? IncomeAdmissions { get; set; }
         
         [Display(Name = "Not with Family", Description = "What percentage of visitors were not with a family?")]
@@ -97,7 +97,7 @@ namespace DataAccess
         [Display(Name = "Do you have a shop?", Description = "Was there a shop or retail outlet open on your site this month?")]
         public virtual bool? IsRetail { get; set; }
 
-        [Display(Name = "Retail Income", Description = "How much was your retail income this month?")]
+        [Display(Name = "Retail Income", Description = "How much was your retail income this month? Excluding VAT")]
         public virtual int? IncomeRetail { get; set; }
         [Display(Name = "Shop behind pay barrier?", Description = "Do visitors have to pay to get to the shop?")]
         public virtual bool PayToShop { get; set; }
@@ -121,7 +121,7 @@ namespace DataAccess
         [Display(Name = "Refreshments Available?", Description = "Did you provide refreshments for visitors this month?")]
         public virtual bool? IsRefreshment { get; set; }
 
-        [Display(Name = "Refreshments Income", Description = "What was your income from refreshments sales this month?")]
+        [Display(Name = "Refreshments Income", Description = "What was your income from refreshments sales this month? Excluding VAT")]
         public virtual int? IncomeRefreshment { get; set; }
         [Display(Name = "Behind Pay Barrier?", Description = "Do visitors have to pay to enter before they can get refreshments?")]
         public virtual bool PayToRefreshment { get; set; }
@@ -172,7 +172,7 @@ namespace DataAccess
         [Display(Name = "Donation Opportunity?", Description = "Do you provide visitors with opportunites to make donations?")]
         public virtual bool? IsDonationOpportunity { get; set; }
 
-        [Display(Name = "Donation Income", Description = "What was your income from donations for this month?")]
+        [Display(Name = "Donation Income", Description = "What was your income from donations for this month? Excluding VAT")]
         public virtual int? IncomeDonation { get; set; }
         [Display(Name = "Behind Pay Barrier?", Description = "Do visitors have to pay to enter before they can make a donation?")]
         public virtual bool PayToDonate { get; set; }
