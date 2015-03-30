@@ -33,6 +33,7 @@ casper.test.begin('Sign in the seeded user and add a site', {
         // Should be on the data entry page
         newSitePage.checkPage();
         var siteName = "Insight test site " + utilities.secondsFromMidnight();
+        casper.echo(siteName);
         utilities.snap('NewSite');
         newSitePage.fillForm(siteName, "SW1A 0AA");
         newSitePage.clickSaveNewSite();
@@ -43,10 +44,26 @@ casper.test.begin('Sign in the seeded user and add a site', {
         // Should be on months page
         monthsPage.checkPage();
         utilities.snap('Months');
-        monthsPage.clickCreateFirstMonth();
+        monthsPage.clickMonth(1);
         // Should be on single month page
         monthPage.checkPage();
-        utilities.snap('Month');
+        monthPage.fillForm(11);
+        monthPage.clickSaveMonth();
+
+        monthsPage.clickMonth(2);
+        monthPage.checkPage();
+        monthPage.fillForm(22);
+        monthPage.clickSaveMonth();
+
+        monthsPage.clickMonth(3);
+        monthPage.checkPage();
+        monthPage.fillForm(33);
+        monthPage.clickSaveMonth();
+
+        monthsPage.clickMonth(4);
+        monthPage.checkPage();
+        monthPage.fillForm(44);
+        monthPage.clickSaveMonth();
 
         casper.run(function () {
             test.done();

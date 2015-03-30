@@ -11,9 +11,11 @@ function MonthsPage() {
     };
 
     // The first month is either created with a button or edited with a link, hence the long CSS selector
-    this.clickCreateFirstMonth = function () {
+    this.clickMonth = function (monthIndex) {
         casper.then(function () {
-            this.click('tr:nth-of-type(2) td:last-child button, tr:nth-of-type(2) td:last-child a', 'Click on create or edit month link');
+            monthIndex = monthIndex + 1;
+            this.click('tr:nth-of-type(' + monthIndex + ') td:last-child button, tr:nth-of-type(' + monthIndex + ') td:last-child a',
+                'Click on create or edit month link');
         });
     };
 };

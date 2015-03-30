@@ -47,7 +47,7 @@
         </ul>
     </div>
 </div>
-@using (Html.BeginForm())
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "month-edit" }))
 {
     @* MONTHLY PERFORMANCE DATA FORM *@
     @Html.AntiForgeryToken()
