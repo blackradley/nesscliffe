@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 using System;
 using System.Diagnostics;
 
-namespace UserTests.Selenium.PageObjects
+namespace Tests.Selenium.PageObjects
 {
     public class JoinPo : BasePo
     {

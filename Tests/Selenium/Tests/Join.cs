@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using OpenQA.Selenium;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Diagnostics;
-using UserTests.Selenium.PageObjects;
+using OpenQA.Selenium;
+using Tests.Selenium.PageObjects;
 
-namespace UserTests.Selenium.Tests
+namespace Tests.Selenium.Tests
 {
     [TestClass]
     public class Join
@@ -18,10 +15,10 @@ namespace UserTests.Selenium.Tests
         /// 
         /// </summary>
         [TestInitialize]
-        public void FixtureSetup()
+        public void StartJoin()
         {
-            _webDriver = WebDriverFactory.GetPhantomJsDriver();
-            //_webDriver = WebDriverFactory.GetFireFoxDriver();
+            //_webDriver = WebDriverFactory.GetPhantomJsDriver();
+            _webDriver = WebDriverFactory.GetFireFoxDriver();
             _joinPo = new PageObjects.JoinPo(_webDriver);
         }
 

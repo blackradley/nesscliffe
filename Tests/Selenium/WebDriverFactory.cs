@@ -9,7 +9,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Reflection;
 
-namespace UserTests.Selenium
+namespace Tests.Selenium
 {
     /// <summary>
     /// There are a number of different approaches to getting a group of tests

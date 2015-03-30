@@ -3,7 +3,7 @@ using OpenQA.Selenium.Support.PageObjects;
 using System;
 using OpenQA.Selenium.Support.UI;
 
-namespace UserTests.Selenium.PageObjects
+namespace Tests.Selenium.PageObjects
 {
     public class BasePo
     {

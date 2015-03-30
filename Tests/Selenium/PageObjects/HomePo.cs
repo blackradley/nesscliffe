@@ -2,11 +2,11 @@
 using System;
 using System.Diagnostics;
 
-namespace UserTests.Selenium.PageObjects
+namespace Tests.Selenium.PageObjects
 {
-    public class ThanksPo : BasePo
+    public class HomePo : BasePo
     {
-        public ThanksPo(IWebDriver driver) : base(driver)
+        public HomePo(IWebDriver driver) : base(driver)
         {
             this.Driver = driver;
             driver.Navigate().GoToUrl(WebDriverFactory.BaseUrl);
