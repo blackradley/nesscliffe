@@ -55,19 +55,19 @@ namespace DataAccess
         public virtual int? VisitorsMember { get; set; }
         [Display(Name = "Schools Visitors", Description = "How many school visitors came to your site this month?")]
         public virtual int? VisitorsSchool { get; set; }
-        [Display(Name = "Admission Income", Description = "What was the income from visitor admissions this month? Excluding VAT")]
+        [Display(Name = "Admission Income", Description = "What was the gross income (not profit) from visitor admissions this month? Excluding VAT")]
         public virtual int? IncomeAdmissions { get; set; }
         
-        [Display(Name = "Not with Family", Description = "What percentage of visitors were not with a family?")]
+        [Display(Name = "Not with Family", Description = "What percentage of visitors were not with a family? If you don't know please estimate")]
         public virtual int VisitorsPercentNoFamily { get; set; }
-        [Display(Name = "In a Family", Description = "What percentage of visitors were with a family?")]
+        [Display(Name = "In a Family", Description = "What percentage of visitors were with a family? If you don't know please estimate")]
         public virtual int VisitorsPercentFamily { get; set; }
 
-        [Display(Name = "Children", Description = "What percentage of visitors were children under 16 years old?")]
+        [Display(Name = "Children", Description = "What percentage of visitors were children under 16 years old? If you don't know please estimate")]
         public virtual int VisitorsPercentChildren { get; set; }
-        [Display(Name = "Working Age Adults", Description = "What percentage of visitors were adults of working age?")]
+        [Display(Name = "Working Age Adults", Description = "What percentage of visitors were adults of working age? If you don't know please estimate")]
         public virtual int VisitorsPercentAdult { get; set; }
-        [Display(Name = "Retired", Description = "What percentage of visitors were over 65, retired or semi-retired?")]
+        [Display(Name = "Retired", Description = "What percentage of visitors were over 65, retired or semi-retired? If you don't know please estimate")]
         public virtual int VisitorsPercentRetired { get; set; }
 
         [Display(Name = "Hours Monday", Description = "How many hours were you open on Mondays?")]
@@ -97,7 +97,7 @@ namespace DataAccess
         [Display(Name = "Do you have a shop?", Description = "Was there a shop or retail outlet open on your site this month?")]
         public virtual bool? IsRetail { get; set; }
 
-        [Display(Name = "Retail Income", Description = "How much was your retail income this month? Excluding VAT")]
+        [Display(Name = "Retail Income", Description = "How much was your retail gross income (not profit) this month? Excluding VAT")]
         public virtual int? IncomeRetail { get; set; }
         [Display(Name = "Shop behind pay barrier?", Description = "Do visitors have to pay to get to the shop?")]
         public virtual bool PayToShop { get; set; }
@@ -121,7 +121,7 @@ namespace DataAccess
         [Display(Name = "Refreshments Available?", Description = "Did you provide refreshments for visitors this month?")]
         public virtual bool? IsRefreshment { get; set; }
 
-        [Display(Name = "Refreshments Income", Description = "What was your income from refreshments sales this month? Excluding VAT")]
+        [Display(Name = "Refreshments Income", Description = "What was your gross income (not profit) from refreshments sales this month? Excluding VAT")]
         public virtual int? IncomeRefreshment { get; set; }
         [Display(Name = "Behind Pay Barrier?", Description = "Do visitors have to pay to enter before they can get refreshments?")]
         public virtual bool PayToRefreshment { get; set; }
@@ -172,7 +172,7 @@ namespace DataAccess
         [Display(Name = "Donation Opportunity?", Description = "Do you provide visitors with opportunites to make donations?")]
         public virtual bool? IsDonationOpportunity { get; set; }
 
-        [Display(Name = "Donation Income", Description = "What was your income from donations for this month? Excluding VAT")]
+        [Display(Name = "Donation Income", Description = "What was your gross income from donations for this month? Excluding Gift Aid")]
         public virtual int? IncomeDonation { get; set; }
         [Display(Name = "Behind Pay Barrier?", Description = "Do visitors have to pay to enter before they can make a donation?")]
         public virtual bool PayToDonate { get; set; }
@@ -186,14 +186,14 @@ namespace DataAccess
         #endregion
         
         #region EXPERIENCE
-        [Display(Name = "Additional Events?", Description = "Did you have any additional or special events this month? e.g. corporate hire or after hours tours.")]
+        [Display(Name = "Events?", Description = "Did you have any special events this month? e.g. after hours tours, venue hire, weddings etc...")]
         public virtual bool? IsAdditionalEvents { get; set; }
 
-        [Display(Name = "Additional Events", Description = "How many additional events did you run at your site this month?")]
+        [Display(Name = "Events", Description = "How many events did you run at your site this month?")]
         public virtual int? NumberAdditionalEvents { get; set; }
-        [Display(Name = "Additional Events Numbers", Description = "How many visitors took part in additional events at your site this month?")]
+        [Display(Name = "Events Numbers", Description = "How many visitors took part in events at your site this month?")]
         public virtual int? NumberVisitorsAdditional { get; set; }
-        [Display(Name = "Additional Events Income", Description = "What was the income from additional events this month?")]
+        [Display(Name = "Events Income", Description = "What was the income from events this month?")]
         public virtual int? IncomeAdditionalEvents { get; set; }
 
         [Display(Name = "Number of Artefacts", Description = "Approximately how many artefacts are in your collections?")]
