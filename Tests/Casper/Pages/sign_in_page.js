@@ -3,7 +3,6 @@ function SignInPage() {
     this.casper = casper;
 
     this.startOnSignInPage = function () {
-        casper.echo("base url is : " + casper.cli.options.baseUrl);
         casper.start(casper.cli.options.baseUrl + 'Account/Login');
     };
 

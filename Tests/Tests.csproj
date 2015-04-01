@@ -82,6 +82,7 @@
     <Compile Include="Selenium\WebDriverFactory.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Casper\Pages\not_found_page.js" />
     <Content Include="Casper\Pages\month_page.js" />
     <Content Include="Casper\Pages\new_site_page.js" />
     <Content Include="Casper\Pages\months_page.js" />
@@ -93,6 +94,7 @@
     <Content Include="Casper\Tests\join_new_user.js" />
     <Content Include="Casper\Tests\join_user_already_present.js" />
     <Content Include="Casper\Tests\add_4_months.js" />
+    <Content Include="Casper\Tests\access_month_not_present.js" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Casper\development_tests_run.cmd" />

@@ -143,6 +143,7 @@ namespace WebApplication.Controllers
         {
             if (!id.HasValue) return RedirectToAction("Index", "Home");// Catch null ids.
             var month = _dataDb.Months.Find(id);
+            if (month == null) throw new HttpException(404, "Not found");
             var siteAndMonthViewModel = new SiteAndMonthViewModel()
             {
                 Site = month.Site,

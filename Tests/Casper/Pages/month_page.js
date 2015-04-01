@@ -2,6 +2,14 @@
 function MonthPage() {
     this.casper = casper;
 
+    this.startOnMonthPage = function (id) {
+        casper.start(casper.cli.options.baseUrl + 'Months/Edit/' + id);
+    };
+
+    this.goToMonth = function (id) {
+        casper.thenOpen(casper.cli.options.baseUrl + 'Months/Edit/' + id);
+    };
+    
     this.checkPage = function () {
         casper.then(function () {
             casper.waitForUrl(/Months\/Edit\/[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}/, function () {
