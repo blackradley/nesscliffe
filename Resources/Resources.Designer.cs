@@ -63,6 +63,15 @@ namespace Localization {
         /// <summary>
         ///   Looks up a localized string similar to Months.
         /// </summary>
+        public static string LabelMonthsList {
+            get {
+                return ResourceManager.GetString("LabelMonthsList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Months.
+        /// </summary>
         public static string LabelPerformanceData {
             get {
                 return ResourceManager.GetString("LabelPerformanceData", resourceCulture);

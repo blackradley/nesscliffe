@@ -3,22 +3,22 @@
 @using WebApplication.Helpers
 @model DataAccess.Site
 @{
-    ViewBag.Title = Resources.LabelReport;
-    ViewBag.Link = Html.ActionLink("Back to " + Resources.LabelSitesList, "Index", "Sites");
+    ViewBag.Title = Model.Name;
+    ViewBag.Link = Html.ActionLink("Back to " + Resources.LabelMonthsList, "Index", "Months", new {id = Model.Id}, null);
 }
 @Html.Partial("_PageTitlePartial")
 @Html.Partial("_SiteDetailsPartial", @Model)
 
 <h3>Visitors</h3>
-<div id="visitorsChart" style="width: 650px; height: 350px;">
+<div id="visitorsChart" style="width: 700px; height: 300px;">
 </div> 
 
 <h3>Income</h3>
-<div id="incomeChart" style="width: 650px; height: 350px;">
+<div id="incomeChart" style="width: 700px; height: 300px;">
 </div>  
 
 <h3>Income Per Visitor</h3>
-<div id="incomePerVisitorChart" style="width: 650px; height: 350px;">
+<div id="incomePerVisitorChart" style="width: 700px; height: 300px;">
 </div>  
 
 @section scripts
@@ -56,15 +56,12 @@
             visitorsChartData.addColumn('number', 'Events');
             visitorsChartData.addColumn('number', 'Total Visitors');
             for (var i = 0; i < months.length; i++) {
-                var totalVisitors = months[i].VisitorsGeneral +
-                    months[i].VisitorsMember +
-                    months[i].VisitorsSchool;
                 visitorsChartData.addRow([new Date(months[i].MonthTime),
                     months[i].VisitorsGeneral,
                     months[i].VisitorsMember,
                     months[i].VisitorsSchool,
                     months[i].NumberVisitorsAdditional,
-                    totalVisitors
+                    months[i].VisitorsTotal
                 ]);
             }
             // Instantiate and draw our chart, passing in some options
@@ -75,7 +72,7 @@
                 height: 300,
                 chartArea: { width: '50%' },
                 hAxis: { format: 'MMM-yyyy' },
-                vAxis: { title: "Income" }
+                vAxis: { title: "Visitor Numbers" }
             });
         }
 
@@ -90,10 +87,6 @@
             incomeChartData.addColumn('number', 'Events');
             incomeChartData.addColumn('number', 'Total Income');
             for (var i = 0; i < months.length; i++) {
-                var totalIncome = months[i].IncomeAdmissions +
-                    months[i].IncomeRetail +
-                    months[i].IncomeRefreshment +
-                    months[i].IncomeDonation;
                 incomeChartData.addRow([
                     new Date(months[i].MonthTime),
                     months[i].IncomeAdmissions,
@@ -101,7 +94,7 @@
                     months[i].IncomeRefreshment,
                     months[i].IncomeDonation,
                     months[i].IncomeAdditionalEvents,
-                    totalIncome
+                    months[i].IncomeTotal
                 ]);
             }
             // Instantiate and draw our chart, passing in some options
@@ -127,22 +120,14 @@
             incomePerVisitorChartData.addColumn('number', 'Events');
             incomePerVisitorChartData.addColumn('number', 'Total Income');
             for (var i = 0; i < months.length; i++) {
-                var totalVisitors = months[i].VisitorsGeneral +
-                    months[i].VisitorsMember +
-                    months[i].VisitorsSchool;
-                var totalIncome = months[i].IncomeAdmissions +
-                    months[i].IncomeRetail +
-                    months[i].IncomeRefreshment +
-                    months[i].IncomeDonation +
-                    months[i].IncomeAdditionalEvents;
                 incomePerVisitorChartData.addRow([
                     new Date(months[i].MonthTime),
-                    months[i].IncomeAdmissions / totalVisitors,
-                    months[i].IncomeRetail / totalVisitors,
-                    months[i].IncomeRefreshment / totalVisitors,
-                    months[i].IncomeDonation / totalVisitors,
-                    months[i].IncomeAdditionalEvents / totalVisitors,
-                    totalIncome / totalVisitors
+                    round(months[i].IncomeAdmissions / months[i].VisitorsTotal),
+                    round(months[i].IncomeRetail / months[i].VisitorsTotal),
+                    round(months[i].IncomeRefreshment / months[i].VisitorsTotal),
+                    round(months[i].IncomeDonation / months[i].VisitorsTotal),
+                    round(months[i].IncomeAdditionalEvents / months[i].VisitorsTotal),
+                    round(months[i].IncomeTotal / months[i].VisitorsTotal)
                 ]);
             }
             // Instantiate and draw our chart, passing in some options
@@ -156,6 +141,11 @@
                 vAxis: { title: "Income Per Visitor" }
             });
         }
+
+        function round(number) {
+            return Math.round(number * 100) / 100;
+        }
+
 
     </script> 
 }

@@ -17,6 +17,19 @@ namespace DataAccess
         [Column(TypeName = "DateTime2")]
         public virtual DateTime MonthTime { get; set; }
 
+        public int IncomeTotal
+        {
+            get
+            {
+                int incomeTotal = this.IncomeAdmissions ?? default(int);
+                incomeTotal += this.IncomeRetail ?? default(int);
+                incomeTotal += this.IncomeRefreshment ?? default(int);
+                incomeTotal += this.IncomeDonation ?? default(int);
+                incomeTotal += this.IncomeAdditionalEvents ?? default(int);
+                return incomeTotal;
+            }
+        }
+
         #region ATTENTION
         [Display(Name = "Marketing Effort", Description = "Approximately how many person hours were spent on marketing tasks this month?")]
         public virtual int? MarketingEffort { get; set; }
@@ -57,7 +70,18 @@ namespace DataAccess
         public virtual int? VisitorsSchool { get; set; }
         [Display(Name = "Admission Income", Description = "What was the gross income (not profit) from visitor admissions this month? Excluding VAT")]
         public virtual int? IncomeAdmissions { get; set; }
-        
+        public int VisitorsTotal
+        {
+            get
+            {
+                int visitorsTotal = this.VisitorsGeneral ?? default(int);
+                visitorsTotal += this.VisitorsMember ?? default(int);
+                visitorsTotal += this.VisitorsSchool ?? default(int);
+                visitorsTotal += this.NumberVisitorsAdditional ?? default(int);
+                return visitorsTotal;
+            }
+        }
+
         [Display(Name = "Not with Family", Description = "What percentage of visitors were not with a family? If you don't know please estimate")]
         public virtual int VisitorsPercentNoFamily { get; set; }
         [Display(Name = "In a Family", Description = "What percentage of visitors were with a family? If you don't know please estimate")]
@@ -90,7 +114,10 @@ namespace DataAccess
         public virtual float HoursSaturday { get; set; }
         [Display(Name = "Hours Sunday", Description = "How many hours were you open on Sundays?")]
         [Range(minimum: 0, maximum: 24, ErrorMessage = "Enter between 0 and 24 hours")]
-        public virtual float HoursSunday { get; set; }       
+        public virtual float HoursSunday { get; set; }
+
+
+
         #endregion
 
         #region SHOPPING
