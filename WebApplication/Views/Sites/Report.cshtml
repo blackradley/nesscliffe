@@ -9,8 +9,16 @@
 @Html.Partial("_PageTitlePartial")
 @Html.Partial("_SiteDetailsPartial", @Model)
 
+<h3>Visitors</h3>
+<div id="visitorsChart" style="width: 650px; height: 350px;">
+</div> 
+
 <h3>Income</h3>
-<div id="chartdiv" style="width: 600px; height: 350px;">
+<div id="incomeChart" style="width: 650px; height: 350px;">
+</div>  
+
+<h3>Income Per Visitor</h3>
+<div id="incomePerVisitorChart" style="width: 650px; height: 350px;">
 </div>  
 
 @section scripts
@@ -25,50 +33,129 @@
                 type: 'POST',
                 dataType: 'json',
                 contentType: 'application/json',
-                url: '@Url.Action("ReportData", new {id = Model.Id} )',
+                url: '@Url.Action("ReportData", new {id = Model.Id})',
                 data: '{}',
-                success: function(chartsdata) {
-
-                    // Callback that creates and populates a data table,
-                    // instantiates the pie chart, passes in the data and
-                    // draws it.
-
-                    var data = new google.visualization.DataTable();
-
-                    data.addColumn('date', 'Month');
-                    data.addColumn('number', 'Admissions Income');
-                    data.addColumn('number', 'Retail Income');
-                    data.addColumn('number', 'Refreshments Income');
-                    data.addColumn('number', 'Donations Income');
-
-                    var months = chartsdata.Months;
-
-                    for (var i = 0; i < months.length; i++) {
-                        data.addRow([new Date(months[i].MonthTime),
-                            months[i].IncomeAdmissions, months[i].IncomeRetail,
-                            months[i].IncomeRefreshment, months[i].IncomeDonation]);
-                    }
-
-                    // Instantiate and draw our chart, passing in some options
-                    var chart = new google.visualization.LineChart(document.getElementById('chartdiv'));
-
-                    chart.draw(data,
-                    {
-                        width: 600,
-                        height: 300,
-                        hAxis: {
-                            format: 'MMM-yyyy'
-                        },
-                        vAxis: {
-                            title: "Income"
-                        }
-                    });
+                success: function(siteData) {
+                    var months = siteData.Months;
+                    makeVisitorsChart(months);
+                    makeIncomeChart(months);
+                    makeIncomePerVisitorChart(months);
                 },
                 error: function() {
                     alert("Error loading data! Please try again.");
                 }
             });
-        })
+        });
+
+        function makeVisitorsChart(months) {
+            var visitorsChartData = new google.visualization.DataTable();
+            visitorsChartData.addColumn('date', 'Month');
+            visitorsChartData.addColumn('number', 'General');
+            visitorsChartData.addColumn('number', 'Members');
+            visitorsChartData.addColumn('number', 'Schools');
+            visitorsChartData.addColumn('number', 'Events');
+            visitorsChartData.addColumn('number', 'Total Visitors');
+            for (var i = 0; i < months.length; i++) {
+                var totalVisitors = months[i].VisitorsGeneral +
+                    months[i].VisitorsMember +
+                    months[i].VisitorsSchool;
+                visitorsChartData.addRow([new Date(months[i].MonthTime),
+                    months[i].VisitorsGeneral,
+                    months[i].VisitorsMember,
+                    months[i].VisitorsSchool,
+                    months[i].NumberVisitorsAdditional,
+                    totalVisitors
+                ]);
+            }
+            // Instantiate and draw our chart, passing in some options
+            var incomeChart = new google.visualization.LineChart(document.getElementById('visitorsChart'));
+            incomeChart.draw(visitorsChartData,
+            {
+                width: 700,
+                height: 300,
+                chartArea: { width: '50%' },
+                hAxis: { format: 'MMM-yyyy' },
+                vAxis: { title: "Income" }
+            });
+        }
+
+        function makeIncomeChart(months) {
+            // Prepare the data table
+            var incomeChartData = new google.visualization.DataTable();
+            incomeChartData.addColumn('date', 'Month');
+            incomeChartData.addColumn('number', 'Admissions');
+            incomeChartData.addColumn('number', 'Retail');
+            incomeChartData.addColumn('number', 'Refreshments');
+            incomeChartData.addColumn('number', 'Donations');
+            incomeChartData.addColumn('number', 'Events');
+            incomeChartData.addColumn('number', 'Total Income');
+            for (var i = 0; i < months.length; i++) {
+                var totalIncome = months[i].IncomeAdmissions +
+                    months[i].IncomeRetail +
+                    months[i].IncomeRefreshment +
+                    months[i].IncomeDonation;
+                incomeChartData.addRow([
+                    new Date(months[i].MonthTime),
+                    months[i].IncomeAdmissions,
+                    months[i].IncomeRetail,
+                    months[i].IncomeRefreshment,
+                    months[i].IncomeDonation,
+                    months[i].IncomeAdditionalEvents,
+                    totalIncome
+                ]);
+            }
+            // Instantiate and draw our chart, passing in some options
+            var incomeChart = new google.visualization.LineChart(document.getElementById('incomeChart'));
+            incomeChart.draw(incomeChartData,
+            {
+                width: 700,
+                height: 300,
+                chartArea: { width: '50%' },
+                hAxis: { format: 'MMM-yyyy' },
+                vAxis: { title: "Income" }
+            });
+        }
+
+        function makeIncomePerVisitorChart(months) {
+            // Prepare the data table
+            var incomePerVisitorChartData = new google.visualization.DataTable();
+            incomePerVisitorChartData.addColumn('date', 'Month');
+            incomePerVisitorChartData.addColumn('number', 'Admissions');
+            incomePerVisitorChartData.addColumn('number', 'Retail');
+            incomePerVisitorChartData.addColumn('number', 'Refreshments');
+            incomePerVisitorChartData.addColumn('number', 'Donations');
+            incomePerVisitorChartData.addColumn('number', 'Events');
+            incomePerVisitorChartData.addColumn('number', 'Total Income');
+            for (var i = 0; i < months.length; i++) {
+                var totalVisitors = months[i].VisitorsGeneral +
+                    months[i].VisitorsMember +
+                    months[i].VisitorsSchool;
+                var totalIncome = months[i].IncomeAdmissions +
+                    months[i].IncomeRetail +
+                    months[i].IncomeRefreshment +
+                    months[i].IncomeDonation +
+                    months[i].IncomeAdditionalEvents;
+                incomePerVisitorChartData.addRow([
+                    new Date(months[i].MonthTime),
+                    months[i].IncomeAdmissions / totalVisitors,
+                    months[i].IncomeRetail / totalVisitors,
+                    months[i].IncomeRefreshment / totalVisitors,
+                    months[i].IncomeDonation / totalVisitors,
+                    months[i].IncomeAdditionalEvents / totalVisitors,
+                    totalIncome / totalVisitors
+                ]);
+            }
+            // Instantiate and draw our chart, passing in some options
+            var incomePerVisitorChart = new google.visualization.LineChart(document.getElementById('incomePerVisitorChart'));
+            incomePerVisitorChart.draw(incomePerVisitorChartData,
+            {
+                width: 700,
+                height: 300,
+                chartArea: { width: '50%' },
+                hAxis: { format: 'MMM-yyyy' },
+                vAxis: { title: "Income Per Visitor" }
+            });
+        }
 
     </script> 
 }
