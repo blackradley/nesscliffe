@@ -25,17 +25,22 @@ namespace WebApplication.Helpers
             //</div>
             var divBuilder = new TagBuilder("div");
             divBuilder.AddCssClass("col-md-3 col-sm-6");
-            divBuilder.InnerHtml += htmlHelper.LabelFor(expression) + " ";
+            divBuilder.InnerHtml += htmlHelper.LabelFor(expression) + "</br>";
 
-            var labelbuilder = new TagBuilder("label");
-            labelbuilder.InnerHtml += " ";
-            labelbuilder.InnerHtml += htmlHelper.RadioButtonFor(expression, "true") + " Yes ";
-            labelbuilder.InnerHtml += htmlHelper.RadioButtonFor(expression, "false") + " No ";
+            var labelYesBuilder = new TagBuilder("label");
+            labelYesBuilder.InnerHtml += " ";
+            labelYesBuilder.InnerHtml += htmlHelper.RadioButtonFor(expression, "true") + " Yes ";
+            labelYesBuilder.InnerHtml += "&nbsp;";
+
+            var labelNoBuilder = new TagBuilder("label");
+            labelNoBuilder.InnerHtml += " ";
+            labelNoBuilder.InnerHtml += htmlHelper.RadioButtonFor(expression, "false") + " No ";
 
             var helpIcon = " " + htmlHelper.SiteHelpFor(expression);
             var validation = " " + htmlHelper.ValidationMessageFor(expression);
 
-            divBuilder.InnerHtml += labelbuilder.ToString();
+            divBuilder.InnerHtml += labelYesBuilder.ToString();
+            divBuilder.InnerHtml += labelNoBuilder.ToString();
             divBuilder.InnerHtml += helpIcon;
             divBuilder.InnerHtml += validation;
             return MvcHtmlString.Create(divBuilder.ToString());
