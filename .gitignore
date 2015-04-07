@@ -5,6 +5,7 @@ _*.cmd
 _*.ps1
 *.sublime-workspace
 *.exe
+Tests/Casper/*.png
 
 #################
 ## User-specific files
