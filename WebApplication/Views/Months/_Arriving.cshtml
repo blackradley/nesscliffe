@@ -5,7 +5,9 @@
 Total Visitors <span id="VisitorsTotal">0</span> 
 <div class="row">
     <div class="form-group col-sm-4 col-md-3">
+        @*{ Html.EnableClientValidation(false); }*@
         @Html.SiteTextBoxFor(model => model.IncomeAdmissions, prefix: "£")
+        @*{ Html.EnableClientValidation(true); }*@
     </div> 
     <div id="Visitors">
         <div class="form-group col-sm-4 col-md-3">
