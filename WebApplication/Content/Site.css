@@ -139,8 +139,3 @@ body {
 .icon {
     padding-right: 2px;
 }
-
-/* Fix for tool tip on IE8.  The tooltip doesn't work if the content is a span */
-a[title] span {
-    display: inline-block;
-}
