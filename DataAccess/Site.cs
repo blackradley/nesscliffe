@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace DataAccess
 {
@@ -59,6 +60,18 @@ namespace DataAccess
         [Range(0, 99999, ErrorMessage = "Area must be between 0 and 99999.")]
         public virtual int? AreaIndoor { get; set; }
         public virtual int AreaIndoorUnits { get; set; }
+        public double AreaIndoorSquareMetres
+        {
+            get
+            {
+                double areaIndoorSquareMetres = AreaIndoor ?? 0;  // 0 if null.
+                const int feet = (int)Units.AreaIndoorEnum.SquareFeet;
+                if (this.AreaIndoorUnits == feet) areaIndoorSquareMetres = areaIndoorSquareMetres * 0.09290304;
+                return areaIndoorSquareMetres;
+            }
+        }
+
+        
 
         [Display(Name = "Outdoor Area", Description = "How big is the outdoor area which visitors can visit?  In square feet, square metres, hectares or acres.")]
         [Range(0, 99999, ErrorMessage = "Area must be between 0 and 99999.")]

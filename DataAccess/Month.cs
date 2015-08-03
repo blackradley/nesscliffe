@@ -21,7 +21,7 @@ namespace DataAccess
         {
             get
             {
-                int incomeTotal = this.IncomeAdmissions ?? default(int);
+                var incomeTotal = this.IncomeAdmissions ?? default(int);
                 incomeTotal += this.IncomeRetail ?? default(int);
                 incomeTotal += this.IncomeRefreshment ?? default(int);
                 incomeTotal += this.IncomeDonation ?? default(int);
@@ -74,13 +74,43 @@ namespace DataAccess
         {
             get
             {
-                int visitorsTotal = this.VisitorsGeneral ?? default(int);
+                // this.NumberVisitorsAdditional is not included because it wasn't in the modelling
+                var visitorsTotal = this.VisitorsGeneral ?? default(int);
                 visitorsTotal += this.VisitorsMember ?? default(int);
                 visitorsTotal += this.VisitorsSchool ?? default(int);
-                visitorsTotal += this.NumberVisitorsAdditional ?? default(int);
                 return visitorsTotal;
             }
         }
+
+        /* 
+         * lm(formula = log(VisitorsTotal) ~ Month + IsMuseum + IsCastle + 
+         *      IsWorldHeritageSite + AreaIndoorMetres + IsWebsitePresent + 
+         *      IsRefreshment, data = df.temp, na.action = na.omit)
+         *      
+         * (Intercept)           6.106e+00  4.078e-01  14.972  < 2e-16 ***
+         * Month2                3.346e-01  2.917e-01   1.147  0.25239    
+         * Month3                4.614e-01  2.948e-01   1.565  0.11878    
+         * Month4                5.820e-01  2.882e-01   2.019  0.04452 *  
+         * Month5                6.495e-01  2.882e-01   2.253  0.02509 *  
+         * Month6                4.149e-01  2.882e-01   1.439  0.15128    
+         * Month7                5.629e-01  2.882e-01   1.953  0.05193 .  
+         * Month8                8.963e-01  2.882e-01   3.110  0.00209 ** 
+         * Month9                4.963e-01  2.882e-01   1.722  0.08633 .  
+         * Month10               7.036e-01  2.882e-01   2.441  0.01533 *  
+         * Month11               3.365e-01  2.913e-01   1.155  0.24907    
+         * Month12              -3.367e-02  2.913e-01  -0.116  0.90808    
+         * IsMuseum1             1.217e+00  1.496e-01   8.133 1.92e-14 ***
+         * IsCastle1             1.871e+00  4.594e-01   4.072 6.24e-05 ***
+         * IsWorldHeritageSite1  9.016e-01  1.964e-01   4.590 6.99e-06 ***
+         * AreaIndoorMetres      1.665e-04  2.556e-05   6.514 3.95e-10 ***
+         * IsWebsitePresentTRUE -9.351e-01  3.199e-01  -2.923  0.00378 ** 
+         * IsRefreshment1        9.860e-01  1.316e-01   7.492 1.14e-12 ***
+         */
+        public int VisitorsTotalModel
+        {
+            get { return 1; }
+        }
+
 
         [Display(Name = "Not with Family", Description = "What percentage of visitors were not with a family? If you don't know please estimate")]
         public virtual int VisitorsPercentNoFamily { get; set; }
