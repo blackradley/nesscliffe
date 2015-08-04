@@ -71,8 +71,6 @@ namespace DataAccess
             }
         }
 
-        
-
         [Display(Name = "Outdoor Area", Description = "How big is the outdoor area which visitors can visit?  In square feet, square metres, hectares or acres.")]
         [Range(0, 99999, ErrorMessage = "Area must be between 0 and 99999.")]
         public virtual float? AreaOutdoor { get; set; }

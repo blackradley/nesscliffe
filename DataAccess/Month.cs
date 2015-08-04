@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using DataAccess.Predictions;
 
 namespace DataAccess
 {
@@ -53,6 +54,11 @@ namespace DataAccess
 
         [Display(Name = "Website Url", Description = "What is your web site address?")]
         public virtual String WebsiteUrl { get; set; }
+        public Boolean IsWebsitePresent
+        {
+            get { return !String.IsNullOrEmpty(WebsiteUrl); }
+        }
+
         [Display(Name = "Facebook Url", Description = "If you have a Facebook page, what it the address?")]
         public virtual String FacebookUrl { get; set; }
         [Display(Name = "Twitter Account", Description = "If you have a Twitter account, what is your account name?")]
@@ -82,35 +88,39 @@ namespace DataAccess
             }
         }
 
-        /* 
-         * lm(formula = log(VisitorsTotal) ~ Month + IsMuseum + IsCastle + 
-         *      IsWorldHeritageSite + AreaIndoorMetres + IsWebsitePresent + 
-         *      IsRefreshment, data = df.temp, na.action = na.omit)
-         *      
-         * (Intercept)           6.106e+00  4.078e-01  14.972  < 2e-16 ***
-         * Month2                3.346e-01  2.917e-01   1.147  0.25239    
-         * Month3                4.614e-01  2.948e-01   1.565  0.11878    
-         * Month4                5.820e-01  2.882e-01   2.019  0.04452 *  
-         * Month5                6.495e-01  2.882e-01   2.253  0.02509 *  
-         * Month6                4.149e-01  2.882e-01   1.439  0.15128    
-         * Month7                5.629e-01  2.882e-01   1.953  0.05193 .  
-         * Month8                8.963e-01  2.882e-01   3.110  0.00209 ** 
-         * Month9                4.963e-01  2.882e-01   1.722  0.08633 .  
-         * Month10               7.036e-01  2.882e-01   2.441  0.01533 *  
-         * Month11               3.365e-01  2.913e-01   1.155  0.24907    
-         * Month12              -3.367e-02  2.913e-01  -0.116  0.90808    
-         * IsMuseum1             1.217e+00  1.496e-01   8.133 1.92e-14 ***
-         * IsCastle1             1.871e+00  4.594e-01   4.072 6.24e-05 ***
-         * IsWorldHeritageSite1  9.016e-01  1.964e-01   4.590 6.99e-06 ***
-         * AreaIndoorMetres      1.665e-04  2.556e-05   6.514 3.95e-10 ***
-         * IsWebsitePresentTRUE -9.351e-01  3.199e-01  -2.923  0.00378 ** 
-         * IsRefreshment1        9.860e-01  1.316e-01   7.492 1.14e-12 ***
-         */
-        public int VisitorsTotalModel
+        public double VisitorsTotalModel
         {
-            get { return 1; }
+            get
+            {
+                var visitorsTotal = new VisitorsTotal
+                {
+                    MonthNumber = this.MonthTime.Month,
+                    IsMuseum = Convert.ToInt32(this.Site.IsMuseum),
+                    IsWorldHeritageSite = Convert.ToInt32(this.Site.IsWorldHeritageSite),
+                    AreaIndoorSquareMetres = this.Site.AreaIndoorSquareMetres,
+                    IsWebsitePresent = Convert.ToInt32(this.IsWebsitePresent),
+                    IsRefreshment = Convert.ToInt32(this.IsRefreshment)
+                };
+                return visitorsTotal.Predicted;
+            }
         }
 
+        public double VisitorsTotalModelUpper
+        {
+            get
+            {
+                var visitorsTotal = new VisitorsTotal
+                {
+                    MonthNumber = this.MonthTime.Month,
+                    IsMuseum = Convert.ToInt32(this.Site.IsMuseum),
+                    IsWorldHeritageSite = Convert.ToInt32(this.Site.IsWorldHeritageSite),
+                    AreaIndoorSquareMetres = this.Site.AreaIndoorSquareMetres,
+                    IsWebsitePresent = Convert.ToInt32(this.IsWebsitePresent),
+                    IsRefreshment = Convert.ToInt32(this.IsRefreshment)
+                };
+                return visitorsTotal.PredictedUpper;
+            }
+        }
 
         [Display(Name = "Not with Family", Description = "What percentage of visitors were not with a family? If you don't know please estimate")]
         public virtual int VisitorsPercentNoFamily { get; set; }

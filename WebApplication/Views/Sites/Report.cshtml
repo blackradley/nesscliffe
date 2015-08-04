@@ -50,18 +50,14 @@
         function makeVisitorsChart(months) {
             var visitorsChartData = new google.visualization.DataTable();
             visitorsChartData.addColumn('date', 'Month');
-            visitorsChartData.addColumn('number', 'General');
-            visitorsChartData.addColumn('number', 'Members');
-            visitorsChartData.addColumn('number', 'Schools');
-            visitorsChartData.addColumn('number', 'Events');
             visitorsChartData.addColumn('number', 'Total Visitors');
+            visitorsChartData.addColumn('number', 'Projected');
+            visitorsChartData.addColumn('number', 'Upper Projected');
             for (var i = 0; i < months.length; i++) {
                 visitorsChartData.addRow([new Date(months[i].MonthTime),
-                    months[i].VisitorsGeneral,
-                    months[i].VisitorsMember,
-                    months[i].VisitorsSchool,
-                    months[i].NumberVisitorsAdditional,
-                    months[i].VisitorsTotal
+                    months[i].VisitorsTotal,
+                    months[i].VisitorsTotalModel,
+                    months[i].VisitorsTotalModelUpper
                 ]);
             }
             // Instantiate and draw our chart, passing in some options
