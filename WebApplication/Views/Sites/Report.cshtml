@@ -77,20 +77,10 @@
             var incomeChartData = new google.visualization.DataTable();
             incomeChartData.addColumn('date', 'Month');
             incomeChartData.addColumn('number', 'Admissions');
-            incomeChartData.addColumn('number', 'Retail');
-            incomeChartData.addColumn('number', 'Refreshments');
-            incomeChartData.addColumn('number', 'Donations');
-            incomeChartData.addColumn('number', 'Events');
-            incomeChartData.addColumn('number', 'Total Income');
             for (var i = 0; i < months.length; i++) {
                 incomeChartData.addRow([
                     new Date(months[i].MonthTime),
-                    months[i].IncomeAdmissions,
-                    months[i].IncomeRetail,
-                    months[i].IncomeRefreshment,
-                    months[i].IncomeDonation,
-                    months[i].IncomeAdditionalEvents,
-                    months[i].IncomeTotal
+                    months[i].IncomeAdmissions
                 ]);
             }
             // Instantiate and draw our chart, passing in some options
@@ -109,21 +99,11 @@
             // Prepare the data table
             var incomePerVisitorChartData = new google.visualization.DataTable();
             incomePerVisitorChartData.addColumn('date', 'Month');
-            incomePerVisitorChartData.addColumn('number', 'Admissions');
             incomePerVisitorChartData.addColumn('number', 'Retail');
-            incomePerVisitorChartData.addColumn('number', 'Refreshments');
-            incomePerVisitorChartData.addColumn('number', 'Donations');
-            incomePerVisitorChartData.addColumn('number', 'Events');
-            incomePerVisitorChartData.addColumn('number', 'Total Income');
             for (var i = 0; i < months.length; i++) {
                 incomePerVisitorChartData.addRow([
                     new Date(months[i].MonthTime),
-                    round(months[i].IncomeAdmissions / months[i].VisitorsTotal),
-                    round(months[i].IncomeRetail / months[i].VisitorsTotal),
-                    round(months[i].IncomeRefreshment / months[i].VisitorsTotal),
-                    round(months[i].IncomeDonation / months[i].VisitorsTotal),
-                    round(months[i].IncomeAdditionalEvents / months[i].VisitorsTotal),
-                    round(months[i].IncomeTotal / months[i].VisitorsTotal)
+                    round(months[i].IncomeRetail / months[i].VisitorsTotal)
                 ]);
             }
             // Instantiate and draw our chart, passing in some options
@@ -134,7 +114,7 @@
                 height: 300,
                 chartArea: { width: '50%' },
                 hAxis: { format: 'MMM-yyyy' },
-                vAxis: { title: "Income Per Visitor" }
+                vAxis: { title: "Retail Income Per Visitor" }
             });
         }
 

@@ -32,7 +32,7 @@ namespace DataAccess.Predictions
          * Residual standard error: 0.9661 on 252 degrees of freedom
          * (360 observations deleted due to missingness)
          * Multiple R-squared:  0.6974,	Adjusted R-squared:  0.677 
-         *  F-statistic: 34.16 on 17 and 252 DF,  p-value: < 2.2e-16
+         * F-statistic: 34.16 on 17 and 252 DF,  p-value: < 2.2e-16
          */
         private const double Intercept = 6.106e+00;
         private static readonly Dictionary<int, double> MonthCoeff = new Dictionary<int, double>
