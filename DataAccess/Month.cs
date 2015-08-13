@@ -88,7 +88,7 @@ namespace DataAccess
             }
         }
 
-        public double VisitorsTotalModel
+        private VisitorsTotal _visitorsTotal
         {
             get
             {
@@ -96,12 +96,22 @@ namespace DataAccess
                 {
                     MonthNumber = this.MonthTime.Month,
                     IsMuseum = Convert.ToInt32(this.Site.IsMuseum),
+                    IsCastle = Convert.ToInt32(this.Site.IsCastle),
                     IsWorldHeritageSite = Convert.ToInt32(this.Site.IsWorldHeritageSite),
                     AreaIndoorSquareMetres = this.Site.AreaIndoorSquareMetres,
                     IsWebsitePresent = Convert.ToInt32(this.IsWebsitePresent),
-                    IsRefreshment = Convert.ToInt32(this.IsRefreshment)
+                    IsRefreshment = Convert.ToInt32(this.IsRefreshment ?? true)
                 };
-                return visitorsTotal.Predicted;
+                return visitorsTotal;
+            }
+        }
+
+        public double VisitorsTotalModel
+        {
+            get
+            {
+                var visitorsTotal = this._visitorsTotal;
+                return Math.Round(visitorsTotal.Predicted);
             }
         }
 
@@ -109,16 +119,8 @@ namespace DataAccess
         {
             get
             {
-                var visitorsTotal = new VisitorsTotal
-                {
-                    MonthNumber = this.MonthTime.Month,
-                    IsMuseum = Convert.ToInt32(this.Site.IsMuseum),
-                    IsWorldHeritageSite = Convert.ToInt32(this.Site.IsWorldHeritageSite),
-                    AreaIndoorSquareMetres = this.Site.AreaIndoorSquareMetres,
-                    IsWebsitePresent = Convert.ToInt32(this.IsWebsitePresent),
-                    IsRefreshment = Convert.ToInt32(this.IsRefreshment)
-                };
-                return visitorsTotal.PredictedUpper;
+                var visitorsTotal = this._visitorsTotal;
+                return Math.Round(visitorsTotal.PredictedUpper);
             }
         }
 
@@ -185,9 +187,9 @@ namespace DataAccess
         #endregion
         
         #region REFRESHMENT
-        [Display(Name = "Refreshments Available?", Description = "Did you provide refreshments for visitors this month?")]
-        public virtual bool? IsRefreshment { get; set; }
 
+        [Display(Name = "Refreshments Available?", Description = "Did you provide refreshments for visitors this month?")]
+        public bool? IsRefreshment { get; set; }
         [Display(Name = "Refreshments Income", Description = "What was your gross income (not profit) from refreshments sales this month? Excluding VAT")]
         public virtual int? IncomeRefreshment { get; set; }
         [Display(Name = "Behind Pay Barrier?", Description = "Do visitors have to pay to enter before they can get refreshments?")]

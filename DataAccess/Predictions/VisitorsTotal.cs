@@ -73,8 +73,8 @@ namespace DataAccess.Predictions
             {
                 // Estimate the standard error of prediction by inflating it by 10%
                 const double standardErrorOfPrediction = ResidualStandardError * 1.1;
-                // Estimate the t value for a 95% prediction interval as 2
-                const int tValue = 2;
+                // t value for a 95% prediction interval with 252 degrees of freedom
+                const double tValue = 1.96942236;
                 const double marginOfError = standardErrorOfPrediction * tValue;
                 return Math.Exp(PredictionEquation + marginOfError);
             }
@@ -84,7 +84,6 @@ namespace DataAccess.Predictions
         {
             get
             {
-                const double marginOfError = (ResidualStandardError * 1.1) * 2;
                 var month = MonthCoeff[MonthNumber];
                 var isMuseum = IsMuseum * IsMuseumCoeff;
                 var isCastle = IsCastle * IsCastleCoeff;
@@ -93,7 +92,7 @@ namespace DataAccess.Predictions
                 var isWebsitePresent = IsWebsitePresent * IsWebsitePresentCoeff;
                 var isRefreshment = IsRefreshment * IsRefreshmentCoeff;
                 return Intercept + month + isMuseum + isCastle + isWorldHeritageSite +
-                    areaIndoorMetres + isWebsitePresent + isRefreshment + marginOfError;
+                    areaIndoorMetres + isWebsitePresent + isRefreshment;
             }
         }
 

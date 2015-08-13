@@ -64,7 +64,7 @@ namespace DataAccess
         {
             get
             {
-                double areaIndoorSquareMetres = AreaIndoor ?? 0;  // 0 if null.
+                double areaIndoorSquareMetres = AreaIndoor ?? 2772;  // 2772 m2 is the average area in the sample.
                 const int feet = (int)Units.AreaIndoorEnum.SquareFeet;
                 if (this.AreaIndoorUnits == feet) areaIndoorSquareMetres = areaIndoorSquareMetres * 0.09290304;
                 return areaIndoorSquareMetres;
