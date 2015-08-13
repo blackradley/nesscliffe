@@ -11,12 +11,20 @@ namespace WebApplication.Infrastructure
     {
 
         public DbSet<Site> Sites { get; set; }
+        public DbSet<SiteCircumstance> SiteCircumstances { get; set; }
         public DbSet<Month> Months { get; set; }
 
         IQueryable<Site> ISitesDataSource.Sites
         {
             get { return Sites; }
         }
+
+        IQueryable<SiteCircumstance> ISitesDataSource.SiteCircumstances
+        {
+            get { return SiteCircumstances; }
+        }
+
+
         IQueryable<Month> ISitesDataSource.Months
         {
             get { return Months; }

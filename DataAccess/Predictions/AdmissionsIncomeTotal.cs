@@ -40,14 +40,12 @@ namespace DataAccess.Predictions
             get
             {
                 const double marginOfError = (ResidualStandardError * 1.1) * 2;
-                var isMuseum = IsMuseum * IsMuseumCoeff;
-                var isCastle = IsCastle * IsCastleCoeff;
-                var isWorldHeritageSite = IsWorldHeritageSite * IsWorldHeritageSiteCoeff;
+           
                 var areaIndoorMetres = AreaIndoorSquareMetres * AreaIndoorMetresCoeff;
-                var isWebsitePresent = IsWebsitePresent * IsWebsitePresentCoeff;
+
                 var isRefreshment = IsRefreshment * IsRefreshmentCoeff;
-                return Intercept + isMuseum + isCastle + isWorldHeritageSite +
-                    areaIndoorMetres + isWebsitePresent + isRefreshment + marginOfError;
+                return Intercept +
+                    areaIndoorMetres + isRefreshment + marginOfError;
             }
         }
 

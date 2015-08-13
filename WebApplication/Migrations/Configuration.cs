@@ -1,3 +1,8 @@
+using System;
+using System.IO;
+using System.Reflection;
+using System.Text;
+using CsvHelper;
 using DataAccess;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -5,8 +10,6 @@ using WebApplication.Infrastructure;
 
 namespace WebApplication.Migrations
 {
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
@@ -34,6 +37,30 @@ namespace WebApplication.Migrations
                 LockoutEnabled = true
             };
             userManager.Create(user, "password");
+
+            // Copy in the circumstance data
+            var assembly = Assembly.GetExecutingAssembly();
+            const string resourceName = "WebApplication.Migrations.SeedData.SiteCircumstances.csv";
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                using (var reader = new StreamReader(stream, Encoding.UTF8))
+                {
+                    var csvReader = new CsvReader(reader);
+                    csvReader.Configuration.WillThrowOnMissingField = false;
+
+                    var siteCircumstances = csvReader.GetRecords<SiteCircumstance>().ToArray();
+
+                    foreach (SiteCircumstance siteCircumstance in siteCircumstances)
+                    {
+                        Site site = context.Sites.Find(siteCircumstance.Id);
+                        // You can only enter data for sites that are already there so
+                        if (site != null) context.SiteCircumstances.AddOrUpdate(siteCircumstance);
+                    }
+                    context.SaveChanges();
+                }
+            }
+            
         }
+
     }
 }

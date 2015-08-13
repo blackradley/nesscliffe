@@ -14,6 +14,7 @@ namespace DataAccess
         public virtual Guid Id { get; set; }
         // Navigation property
         public virtual ICollection<Month> Months { get; set; }
+        public virtual SiteCircumstance SiteCircumstance { get; set; }
 
         public String UserId { get; set; }
         [ForeignKey("UserId")]

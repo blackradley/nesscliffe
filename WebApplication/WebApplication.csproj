@@ -41,6 +41,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CsvHelper">
+      <HintPath>..\packages\CsvHelper.2.13.2.0\lib\net40-client\CsvHelper.dll</HintPath>
+    </Reference>
     <Reference Include="Glimpse.Ado">
       <HintPath>..\packages\Glimpse.Ado.1.7.3\lib\net45\Glimpse.Ado.dll</HintPath>
     </Reference>
@@ -212,6 +215,10 @@
     <Compile Include="Migrations\201503241533023_RemoveSiteAreaRequired.Designer.cs">
       <DependentUpon>201503241533023_RemoveSiteAreaRequired.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508130144005_AddSiteCircumstance.cs" />
+    <Compile Include="Migrations\201508130144005_AddSiteCircumstance.Designer.cs">
+      <DependentUpon>201508130144005_AddSiteCircumstance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Infrastructure\DataDb.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -270,6 +277,11 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <EmbeddedResource Include="Migrations\201508130144005_AddSiteCircumstance.resx">
+      <DependentUpon>201508130144005_AddSiteCircumstance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\SeedData\SiteCircumstances.csv" />
+    <Content Include="Migrations\SeedData\SiteCircumstancesTest.csv" />
     <None Include="Properties\PublishProfiles\blackradley-insight__staging.pubxml" />
     <None Include="Properties\PublishProfiles\insight-blackradley__staging.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
