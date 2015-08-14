@@ -13,7 +13,7 @@ namespace WebApplication.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201508141448256_AddSiteCircumstance"; }
+            get { return "201508141716473_AddSiteCircumstance"; }
         }
         
         string IMigrationMetadata.Source

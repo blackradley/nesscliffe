@@ -63,11 +63,13 @@ namespace DataAccess.Predictions
                 var visitorsTotal = VisitorsTotal * VisitorsTotalCoeff;
                 var areaIndoorMetres = AreaIndoorSquareMetres * AreaIndoorMetresCoeff;
                 var wardDensity = WardDensity * WardDensityCoeff;
-                var wardApproximatedSocialGradeC2 = WardApproximatedSocialGradeC2 * WardApproximatedSocialGradeC2Coeff;
-                var marketingEffortCoeff = MarketingEffort * MarketingEffortCoeff;
+                var wardApproximatedSocialGradePercentageC2 = 
+                    (WardApproximatedSocialGradeC2 / WardApproximatedSocialGradeAllCategories) 
+                    * WardApproximatedSocialGradeC2Coeff;
+                var marketingEffort = MarketingEffort * MarketingEffortCoeff;
                 var isRefreshment = IsRefreshment * IsRefreshmentCoeff;
-                return Intercept + visitorsTotal + wardDensity + wardApproximatedSocialGradeC2 +
-                    marketingEffortCoeff + areaIndoorMetres + isRefreshment;
+                return Intercept + visitorsTotal + wardDensity + wardApproximatedSocialGradePercentageC2 +
+                    marketingEffort + areaIndoorMetres + isRefreshment;
             }
         }
 
@@ -76,6 +78,7 @@ namespace DataAccess.Predictions
         public int VisitorsTotal  { get; set; }
         public double AreaIndoorSquareMetres { get; set; }
         public double WardDensity { get; set; }
+        public double WardApproximatedSocialGradeAllCategories { get; set; }
         public double WardApproximatedSocialGradeC2 { get; set; }
         public int MarketingEffort { get; set; }
         public int IsRefreshment { get; set; }

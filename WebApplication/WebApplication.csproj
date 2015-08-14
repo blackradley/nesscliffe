@@ -215,9 +215,9 @@
     <Compile Include="Migrations\201503241533023_RemoveSiteAreaRequired.Designer.cs">
       <DependentUpon>201503241533023_RemoveSiteAreaRequired.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201508141448256_AddSiteCircumstance.cs" />
-    <Compile Include="Migrations\201508141448256_AddSiteCircumstance.Designer.cs">
-      <DependentUpon>201508141448256_AddSiteCircumstance.cs</DependentUpon>
+    <Compile Include="Migrations\201508141716473_AddSiteCircumstance.cs" />
+    <Compile Include="Migrations\201508141716473_AddSiteCircumstance.Designer.cs">
+      <DependentUpon>201508141716473_AddSiteCircumstance.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Infrastructure\DataDb.cs" />
@@ -277,8 +277,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <EmbeddedResource Include="Migrations\201508141448256_AddSiteCircumstance.resx">
-      <DependentUpon>201508141448256_AddSiteCircumstance.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201508141716473_AddSiteCircumstance.resx">
+      <DependentUpon>201508141716473_AddSiteCircumstance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\SeedData\SiteCircumstances.csv" />
     <None Include="Properties\PublishProfiles\blackradley-insight__staging.pubxml" />

@@ -13,6 +13,7 @@ namespace DataAccess
         //// ONS Data
         public virtual Double AuthorityDensity { get; set; }
         public virtual Double WardDensity { get; set; }
+        public virtual int WardApproximatedSocialGradeAllCategories { get; set; }
         public virtual int WardApproximatedSocialGradeAb { get; set; }
         public virtual int WardApproximatedSocialGradeC1 { get; set; }
         public virtual int WardApproximatedSocialGradeC2 { get; set; }

@@ -131,14 +131,18 @@ namespace DataAccess
         {
             get
             {
-                var admissionsIncomeTotal = new AdmissionsIncomeTotal();
-                admissionsIncomeTotal.VisitorsTotal = this.VisitorsTotal;
-                admissionsIncomeTotal.AreaIndoorSquareMetres = this.Site.AreaIndoorSquareMetres;
-                admissionsIncomeTotal.WardDensity = this.Site.SiteCircumstance.WardDensity;
-                admissionsIncomeTotal.WardApproximatedSocialGradeC2 =
-                    this.Site.SiteCircumstance.WardApproximatedSocialGradeC2;
-                admissionsIncomeTotal.MarketingEffort = Convert.ToInt32(this.MarketingEffort ?? 0);
-                admissionsIncomeTotal.IsRefreshment = Convert.ToInt32(this.IsRefreshment ?? true);
+                var admissionsIncomeTotal = new AdmissionsIncomeTotal
+                {
+                    VisitorsTotal = this.VisitorsTotal,
+                    AreaIndoorSquareMetres = this.Site.AreaIndoorSquareMetres,
+                    WardDensity = this.Site.SiteCircumstance.WardDensity,
+                    WardApproximatedSocialGradeAllCategories =
+                        this.Site.SiteCircumstance.WardApproximatedSocialGradeAllCategories,
+                    WardApproximatedSocialGradeC2 =
+                        this.Site.SiteCircumstance.WardApproximatedSocialGradeC2,
+                    MarketingEffort = Convert.ToInt32(this.MarketingEffort ?? 0),
+                    IsRefreshment = Convert.ToInt32(this.IsRefreshment ?? true)
+                };
                 return admissionsIncomeTotal;
             }
         }
@@ -157,7 +161,7 @@ namespace DataAccess
             get
             {
                 var admissionsIncomeTotal = this._admissionsIncomeTotal;
-                return Math.Round(admissionsIncomeTotal.Predicted);
+                return Math.Round(admissionsIncomeTotal.PredictedUpper);
             }
         }
         #endregion

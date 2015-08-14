@@ -14,6 +14,7 @@ namespace WebApplication.Migrations
                         SiteId = c.Guid(nullable: false),
                         AuthorityDensity = c.Double(nullable: false),
                         WardDensity = c.Double(nullable: false),
+                        WardApproximatedSocialGradeAllCategories = c.Int(nullable: false),
                         WardApproximatedSocialGradeAb = c.Int(nullable: false),
                         WardApproximatedSocialGradeC1 = c.Int(nullable: false),
                         WardApproximatedSocialGradeC2 = c.Int(nullable: false),
