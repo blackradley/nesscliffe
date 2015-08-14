@@ -11,8 +11,9 @@ namespace WebApplication.Migrations
                 "dbo.SiteCircumstances",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        SiteId = c.Guid(nullable: false),
                         AuthorityDensity = c.Double(nullable: false),
+                        WardDensity = c.Double(nullable: false),
                         WardApproximatedSocialGradeAb = c.Int(nullable: false),
                         WardApproximatedSocialGradeC1 = c.Int(nullable: false),
                         WardApproximatedSocialGradeC2 = c.Int(nullable: false),
@@ -22,18 +23,16 @@ namespace WebApplication.Migrations
                         Longitude = c.Double(nullable: false),
                         GoogleRating = c.Double(),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.SiteId)
+                .ForeignKey("dbo.Sites", t => t.SiteId)
+                .Index(t => t.SiteId);
             
-            AddColumn("dbo.Sites", "SiteCircumstance_Id", c => c.Guid());
-            CreateIndex("dbo.Sites", "SiteCircumstance_Id");
-            AddForeignKey("dbo.Sites", "SiteCircumstance_Id", "dbo.SiteCircumstances", "Id");
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Sites", "SiteCircumstance_Id", "dbo.SiteCircumstances");
-            DropIndex("dbo.Sites", new[] { "SiteCircumstance_Id" });
-            DropColumn("dbo.Sites", "SiteCircumstance_Id");
+            DropForeignKey("dbo.SiteCircumstances", "SiteId", "dbo.Sites");
+            DropIndex("dbo.SiteCircumstances", new[] { "SiteId" });
             DropTable("dbo.SiteCircumstances");
         }
     }

@@ -76,11 +76,15 @@
             // Prepare the data table
             var incomeChartData = new google.visualization.DataTable();
             incomeChartData.addColumn('date', 'Month');
-            incomeChartData.addColumn('number', 'Admissions');
+            incomeChartData.addColumn('number', 'Admissions Inome');
+            incomeChartData.addColumn('number', 'Projected');
+            incomeChartData.addColumn('number', 'Upper Projected');
             for (var i = 0; i < months.length; i++) {
                 incomeChartData.addRow([
                     new Date(months[i].MonthTime),
-                    months[i].IncomeAdmissions
+                    months[i].IncomeAdmissions,
+                    months[i].IncomeAdmissionsModel,
+                    months[i].IncomeAdmissionsModelUpper
                 ]);
             }
             // Instantiate and draw our chart, passing in some options
@@ -91,7 +95,7 @@
                 height: 300,
                 chartArea: { width: '50%' },
                 hAxis: { format: 'MMM-yyyy' },
-                vAxis: { title: "Income" }
+                vAxis: { title: "Admissions Income" }
             });
         }
 

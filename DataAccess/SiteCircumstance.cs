@@ -1,15 +1,18 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
- 
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace DataAccess
 {
     public class SiteCircumstance
     {
-        [Key]
-        public virtual Guid Id { get; set; } 
+        [Key, ForeignKey("Site")]
+        public virtual Guid SiteId { get; set; }
+        public virtual Site Site { get; set; }
 
         //// ONS Data
         public virtual Double AuthorityDensity { get; set; }
+        public virtual Double WardDensity { get; set; }
         public virtual int WardApproximatedSocialGradeAb { get; set; }
         public virtual int WardApproximatedSocialGradeC1 { get; set; }
         public virtual int WardApproximatedSocialGradeC2 { get; set; }

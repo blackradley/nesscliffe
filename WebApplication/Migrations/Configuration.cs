@@ -52,9 +52,13 @@ namespace WebApplication.Migrations
 
                     foreach (SiteCircumstance siteCircumstance in siteCircumstances)
                     {
-                        Site site = context.Sites.Find(siteCircumstance.Id);
-                        // You can only enter data for sites that are already there so
-                        if (site != null) context.SiteCircumstances.AddOrUpdate(siteCircumstance);
+                        Site site = context.Sites.Find(siteCircumstance.SiteId);
+                        // You can only enter data for sites that are already there so...
+                        if (site != null)
+                        {
+                            siteCircumstance.Site = site;
+                            context.SiteCircumstances.AddOrUpdate(siteCircumstance);
+                        }
                     }
                     context.SaveChanges();
                 }

@@ -74,8 +74,7 @@ namespace DataAccess
         public virtual int? VisitorsMember { get; set; }
         [Display(Name = "Schools Visitors", Description = "How many school visitors came to your site this month?")]
         public virtual int? VisitorsSchool { get; set; }
-        [Display(Name = "Admission Income", Description = "What was the gross income (not profit) from visitor admissions this month? Excluding VAT")]
-        public virtual int? IncomeAdmissions { get; set; }
+        #region Visitor Calculations
         public int VisitorsTotal
         {
             get
@@ -123,6 +122,45 @@ namespace DataAccess
                 return Math.Round(visitorsTotal.PredictedUpper);
             }
         }
+        #endregion
+
+        [Display(Name = "Admission Income", Description = "What was the gross income (not profit) from visitor admissions this month? Excluding VAT")]
+        public virtual int? IncomeAdmissions { get; set; }
+        #region Admission Calculations
+        private AdmissionsIncomeTotal _admissionsIncomeTotal
+        {
+            get
+            {
+                var admissionsIncomeTotal = new AdmissionsIncomeTotal();
+                admissionsIncomeTotal.VisitorsTotal = this.VisitorsTotal;
+                admissionsIncomeTotal.AreaIndoorSquareMetres = this.Site.AreaIndoorSquareMetres;
+                admissionsIncomeTotal.WardDensity = this.Site.SiteCircumstance.WardDensity;
+                admissionsIncomeTotal.WardApproximatedSocialGradeC2 =
+                    this.Site.SiteCircumstance.WardApproximatedSocialGradeC2;
+                admissionsIncomeTotal.MarketingEffort = Convert.ToInt32(this.MarketingEffort ?? 0);
+                admissionsIncomeTotal.IsRefreshment = Convert.ToInt32(this.IsRefreshment ?? true);
+                return admissionsIncomeTotal;
+            }
+        }
+
+        public double IncomeAdmissionsModel
+        {
+            get
+            {
+                var admissionsIncomeTotal = this._admissionsIncomeTotal;
+                return Math.Round(admissionsIncomeTotal.Predicted);
+            }
+        }
+
+        public double IncomeAdmissionsModelUpper
+        {
+            get
+            {
+                var admissionsIncomeTotal = this._admissionsIncomeTotal;
+                return Math.Round(admissionsIncomeTotal.Predicted);
+            }
+        }
+        #endregion
 
         [Display(Name = "Not with Family", Description = "What percentage of visitors were not with a family? If you don't know please estimate")]
         public virtual int VisitorsPercentNoFamily { get; set; }

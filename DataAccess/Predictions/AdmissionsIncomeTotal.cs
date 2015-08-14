@@ -35,17 +35,39 @@ namespace DataAccess.Predictions
         private const double IsRefreshmentCoeff = 6.791e-01;
         private const double ResidualStandardError = 0.4234;
 
+        public double Predicted
+        {
+            get
+            {
+                return Math.Exp(PredictionEquation);
+            }
+        }
+
+        public double PredictedUpper
+        {
+            get
+            {
+                // Estimate the standard error of prediction by inflating it by 10%
+                const double standardErrorOfPrediction = ResidualStandardError * 1.1;
+                // t value for a 95% prediction interval with 77 degrees of freedom
+                const double tValue = 1.99125441;
+                const double marginOfError = standardErrorOfPrediction * tValue;
+                return Math.Exp(PredictionEquation + marginOfError);
+            }
+        }
+
         private double PredictionEquation
         {
             get
             {
-                const double marginOfError = (ResidualStandardError * 1.1) * 2;
-           
+                var visitorsTotal = VisitorsTotal * VisitorsTotalCoeff;
                 var areaIndoorMetres = AreaIndoorSquareMetres * AreaIndoorMetresCoeff;
-
+                var wardDensity = WardDensity * WardDensityCoeff;
+                var wardApproximatedSocialGradeC2 = WardApproximatedSocialGradeC2 * WardApproximatedSocialGradeC2Coeff;
+                var marketingEffortCoeff = MarketingEffort * MarketingEffortCoeff;
                 var isRefreshment = IsRefreshment * IsRefreshmentCoeff;
-                return Intercept +
-                    areaIndoorMetres + isRefreshment + marginOfError;
+                return Intercept + visitorsTotal + wardDensity + wardApproximatedSocialGradeC2 +
+                    marketingEffortCoeff + areaIndoorMetres + isRefreshment;
             }
         }
 

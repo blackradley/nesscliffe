@@ -24,7 +24,6 @@ namespace WebApplication.Infrastructure
             get { return SiteCircumstances; }
         }
 
-
         IQueryable<Month> ISitesDataSource.Months
         {
             get { return Months; }
