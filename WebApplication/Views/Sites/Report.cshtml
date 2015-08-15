@@ -17,7 +17,7 @@
 <div id="incomeChart" style="width: 700px; height: 300px;">
 </div>  
 
-<h3>Retail Spend Per Visitor</h3>
+<h3>Retail Income Per Visitor</h3>
 <div id="retailIncomePerVisitorChart" style="width: 700px; height: 300px;">
 </div>  
 
@@ -121,6 +121,33 @@
             // Instantiate and draw our chart, passing in some options
             var incomePerVisitorChart = new google.visualization.LineChart(document.getElementById('retailIncomePerVisitorChart'));
             incomePerVisitorChart.draw(retailIncomePerVisitorChartData,
+            {
+                width: 700,
+                height: 300,
+                chartArea: { width: '50%' },
+                hAxis: { format: 'MMM-yyyy' },
+                vAxis: { title: "Retail Income Per Visitor" }
+            });
+        }
+
+        function makeRefreshmentIncomePerVisitorChart(months) {
+            // Prepare the data table
+            var refreshmentIncomePerVisitorChartData = new google.visualization.DataTable();
+            refreshmentIncomePerVisitorChartData.addColumn('date', 'Month');
+            refreshmentIncomePerVisitorChartData.addColumn('number', 'Retail Income Per Visitor');
+            refreshmentIncomePerVisitorChartData.addColumn('number', 'Projected');
+            refreshmentIncomePerVisitorChartData.addColumn('number', 'Upper Projected');
+            for (var i = 0; i < months.length; i++) {
+                refreshmentIncomePerVisitorChartData.addRow([
+                    new Date(months[i].MonthTime),
+                    months[i].RefreshmentIncomePerVisitor,
+                    months[i].RefreshmentIncomePerVisitorModel,
+                    months[i].RefreshmentIncomePerVisitorModelUpper
+                ]);
+            }
+            // Instantiate and draw our chart, passing in some options
+            var incomePerVisitorChart = new google.visualization.LineChart(document.getElementById('refreshmentIncomePerVisitorChart'));
+            incomePerVisitorChart.draw(refreshmentIncomePerVisitorChartData,
             {
                 width: 700,
                 height: 300,

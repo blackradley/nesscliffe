@@ -62,7 +62,7 @@
     <Compile Include="Month.cs" />
     <Compile Include="Predictions\AdmissionsIncomeTotal.cs" />
     <Compile Include="Predictions\IPrediction.cs" />
-    <Compile Include="Predictions\RefreshmentSpendPerVisitor.cs" />
+    <Compile Include="Predictions\RefreshmentIncomePerVisitor.cs" />
     <Compile Include="Predictions\RetailIncomePerVisitor.cs" />
     <Compile Include="Predictions\VisitorsTotal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

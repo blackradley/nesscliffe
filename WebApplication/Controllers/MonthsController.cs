@@ -1,11 +1,9 @@
-﻿ using System.Web;
- using DataAccess;
-using Microsoft.AspNet.Identity;
+﻿using System.Web;
+using DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Web.Mvc;
 using WebApplication.Infrastructure;
 using WebApplication.Models;

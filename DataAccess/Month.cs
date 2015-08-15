@@ -25,7 +25,7 @@ namespace DataAccess
                 var incomeTotal = this.IncomeAdmissions ?? default(int);
                 incomeTotal += this.IncomeRetail ?? default(int);
                 incomeTotal += this.IncomeRefreshment ?? default(int);
-                incomeTotal += this.IncomeDonation ?? default(int);
+                incomeTotal += this.IncomeDonation ?? default(int); 
                 incomeTotal += this.IncomeAdditionalEvents ?? default(int);
                 return incomeTotal;
             }
@@ -200,14 +200,11 @@ namespace DataAccess
         [Range(minimum: 0, maximum: 24, ErrorMessage = "Enter between 0 and 24 hours")]
         public virtual float HoursSunday { get; set; }
 
-
-
         #endregion
 
         #region SHOPPING
         [Display(Name = "Do you have a shop?", Description = "Was there a shop or retail outlet open on your site this month?")]
         public virtual bool? IsRetail { get; set; }
-
         [Display(Name = "Retail Income", Description = "How much was your retail gross income (not profit) this month? Excluding VAT")]
         public virtual int? IncomeRetail { get; set; }
         [Display(Name = "Shop behind pay barrier?", Description = "Do visitors have to pay to get to the shop?")]
@@ -226,8 +223,59 @@ namespace DataAccess
         public virtual int? NumberProducts { get; set; }
         [Display(Name = "Exhibition Related Products", Description = "How many of those product lines are directly related to your exhibitions this month?")]
         public virtual int? PercentageRelatedProducts { get; set; }
+        #region Retail Income Calculations
+
+        public double RetailIncomePerVisitor
+        {
+            get
+            {
+                // if the retail income is empty assume it is zero
+                var incomeRetail = this.IncomeRetail ?? 2000; 
+                return Convert.ToDouble(incomeRetail / this.VisitorsTotal);
+            }
+        }
+
+        // TODO: Move the type convertions into the prediction object.
+        private RetailIncomePerVisitor _retailIncomePerVisitor
+        {
+            get
+            {
+                var retailIncomePerVisitor = new RetailIncomePerVisitor
+                {
+                    VisitorsTotal = this.VisitorsTotal, 
+                    IsPayToEnter = (this.IncomeAdmissions > 0) ? 1: 0, 
+                    IsArtsCentre = Convert.ToInt32(this.Site.IsArtsCentre), 
+                    IsMuseum = Convert.ToInt32(this.Site.IsMuseum), 
+                    IsWebsitePresent = String.IsNullOrWhiteSpace(this.WebsiteUrl) ? 0: 1, 
+                    PayToShop = Convert.ToInt32(this.PayToShop), 
+                    ShopVisibleFromEntrance = Convert.ToInt32(this.ShopVisibleFromEntrance), 
+                    IncomeRefreshment = Convert.ToDouble(this.IncomeRefreshment), 
+                    IsAdditionalEvents = Convert.ToInt32(this.IsAdditionalEvents)
+                };
+                return retailIncomePerVisitor;
+            }
+        }
+        public double RetailIncomePerVisitorModel
+        {
+            get
+            {
+                var retailIncomePerVisitor = this._retailIncomePerVisitor;
+                return Math.Round(retailIncomePerVisitor.Predicted);
+            }
+        }
+
+        public double RetailIncomePerVisitorModelUpper
+        {
+            get
+            {
+                var retailIncomePerVisitor = this._retailIncomePerVisitor;
+                return Math.Round(retailIncomePerVisitor.PredictedUpper);
+            }
+        }
+
         #endregion
-        
+        #endregion
+
         #region REFRESHMENT
 
         [Display(Name = "Refreshments Available?", Description = "Did you provide refreshments for visitors this month?")]
@@ -277,8 +325,19 @@ namespace DataAccess
         public virtual bool IsCateringInHouse { get; set; }
         [Display(Name = "Out sourced", Description = "Are the refreshments out sourced to another organisation?")]
         public virtual bool IsCateringOutSourced { get; set; }
+        #region Refreshment Income Calculations
+        public double RefreshmentIncomePerVisitor
+        {
+            get
+            {
+                // if the retail income is empty assume it is zero
+                var incomeRefreshment = this.IncomeRefreshment ?? 2000;
+                return Convert.ToDouble(incomeRefreshment / this.VisitorsTotal);
+            }
+        }
         #endregion
-        
+        #endregion
+
         #region DONATION
         [Display(Name = "Donation Opportunity?", Description = "Do you provide visitors with opportunites to make donations?")]
         public virtual bool? IsDonationOpportunity { get; set; }

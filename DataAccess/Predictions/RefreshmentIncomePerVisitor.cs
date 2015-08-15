@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Predictions
 {
-    class RefreshmentSpendPerVisitor
+    internal class RefreshmentIncomePerVisitor : IPrediction
     {
         /*
          * lm(formula = log(IncomeRefreshmentPerVisitor) ~ IsPark + IsHistoricHouse + 
@@ -32,6 +32,15 @@ namespace DataAccess.Predictions
          * Residual standard error: 0.696 on 205 degrees of freedom
          * Multiple R-squared:  0.8146,	Adjusted R-squared:  0.8028 
          * F-statistic: 69.28 on 13 and 205 DF,  p-value: < 2.2e-16
-         */ 
+         */
+        double IPrediction.Predicted
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        double IPrediction.PredictedUpper
+        {
+            get { throw new NotImplementedException(); }
+        }
     }
 }
