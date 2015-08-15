@@ -18,11 +18,11 @@
 </div>  
 
 <h3>Retail Spend Per Visitor</h3>
-<div id="retailSpendPerVisitorChart" style="width: 700px; height: 300px;">
+<div id="retailIncomePerVisitorChart" style="width: 700px; height: 300px;">
 </div>  
 
 <h3>Refreshment Spend Per Visitor</h3>
-<div id="refreshmentSpendPerVisitorChart" style="width: 700px; height: 300px;">
+<div id="refreshmentIncomePerVisitorChart" style="width: 700px; height: 300px;">
 </div> 
 
 @section scripts
@@ -42,8 +42,8 @@
                 success: function(siteData) {
                     var months = siteData.Months;
                     makeVisitorsChart(months);
-                    makeIncomeChart(months);
-                    makeIncomePerVisitorChart(months);
+                    makeAdmissionIncomeChart(months);
+                    makeRetailIncomePerVisitorChart(months);
                 },
                 error: function() {
                     alert("Error loading data! Please try again.");
@@ -76,7 +76,7 @@
             });
         }
 
-        function makeIncomeChart(months) {
+        function makeAdmissionIncomeChart(months) {
             // Prepare the data table
             var incomeChartData = new google.visualization.DataTable();
             incomeChartData.addColumn('date', 'Month');
@@ -103,20 +103,24 @@
             });
         }
 
-        function makeIncomePerVisitorChart(months) {
+        function makeRetailIncomePerVisitorChart(months) {
             // Prepare the data table
-            var incomePerVisitorChartData = new google.visualization.DataTable();
-            incomePerVisitorChartData.addColumn('date', 'Month');
-            incomePerVisitorChartData.addColumn('number', 'Retail');
+            var retailIncomePerVisitorChartData = new google.visualization.DataTable();
+            retailIncomePerVisitorChartData.addColumn('date', 'Month');
+            retailIncomePerVisitorChartData.addColumn('number', 'Retail Income Per Visitor');
+            retailIncomePerVisitorChartData.addColumn('number', 'Projected');
+            retailIncomePerVisitorChartData.addColumn('number', 'Upper Projected');
             for (var i = 0; i < months.length; i++) {
-                incomePerVisitorChartData.addRow([
+                retailIncomePerVisitorChartData.addRow([
                     new Date(months[i].MonthTime),
-                    round(months[i].IncomeRetail / months[i].VisitorsTotal)
+                    months[i].RetailIncomePerVisitor,
+                    months[i].RetailIncomePerVisitorModel,
+                    months[i].RetailIncomePerVisitorModelUpper
                 ]);
             }
             // Instantiate and draw our chart, passing in some options
-            var incomePerVisitorChart = new google.visualization.LineChart(document.getElementById('incomePerVisitorChart'));
-            incomePerVisitorChart.draw(incomePerVisitorChartData,
+            var incomePerVisitorChart = new google.visualization.LineChart(document.getElementById('retailIncomePerVisitorChart'));
+            incomePerVisitorChart.draw(retailIncomePerVisitorChartData,
             {
                 width: 700,
                 height: 300,

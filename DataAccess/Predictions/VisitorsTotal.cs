@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DataAccess.Predictions
 {
-    class VisitorsTotal
+    class VisitorsTotal : IPrediction
     {
         /* 
          * lm(formula = log(VisitorsTotal) ~ Month + IsMuseum + IsCastle + 

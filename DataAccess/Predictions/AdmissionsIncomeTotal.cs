@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess.Predictions
 {
-    class AdmissionsIncomeTotal
+    internal class AdmissionsIncomeTotal : IPrediction
     {
         /*
          * lm(formula = log(IncomeAdmissions) ~ VisitorsTotal + AreaIndoorMetres + 
@@ -37,10 +33,7 @@ namespace DataAccess.Predictions
 
         public double Predicted
         {
-            get
-            {
-                return Math.Exp(PredictionEquation);
-            }
+            get { return Math.Exp(PredictionEquation); }
         }
 
         public double PredictedUpper
@@ -48,10 +41,10 @@ namespace DataAccess.Predictions
             get
             {
                 // Estimate the standard error of prediction by inflating it by 10%
-                const double standardErrorOfPrediction = ResidualStandardError * 1.1;
+                const double standardErrorOfPrediction = ResidualStandardError*1.1;
                 // t value for a 95% prediction interval with 77 degrees of freedom
                 const double tValue = 1.99125441;
-                const double marginOfError = standardErrorOfPrediction * tValue;
+                const double marginOfError = standardErrorOfPrediction*tValue;
                 return Math.Exp(PredictionEquation + marginOfError);
             }
         }
@@ -63,19 +56,18 @@ namespace DataAccess.Predictions
                 var visitorsTotal = VisitorsTotal * VisitorsTotalCoeff;
                 var areaIndoorMetres = AreaIndoorSquareMetres * AreaIndoorMetresCoeff;
                 var wardDensity = WardDensity * WardDensityCoeff;
-                var wardApproximatedSocialGradePercentageC2 = 
-                    (WardApproximatedSocialGradeC2 / WardApproximatedSocialGradeAllCategories) 
+                var wardApproximatedSocialGradePercentageC2 =
+                    (WardApproximatedSocialGradeC2 / WardApproximatedSocialGradeAllCategories)
                     * WardApproximatedSocialGradeC2Coeff;
                 var marketingEffort = MarketingEffort * MarketingEffortCoeff;
                 var isRefreshment = IsRefreshment * IsRefreshmentCoeff;
                 return Intercept + visitorsTotal + wardDensity + wardApproximatedSocialGradePercentageC2 +
-                    marketingEffort + areaIndoorMetres + isRefreshment;
+                       marketingEffort + areaIndoorMetres + isRefreshment;
             }
         }
 
-
         // Properties
-        public int VisitorsTotal  { get; set; }
+        public int VisitorsTotal { get; set; }
         public double AreaIndoorSquareMetres { get; set; }
         public double WardDensity { get; set; }
         public double WardApproximatedSocialGradeAllCategories { get; set; }
