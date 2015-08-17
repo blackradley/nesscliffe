@@ -230,7 +230,8 @@ namespace DataAccess
             get
             {
                 // if the retail income is empty assume it is zero
-                var incomeRetail = this.IncomeRetail ?? 2000; 
+                // cast the values to doubles, otherwise you get integer division
+                var incomeRetail = Convert.ToDouble(this.IncomeRetail ?? 0); 
                 return Convert.ToDouble(incomeRetail / this.VisitorsTotal);
             }
         }
@@ -260,7 +261,7 @@ namespace DataAccess
             get
             {
                 var retailIncomePerVisitor = this._retailIncomePerVisitor;
-                return Math.Round(retailIncomePerVisitor.Predicted);
+                return Math.Round(retailIncomePerVisitor.Predicted, 2);
             }
         }
 
@@ -269,7 +270,7 @@ namespace DataAccess
             get
             {
                 var retailIncomePerVisitor = this._retailIncomePerVisitor;
-                return Math.Round(retailIncomePerVisitor.PredictedUpper);
+                return Math.Round(retailIncomePerVisitor.PredictedUpper, 2);
             }
         }
 
