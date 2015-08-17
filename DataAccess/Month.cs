@@ -327,15 +327,61 @@ namespace DataAccess
         [Display(Name = "Out sourced", Description = "Are the refreshments out sourced to another organisation?")]
         public virtual bool IsCateringOutSourced { get; set; }
         #region Refreshment Income Calculations
+
         public double RefreshmentIncomePerVisitor
         {
             get
             {
-                // if the retail income is empty assume it is zero
-                var incomeRefreshment = this.IncomeRefreshment ?? 2000;
+                // if the refreshment income is empty assume it is zero
+                // cast the values to doubles to avoid integer division
+                var incomeRefreshment = Convert.ToDouble(this.IncomeRefreshment ?? 0);
                 return Convert.ToDouble(incomeRefreshment / this.VisitorsTotal);
             }
         }
+
+        private RefreshmentIncomePerVisitor _refreshmentIncomePerVisitor
+        {
+            get
+            {
+                var refreshmentIncomePerVisitor = new RefreshmentIncomePerVisitor
+                {
+                    IsPark = Convert.ToInt32(this.Site.IsPark), 
+                    IsHistoricHouse = Convert.ToInt32(this.Site.IsHistoricHouse), 
+                    IsWorldHeritageSite = Convert.ToInt32(this.Site.IsWorldHeritageSite), 
+                    GoogleRating = this.Site.SiteCircumstance.GoogleRating ?? 4.5, // Assume 4.5 if not given
+                    AuthorityDensity = this.Site.SiteCircumstance.AuthorityDensity, 
+                    IncomeRetail = this.IncomeRetail ?? 0, // Assume no income if not given
+                    VisitorsTotal = this.VisitorsTotal,
+                    IsVending = Convert.ToInt32(this.IsVending), 
+                    IsTableService = Convert.ToInt32(this.IsTableService), 
+                    IsTeaAndCoffee = Convert.ToInt32(this.IsTeaAndCoffee), 
+                    IsCakeAndBiscuit = Convert.ToInt32(this.IsCakeAndBiscuit),
+                    IsFullMeal = Convert.ToInt32(this.IsFullMeal), 
+                    IsVegetarian = Convert.ToInt32(this.IsVegetarian), 
+                    IsAlcohol = Convert.ToInt32(this.IsAlcohol)
+                };
+                return refreshmentIncomePerVisitor;
+            }
+        }
+
+        public double RefreshmentIncomePerVisitorModel
+        {
+            get
+            {
+                var refreshmentIncomePerVisitor = this._refreshmentIncomePerVisitor;
+                return Math.Round(refreshmentIncomePerVisitor.Predicted, 2);
+            }
+        }
+
+        public double RefreshmentIncomePerVisitorModelUpper
+        {
+            get
+            {
+                var refreshmentIncomePerVisitor = this._refreshmentIncomePerVisitor;
+                return Math.Round(refreshmentIncomePerVisitor.PredictedUpper, 2);
+            }
+        }
+
         #endregion
         #endregion
 

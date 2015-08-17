@@ -44,6 +44,7 @@
                     makeVisitorsChart(months);
                     makeAdmissionIncomeChart(months);
                     makeRetailIncomePerVisitorChart(months);
+                    makeRefreshmentIncomePerVisitorChart(months);
                 },
                 error: function() {
                     alert("Error loading data! Please try again.");
@@ -134,7 +135,7 @@
             // Prepare the data table
             var refreshmentIncomePerVisitorChartData = new google.visualization.DataTable();
             refreshmentIncomePerVisitorChartData.addColumn('date', 'Month');
-            refreshmentIncomePerVisitorChartData.addColumn('number', 'Retail Income Per Visitor');
+            refreshmentIncomePerVisitorChartData.addColumn('number', 'Refreshment Income Per Visitor');
             refreshmentIncomePerVisitorChartData.addColumn('number', 'Projected');
             refreshmentIncomePerVisitorChartData.addColumn('number', 'Upper Projected');
             for (var i = 0; i < months.length; i++) {

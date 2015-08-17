@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess.Predictions
 {
@@ -33,14 +29,78 @@ namespace DataAccess.Predictions
          * Multiple R-squared:  0.8146,	Adjusted R-squared:  0.8028 
          * F-statistic: 69.28 on 13 and 205 DF,  p-value: < 2.2e-16
          */
-        double IPrediction.Predicted
+
+        private const double Intercept = -2.177394;
+        private const double IsParkCoeff = 2.559747;
+        private const double IsHistoricHouseCoeff = -0.965542;
+        private const double IsWorldHeritageSiteCoeff = -2.588189;
+        private const double GoogleRatingCoeff = 0.145827;
+        private const double AuthorityDensityCoeff = 0.031766;
+        private const double IncomeRetailPerVisitorCoeff = 0.101346;
+        private const double IsVendingCoeff = -0.881318;
+        private const double IsTableServiceCoeff = -1.105066;
+        private const double IsTeaAndCoffeeCoeff = 1.498023;
+        private const double IsCakeAndBiscuitCoeff = -1.189001;
+        private const double IsFullMealCoeff = 1.011851;
+        private const double IsVegetarianCoeff = 1.219496;
+        private const double IsAlcoholCoeff = -0.654251;
+        private const double ResidualStandardError = 0.696;
+
+
+
+        public double Predicted
         {
-            get { throw new NotImplementedException(); }
+            get { return Math.Exp(PredictionEquation); }
         }
 
-        double IPrediction.PredictedUpper
+        public double PredictedUpper
         {
-            get { throw new NotImplementedException(); }
+            get
+            { // Estimate the standard error of prediction by inflating it by 10%
+                const double standardErrorOfPrediction = ResidualStandardError * 1.1;
+                // t value for a 95% prediction interval with 205 degrees of freedom
+                const double tValue = 1.97160351;
+                const double marginOfError = standardErrorOfPrediction * tValue;
+                return Math.Exp(PredictionEquation + marginOfError);
+            }
         }
+
+        private double PredictionEquation
+        {
+            get
+            {
+                var isPark = IsPark * IsParkCoeff;
+                var isHistoricHouse = IsHistoricHouse * IsHistoricHouseCoeff;
+                var isWorldHeritageSite = IsWorldHeritageSite * IsWorldHeritageSiteCoeff;
+                var googleRating = GoogleRating * GoogleRatingCoeff;
+                var authorityDensity = AuthorityDensity * AuthorityDensityCoeff;
+                var incomeRetailPerVisitor = (IncomeRetail / VisitorsTotal) * IncomeRetailPerVisitorCoeff;
+                var isVending = IsVending * IsVendingCoeff;
+                var isTableService = IsTableService * IsTableServiceCoeff;
+                var isTeaAndCoffee = IsTeaAndCoffee * IsTeaAndCoffeeCoeff;
+                var isCakeAndBiscuit = IsCakeAndBiscuit * IsCakeAndBiscuitCoeff;
+                var isFullMeal = IsFullMeal * IsFullMealCoeff;
+                var isVegetarian = IsVegetarian * IsVegetarianCoeff;
+                var isAlcohol = IsAlcohol * IsAlcoholCoeff;
+                return Intercept + isPark + isHistoricHouse + isWorldHeritageSite + googleRating +
+                    authorityDensity + incomeRetailPerVisitor + isVending + isTableService +
+                    isTeaAndCoffee + isCakeAndBiscuit + isFullMeal + isVegetarian + isAlcohol;
+            }
+        }
+
+        public int IsPark { get; set; }
+        public int IsHistoricHouse { get; set; }
+        public int IsWorldHeritageSite { get; set; }
+        public double GoogleRating { get; set; }
+        public double AuthorityDensity { get; set; }
+        public double IncomeRetail { get; set; }
+        public double VisitorsTotal { get; set; }
+        public int IsVending { get; set; }
+        public int IsTableService { get; set; }
+        public int IsTeaAndCoffee { get; set; }
+        public int IsCakeAndBiscuit { get; set; }
+        public int IsFullMeal { get; set; }
+        public int IsVegetarian { get; set; }
+        public int IsAlcohol { get; set; }
     }
 }
