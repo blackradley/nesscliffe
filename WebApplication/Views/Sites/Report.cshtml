@@ -1,27 +1,27 @@
-﻿@using System.Activities.Expressions
-@using Localization
-@using WebApplication.Helpers
+﻿@using Localization
 @model DataAccess.Site
 @{
-    ViewBag.Title = Model.Name;
+    ViewBag.Title = Model.Name; 
     ViewBag.Link = Html.ActionLink("Back to " + Resources.LabelMonthsList, "Index", "Months", new {id = Model.Id}, null);
 }
 @Html.Partial("_PageTitlePartial")
 @Html.Partial("_SiteDetailsPartial", @Model)
 
-<h3>Visitors</h3>
+<h3>Bench Marking Comparisons</h3>
+
+<h4>Visitors</h4>
 <div id="visitorsChart" style="width: 700px; height: 300px;">
 </div> 
 
-<h3>Admissions Income</h3>
+<h4>Admissions Income</h4>
 <div id="incomeChart" style="width: 700px; height: 300px;">
 </div>  
 
-<h3>Retail Income Per Visitor</h3>
+<h4>Retail Income Per Visitor</h4>
 <div id="retailIncomePerVisitorChart" style="width: 700px; height: 300px;">
 </div>  
 
-<h3>Refreshment Spend Per Visitor</h3>
+<h4>Refreshment Spend Per Visitor</h4>
 <div id="refreshmentIncomePerVisitorChart" style="width: 700px; height: 300px;">
 </div> 
 
@@ -56,8 +56,8 @@
             var visitorsChartData = new google.visualization.DataTable();
             visitorsChartData.addColumn('date', 'Month');
             visitorsChartData.addColumn('number', 'Total Visitors');
-            visitorsChartData.addColumn('number', 'Projected');
-            visitorsChartData.addColumn('number', 'Upper Projected');
+            visitorsChartData.addColumn('number', 'Average');
+            visitorsChartData.addColumn('number', '95th Percentile');
             for (var i = 0; i < months.length; i++) {
                 visitorsChartData.addRow([new Date(months[i].MonthTime),
                     months[i].VisitorsTotal,
@@ -82,8 +82,8 @@
             var incomeChartData = new google.visualization.DataTable();
             incomeChartData.addColumn('date', 'Month');
             incomeChartData.addColumn('number', 'Admissions Inome');
-            incomeChartData.addColumn('number', 'Projected');
-            incomeChartData.addColumn('number', 'Upper Projected');
+            incomeChartData.addColumn('number', 'Average');
+            incomeChartData.addColumn('number', '95th Percentile');
             for (var i = 0; i < months.length; i++) {
                 incomeChartData.addRow([
                     new Date(months[i].MonthTime),
@@ -109,8 +109,8 @@
             var retailIncomePerVisitorChartData = new google.visualization.DataTable();
             retailIncomePerVisitorChartData.addColumn('date', 'Month');
             retailIncomePerVisitorChartData.addColumn('number', 'Retail Income Per Visitor');
-            retailIncomePerVisitorChartData.addColumn('number', 'Projected');
-            retailIncomePerVisitorChartData.addColumn('number', 'Upper Projected');
+            retailIncomePerVisitorChartData.addColumn('number', 'Average');
+            retailIncomePerVisitorChartData.addColumn('number', '95th Percentile');
             for (var i = 0; i < months.length; i++) {
                 retailIncomePerVisitorChartData.addRow([
                     new Date(months[i].MonthTime),
@@ -136,8 +136,8 @@
             var refreshmentIncomePerVisitorChartData = new google.visualization.DataTable();
             refreshmentIncomePerVisitorChartData.addColumn('date', 'Month');
             refreshmentIncomePerVisitorChartData.addColumn('number', 'Refreshment Income Per Visitor');
-            refreshmentIncomePerVisitorChartData.addColumn('number', 'Projected');
-            refreshmentIncomePerVisitorChartData.addColumn('number', 'Upper Projected');
+            refreshmentIncomePerVisitorChartData.addColumn('number', 'Average');
+            refreshmentIncomePerVisitorChartData.addColumn('number', '95th Percentile');
             for (var i = 0; i < months.length; i++) {
                 refreshmentIncomePerVisitorChartData.addRow([
                     new Date(months[i].MonthTime),

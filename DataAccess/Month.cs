@@ -236,7 +236,7 @@ namespace DataAccess
             }
         }
 
-        // TODO: Move the type convertions into the prediction object.
+        // TODO: Move the type conversions into the prediction object.
         private RetailIncomePerVisitor _retailIncomePerVisitor
         {
             get
