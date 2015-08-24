@@ -49,7 +49,7 @@ namespace DataAccess
         public virtual bool NationalRadio { get; set; }
         [Display(Name = "Regional Newspaper", Description = "Has your been site featured in a regional newspaper or magazine?")]
         public virtual bool RegionalNewsPaper { get; set; }
-        [Display(Name = "National Radio", Description = "Has your site featured in a national newspaper or magazine?")]
+        [Display(Name = "National Newspaper", Description = "Has your site featured in a national newspaper or magazine?")]
         public virtual bool NationalNewsPaper { get; set; }
 
         [Display(Name = "Website Url", Description = "What is your web site address?")]
