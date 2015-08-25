@@ -96,6 +96,18 @@ namespace DataAccess.Predictions
             }
         }
 
+        // Default values for an 'average' site
+        public VisitorsTotal()
+        {
+            this.MonthNumber = 1;
+            this.IsMuseum = 1;
+            this.IsCastle = 0;
+            this.IsWorldHeritageSite = 0;
+            this.AreaIndoorSquareMetres = 2000;
+            this.IsWebsitePresent = 1;
+            this.IsRefreshment = 1;
+        }
+
         // Properties. 
         public int MonthNumber { get; set; }
         public int IsMuseum { get; set; }

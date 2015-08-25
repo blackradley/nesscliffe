@@ -87,10 +87,17 @@ namespace DataAccess
             }
         }
 
+        /// <summary>
+        /// Calculations for the total number of visitors require the month
+        /// and the site.
+        /// </summary>
         private VisitorsTotal _visitorsTotal
         {
             get
             {
+                // When the month is being saved the site is null so this calculation
+                // throws an exception.
+                if (this.Site == null) return new VisitorsTotal();
                 var visitorsTotal = new VisitorsTotal
                 {
                     MonthNumber = this.MonthTime.Month,
@@ -131,6 +138,7 @@ namespace DataAccess
         {
             get
             {
+                if (this.Site == null) return new AdmissionsIncomeTotal();
                 var admissionsIncomeTotal = new AdmissionsIncomeTotal
                 {
                     VisitorsTotal = this.VisitorsTotal,
@@ -241,6 +249,7 @@ namespace DataAccess
         {
             get
             {
+                if (this.Site == null) return new RetailIncomePerVisitor();
                 var retailIncomePerVisitor = new RetailIncomePerVisitor
                 {
                     VisitorsTotal = this.VisitorsTotal, 
@@ -343,6 +352,7 @@ namespace DataAccess
         {
             get
             {
+                if (this.Site == null) return new RefreshmentIncomePerVisitor();
                 var refreshmentIncomePerVisitor = new RefreshmentIncomePerVisitor
                 {
                     IsPark = Convert.ToInt32(this.Site.IsPark), 

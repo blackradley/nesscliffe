@@ -177,7 +177,6 @@ namespace WebApplication.Controllers
                 // The SiteId and MonthTime are in hidden field and should not be changed so...
                 entry.Property(e => e.SiteId).IsModified = false;
                 entry.Property(e => e.MonthTime).IsModified = false;
-                
 
                 _dataDb.SaveChanges();
                 if (submit == "Save")
