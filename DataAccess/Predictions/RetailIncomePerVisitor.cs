@@ -74,6 +74,20 @@ namespace DataAccess.Predictions
             }
         }
 
+        // Default values for an 'typical' site
+        public RetailIncomePerVisitor()
+        {
+            this.VisitorsTotal = 7632; // mean(df$VisitorsTotal)
+            this.IsPayToEnter = 0;
+            this.IsArtsCentre = 0;
+            this.IsMuseum = 1;
+            this.IsWebsitePresent = 1;
+            this.PayToShop = 0;
+            this.ShopVisibleFromEntrance = 1;
+            this.IncomeRefreshment = 6993; // mean(df$IncomeRefreshment)
+            this.IsAdditionalEvents = 0;
+        }
+
         // Properties
         public double VisitorsTotal { get; set; }
         public int IsPayToEnter { get; set; }

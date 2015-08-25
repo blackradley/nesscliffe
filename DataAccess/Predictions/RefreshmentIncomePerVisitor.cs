@@ -46,8 +46,6 @@ namespace DataAccess.Predictions
         private const double IsAlcoholCoeff = -0.654251;
         private const double ResidualStandardError = 0.696;
 
-
-
         public double Predicted
         {
             get { return Math.Exp(PredictionEquation); }
@@ -88,6 +86,26 @@ namespace DataAccess.Predictions
             }
         }
 
+        // Default values for an 'typical' site
+        public RefreshmentIncomePerVisitor()
+        {
+            this.IsPark = 0;
+            this.IsHistoricHouse = 0;
+            this.IsWorldHeritageSite = 0;
+            this.GoogleRating = 4.375524; // nzmean(df$GoogleRating)
+            this.AuthorityDensity = 16.17257; // mean(df$AuthorityDensity, na.rm=TRUE)
+            this.IncomeRetail = 8705; // mean(df$IncomeRetail)
+            this.VisitorsTotal = 7632; // mean(df$VisitorsTotal)
+            this.IsVending = 0;
+            this.IsTableService = 0;
+            this.IsTeaAndCoffee = 0;
+            this.IsCakeAndBiscuit = 0;
+            this.IsFullMeal = 0;
+            this.IsVegetarian = 0;
+            this.IsAlcohol = 0;
+        }
+
+        // Properties
         public int IsPark { get; set; }
         public int IsHistoricHouse { get; set; }
         public int IsWorldHeritageSite { get; set; }

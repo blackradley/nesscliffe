@@ -66,6 +66,20 @@ namespace DataAccess.Predictions
             }
         }
 
+        // Default values for an 'typical' site
+        public AdmissionsIncomeTotal()
+        {
+
+            this.VisitorsTotal = 7632; // mean(df$VisitorsTotal)
+            this.AreaIndoorSquareMetres = 2000;
+            this.WardDensity = 27.88779; // mean(df$WardDensity, na.rm=TRUE)
+            this.IsRefreshment = 1;
+            this.WardApproximatedSocialGradeAllCategories = 3437.436; // mean(df$WardAllCategories.ApproximatedSocialGrade, na.rm=TRUE)
+            this.WardApproximatedSocialGradeC2 = 0.1781268; // mean(df$WardApproximatedSocialGradeC2, na.rm=TRUE)
+            this.MarketingEffort = 0;
+            this.IsRefreshment = 0;
+        }
+
         // Properties
         public int VisitorsTotal { get; set; }
         public double AreaIndoorSquareMetres { get; set; }
