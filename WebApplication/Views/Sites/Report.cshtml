@@ -1,52 +1,94 @@
 ﻿@using Localization
 @model DataAccess.Site
 @{
-    ViewBag.Title = Model.Name; 
-    ViewBag.Link = Html.ActionLink("Back to " + Resources.LabelMonthsList, "Index", "Months", new {id = Model.Id}, null);
+    ViewBag.Title = Model.Name;
+    ViewBag.Link = Html.ActionLink("Back to " + Resources.LabelMonthsList, "Index", "Months", new { id = Model.Id }, null);
 }
 @Html.Partial("_PageTitlePartial")
 @Html.Partial("_SiteDetailsPartial", @Model)
 
-<h3>Bench Marking Comparisons</h3>
+<div class="row">
+    <div class="col-md-6">
+        <h3>Bench Marking Comparisons</h3>
+        <p>
+            Showing:
+            <ul>
+                <li>
+                    Your Actual (Current) performance; based on the data you entered;
+                </li>
+                <li>
+                    Your <b>Projected</b> performance – the prediction of how you ought to be performing based on the current performance of sites which share your characteristics;
+                </li>
+                <li>
+                    Your <b>Upper Projected</b> performance – the prediction of the level of performance you could expect to see if you implemented appropriate changes based on your existing configuration.
+                </li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="col-md-6">
+        <h3>Understanding Your Report</h3>
+        <p>
+            Understanding your reports and taking action:
+            <ul>
+                <li>
+                    <a href="@Url.Content("~/Content/Documents/Insight Resilience Toolkit 0 - Introduction.pdf")">Introduction</a>
+                </li>
+                <li>
+                    <a href="@Url.Content("~/Content/Documents/Insight Resilience Toolkit 1 - Fitness.pdf")">Fitness</a>
+                </li>
+                <li>
+                    <a href="@Url.Content("~/Content/Documents/Insight Resilience Toolkit 2 - Flexibility.pdf")">Flexibility</a>
+                </li>
+                <li>
+                    <a href="@Url.Content("~/Content/Documents/Insight Resilience Toolkit 3 - Strategic.pdf")">Strategic</a>
+                </li>
+                <li>
+                    <a href="@Url.Content("~/Content/Documents/Insight Resilience Toolkit 4 - Making Change Happen.pdf")">Making Change Happen</a>
+                </li>
+            </ul>
+        </p>
+    </div>
+</div>
 
 <h4>Visitors</h4>
 <div id="visitorsChart" style="width: 700px; height: 300px;">
-</div> 
+</div>
 
 <h4>Admissions Income</h4>
 <div id="incomeChart" style="width: 700px; height: 300px;">
-</div>  
+</div>
 
 <h4>Retail Income Per Visitor</h4>
 <div id="retailIncomePerVisitorChart" style="width: 700px; height: 300px;">
-</div>  
+</div>
 
 <h4>Refreshment Spend Per Visitor</h4>
 <div id="refreshmentIncomePerVisitorChart" style="width: 700px; height: 300px;">
-</div> 
+</div>
 
 @section scripts
 {
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>  
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
         google.load("visualization", "1", { packages: ["corechart"] });
-    </script>  
+    </script>
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             $.ajax({
                 type: 'POST',
                 dataType: 'json',
                 contentType: 'application/json',
                 url: '@Url.Action("ReportData", new {id = Model.Id})',
                 data: '{}',
-                success: function(siteData) {
+                success: function (siteData) {
                     var months = siteData.Months;
                     makeVisitorsChart(months);
                     makeAdmissionIncomeChart(months);
                     makeRetailIncomePerVisitorChart(months);
                     makeRefreshmentIncomePerVisitorChart(months);
                 },
-                error: function() {
+                error: function () {
                     alert("Error loading data! Please try again.");
                 }
             });
@@ -56,8 +98,8 @@
             var visitorsChartData = new google.visualization.DataTable();
             visitorsChartData.addColumn('date', 'Month');
             visitorsChartData.addColumn('number', 'Total Visitors');
-            visitorsChartData.addColumn('number', 'Average');
-            visitorsChartData.addColumn('number', '95th Percentile');
+            visitorsChartData.addColumn('number', 'Projected');
+            visitorsChartData.addColumn('number', 'Upper Projected');
             for (var i = 0; i < months.length; i++) {
                 visitorsChartData.addRow([new Date(months[i].MonthTime),
                     months[i].VisitorsTotal,
@@ -82,8 +124,8 @@
             var incomeChartData = new google.visualization.DataTable();
             incomeChartData.addColumn('date', 'Month');
             incomeChartData.addColumn('number', 'Admissions Inome');
-            incomeChartData.addColumn('number', 'Average');
-            incomeChartData.addColumn('number', '95th Percentile');
+            incomeChartData.addColumn('number', 'Projected');
+            incomeChartData.addColumn('number', 'Upper Projected');
             for (var i = 0; i < months.length; i++) {
                 incomeChartData.addRow([
                     new Date(months[i].MonthTime),
@@ -109,8 +151,8 @@
             var retailIncomePerVisitorChartData = new google.visualization.DataTable();
             retailIncomePerVisitorChartData.addColumn('date', 'Month');
             retailIncomePerVisitorChartData.addColumn('number', 'Retail Income Per Visitor');
-            retailIncomePerVisitorChartData.addColumn('number', 'Average');
-            retailIncomePerVisitorChartData.addColumn('number', '95th Percentile');
+            retailIncomePerVisitorChartData.addColumn('number', 'Projected');
+            retailIncomePerVisitorChartData.addColumn('number', 'Upper Projected');
             for (var i = 0; i < months.length; i++) {
                 retailIncomePerVisitorChartData.addRow([
                     new Date(months[i].MonthTime),
@@ -136,8 +178,8 @@
             var refreshmentIncomePerVisitorChartData = new google.visualization.DataTable();
             refreshmentIncomePerVisitorChartData.addColumn('date', 'Month');
             refreshmentIncomePerVisitorChartData.addColumn('number', 'Refreshment Income Per Visitor');
-            refreshmentIncomePerVisitorChartData.addColumn('number', 'Average');
-            refreshmentIncomePerVisitorChartData.addColumn('number', '95th Percentile');
+            refreshmentIncomePerVisitorChartData.addColumn('number', 'Projected');
+            refreshmentIncomePerVisitorChartData.addColumn('number', 'Upper Projected');
             for (var i = 0; i < months.length; i++) {
                 refreshmentIncomePerVisitorChartData.addRow([
                     new Date(months[i].MonthTime),
@@ -163,5 +205,5 @@
         }
 
 
-    </script> 
+    </script>
 }

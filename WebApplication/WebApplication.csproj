@@ -281,6 +281,11 @@
       <DependentUpon>201508141716473_AddSiteCircumstance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\SeedData\SiteCircumstances.csv" />
+    <Content Include="Content\Documents\Insight Resilience Toolkit 0 - Introduction.pdf" />
+    <Content Include="Content\Documents\Insight Resilience Toolkit 1 - Fitness.pdf" />
+    <Content Include="Content\Documents\Insight Resilience Toolkit 2 - Flexibility.pdf" />
+    <Content Include="Content\Documents\Insight Resilience Toolkit 3 - Strategic.pdf" />
+    <Content Include="Content\Documents\Insight Resilience Toolkit 4 - Making Change Happen.pdf" />
     <None Include="Properties\PublishProfiles\blackradley-insight__staging.pubxml" />
     <None Include="Properties\PublishProfiles\insight-blackradley__staging.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
