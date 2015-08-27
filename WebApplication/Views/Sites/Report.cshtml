@@ -63,7 +63,7 @@
 <div id="retailIncomePerVisitorChart" style="width: 700px; height: 300px;">
 </div>
 
-<h4>Refreshment Spend Per Visitor</h4>
+<h4>Refreshment Income Per Visitor</h4>
 <div id="refreshmentIncomePerVisitorChart" style="width: 700px; height: 300px;">
 </div>
 
@@ -142,7 +142,7 @@
                 height: 300,
                 chartArea: { width: '50%' },
                 hAxis: { format: 'MMM-yyyy' },
-                vAxis: { title: "Admissions Income" }
+                vAxis: { title: "Admissions Income", format: '£#,###' }
             });
         }
 
@@ -169,7 +169,7 @@
                 height: 300,
                 chartArea: { width: '50%' },
                 hAxis: { format: 'MMM-yyyy' },
-                vAxis: { title: "Retail Income Per Visitor" }
+                vAxis: { title: "Retail Income Per Visitor", format: 'currency' }
             });
         }
 
@@ -196,7 +196,7 @@
                 height: 300,
                 chartArea: { width: '50%' },
                 hAxis: { format: 'MMM-yyyy' },
-                vAxis: { title: "Retail Income Per Visitor" }
+                vAxis: { title: "Refreshment Income Per Visitor", format: 'currency' }
             });
         }
 

@@ -239,8 +239,9 @@ namespace DataAccess
             {
                 // if the retail income is empty assume it is zero
                 // cast the values to doubles, otherwise you get integer division
-                var incomeRetail = Convert.ToDouble(this.IncomeRetail ?? 0); 
-                return Convert.ToDouble(incomeRetail / this.VisitorsTotal);
+                var incomeRetail = Convert.ToDouble(this.IncomeRetail ?? 0);
+                var retailIncomePerVisitor = Convert.ToDouble(incomeRetail/this.VisitorsTotal);
+                return Math.Round(retailIncomePerVisitor, 2);
             }
         }
 
@@ -344,7 +345,8 @@ namespace DataAccess
                 // if the refreshment income is empty assume it is zero
                 // cast the values to doubles to avoid integer division
                 var incomeRefreshment = Convert.ToDouble(this.IncomeRefreshment ?? 0);
-                return Convert.ToDouble(incomeRefreshment / this.VisitorsTotal);
+                var refreshmentIncomePerVisitor = Convert.ToDouble(incomeRefreshment / this.VisitorsTotal);
+                return Math.Round(refreshmentIncomePerVisitor, 2);
             }
         }
 
