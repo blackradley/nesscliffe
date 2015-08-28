@@ -239,8 +239,12 @@ namespace DataAccess
             {
                 // if the retail income is empty assume it is zero
                 // cast the values to doubles, otherwise you get integer division
-                var incomeRetail = Convert.ToDouble(this.IncomeRetail ?? 0);
+                var incomeRetail = Convert.ToDouble(this.IncomeRetail ?? 0.0);
                 var retailIncomePerVisitor = Convert.ToDouble(incomeRetail/this.VisitorsTotal);
+                // In case the IncomeRetail or VisitorsTotal are zero (= infinity)
+                retailIncomePerVisitor = Double.IsInfinity(retailIncomePerVisitor) ? 0.0 : retailIncomePerVisitor;
+                // In case both IncomeRetail and VisitorsTotal are zero (= NAN)
+                retailIncomePerVisitor = Double.IsNaN(retailIncomePerVisitor) ? 0.0 : retailIncomePerVisitor;
                 return Math.Round(retailIncomePerVisitor, 2);
             }
         }
@@ -331,7 +335,6 @@ namespace DataAccess
         public virtual bool IsGlutenFree { get; set; }
         [Display(Name = "Alcohol", Description = "Do you serve alcohol?")]
         public virtual bool IsAlcohol { get; set; }
-        
         [Display(Name = "In House", Description = "Are refreshments provided by in house staff?")]
         public virtual bool IsCateringInHouse { get; set; }
         [Display(Name = "Out sourced", Description = "Are the refreshments out sourced to another organisation?")]
@@ -344,8 +347,12 @@ namespace DataAccess
             {
                 // if the refreshment income is empty assume it is zero
                 // cast the values to doubles to avoid integer division
-                var incomeRefreshment = Convert.ToDouble(this.IncomeRefreshment ?? 0);
+                var incomeRefreshment = Convert.ToDouble(this.IncomeRefreshment ?? 0.0);
                 var refreshmentIncomePerVisitor = Convert.ToDouble(incomeRefreshment / this.VisitorsTotal);
+                // In case the IncomeRetail or VisitorsTotal are zero (= infinity)
+                refreshmentIncomePerVisitor = Double.IsInfinity(refreshmentIncomePerVisitor) ? 0.0 : refreshmentIncomePerVisitor;
+                // In case both IncomeRetail and VisitorsTotal are zero (= NAN)
+                refreshmentIncomePerVisitor = Double.IsNaN(refreshmentIncomePerVisitor) ? 0.0 : refreshmentIncomePerVisitor;
                 return Math.Round(refreshmentIncomePerVisitor, 2);
             }
         }

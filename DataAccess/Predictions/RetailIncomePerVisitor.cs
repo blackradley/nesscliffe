@@ -67,6 +67,10 @@ namespace DataAccess.Predictions
                 var payToShop = PayToShop * PayToShopCoeff;
                 var shopVisibleFromEntrane = ShopVisibleFromEntrance * ShopVisibleFromEntranceCoeff;
                 var incomeRefreshmentPerVisitor = (IncomeRefreshment / VisitorsTotal) * IncomeRefreshmentPerVisitorCoeff;
+                // In case either IncomeRefreshment or VisitorsTotal are zero (= infinity)
+                incomeRefreshmentPerVisitor = Double.IsInfinity(incomeRefreshmentPerVisitor) ? 0.0 : incomeRefreshmentPerVisitor;
+                // In case both IncomeRefreshment and VisitorsTotal are zero (= NAN)
+                incomeRefreshmentPerVisitor = Double.IsNaN(incomeRefreshmentPerVisitor) ? 0.0 : incomeRefreshmentPerVisitor;
                 var isAdditionalEvents = IsAdditionalEvents * IsAdditionalEventsCoeff;
                 return Intercept + visitorsTotal + isPayToEnter + isArtsCentre + isMuseum +
                        isWebsitePresent + payToShop + shopVisibleFromEntrane + incomeRefreshmentPerVisitor +

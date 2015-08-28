@@ -73,6 +73,10 @@ namespace DataAccess.Predictions
                 var googleRating = GoogleRating * GoogleRatingCoeff;
                 var authorityDensity = AuthorityDensity * AuthorityDensityCoeff;
                 var incomeRetailPerVisitor = (IncomeRetail / VisitorsTotal) * IncomeRetailPerVisitorCoeff;
+                // In case the IncomeRetail or VisitorsTotal are zero (= infinity)
+                incomeRetailPerVisitor = Double.IsInfinity(incomeRetailPerVisitor) ? 0.0 : incomeRetailPerVisitor;
+                // In case both IncomeRetail and VisitorsTotal are zero (= NAN)
+                incomeRetailPerVisitor = Double.IsNaN(incomeRetailPerVisitor) ? 0.0 : incomeRetailPerVisitor;
                 var isVending = IsVending * IsVendingCoeff;
                 var isTableService = IsTableService * IsTableServiceCoeff;
                 var isTeaAndCoffee = IsTeaAndCoffee * IsTeaAndCoffeeCoeff;
