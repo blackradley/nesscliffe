@@ -6,6 +6,7 @@ _*.ps1
 *.sublime-workspace
 *.exe
 Tests/Casper/*.png
+.vs/
 
 #################
 ## User-specific files
