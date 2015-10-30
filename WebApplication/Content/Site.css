@@ -142,18 +142,10 @@ body {
 
 /* Show and hide
 -------------------------------------------------- */
-input#show, input#hide, label#hideLabel {
-    display:none;
-}
-
 pre#rawData {
     display:none;
 }
 
-input#show:checked ~ pre#rawData, input#show:checked ~ label#hideLabel {
-  display:block;
-}
-
-input#hide:checked ~ pre#rawData, input#show:checked ~ label#showLabel {
-    display:none;
+span#show:focus ~ pre#rawData {
+    display:block;
 }

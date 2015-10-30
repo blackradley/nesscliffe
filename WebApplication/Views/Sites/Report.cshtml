@@ -77,14 +77,7 @@
 </div>
 
 <div class="row">
-    <input type=radio id="show" name="group">
-    <label for="show" id="showLabel">
-        <span>[Show Data]</span>
-    </label>
-    <input type=radio id="hide" name="group">
-    <label for="hide" id="hideLabel">
-        <span>[Hide Data]</span>
-    </label>
+    <span id="show" tabindex="0">[Show Data]</span>
     <pre id="rawData">
     </pre>
 </div>
@@ -175,7 +168,6 @@
         function makeRetailIncomePerVisitorChart(months) {
             document.getElementById('retailIncomePerVisitorChart').innerHTML = 'Data not available yet';
             // Prepare the data table
-            debugger;
             var retailIncomePerVisitorChartData = new google.visualization.DataTable();
             retailIncomePerVisitorChartData.addColumn('date', 'Month');
             retailIncomePerVisitorChartData.addColumn('number', 'Retail Income Per Visitor');
