@@ -51,7 +51,6 @@
     </div>
 </div>
 
-
 <div class="row" style="border-top: 1px solid;">
     <h4>Visitors</h4>
     <div id="visitorsChart" style="width: 700px; height: 300px;">
@@ -199,7 +198,7 @@
                     height: 300,
                     chartArea: { width: '50%' },
                     hAxis: { format: 'MMM-yyyy' },
-                    vAxis: { title: "Retail Income Per Visitor", format: 'currency' }
+                    vAxis: { title: "Retail Income Per Visitor", format: '£#.#' }
                 });
             } catch (err) {
                 document.getElementById('retailIncomePerVisitorChart').innerHTML = 'Complete data not available for graph</br>' +
@@ -232,7 +231,7 @@
                     height: 300,
                     chartArea: { width: '50%' },
                     hAxis: { format: 'MMM-yyyy' },
-                    vAxis: { title: "Refreshment Income Per Visitor", format: 'currency' }
+                    vAxis: { title: "Refreshment Income Per Visitor", format: '£#.#' }
                 });
             } catch (err) {
                 document.getElementById('refreshmentIncomePerVisitorChart').innerHTML = 'Complete data not available for graph</br>' +
