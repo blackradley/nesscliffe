@@ -42,6 +42,17 @@
                 </span>
             </div>
         </div>
+        
+        @{
+            string active = "/site/deployments/active";
+            //if (System.IO.File.Exists(active)){
+                StreamReader reader = new StreamReader(active);
+                string contents = reader.ReadToEnd() + "<-";
+                reader.Close();
+                @contents
+            //}
+        }
+
     </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
