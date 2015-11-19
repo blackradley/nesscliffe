@@ -198,6 +198,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\GetAttributeFromHelper.cs" />
+    <Compile Include="Helpers\GitCommit.cs" />
     <Compile Include="Helpers\JsonNetResult.cs" />
     <Compile Include="Helpers\MonthSummaryIconsForHelper.cs" />
     <Compile Include="Helpers\SiteYesNoForHelper.cs" />

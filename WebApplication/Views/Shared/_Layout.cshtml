@@ -9,7 +9,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="version"></div>
+    <div class="version" title="@WebApplication.Helpers.GitCommit.Hash()"></div>
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -33,26 +33,15 @@
     <footer class="footer hidden-xs hidden-sm">
         <div class="container">
             <div class="pull-right">
-                <span id="logos">
+                <div id="logos">
                     &copy; @DateTime.Now.Year - Black Radley Limited
                     <img src="/Content/Images/Logos/BlackRadley.jpg" alt="Black Radley" />
                     <img src="/Content/Images/Logos/BSU.jpg" alt="Bath Spa University" />
                     <img src="/Content/Images/Logos/ROP.jpg" alt="Ryan O'Neill Partnership" />
                     <img src="/Content/Images/Logos/Support.jpg" alt="Ryan O'Neill Partnership" />
-                </span>
+                </div>
             </div>
         </div>
-        
-        @{
-            string active = Environment.GetEnvironmentVariable("HOME").ToString() + "//site//deployments//active";
-            //if (System.IO.File.Exists(active)){
-            StreamReader reader = new StreamReader(active);
-            string contents = reader.ReadToEnd() + "<-";
-            reader.Close();
-                @contents
-            //}
-        }
-
     </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
