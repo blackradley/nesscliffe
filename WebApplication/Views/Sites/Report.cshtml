@@ -96,13 +96,12 @@
                 contentType: 'application/json',
                 url: '@Url.Action("ReportData", new {id = Model.Id})',
                 data: '{}',
-                success: function (siteData) {
-                    var months = siteData.Months;
+                success: function (months) {
                     makeVisitorsChart(months);
                     makeAdmissionIncomeChart(months);
                     makeRetailIncomePerVisitorChart(months);
                     makeRefreshmentIncomePerVisitorChart(months);
-                    addRawData(siteData);
+                    addRawData(months);
                 },
                 error: function () {
                     alert("Error loading data! Please try again.");

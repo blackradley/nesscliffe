@@ -10,7 +10,6 @@ using DataAccess;
 using Microsoft.AspNet.Identity;
 using WebApplication.Helpers;
 using WebApplication.Infrastructure;
-using WebGrease;
 
 namespace WebApplication.Controllers
 {
@@ -117,13 +116,34 @@ namespace WebApplication.Controllers
             return RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// Return a dataset to use on the report page.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public JsonResult ReportData(Guid? id)
         {
             Site site = _dataDb.Sites.Find(id);
             if (UserNotAllowed(site)) throw new HttpException(404, "Not found");
             var months = site.Months.OrderBy(c => c.MonthTime).ToList();
-            site.Months = months;
-            return Json(site, JsonRequestBehavior.AllowGet);
+            // Map the months into smaller months for the report
+            var reportMonths = months.Select(x => new Models.MonthDataViewModel()
+            {
+                MonthTime = x.MonthTime,
+                VisitorsTotal = x.VisitorsTotal,
+                VisitorsTotalModel = x.VisitorsTotalModel,
+                VisitorsTotalModelUpper = x.VisitorsTotalModelUpper,
+                IncomeAdmissions = x.IncomeAdmissions,
+                IncomeAdmissionsModel = x.IncomeAdmissionsModel,
+                IncomeAdmissionsModelUpper = x.IncomeAdmissionsModelUpper,
+                RetailIncomePerVisitor = x.RetailIncomePerVisitor,
+                RetailIncomePerVisitorModel = x.RetailIncomePerVisitorModel,
+                RetailIncomePerVisitorModelUpper = x.RetailIncomePerVisitorModelUpper,
+                RefreshmentIncomePerVisitor = x.RefreshmentIncomePerVisitor,
+                RefreshmentIncomePerVisitorModel = x.RefreshmentIncomePerVisitorModel,
+                RefreshmentIncomePerVisitorModelUpper = x.RefreshmentIncomePerVisitorModelUpper
+            }).ToList();
+            return Json(reportMonths, JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)
