@@ -44,7 +44,7 @@
         </div>
         
         @{
-            string active = "/site/deployments/active";
+            string active = "~//site//deployments//active";
             //if (System.IO.File.Exists(active)){
                 StreamReader reader = new StreamReader(active);
                 string contents = reader.ReadToEnd() + "<-";
