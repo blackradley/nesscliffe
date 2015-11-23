@@ -7,6 +7,8 @@ _*.ps1
 *.exe
 Tests/Casper/*.png
 .vs/
+WebApplication/newrelic/Extensions/
+*.dll
 
 #################
 ## User-specific files
