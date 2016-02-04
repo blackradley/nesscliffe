@@ -344,7 +344,9 @@
     <Content Include="Content\Documents\Insight Resilience Toolkit 2 - Flexibility.pdf" />
     <Content Include="Content\Documents\Insight Resilience Toolkit 3 - Strategic.pdf" />
     <Content Include="Content\Documents\Insight Resilience Toolkit 4 - Making Change Happen.pdf" />
-    <Content Include="newrelic\newrelic.config" />
+    <Content Include="newrelic\newrelic.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="newrelic\Extensions\extension.xsd">
       <SubType>Designer</SubType>
     </Content>
@@ -354,6 +356,7 @@
     <None Include="Properties\PublishProfiles\blackradley-insight__staging.pubxml" />
     <None Include="Properties\PublishProfiles\insight-blackradley__staging.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\graphs.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
