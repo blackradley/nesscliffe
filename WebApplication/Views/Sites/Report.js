@@ -1,5 +1,5 @@
-﻿function makeVisitorsChart(months) {
-    document.getElementById('visitorsChart').innerHTML = 'Data not available yet';
+﻿function makeVisitorsChart(months, id) {
+    document.getElementById(id).innerHTML = 'Data not available yet';
     var visitorsChartData = new google.visualization.DataTable();
     visitorsChartData.addColumn('date', 'Month');
     visitorsChartData.addColumn('number', 'Total Visitors');
@@ -14,7 +14,7 @@
         ]);
     }
     // Instantiate and draw our chart, passing in some options
-    var incomeChart = new google.visualization.LineChart(document.getElementById('visitorsChart'));
+    var incomeChart = new google.visualization.LineChart(document.getElementById(id));
     incomeChart.draw(visitorsChartData,
     {
         width: 700,
@@ -24,8 +24,8 @@
         vAxis: { title: "Visitor Numbers" }
     });
 }
-function makeAdmissionIncomeChart(months) {
-    document.getElementById('incomeChart').innerHTML = 'Data not available yet';
+function makeAdmissionIncomeChart(months, id) {
+    document.getElementById(id).innerHTML = 'Data not available yet';
     // Prepare the data table
     var incomeChartData = new google.visualization.DataTable();
     incomeChartData.addColumn('date', 'Month');
@@ -41,7 +41,7 @@ function makeAdmissionIncomeChart(months) {
         ]);
     }
     // Instantiate and draw our chart, passing in some options
-    var incomeChart = new google.visualization.LineChart(document.getElementById('incomeChart'));
+    var incomeChart = new google.visualization.LineChart(document.getElementById(id));
     incomeChart.draw(incomeChartData,
     {
         width: 700,
@@ -52,8 +52,8 @@ function makeAdmissionIncomeChart(months) {
     });
 }
 
-function makeRetailIncomePerVisitorChart(months) {
-    document.getElementById('retailIncomePerVisitorChart').innerHTML = 'Data not available yet';
+function makeRetailIncomePerVisitorChart(months, id) {
+    document.getElementById(id).innerHTML = 'Data not available yet';
     // Prepare the data table
     var retailIncomePerVisitorChartData = new google.visualization.DataTable();
     retailIncomePerVisitorChartData.addColumn('date', 'Month');
@@ -70,7 +70,7 @@ function makeRetailIncomePerVisitorChart(months) {
             ]);
         }
         // Instantiate and draw our chart, passing in some options
-        var incomePerVisitorChart = new google.visualization.LineChart(document.getElementById('retailIncomePerVisitorChart'));
+        var incomePerVisitorChart = new google.visualization.LineChart(document.getElementById(id));
         incomePerVisitorChart.draw(retailIncomePerVisitorChartData,
         {
             width: 700,
@@ -80,13 +80,13 @@ function makeRetailIncomePerVisitorChart(months) {
             vAxis: { title: "Retail Income Per Visitor", format: '£0.00' }
         });
     } catch (err) {
-        document.getElementById('retailIncomePerVisitorChart').innerHTML = 'Complete data not available for graph</br>' +
+        document.getElementById(id).innerHTML = 'Complete data not available for graph</br>' +
             '<i>' + err.message + '</i>';
     }
 }
 
-function makeRefreshmentIncomePerVisitorChart(months) {
-    document.getElementById('refreshmentIncomePerVisitorChart').innerHTML = 'Data not available yet';
+function makeRefreshmentIncomePerVisitorChart(months, id) {
+    document.getElementById(id).innerHTML = 'Data not available yet';
     // Prepare the data table
     var refreshmentIncomePerVisitorChartData = new google.visualization.DataTable();
     refreshmentIncomePerVisitorChartData.addColumn('date', 'Month');
@@ -103,7 +103,7 @@ function makeRefreshmentIncomePerVisitorChart(months) {
             ]);
         }
         // Instantiate and draw our chart, passing in some options
-        var incomePerVisitorChart = new google.visualization.LineChart(document.getElementById('refreshmentIncomePerVisitorChart'));
+        var incomePerVisitorChart = new google.visualization.LineChart(document.getElementById(id));
         incomePerVisitorChart.draw(refreshmentIncomePerVisitorChartData,
         {
             width: 700,
@@ -113,14 +113,14 @@ function makeRefreshmentIncomePerVisitorChart(months) {
             vAxis: { title: "Refreshment Income Per Visitor", format: '£0.00' }
         });
     } catch (err) {
-        document.getElementById('refreshmentIncomePerVisitorChart').innerHTML = 'Complete data not available for graph</br>' +
+        document.getElementById(id).innerHTML = 'Complete data not available for graph</br>' +
             '<i>' + err.message + '</i>';
     }
 }
 
-function addRawData(siteData) {
+function addRawData(siteData, id) {
     var siteData = JSON.stringify(siteData, undefined, 2);
-    document.getElementById('rawData').innerHTML = siteData;
+    document.getElementById(id).innerHTML = siteData;
 }
 
 function round(number) {

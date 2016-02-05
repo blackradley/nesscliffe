@@ -99,11 +99,11 @@
             url: '@Url.Action("ReportData", new {id = Model.Id})',
             async: false
         }).responseJSON;
-        makeVisitorsChart(months);
-        makeAdmissionIncomeChart(months);
-        makeRetailIncomePerVisitorChart(months);
-        makeRefreshmentIncomePerVisitorChart(months);
-        addRawData(months);
+        makeVisitorsChart(months, 'visitorsChart');
+        makeAdmissionIncomeChart(months, 'incomeChart');
+        makeRetailIncomePerVisitorChart(months, 'retailIncomePerVisitorChart');
+        makeRefreshmentIncomePerVisitorChart(months, 'refreshmentIncomePerVisitorChart');
+        addRawData(months, 'rawData');
     }
 </script>
 }
