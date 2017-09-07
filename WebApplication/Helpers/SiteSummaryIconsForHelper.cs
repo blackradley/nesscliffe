@@ -16,7 +16,7 @@ namespace WebApplication.Helpers
                 {"IsAccredited", site.IsAccredited},
                 {"IsCastle", site.IsCastle},
                 {"IsHistoricHouse", site.IsHistoricHouse},
-                {"IsArtsCentre", site.IsArtsCentre},
+                {"IsArtsCentre", site.IsArts},
                 {"IsGallery", site.IsGallery},
                 {"IsWorldHeritageSite", site.IsWorldHeritageSite},
                 {"IsOpenAir", site.IsOpenAir},

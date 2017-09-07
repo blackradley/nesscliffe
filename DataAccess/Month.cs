@@ -259,7 +259,7 @@ namespace DataAccess
                 {
                     VisitorsTotal = this.VisitorsTotal, 
                     IsPayToEnter = (this.IncomeAdmissions > 0) ? 1: 0, 
-                    IsArtsCentre = Convert.ToInt32(this.Site.IsArtsCentre), 
+                    IsArtsCentre = Convert.ToInt32(this.Site.IsArts), 
                     IsMuseum = Convert.ToInt32(this.Site.IsMuseum), 
                     IsWebsitePresent = String.IsNullOrWhiteSpace(this.WebsiteUrl) ? 0: 1, 
                     PayToShop = Convert.ToInt32(this.PayToShop), 
