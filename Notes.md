@@ -20,8 +20,16 @@ Migrations
 Migrations are enabled for the datacontext.
 
 * Add-Migration NameOfTheMigration -Force
+	
+	Will scaffold the next migration based on changes you have made to your model since the last migration was created
+
 * Get-Migrations
+
 * Update-Database -TargetMigration:"NameOfTheMigration"
+
+Use Sql Server Management Studio to connect to the development database 
+
+	Server: (localdb)\MSSQLLocalDB
 
 Error Messages
 -----------
