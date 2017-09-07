@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8">
     <title>@ViewBag.Title - Insight</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("headerScripts", required: false)
 </head>
 <body>
     <div class="version" title="@WebApplication.Helpers.GitCommit.Hash()"></div>
