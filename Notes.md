@@ -25,10 +25,6 @@ Migrations are enabled for the datacontext.
 
 * Get-Migrations
 
-<<<<<<< HEAD
-
-=======
->>>>>>> fdb15d4931e078cdc3c050c1a13c5718adaf59cb
 * Update-Database -TargetMigration:"NameOfTheMigration"
 
 Use Sql Server Management Studio to connect to the development database 
